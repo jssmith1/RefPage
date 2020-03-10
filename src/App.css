@@ -1,6 +1,16 @@
-.App {
+a {
+  text-decoration: none;
+  color: #0d19a3;
+ }
+
+H4 {
+  margin: 20px 0px 20px 0px;
+}
+
+.TypeNotFound {
   max-width: 1024px;
 }
+
 
 .AppContent {
   min-height: 100vh;
@@ -42,7 +52,7 @@
 }
 
 .ErrorMessage{
-  width: 70%; 
+  width: 90%; 
 }
 
 .ButtonHolder{
@@ -61,6 +71,7 @@
   border-color: #AAABB8;
   padding: 2px 10px 5px 10px;
   background-color: #f7f9fb;
+  margin: 20px 0px;
 }
 
 .StrategyInstruction {
@@ -69,13 +80,17 @@
 }
 
 .StrategyMessage{
-  width: 70%; 
+  width: 90%; 
   display: flex;
 }
 
 .CodeExample{
   display: flex;
   justify-content: space-around;
+}
+
+.CodeContainer{
+  width: 40%;
 }
 
 .RedCode{
@@ -85,7 +100,6 @@
   border-color: #e85a4f;
   padding: 2px 10px 5px 10px;
   background-color: #ffffff;
-  min-width: 40%;
   margin-bottom: 20px;
 }
 
@@ -96,7 +110,6 @@
   border-color: #479761;
   padding: 2px 10px 5px 10px;
   background-color: #ffffff;
-  min-width: 40%;
   margin-bottom: 20px;
 }
 
