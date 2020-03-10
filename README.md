@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a reference page for processing errors. We provide explanation and examples to fix compiling errors.
 
 ## Available Scripts
 
