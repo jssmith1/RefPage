@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import TypeNotFound from "./TypeNotFound.js";
+import TypeNotFound from "./TypeNotFound.jsx";
 
 
 class App extends React.Component {

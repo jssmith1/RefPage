@@ -50,7 +50,6 @@ class TypeNotFound extends React.Component {
         this.setState({ openStrategy2: !this.state.openStrategy2 });
         this.setState({ openCode21: false});
         this.setState({ openCode22: false});
-        this.setState({ openCode22: false});
         break;
       case 3:
         this.setState({ openStrategy3: !this.state.openStrategy3 });
@@ -142,19 +141,17 @@ class TypeNotFound extends React.Component {
                 </div>
               )}
             </div>
+
             {this.state.openStrategy1 && (
-              <div className="StrategyContainer">
-                <p>
-                  <i>Tick the box once you have tried the suggestion</i>
-                </p>
+              <div className="StrategyContainer" >
+                <p> <i>Tick the box once you have tried the suggestion</i></p>
                 <div className="StrategyTile"  onClick={() => this.openCodeExample(11)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox value="box1" />
                       <p>
                         Suggestion 1: Change{" "}
-                        <p className="VarName">{this.state.varName}</p> to the
-                        class name that you have defined
+                        <p className="VarName">{this.state.varName}</p> to the class name that you have defined
                       </p>
                     </div>
                     {!this.state.openCode11 && (
@@ -180,8 +177,7 @@ class TypeNotFound extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode11 && (
-                    <div className="CodeExample">
+                  {this.state.openCode11 && ( <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
