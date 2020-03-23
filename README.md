@@ -1,5 +1,15 @@
 This is a reference page for processing errors. We provide explanation and examples to fix compiling errors.
 
+## Setup Dev Environment on Windows:
+1. Install [chocolatey](https://chocolatey.org/install) package manager (via nodejs download or install separately)
+2. Download [nodejs](https://nodejs.org/)
+3. choco install yarn
+4. Navigate to project directory
+5. npm install 
+6. yarn start
+7. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
