@@ -61,6 +61,14 @@ H4 {
   align-items: center;
 }
 
+.ButtonHolder:hover {
+  opacity: 0.3;
+}
+
+.ExpandButton{
+  opacity: 1;
+}
+
 .StrategyContainer{
   margin: 0px 20px 20px 20px;
 }

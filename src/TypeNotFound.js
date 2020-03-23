@@ -1,6 +1,6 @@
 import React from "react";
-import UpArrow from "./assets/up-arrow.svg";
-import DownArrow from "./assets/down-arrow.svg";
+import MinusButton from "./assets/minus.svg";
+import PlusButton from "./assets/plus.svg";
 import "./App.css";
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -44,12 +44,17 @@ class TypeNotFound extends React.Component {
     switch (i) {
       case 1:
         this.setState({ openStrategy1: !this.state.openStrategy1 });
+        this.setState({ openCode11: false });
         break;
       case 2:
         this.setState({ openStrategy2: !this.state.openStrategy2 });
+        this.setState({ openCode21: false});
+        this.setState({ openCode22: false});
+        this.setState({ openCode22: false});
         break;
       case 3:
         this.setState({ openStrategy3: !this.state.openStrategy3 });
+        this.setState({ openCode31: false});
         break;
       default:
         break;
@@ -102,8 +107,8 @@ class TypeNotFound extends React.Component {
             </i>
           </h4>
 
-          <div className="Tile">
-            <div className="ErrorTile">
+          <div className="Tile" >
+            <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
                   1: You may have mistyped class name{" "}
@@ -118,7 +123,7 @@ class TypeNotFound extends React.Component {
                 <div className="ButtonHolder">
                   <img
                     onClick={() => this.openStrategyTile(1)}
-                    src={DownArrow}
+                    src={PlusButton}
                     alt="down-button"
                     width="20"
                     height="20"
@@ -129,7 +134,7 @@ class TypeNotFound extends React.Component {
                 <div className="ButtonHolder">
                   <img
                     onClick={() => this.openStrategyTile(1)}
-                    src={UpArrow}
+                    src={MinusButton}
                     alt="up-button"
                     width="20"
                     height="20"
@@ -142,7 +147,7 @@ class TypeNotFound extends React.Component {
                 <p>
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile">
+                <div className="StrategyTile"  onClick={() => this.openCodeExample(11)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox value="box1" />
@@ -156,7 +161,7 @@ class TypeNotFound extends React.Component {
                       <div className="ButtonHolder">
                         <img
                           onClick={() => this.openCodeExample(11)}
-                          src={DownArrow}
+                          src={PlusButton}
                           alt="down-button"
                           width="20"
                           height="20"
@@ -167,7 +172,7 @@ class TypeNotFound extends React.Component {
                       <div className="ButtonHolder">
                         <img
                           onClick={() => this.openCodeExample(11)}
-                          src={UpArrow}
+                          src={MinusButton}
                           alt="up-button"
                           width="20"
                           height="20"
@@ -216,7 +221,7 @@ class TypeNotFound extends React.Component {
           </div>
 
           <div className="Tile">
-            <div className="ErrorTile">
+            <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
                   2: You may have forgotten to create class{" "}
@@ -231,7 +236,7 @@ class TypeNotFound extends React.Component {
                 <div className="ButtonHolder">
                   <img
                     onClick={() => this.openStrategyTile(2)}
-                    src={DownArrow}
+                    src={PlusButton}
                     alt="down-button"
                     width="20"
                     height="20"
@@ -242,7 +247,7 @@ class TypeNotFound extends React.Component {
                 <div className="ButtonHolder">
                   <img
                     onClick={() => this.openStrategyTile(2)}
-                    src={UpArrow}
+                    src={MinusButton}
                     alt="up-button"
                     width="20"
                     height="20"
@@ -255,7 +260,7 @@ class TypeNotFound extends React.Component {
                 <p>
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile">
+                <div className="StrategyTile"  onClick={() => this.openCodeExample(21)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox value="box1" />
@@ -269,7 +274,7 @@ class TypeNotFound extends React.Component {
                       <div className="ButtonHolder">
                         <img
                           onClick={() => this.openCodeExample(21)}
-                          src={DownArrow}
+                          src={PlusButton}
                           alt="down-button"
                           width="20"
                           height="20"
@@ -280,7 +285,7 @@ class TypeNotFound extends React.Component {
                       <div className="ButtonHolder">
                         <img
                           onClick={() => this.openCodeExample(21)}
-                          src={UpArrow}
+                          src={MinusButton}
                           alt="up-button"
                           width="20"
                           height="20"
@@ -327,7 +332,7 @@ class TypeNotFound extends React.Component {
                   )}
                 </div>
               
-                <div className="StrategyTile">
+                <div className="StrategyTile" onClick={() => this.openCodeExample(22)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox value="box1" />
@@ -342,7 +347,7 @@ class TypeNotFound extends React.Component {
                       <div className="ButtonHolder">
                         <img
                           onClick={() => this.openCodeExample(22)}
-                          src={DownArrow}
+                          src={PlusButton}
                           alt="down-button"
                           width="20"
                           height="20"
@@ -353,7 +358,7 @@ class TypeNotFound extends React.Component {
                       <div className="ButtonHolder">
                         <img
                           onClick={() => this.openCodeExample(22)}
-                          src={UpArrow}
+                          src={MinusButton}
                           alt="up-button"
                           width="20"
                           height="20"
@@ -413,7 +418,7 @@ class TypeNotFound extends React.Component {
           </div>
 
           <div className="Tile">
-                  <div className="ErrorTile">
+                  <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
                     <div className="ErrorMessage">
                       <h4>
                         3: You may have forgotten to import class{" "}
@@ -428,7 +433,7 @@ class TypeNotFound extends React.Component {
                       <div className="ButtonHolder">
                         <img
                           onClick={() => this.openStrategyTile(3)}
-                          src={DownArrow}
+                          src={PlusButton}
                           alt="down-button"
                           width="20"
                           height="20"
@@ -439,7 +444,7 @@ class TypeNotFound extends React.Component {
                       <div className="ButtonHolder">
                         <img
                           onClick={() => this.openStrategyTile(3)}
-                          src={UpArrow}
+                          src={MinusButton}
                           alt="up-button"
                           width="20"
                           height="20"
@@ -452,7 +457,7 @@ class TypeNotFound extends React.Component {
                       <p>
                         <i>Tick the box once you have tried the suggestion</i>
                       </p>
-                      <div className="StrategyTile">
+                      <div className="StrategyTile" onClick={() => this.openCodeExample(31)}>
                         <div className="StrategyInstruction">
                           <div className="StrategyMessage">
                             <BlueCheckbox value="box1" />
@@ -466,7 +471,7 @@ class TypeNotFound extends React.Component {
                             <div className="ButtonHolder">
                               <img
                                 onClick={() => this.openCodeExample(31)}
-                                src={DownArrow}
+                                src={PlusButton}
                                 alt="down-button"
                                 width="20"
                                 height="20"
@@ -477,7 +482,7 @@ class TypeNotFound extends React.Component {
                             <div className="ButtonHolder">
                               <img
                                 onClick={() => this.openCodeExample(31)}
-                                src={UpArrow}
+                                src={MinusButton}
                                 alt="up-button"
                                 width="20"
                                 height="20"
