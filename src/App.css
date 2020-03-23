@@ -11,6 +11,13 @@ H4 {
   max-width: 1024px;
 }
 
+.Home{
+  padding: 20px;
+}
+
+.Home:hover {
+  opacity: 0.3;
+}
 
 .AppContent {
   min-height: 100vh;
@@ -65,9 +72,6 @@ H4 {
   opacity: 0.3;
 }
 
-.ExpandButton{
-  opacity: 1;
-}
 
 .StrategyContainer{
   margin: 0px 20px 20px 20px;
