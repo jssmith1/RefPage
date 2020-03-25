@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import TypeNotFound from "./TypeNotFound.jsx";
+import VariableNotFound from "./VariableNotFound.jsx";
 import HomePage from "./HomePage.jsx"
 import HomeButton from "./assets/home.svg";
 import {
@@ -31,6 +32,9 @@ export default function App() {
         <Switch>
           <Route path="/typenotfound">
             <TypeNotFound />
+          </Route>
+          <Route path="/variablenotfound">
+            <VariableNotFound />
           </Route>
           <Route path="/">
             <HomePage />

@@ -1,9 +1,9 @@
 a {
   text-decoration: none;
   color: #0d19a3;
- }
+}
 
-H4 {
+h4 {
   margin: 20px 0px 20px 0px;
 }
 
@@ -11,7 +11,7 @@ H4 {
   max-width: 1024px;
 }
 
-.Home{
+.Home {
   padding: 20px;
 }
 
@@ -38,7 +38,7 @@ H4 {
 
 .Title {
   color: #000000;
-  border-bottom: #AAABB8;
+  border-bottom: #aaabb8;
   border-bottom-style: solid;
   border-width: 1px;
 }
@@ -47,22 +47,22 @@ H4 {
   border-radius: 5px;
   border-style: solid;
   border-width: 1px;
-  border-color: #AAABB8;
+  border-color: #aaabb8;
   background-color: #f7f9fb;
   margin-bottom: 20px;
 }
 
-.ErrorTile {  
+.ErrorTile {
   padding: 0px 20px 5px 20px;
   display: flex;
   justify-content: space-between;
 }
 
-.ErrorMessage{
-  width: 90%; 
+.ErrorMessage {
+  width: 90%;
 }
 
-.ButtonHolder{
+.ButtonHolder {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,15 +72,14 @@ H4 {
   opacity: 0.3;
 }
 
-
-.StrategyContainer{
+.StrategyContainer {
   margin: 0px 20px 20px 20px;
 }
 .StrategyTile {
   border-radius: 5px;
   border-style: solid;
   border-width: 1px;
-  border-color: #AAABB8;
+  border-color: #aaabb8;
   padding: 2px 10px 5px 10px;
   background-color: #f7f9fb;
   margin: 20px 0px;
@@ -91,21 +90,27 @@ H4 {
   justify-content: space-between;
 }
 
-.StrategyMessage{
-  width: 90%; 
+.StrategyMessage {
+  width: 90%;
   display: flex;
 }
 
-.CodeExample{
+.StrategySubMessage {
+  padding-left: 10px;
+  width: 80%;
+  display: flex;
+}
+
+.CodeExample {
   display: flex;
   justify-content: space-around;
 }
 
-.CodeContainer{
+.CodeContainer {
   width: 40%;
 }
 
-.RedCode{
+.RedCode {
   font-family: Courier;
   border-style: solid;
   border-width: 2px;
@@ -115,7 +120,7 @@ H4 {
   margin-bottom: 20px;
 }
 
-.GreenCode{
+.GreenCode {
   font-family: Courier;
   border-style: solid;
   border-width: 2px;
@@ -125,14 +130,14 @@ H4 {
   margin-bottom: 20px;
 }
 
-.Indent-0{
+.Indent-0 {
   margin: 10px 0px 10px 0px;
 }
 
-.Indent-1{
+.Indent-1 {
   margin: 10px 0px 10px 10px;
 }
 
-.Indent-2{
+.Indent-2 {
   margin: 10px 0px 10px 20px;
 }

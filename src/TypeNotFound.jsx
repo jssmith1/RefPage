@@ -18,12 +18,14 @@ const BlueCheckbox = withStyles({
 
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";
+
 class TypeNotFound extends React.Component {
   constructor(props) {
     super(props);
     this.handleChangeVarName = this.handleChangeVarName.bind(this);
     this.openStrategyTile = this.openStrategyTile.bind(this);
     this.openCodeExample = this.openCodeExample.bind(this);
+    this.changeChecked = this.changeChecked.bind(this);
     this.state = {
       varName: "Thing",
       openStrategy1: false,
@@ -33,6 +35,10 @@ class TypeNotFound extends React.Component {
       openCode21: false,
       openCode22: false,
       openCode31: false,
+      checked11: false,
+      checked21: false,
+      checked22: false,
+      checked31: false
     };
   }
 
@@ -48,12 +54,12 @@ class TypeNotFound extends React.Component {
         break;
       case 2:
         this.setState({ openStrategy2: !this.state.openStrategy2 });
-        this.setState({ openCode21: false});
-        this.setState({ openCode22: false});
+        this.setState({ openCode21: false });
+        this.setState({ openCode22: false });
         break;
       case 3:
         this.setState({ openStrategy3: !this.state.openStrategy3 });
-        this.setState({ openCode31: false});
+        this.setState({ openCode31: false });
         break;
       default:
         break;
@@ -79,6 +85,25 @@ class TypeNotFound extends React.Component {
     }
   }
 
+  changeChecked(i) {
+    switch (i) {
+      case 11:
+        this.setState({ checked11: !this.state.checked11 });
+        break;
+      case 21:
+        this.setState({ checked21: !this.state.checked21 });
+        break;
+      case 22:
+        this.setState({ checked22: !this.state.checked22 });
+        break;
+      case 31:
+        this.setState({ checked31: !this.state.checked31 });
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -93,7 +118,8 @@ class TypeNotFound extends React.Component {
           </form>
           <div className="Title">
             <h2>
-              Type <div className="VarName">{this.state.varName}</div> was not found
+              Cannot find a class or type name{" "}
+              <div className="VarName">{this.state.varName}</div>
             </h2>
           </div>
 
@@ -106,7 +132,7 @@ class TypeNotFound extends React.Component {
             </i>
           </h4>
 
-          <div className="Tile" >
+          <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
@@ -143,15 +169,23 @@ class TypeNotFound extends React.Component {
             </div>
 
             {this.state.openStrategy1 && (
-              <div className="StrategyContainer" >
-                <p> <i>Tick the box once you have tried the suggestion</i></p>
-                <div className="StrategyTile"  onClick={() => this.openCodeExample(11)}>
+              <div className="StrategyContainer">
+                <p>
+                  {" "}
+                  <i>Tick the box once you have tried the suggestion</i>
+                </p>
+                <div className="StrategyTile">
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
-                      <BlueCheckbox value="box1" />
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked11}
+                        onChange={() => this.changeChecked(11)}
+                      />
                       <p>
                         Suggestion 1: Change{" "}
-                        <p className="VarName">{this.state.varName}</p> to the class name that you have defined
+                        <p className="VarName">{this.state.varName}</p> to the
+                        class name that you have defined
                       </p>
                     </div>
                     {!this.state.openCode11 && (
@@ -177,7 +211,8 @@ class TypeNotFound extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode11 && ( <div className="CodeExample">
+                  {this.state.openCode11 && (
+                    <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
@@ -256,10 +291,14 @@ class TypeNotFound extends React.Component {
                 <p>
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile"  onClick={() => this.openCodeExample(21)}>
+                <div className="StrategyTile">
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
-                      <BlueCheckbox value="box1" />
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked21}
+                        onChange={() => this.changeChecked(21)}
+                      />
                       <p>
                         Suggestion 1: Add class{" "}
                         <p className="VarName">{this.state.varName}</p> to your
@@ -327,11 +366,15 @@ class TypeNotFound extends React.Component {
                     </div>
                   )}
                 </div>
-              
-                <div className="StrategyTile" onClick={() => this.openCodeExample(22)}>
+
+                <div className="StrategyTile">
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
-                      <BlueCheckbox value="box1" />
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked22}
+                        onChange={() => this.changeChecked(22)}
+                      />
                       <p>
                         Suggestion 2: Add class{" "}
                         <p className="VarName">{this.state.varName}</p> to
@@ -379,7 +422,9 @@ class TypeNotFound extends React.Component {
                         <div className="GreenCode">
                           <div className="Indent-0">
                             import FileB.
-                            <p className="VarName">{this.state.varName}</p>;{" "}
+                            <p className="VarName">
+                              {this.state.varName}
+                            </p>;{" "}
                           </div>
                           <div className="Indent-0">
                             void setup() {LEFT_CURLY}{" "}
@@ -414,21 +459,64 @@ class TypeNotFound extends React.Component {
           </div>
 
           <div className="Tile">
-                  <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
-                    <div className="ErrorMessage">
-                      <h4>
-                        3: You may have forgotten to import class{" "}
-                        <div className="VarName">{this.state.varName}</div>{" "}from a built-in library
-                      </h4>
+            <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
+              <div className="ErrorMessage">
+                <h4>
+                  3: You may have forgotten to import class{" "}
+                  <div className="VarName">{this.state.varName}</div> from a
+                  built-in library
+                </h4>
+                <p>
+                  Hint: Is <div className="VarName">{this.state.varName}</div> a
+                  built-in class?
+                </p>
+              </div>
+              {!this.state.openStrategy3 && (
+                <div className="ButtonHolder">
+                  <img
+                    onClick={() => this.openStrategyTile(3)}
+                    src={PlusButton}
+                    alt="down-button"
+                    width="20"
+                    height="20"
+                  ></img>
+                </div>
+              )}
+              {this.state.openStrategy3 && (
+                <div className="ButtonHolder">
+                  <img
+                    onClick={() => this.openStrategyTile(3)}
+                    src={MinusButton}
+                    alt="up-button"
+                    width="20"
+                    height="20"
+                  ></img>
+                </div>
+              )}
+            </div>
+            {this.state.openStrategy3 && (
+              <div className="StrategyContainer">
+                <p>
+                  <i>Tick the box once you have tried the suggestion</i>
+                </p>
+                <div className="StrategyTile">
+                  <div className="StrategyInstruction">
+                    <div className="StrategyMessage">
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked31}
+                        onChange={() => this.changeChecked(31)}
+                      />
                       <p>
-                        Hint: Is{" "}
-                        <div className="VarName">{this.state.varName}</div> a built-in class?
+                        Suggestion 1: Import{" "}
+                        <p className="VarName">{this.state.varName}</p> to your
+                        file
                       </p>
                     </div>
-                    {!this.state.openStrategy3 && (
+                    {!this.state.openCode31 && (
                       <div className="ButtonHolder">
                         <img
-                          onClick={() => this.openStrategyTile(3)}
+                          onClick={() => this.openCodeExample(31)}
                           src={PlusButton}
                           alt="down-button"
                           width="20"
@@ -436,10 +524,10 @@ class TypeNotFound extends React.Component {
                         ></img>
                       </div>
                     )}
-                    {this.state.openStrategy3 && (
+                    {this.state.openCode31 && (
                       <div className="ButtonHolder">
                         <img
-                          onClick={() => this.openStrategyTile(3)}
+                          onClick={() => this.openCodeExample(31)}
                           src={MinusButton}
                           alt="up-button"
                           width="20"
@@ -448,91 +536,55 @@ class TypeNotFound extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openStrategy3 && (
-                    <div className="StrategyContainer">
-                      <p>
-                        <i>Tick the box once you have tried the suggestion</i>
-                      </p>
-                      <div className="StrategyTile" onClick={() => this.openCodeExample(31)}>
-                        <div className="StrategyInstruction">
-                          <div className="StrategyMessage">
-                            <BlueCheckbox value="box1" />
-                            <p>
-                              Suggestion 1: Import {" "}
-                              <p className="VarName">{this.state.varName}</p> to
-                              your file
-                            </p>
+                  {this.state.openCode31 && (
+                    <div className="CodeExample">
+                      <div className="CodeContainer">
+                        <div className="RedCode">
+                          <div className="Indent-0">
+                            <p className="VarName">{this.state.varName}</p>{" "}
+                            mything = new{" "}
+                            <p className="VarName">{this.state.varName}</p>
+                            ();
                           </div>
-                          {!this.state.openCode31 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(31)}
-                                src={PlusButton}
-                                alt="down-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                          {this.state.openCode31 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(31)}
-                                src={MinusButton}
-                                alt="up-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
                         </div>
-                        {this.state.openCode31 && (
-                          <div className="CodeExample">
-                            <div className="CodeContainer">
-                              <div className="RedCode">
-                                <div className="Indent-0">
-                                  <p className="VarName">
-                                    {this.state.varName}
-                                  </p>{" "}
-                                  mything = new{" "}
-                                  <p className="VarName">
-                                    {this.state.varName}
-                                  </p>
-                                  ();
-                                </div>
-                              </div>
-                            </div>
-                            <div className="CodeContainer">
-                              <div className="GreenCode">
-                              <div className="Indent-0">
-                                  import path.to.library.
-                            <p className="VarName">{this.state.varName}</p>;{" "}
+                      </div>
+                      <div className="CodeContainer">
+                        <div className="GreenCode">
+                          <div className="Indent-0">
+                            import path.to.library.
+                            <p className="VarName">
+                              {this.state.varName}
+                            </p>;{" "}
                           </div>
-                                <div className="Indent-0">
-                                  void setup() {LEFT_CURLY}{" "}
-                                </div>
-                                <div className="Indent-1">
-                                  <p className="VarName">{this.state.varName}</p> myThing
-                                  = new <p className="VarName">{this.state.varName}</p>
-                                  ();{" "}
-                                </div>
-                                <div className="Indent-0">{RIGHT_CURLY}</div>
-                              </div>
-                            </div>
+                          <div className="Indent-0">
+                            void setup() {LEFT_CURLY}{" "}
                           </div>
-                        )}
+                          <div className="Indent-1">
+                            <p className="VarName">{this.state.varName}</p>{" "}
+                            myThing = new{" "}
+                            <p className="VarName">{this.state.varName}</p>
+                            ();{" "}
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        </div>
                       </div>
                     </div>
                   )}
                 </div>
+              </div>
+            )}
+          </div>
           <i>
-            <h4>
-              Still unable to fix this error? More resources
-            </h4>
-            <div className="Indent-1"><a href="https://stackoverflow.com/">Stack Overflow</a></div>
-            <div className="Indent-1"><a href="https://github.com/processing/processing/wiki/Common-Errors">Processing Common Errors</a></div>
+            <h4>Still unable to fix this error? More resources</h4>
+            <div className="Indent-1">
+              <a href="https://stackoverflow.com/">Stack Overflow</a>
+            </div>
+            <div className="Indent-1">
+              <a href="https://github.com/processing/processing/wiki/Common-Errors">
+                Processing Common Errors
+              </a>
+            </div>
           </i>
-
         </div>
       </div>
     );
