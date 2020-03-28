@@ -2,9 +2,13 @@ import React from "react";
 import MinusButton from "./assets/minus.svg";
 import PlusButton from "./assets/plus.svg";
 import "./App.css";
+import ResourceFooter from "./ResourceFooter.jsx";
+
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
+import queryString from 'query-string'
+
 
 const BlueCheckbox = withStyles({
   root: {
@@ -42,8 +46,14 @@ class TypeNotFound extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const values = queryString.parse(this.props.location.search)
+    console.log(values.varname) 
+  }
+
   handleChangeVarName(event) {
     this.setState({ varName: event.target.value });
+    if (event.target.value==="") this.setState({ varName: "Thing" });
   }
 
   openStrategyTile(i) {
@@ -139,10 +149,10 @@ class TypeNotFound extends React.Component {
                   1: You may have mistyped class name{" "}
                   <div className="VarName">{this.state.varName}</div>{" "}
                 </h4>
-                <p>
-                  Hint: Is <div className="VarName">{this.state.varName}</div>{" "}
+                <div>
+                  Hint: Is <p className="VarName">{this.state.varName}</p>{" "}
                   the exact class name that you have defined?
-                </p>
+                </div>
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -174,7 +184,7 @@ class TypeNotFound extends React.Component {
                   {" "}
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile">
+                <div className="StrategyTile"  onClick={() => this.openCodeExample(11)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -182,11 +192,11 @@ class TypeNotFound extends React.Component {
                         checked={this.state.checked11}
                         onChange={() => this.changeChecked(11)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 1: Change{" "}
                         <p className="VarName">{this.state.varName}</p> to the
                         class name that you have defined
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode11 && (
                       <div className="ButtonHolder">
@@ -258,10 +268,10 @@ class TypeNotFound extends React.Component {
                   2: You may have forgotten to create class{" "}
                   <div className="VarName">{this.state.varName}</div>{" "}
                 </h4>
-                <p>
-                  Hint: Is <div className="VarName">{this.state.varName}</div>{" "}
+                <div>
+                  Hint: Is <p className="VarName">{this.state.varName}</p>{" "}
                   the name of the non-builtin class that you forgot to create?
-                </p>
+                </div>
               </div>
               {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
@@ -291,7 +301,7 @@ class TypeNotFound extends React.Component {
                 <p>
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile">
+                <div className="StrategyTile"  onClick={() => this.openCodeExample(21)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -299,11 +309,11 @@ class TypeNotFound extends React.Component {
                         checked={this.state.checked21}
                         onChange={() => this.changeChecked(21)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 1: Add class{" "}
                         <p className="VarName">{this.state.varName}</p> to your
                         current file
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode21 && (
                       <div className="ButtonHolder">
@@ -367,7 +377,7 @@ class TypeNotFound extends React.Component {
                   )}
                 </div>
 
-                <div className="StrategyTile">
+                <div className="StrategyTile"  onClick={() => this.openCodeExample(22)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -375,12 +385,12 @@ class TypeNotFound extends React.Component {
                         checked={this.state.checked22}
                         onChange={() => this.changeChecked(22)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 2: Add class{" "}
                         <p className="VarName">{this.state.varName}</p> to
                         another file in the same project and import it to the
                         current file
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode22 && (
                       <div className="ButtonHolder">
@@ -466,10 +476,10 @@ class TypeNotFound extends React.Component {
                   <div className="VarName">{this.state.varName}</div> from a
                   built-in library
                 </h4>
-                <p>
-                  Hint: Is <div className="VarName">{this.state.varName}</div> a
+                <div>
+                  Hint: Is <p className="VarName">{this.state.varName}</p> a
                   built-in class?
-                </p>
+                </div>
               </div>
               {!this.state.openStrategy3 && (
                 <div className="ButtonHolder">
@@ -499,7 +509,7 @@ class TypeNotFound extends React.Component {
                 <p>
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile">
+                <div className="StrategyTile"  onClick={() => this.openCodeExample(31)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -507,11 +517,11 @@ class TypeNotFound extends React.Component {
                         checked={this.state.checked31}
                         onChange={() => this.changeChecked(31)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 1: Import{" "}
                         <p className="VarName">{this.state.varName}</p> to your
                         file
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode31 && (
                       <div className="ButtonHolder">
@@ -574,17 +584,7 @@ class TypeNotFound extends React.Component {
               </div>
             )}
           </div>
-          <i>
-            <h4>Still unable to fix this error? More resources</h4>
-            <div className="Indent-1">
-              <a href="https://stackoverflow.com/">Stack Overflow</a>
-            </div>
-            <div className="Indent-1">
-              <a href="https://github.com/processing/processing/wiki/Common-Errors">
-                Processing Common Errors
-              </a>
-            </div>
-          </i>
+          <ResourceFooter/>
         </div>
       </div>
     );

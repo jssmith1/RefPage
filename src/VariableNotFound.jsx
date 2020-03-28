@@ -2,9 +2,12 @@ import React from "react";
 import MinusButton from "./assets/minus.svg";
 import PlusButton from "./assets/plus.svg";
 import "./App.css";
+import ResourceFooter from "./ResourceFooter.jsx";
+
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
+
 
 const BlueCheckbox = withStyles({
   root: {
@@ -45,14 +48,17 @@ class VariableNotFound extends React.Component {
 
   handleChangeVarName(event) {
     this.setState({ varName: event.target.value });
+    if (event.target.value==="") this.setState({ varName: "thing" });
   }
 
   handleChangeClassName(event) {
     this.setState({ className: event.target.value });
+    if (event.target.value==="") this.setState({ className: "Thing" });
   }
 
   handleChangeClassParam(event) {
     this.setState({ classParameter: event.target.value });
+    if (event.target.value==="") this.setState({ classParameter: "()" });
   }
 
   openStrategyTile(i) {
@@ -182,11 +188,11 @@ class VariableNotFound extends React.Component {
                   1: You may have forgotten to declare variable{" "}
                   <div className="VarName">{this.state.varName}</div>{" "}
                 </h4>
-                <p>
+                <div>
                   Hint: Did you forget to declare what{" "}
-                  <div className="VarName">{this.state.varName}</div> is before
+                  <p className="VarName">{this.state.varName}</p> is before
                   using it?
-                </p>
+                </div>
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -218,7 +224,7 @@ class VariableNotFound extends React.Component {
                   {" "}
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile">
+                <div className="StrategyTile" onClick={() => this.openCodeExample(11)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -226,13 +232,13 @@ class VariableNotFound extends React.Component {
                         checked={this.state.checked11}
                         onChange={() => this.changeChecked(11)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 1: Add variable declaration for{" "}
                         <p className="VarName">{this.state.varName}</p> before
                         the first occurence of{" "}
                         <p className="VarName">{this.state.varName}</p> in the
                         code
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode11 && (
                       <div className="ButtonHolder">
@@ -260,12 +266,11 @@ class VariableNotFound extends React.Component {
                   {this.state.openCode11 && (
                     <div
                       className="CodeExample"
-                      onClick={() => this.openCodeExample(11)}
                     >
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            System.out.print(
+                            print(
                             <p className="VarName">{this.state.varName}</p>);
                           </div>
                         </div>
@@ -283,7 +288,7 @@ class VariableNotFound extends React.Component {
                             ;
                           </div>
                           <div className="Indent-0">
-                            System.out.print(
+                            print(
                             <p className="VarName">{this.state.varName}</p>);
                           </div>
                         </div>
@@ -303,11 +308,11 @@ class VariableNotFound extends React.Component {
                   <div className="VarName">{this.state.varName}</div>{" "}
                   incorrectly
                 </h4>
-                <p>
+                <div>
                   Hint: Have you already declared{" "}
-                  <div className="VarName">{this.state.varName}</div> but made
+                  <p className="VarName">{this.state.varName}</p> but made
                   some mistakes when declaring it?
-                </p>
+                </div>
               </div>
               {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
@@ -339,7 +344,7 @@ class VariableNotFound extends React.Component {
                   {" "}
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile">
+                <div className="StrategyTile" onClick={() => this.openCodeExample(21)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -347,10 +352,10 @@ class VariableNotFound extends React.Component {
                         checked={this.state.checked21}
                         onChange={() => this.changeChecked(21)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 1: Change the class name if the class name in
                         the variable declaration is not what you wanted
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode21 && (
                       <div className="ButtonHolder">
@@ -378,8 +383,7 @@ class VariableNotFound extends React.Component {
                   {this.state.openCode21 && (
                     <div
                       className="CodeExample"
-                      onClick={() => this.openCodeExample(21)}
-                    >
+                      >
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
@@ -411,7 +415,7 @@ class VariableNotFound extends React.Component {
                   )}
                 </div>
 
-                <div className="StrategyTile">
+                <div className="StrategyTile" onClick={() => this.openCodeExample(22)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -419,10 +423,10 @@ class VariableNotFound extends React.Component {
                         checked={this.state.checked22}
                         onChange={() => this.changeChecked(22)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 2: Correct the variable declaration if the
                         variable declaration is syntactially incorrect
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode22 && (
                       <div className="ButtonHolder">
@@ -450,7 +454,7 @@ class VariableNotFound extends React.Component {
                   {this.state.openCode22 && (
                     <div
                       className="CodeExample"
-                      onClick={() => this.openCodeExample(22)}
+                      
                     >
                       <div className="CodeContainer">
                         <div className="RedCode">
@@ -493,10 +497,10 @@ class VariableNotFound extends React.Component {
                   3: You may have mistyped variable name{" "}
                   <div className="VarName">{this.state.varName}</div>{" "}
                 </h4>
-                <p>
-                  Hint: Is <div className="VarName">{this.state.varName}</div>{" "}
+                <div>
+                  Hint: Is <p className="VarName">{this.state.varName}</p>{" "}
                   the exact variable name that you have defined?
-                </p>
+                </div>
               </div>
               {!this.state.openStrategy3 && (
                 <div className="ButtonHolder">
@@ -528,7 +532,7 @@ class VariableNotFound extends React.Component {
                   {" "}
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile">
+                <div className="StrategyTile" onClick={() => this.openCodeExample(31)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -536,11 +540,11 @@ class VariableNotFound extends React.Component {
                         checked={this.state.checked31}
                         onChange={() => this.changeChecked(31)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 1: Change{" "}
                         <p className="VarName">{this.state.varName}</p> to the
                         variable name that you have defined
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode31 && (
                       <div className="ButtonHolder">
@@ -569,7 +573,7 @@ class VariableNotFound extends React.Component {
                     <div>
                       <div
                         className="CodeExample"
-                        onClick={() => this.openCodeExample(31)}
+                        
                       >
                         <div className="CodeContainer">
                           <div className="RedCode">
@@ -584,7 +588,7 @@ class VariableNotFound extends React.Component {
                             </div>
                             <div className="Indent-0">...</div>
                             <div className="Indent-0">
-                              System.out.print(
+                              print(
                               <p className="VarName">{this.state.varName}</p>);
                             </div>
                           </div>
@@ -602,7 +606,7 @@ class VariableNotFound extends React.Component {
                             </div>
                             <div className="Indent-0">...</div>
                             <div className="Indent-0">
-                              System.out.print(
+                              print(
                               <p className="VarName">correct_name</p>);
                             </div>
                           </div>
@@ -623,10 +627,10 @@ class VariableNotFound extends React.Component {
                   <div className="VarName">{this.state.varName}</div>{" "}
                   in the incorrect scope
                 </h4>
-                <p>
+                <div>
                   Hint: Are the use of variable{" "}
-                  <div className="VarName">{this.state.varName}</div> and its declaration in the different scopes?
-                </p>
+                  <p className="VarName">{this.state.varName}</p> and its declaration in the different scopes?
+                </div>
               </div>
               {!this.state.openStrategy4 && (
                 <div className="ButtonHolder">
@@ -659,7 +663,7 @@ class VariableNotFound extends React.Component {
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
 
-                <div className="StrategyTile">
+                <div className="StrategyTile" onClick={() => this.openCodeExample(41)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -667,9 +671,9 @@ class VariableNotFound extends React.Component {
                         checked={this.state.checked41}
                         onChange={() => this.changeChecked(41)}
                       />
-                      <p>
+                      <div className="Suggestion">
                         Suggestion 1: Move <p className="VarName">{this.state.varName}</p> to the same function with its declaration
-                      </p>
+                      </div>
                     </div>
                     {!this.state.openCode41 && (
                       <div className="ButtonHolder">
@@ -697,12 +701,12 @@ class VariableNotFound extends React.Component {
                   {this.state.openCode41 && (
                     <div
                       className="CodeExample"
-                      onClick={() => this.openCodeExample(41)}
+                      
                     >
                       <div className="CodeContainer">
                       <div className="RedCode">
                         <div className="Indent-0">
-                          void FuncA(){LEFT_CURLY}
+                          void funcA(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
                             <p className="VarName">{this.state.className}</p>{" "}
@@ -721,10 +725,10 @@ class VariableNotFound extends React.Component {
                             {RIGHT_CURLY}
                           </div>
                           <div className="Indent-0">
-                          void FuncB(){LEFT_CURLY}
+                          void funcB(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            System.out.println(<p className="VarName">{this.state.varName}</p>);
+                            println(<p className="VarName">{this.state.varName}</p>);
                           </div>
                           <div className="Indent-0">
                             {RIGHT_CURLY}
@@ -734,7 +738,7 @@ class VariableNotFound extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                         <div className="Indent-0">
-                          void FuncA(){LEFT_CURLY}
+                          void funcA(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
                             <p className="VarName">{this.state.className}</p>{" "}
@@ -750,7 +754,7 @@ class VariableNotFound extends React.Component {
                             ...
                           </div>
                           <div className="Indent-1">
-                            System.out.println(<p className="VarName">{this.state.varName}</p>);
+                            println(<p className="VarName">{this.state.varName}</p>);
                           </div>
                           <div className="Indent-0">
                             {RIGHT_CURLY}
@@ -762,7 +766,7 @@ class VariableNotFound extends React.Component {
                     </div>
                   )}
                 </div>
-                <div className="StrategyTile">
+                <div className="StrategyTile" onClick={() => this.openCodeExample(42)}>
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -770,9 +774,9 @@ class VariableNotFound extends React.Component {
                         checked={this.state.checked42}
                         onChange={() => this.changeChecked(42)}
                       />
-                      <p>
-                        Suggestion 2: Move <div className="VarName">{this.state.varName}</div> to the same or smaller scope than its declaration
-                      </p>
+                      <div className="Suggestion">
+                        Suggestion 2: Move <p className="VarName">{this.state.varName}</p> to the same or smaller scope than its declaration
+                      </div>
                     </div>
                     {!this.state.openCode42 && (
                       <div className="ButtonHolder">
@@ -800,7 +804,7 @@ class VariableNotFound extends React.Component {
                   {this.state.openCode42 && (
                     <div
                       className="CodeExample"
-                      onClick={() => this.openCodeExample(42)}
+                      
                     >
                       <div className="CodeContainer">
                         <div className="RedCode">
@@ -824,7 +828,7 @@ class VariableNotFound extends React.Component {
                             {RIGHT_CURLY}
                           </div>
                           <div className="Indent-0">
-                            System.out.println(<p className="VarName">{this.state.varName}</p>);
+                            println(<p className="VarName">{this.state.varName}</p>);
                           </div>
                         </div>
                       </div>
@@ -844,7 +848,7 @@ class VariableNotFound extends React.Component {
                             ;
                           </div>
                           <div className="Indent-1">
-                            System.out.println(<p className="VarName">{this.state.varName}</p>);
+                            println(<p className="VarName">{this.state.varName}</p>);
                           </div>
                           <div className="Indent-1">
                             i++;
@@ -863,7 +867,7 @@ class VariableNotFound extends React.Component {
               </div>
             )}
           </div>
-
+          <ResourceFooter/>
         </div>
       </div>
     );
