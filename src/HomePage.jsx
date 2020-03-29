@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import TypeNotFound from "./TypeNotFound";
 import VariableNotFound from "./VariableNotFound";
+import TypeMismatch from "./TypeMismatch";
 import HomeButton from "./assets/home.svg";
 
 export default function HomePage() {
@@ -34,9 +35,12 @@ function HomePageContent() {
       </div>
 
       <Route exact path="/homepage">
-        <div>
+        <div className="AppContent">
           <div className="Indent-1">
             <Link to="/typenotfound?classname=Thing">Type Not Found</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/typemismatch?varname=thing">Type Mismatch</Link>
           </div>
           <div className="Indent-1">
             <Link to="/variablenotfound?varname=thing&classname=Thing&classparam=()">
@@ -47,17 +51,19 @@ function HomePageContent() {
       </Route>
 
       <Route exact path="/typenotfound">
-        <TypeNotFound className={query.get("classname") || "thing"} />
+        <TypeNotFound className={query.get("classname") || "Thing"} />
+      </Route>
+
+      <Route exact path="/typemismatch">
+        <TypeMismatch varName={query.get("varname") || "thing"} />
       </Route>
 
       <Route exact path="/variablenotfound">
-        
         <VariableNotFound
           varName={query.get("varname") || "thing"}
           className={query.get("classname") || "Thing"}
           classParam={query.get("classparam") || "()"}
         />
-        
       </Route>
     </div>
   );
