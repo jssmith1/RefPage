@@ -15,9 +15,6 @@ h4 {
   padding: 20px;
 }
 
-.Home:hover {
-  opacity: 0.3;
-}
 
 .AppContent {
   min-height: 100vh;
@@ -35,7 +32,7 @@ h4 {
   display: flex;
 }
 
-.VarName {
+.InputValue{
   color: #77a6f7;
   display: inline;
 }

@@ -1,38 +1,64 @@
 import React from "react";
 import "./App.css";
-import { Link, useLocation, Router, Route } from "react-router-dom";
-import TypeNotFound from "./TypeNotFound.jsx";
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  useLocation
+} from "react-router-dom";
+import TypeNotFound from "./TypeNotFound";
+import VariableNotFound from "./VariableNotFound";
+import HomeButton from "./assets/home.svg";
 
-class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.useQuery = this.useQuery.bind(this);
-  }
-
-  useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <div className="AppContent">
-          <h2>List of Errors</h2>
-          <Router>
-          <div className="Indent-1">
-            <Link to="/typenotfound?varname=Thing">Type Not Found</Link>{" "}
-          </div>
-          <div className="Indent-1">
-            <Link to="/variablenotfound">Variable Not Found</Link>{" "}
-          </div>
-          <Route exact path="/typenotfound?varname=Thing">
-            <TypeNotFound varName={this.useQuery().get("varname")}/>
-          </Route>
-          </Router>
-        </div>
-      </div>
-    );
-  }
+export default function HomePage() {
+  return (
+    <Router>
+      <HomePageContent />
+    </Router>
+  );
 }
 
-export default HomePage;
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+function HomePageContent() {
+  let query = useQuery();
+
+  return (
+    <div>
+      <div className="Home">
+        <Link to="/homepage">
+          <img src={HomeButton} alt="home-button" width="30" height="30"></img>
+        </Link>
+      </div>
+
+      <Route exact path="/homepage">
+        <div>
+          <div className="Indent-1">
+            <Link to="/typenotfound?classname=Thing">Type Not Found</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/variablenotfound?varname=thing&classname=Thing&classparam=()">
+              Variable Not Found
+            </Link>
+          </div>
+        </div>
+      </Route>
+
+      <Route exact path="/typenotfound">
+        <TypeNotFound className={query.get("classname") || "thing"} />
+      </Route>
+
+      <Route exact path="/variablenotfound">
+        
+        <VariableNotFound
+          varName={query.get("varname") || "thing"}
+          className={query.get("classname") || "Thing"}
+          classParam={query.get("classparam") || "()"}
+        />
+        
+      </Route>
+    </div>
+  );
+}

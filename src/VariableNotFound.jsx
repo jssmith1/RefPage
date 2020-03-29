@@ -8,7 +8,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
 
-
 const BlueCheckbox = withStyles({
   root: {
     color: blue[400],
@@ -25,13 +24,7 @@ const RIGHT_CURLY = "}";
 class VariableNotFound extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChangeVarName = this.handleChangeVarName.bind(this);
-    this.handleChangeClassName = this.handleChangeClassName.bind(this);
-    this.handleChangeClassParam = this.handleChangeClassParam.bind(this);
     this.state = {
-      varName: "thing",
-      className: "Thing",
-      classParameter: "()",
       openStrategy1: false,
       openStrategy2: false,
       openStrategy3: false,
@@ -44,21 +37,6 @@ class VariableNotFound extends React.Component {
       checked22: false,
       checked31: false
     };
-  }
-
-  handleChangeVarName(event) {
-    this.setState({ varName: event.target.value });
-    if (event.target.value==="") this.setState({ varName: "thing" });
-  }
-
-  handleChangeClassName(event) {
-    this.setState({ className: event.target.value });
-    if (event.target.value==="") this.setState({ className: "Thing" });
-  }
-
-  handleChangeClassParam(event) {
-    this.setState({ classParameter: event.target.value });
-    if (event.target.value==="") this.setState({ classParameter: "()" });
   }
 
   openStrategyTile(i) {
@@ -140,44 +118,18 @@ class VariableNotFound extends React.Component {
     return (
       <div className="App">
         <div className="AppContent">
-          <div className="InputContainer">
-            <form className="form-horizontal">
-              <p>Input variable name</p>
-              <input
-                type="text"
-                value={this.state.value}
-                onChange={this.handleChangeVarName}
-              />
-            </form>
-            <form className="form-horizontal">
-              <p>Input class name</p>
-              <input
-                type="text"
-                value={this.state.value}
-                onChange={this.handleChangeClassName}
-              />
-            </form>
-            <form className="form-horizontal">
-              <p>Input class parameter with format "(arg1, arg2,...)"</p>
-              <input
-                type="text"
-                value={this.state.value}
-                onChange={this.handleChangeClassParam}
-              />
-            </form>
-          </div>
           <div className="Title">
             <h2>
-              <div className="VarName">{this.state.varName}</div> cannot be
+              <div className="InputValue">{this.props.varName}</div> cannot be
               resolved to a variable
             </h2>
           </div>
           <h4>
             <i>
               Translation: You are trying to use a variable named{" "}
-              <div className="VarName">{this.state.varName}</div> but I don’t
+              <div className="InputValue">{this.props.varName}</div> but I don’t
               know what that variable named{" "}
-              <div className="VarName">{this.state.varName}</div> is.
+              <div className="InputValue">{this.props.varName}</div> is.
             </i>
           </h4>
 
@@ -186,11 +138,11 @@ class VariableNotFound extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   1: You may have forgotten to declare variable{" "}
-                  <div className="VarName">{this.state.varName}</div>{" "}
+                  <div className="InputValue">{this.props.varName}</div>{" "}
                 </h4>
                 <div>
                   Hint: Did you forget to declare what{" "}
-                  <p className="VarName">{this.state.varName}</p> is before
+                  <p className="InputValue">{this.props.varName}</p> is before
                   using it?
                 </div>
               </div>
@@ -224,7 +176,10 @@ class VariableNotFound extends React.Component {
                   {" "}
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile" onClick={() => this.openCodeExample(11)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(11)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -234,9 +189,9 @@ class VariableNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Add variable declaration for{" "}
-                        <p className="VarName">{this.state.varName}</p> before
+                        <p className="InputValue">{this.props.varName}</p> before
                         the first occurence of{" "}
-                        <p className="VarName">{this.state.varName}</p> in the
+                        <p className="InputValue">{this.props.varName}</p> in the
                         code
                       </div>
                     </div>
@@ -264,32 +219,27 @@ class VariableNotFound extends React.Component {
                     )}
                   </div>
                   {this.state.openCode11 && (
-                    <div
-                      className="CodeExample"
-                    >
+                    <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
                             print(
-                            <p className="VarName">{this.state.varName}</p>);
+                            <p className="InputValue">{this.props.varName}</p>);
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            <p className="VarName">{this.state.className}</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> =
+                            <p className="InputValue">{this.props.className}</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
-                            <p className="VarName">{this.state.className}</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
+                            <p className="InputValue">{this.props.className}</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
                           </div>
                           <div className="Indent-0">
                             print(
-                            <p className="VarName">{this.state.varName}</p>);
+                            <p className="InputValue">{this.props.varName}</p>);
                           </div>
                         </div>
                       </div>
@@ -305,13 +255,13 @@ class VariableNotFound extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   2: You may have declared variable{" "}
-                  <div className="VarName">{this.state.varName}</div>{" "}
+                  <div className="InputValue">{this.props.varName}</div>{" "}
                   incorrectly
                 </h4>
                 <div>
                   Hint: Have you already declared{" "}
-                  <p className="VarName">{this.state.varName}</p> but made
-                  some mistakes when declaring it?
+                  <p className="InputValue">{this.props.varName}</p> but made some
+                  mistakes when declaring it?
                 </div>
               </div>
               {!this.state.openStrategy2 && (
@@ -344,7 +294,10 @@ class VariableNotFound extends React.Component {
                   {" "}
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile" onClick={() => this.openCodeExample(21)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(21)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -381,33 +334,25 @@ class VariableNotFound extends React.Component {
                     )}
                   </div>
                   {this.state.openCode21 && (
-                    <div
-                      className="CodeExample"
-                      >
+                    <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            <p className="VarName">{this.state.className}</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> =
+                            <p className="InputValue">{this.props.className}</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
-                            <p className="VarName">{this.state.className}</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
+                            <p className="InputValue">{this.props.className}</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            <p className="VarName">CorrectName</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> =
-                            new <p className="VarName">CorrectName</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
+                            <p className="InputValue">CorrectName</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
+                            new <p className="InputValue">CorrectName</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
                           </div>
                         </div>
                       </div>
@@ -415,7 +360,10 @@ class VariableNotFound extends React.Component {
                   )}
                 </div>
 
-                <div className="StrategyTile" onClick={() => this.openCodeExample(22)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(22)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -452,34 +400,25 @@ class VariableNotFound extends React.Component {
                     )}
                   </div>
                   {this.state.openCode22 && (
-                    <div
-                      className="CodeExample"
-                      
-                    >
+                    <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            <p className="VarName">{this.state.className}</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> ={" "}
-                            <p className="VarName">{this.state.className}</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
+                            <p className="InputValue">{this.props.className}</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> ={" "}
+                            <p className="InputValue">{this.props.className}</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            <p className="VarName">{this.state.className}</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> =
+                            <p className="InputValue">{this.props.className}</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
-                            <p className="VarName">{this.state.className}</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
+                            <p className="InputValue">{this.props.className}</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
                           </div>
                         </div>
                       </div>
@@ -495,11 +434,11 @@ class VariableNotFound extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   3: You may have mistyped variable name{" "}
-                  <div className="VarName">{this.state.varName}</div>{" "}
+                  <div className="InputValue">{this.props.varName}</div>{" "}
                 </h4>
                 <div>
-                  Hint: Is <p className="VarName">{this.state.varName}</p>{" "}
-                  the exact variable name that you have defined?
+                  Hint: Is <p className="InputValue">{this.props.varName}</p> the
+                  exact variable name that you have defined?
                 </div>
               </div>
               {!this.state.openStrategy3 && (
@@ -532,7 +471,10 @@ class VariableNotFound extends React.Component {
                   {" "}
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile" onClick={() => this.openCodeExample(31)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(31)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -542,7 +484,7 @@ class VariableNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Change{" "}
-                        <p className="VarName">{this.state.varName}</p> to the
+                        <p className="InputValue">{this.props.varName}</p> to the
                         variable name that you have defined
                       </div>
                     </div>
@@ -571,43 +513,36 @@ class VariableNotFound extends React.Component {
                   </div>
                   {this.state.openCode31 && (
                     <div>
-                      <div
-                        className="CodeExample"
-                        
-                      >
+                      <div className="CodeExample">
                         <div className="CodeContainer">
                           <div className="RedCode">
                             <div className="Indent-0">
-                              <p className="VarName">{this.state.className}</p>{" "}
-                              <p className="VarName">correct_name</p> = new{" "}
-                              <p className="VarName">{this.state.className}</p>
-                              <p className="VarName">
-                                {this.state.classParameter}
-                              </p>
+                              <p className="InputValue">{this.props.className}</p>{" "}
+                              <p className="InputValue">correct_name</p> = new{" "}
+                              <p className="InputValue">{this.props.className}</p>
+                              <p className="InputValue">{this.props.classparam}</p>
                               ;
                             </div>
                             <div className="Indent-0">...</div>
                             <div className="Indent-0">
                               print(
-                              <p className="VarName">{this.state.varName}</p>);
+                              <p className="InputValue">{this.props.varName}</p>);
                             </div>
                           </div>
                         </div>
                         <div className="CodeContainer">
                           <div className="GreenCode">
                             <div className="Indent-0">
-                              <p className="VarName">{this.state.className}</p>{" "}
-                              <p className="VarName">correct_name</p> = new{" "}
-                              <p className="VarName">{this.state.className}</p>
-                              <p className="VarName">
-                                {this.state.classParameter}
-                              </p>
+                              <p className="InputValue">{this.props.className}</p>{" "}
+                              <p className="InputValue">correct_name</p> = new{" "}
+                              <p className="InputValue">{this.props.className}</p>
+                              <p className="InputValue">{this.props.classparam}</p>
                               ;
                             </div>
                             <div className="Indent-0">...</div>
                             <div className="Indent-0">
                               print(
-                              <p className="VarName">correct_name</p>);
+                              <p className="InputValue">correct_name</p>);
                             </div>
                           </div>
                         </div>
@@ -618,18 +553,19 @@ class VariableNotFound extends React.Component {
               </div>
             )}
           </div>
-      
+
           <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTile(4)}>
               <div className="ErrorMessage">
                 <h4>
                   4: You may have used variable{" "}
-                  <div className="VarName">{this.state.varName}</div>{" "}
-                  in the incorrect scope
+                  <div className="InputValue">{this.props.varName}</div> in the
+                  incorrect scope
                 </h4>
                 <div>
                   Hint: Are the use of variable{" "}
-                  <p className="VarName">{this.state.varName}</p> and its declaration in the different scopes?
+                  <p className="InputValue">{this.props.varName}</p> and its
+                  declaration in the different scopes?
                 </div>
               </div>
               {!this.state.openStrategy4 && (
@@ -663,7 +599,10 @@ class VariableNotFound extends React.Component {
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
 
-                <div className="StrategyTile" onClick={() => this.openCodeExample(41)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(41)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -672,7 +611,9 @@ class VariableNotFound extends React.Component {
                         onChange={() => this.changeChecked(41)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Move <p className="VarName">{this.state.varName}</p> to the same function with its declaration
+                        Suggestion 1: Move{" "}
+                        <p className="InputValue">{this.props.varName}</p> to the
+                        same function with its declaration
                       </div>
                     </div>
                     {!this.state.openCode41 && (
@@ -699,74 +640,58 @@ class VariableNotFound extends React.Component {
                     )}
                   </div>
                   {this.state.openCode41 && (
-                    <div
-                      className="CodeExample"
-                      
-                    >
+                    <div className="CodeExample">
                       <div className="CodeContainer">
-                      <div className="RedCode">
-                        <div className="Indent-0">
-                          void funcA(){LEFT_CURLY}
+                        <div className="RedCode">
+                          <div className="Indent-0">
+                            void funcA(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">{this.state.className}</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> =
+                            <p className="InputValue">{this.props.className}</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
-                            <p className="VarName">{this.state.className}</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
+                            <p className="InputValue">{this.props.className}</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
+                          </div>
+                          <div className="Indent-1">...</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void funcB(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            ...
+                            println(
+                            <p className="InputValue">{this.props.varName}</p>);
                           </div>
-                          <div className="Indent-0">
-                            {RIGHT_CURLY}
-                          </div>
-                          <div className="Indent-0">
-                          void funcB(){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            println(<p className="VarName">{this.state.varName}</p>);
-                          </div>
-                          <div className="Indent-0">
-                            {RIGHT_CURLY}
-                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0">
-                          void funcA(){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            <p className="VarName">{this.state.className}</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> =
-                            new{" "}
-                            <p className="VarName">{this.state.className}</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
-                          </div>
-                          <div className="Indent-1">
-                            ...
-                          </div>
-                          <div className="Indent-1">
-                            println(<p className="VarName">{this.state.varName}</p>);
-                          </div>
                           <div className="Indent-0">
-                            {RIGHT_CURLY}
+                            void funcA(){LEFT_CURLY}
                           </div>
-                          
+                          <div className="Indent-1">
+                            <p className="InputValue">{this.props.className}</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
+                            new{" "}
+                            <p className="InputValue">{this.props.className}</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
+                          </div>
+                          <div className="Indent-1">...</div>
+                          <div className="Indent-1">
+                            println(
+                            <p className="InputValue">{this.props.varName}</p>);
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
-                       
                       </div>
                     </div>
                   )}
                 </div>
-                <div className="StrategyTile" onClick={() => this.openCodeExample(42)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(42)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -775,7 +700,9 @@ class VariableNotFound extends React.Component {
                         onChange={() => this.changeChecked(42)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Move <p className="VarName">{this.state.varName}</p> to the same or smaller scope than its declaration
+                        Suggestion 2: Move{" "}
+                        <p className="InputValue">{this.props.varName}</p> to the
+                        same or smaller scope than its declaration
                       </div>
                     </div>
                     {!this.state.openCode42 && (
@@ -802,72 +729,54 @@ class VariableNotFound extends React.Component {
                     )}
                   </div>
                   {this.state.openCode42 && (
-                    <div
-                      className="CodeExample"
-                      
-                    >
+                    <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                          (while i != count) {LEFT_CURLY}
+                            (while i != count) {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">{this.state.className}</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> =
+                            <p className="InputValue">{this.props.className}</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
-                            <p className="VarName">{this.state.className}</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
+                            <p className="InputValue">{this.props.className}</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
                           </div>
-                          <div className="Indent-1">
-                            i++;
-                          </div>
+                          <div className="Indent-1">i++;</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            {RIGHT_CURLY}
-                          </div>
-                          <div className="Indent-0">
-                            println(<p className="VarName">{this.state.varName}</p>);
+                            println(
+                            <p className="InputValue">{this.props.varName}</p>);
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0">
-                          (while i != count) {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            <p className="VarName">{this.state.className}</p>{" "}
-                            <p className="VarName">{this.state.varName}</p> =
-                            new{" "}
-                            <p className="VarName">{this.state.className}</p>
-                            <p className="VarName">
-                              {this.state.classParameter}
-                            </p>
-                            ;
-                          </div>
-                          <div className="Indent-1">
-                            println(<p className="VarName">{this.state.varName}</p>);
-                          </div>
-                          <div className="Indent-1">
-                            i++;
-                          </div>
                           <div className="Indent-0">
-                            {RIGHT_CURLY}
+                            (while i != count) {LEFT_CURLY}
                           </div>
-                          
+                          <div className="Indent-1">
+                            <p className="InputValue">{this.props.className}</p>{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
+                            new{" "}
+                            <p className="InputValue">{this.props.className}</p>
+                            <p className="InputValue">{this.props.classparam}</p>;
+                          </div>
+                          <div className="Indent-1">
+                            println(
+                            <p className="InputValue">{this.props.varName}</p>);
+                          </div>
+                          <div className="Indent-1">i++;</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
-                       
                       </div>
                     </div>
                   )}
                 </div>
-
               </div>
             )}
           </div>
-          <ResourceFooter/>
+          <ResourceFooter />
         </div>
       </div>
     );

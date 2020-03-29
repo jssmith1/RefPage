@@ -7,8 +7,6 @@ import ResourceFooter from "./ResourceFooter.jsx";
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
-import queryString from 'query-string'
-
 
 const BlueCheckbox = withStyles({
   root: {
@@ -26,12 +24,10 @@ const RIGHT_CURLY = "}";
 class TypeNotFound extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChangeVarName = this.handleChangeVarName.bind(this);
     this.openStrategyTile = this.openStrategyTile.bind(this);
     this.openCodeExample = this.openCodeExample.bind(this);
     this.changeChecked = this.changeChecked.bind(this);
     this.state = {
-      varName: "Thing",
       openStrategy1: false,
       openStrategy2: false,
       openStrategy3: false,
@@ -44,16 +40,6 @@ class TypeNotFound extends React.Component {
       checked22: false,
       checked31: false
     };
-  }
-
-  componentDidMount() {
-    const values = queryString.parse(this.props.location.search)
-    console.log(values.varname) 
-  }
-
-  handleChangeVarName(event) {
-    this.setState({ varName: event.target.value });
-    if (event.target.value==="") this.setState({ varName: "Thing" });
   }
 
   openStrategyTile(i) {
@@ -116,28 +102,20 @@ class TypeNotFound extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div inputName="App">
         <div className="AppContent">
-          <form className="form-horizontal">
-            <p>Input class name</p>
-            <input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleChangeVarName}
-            />
-          </form>
           <div className="Title">
             <h2>
               Cannot find a class or type name{" "}
-              <div className="VarName">{this.state.varName}</div>
+              <div className="InputValue">{this.props.className}</div>
             </h2>
           </div>
 
           <h4>
             <i>
               Translation: You are trying to declare a variable of type{" "}
-              <div className="VarName">{this.state.varName}</div> but I don’t
-              know what a <div className="VarName">{this.state.varName}</div>{" "}
+              <div className="InputValue">{this.props.className}</div> but I don’t
+              know what a <div className="InputValue">{this.props.className}</div>{" "}
               is.
             </i>
           </h4>
@@ -147,11 +125,11 @@ class TypeNotFound extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   1: You may have mistyped class name{" "}
-                  <div className="VarName">{this.state.varName}</div>{" "}
+                  <div className="InputValue">{this.props.className}</div>{" "}
                 </h4>
                 <div>
-                  Hint: Is <p className="VarName">{this.state.varName}</p>{" "}
-                  the exact class name that you have defined?
+                  Hint: Is <p className="InputValue">{this.props.className}</p> the
+                  exact class name that you have defined?
                 </div>
               </div>
               {!this.state.openStrategy1 && (
@@ -184,7 +162,10 @@ class TypeNotFound extends React.Component {
                   {" "}
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile"  onClick={() => this.openCodeExample(11)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(11)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -194,7 +175,7 @@ class TypeNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Change{" "}
-                        <p className="VarName">{this.state.varName}</p> to the
+                        <p className="InputValue">{this.props.className}</p> to the
                         class name that you have defined
                       </div>
                     </div>
@@ -226,9 +207,9 @@ class TypeNotFound extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             mything = new{" "}
-                            <p className="VarName">{this.state.varName}</p>();
+                            <p className="InputValue">{this.props.className}</p>();
                           </div>
                         </div>
                       </div>
@@ -238,16 +219,16 @@ class TypeNotFound extends React.Component {
                             void setup() {LEFT_CURLY}{" "}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">CorrectName</p> myThing = new{" "}
-                            <p className="VarName">CorrectName</p>();{" "}
+                            <p className="InputValue">CorrectName</p> myThing = new{" "}
+                            <p className="InputValue">CorrectName</p>();{" "}
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            class <p className="VarName">CorrectName</p>{" "}
+                            class <p className="InputValue">CorrectName</p>{" "}
                             {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">CorrectName</p>(){" "}
+                            <p className="InputValue">CorrectName</p>(){" "}
                             {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">{RIGHT_CURLY}</div>
@@ -266,11 +247,11 @@ class TypeNotFound extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   2: You may have forgotten to create class{" "}
-                  <div className="VarName">{this.state.varName}</div>{" "}
+                  <div className="InputValue">{this.props.className}</div>{" "}
                 </h4>
                 <div>
-                  Hint: Is <p className="VarName">{this.state.varName}</p>{" "}
-                  the name of the non-builtin class that you forgot to create?
+                  Hint: Is <p className="InputValue">{this.props.className}</p> the
+                  name of the non-builtin class that you forgot to create?
                 </div>
               </div>
               {!this.state.openStrategy2 && (
@@ -301,7 +282,10 @@ class TypeNotFound extends React.Component {
                 <p>
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile"  onClick={() => this.openCodeExample(21)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(21)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -311,7 +295,7 @@ class TypeNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Add class{" "}
-                        <p className="VarName">{this.state.varName}</p> to your
+                        <p className="InputValue">{this.props.className}</p> to your
                         current file
                       </div>
                     </div>
@@ -343,9 +327,9 @@ class TypeNotFound extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             mything = new{" "}
-                            <p className="VarName">{this.state.varName}</p>();
+                            <p className="InputValue">{this.props.className}</p>();
                           </div>
                         </div>
                       </div>
@@ -355,18 +339,18 @@ class TypeNotFound extends React.Component {
                             void setup() {LEFT_CURLY}{" "}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             myThing = new{" "}
-                            <p className="VarName">{this.state.varName}</p>();{" "}
+                            <p className="InputValue">{this.props.className}</p>();{" "}
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
                             class{" "}
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">{this.state.varName}</p>(){" "}
+                            <p className="InputValue">{this.props.className}</p>(){" "}
                             {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">{RIGHT_CURLY}</div>
@@ -377,7 +361,10 @@ class TypeNotFound extends React.Component {
                   )}
                 </div>
 
-                <div className="StrategyTile"  onClick={() => this.openCodeExample(22)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(22)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -387,7 +374,7 @@ class TypeNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 2: Add class{" "}
-                        <p className="VarName">{this.state.varName}</p> to
+                        <p className="InputValue">{this.props.className}</p> to
                         another file in the same project and import it to the
                         current file
                       </div>
@@ -421,9 +408,9 @@ class TypeNotFound extends React.Component {
                         <p>FileA.java</p>
                         <div className="RedCode">
                           <div className="Indent-0">
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             mything = new{" "}
-                            <p className="VarName">{this.state.varName}</p>();
+                            <p className="InputValue">{this.props.className}</p>();
                           </div>
                         </div>
                       </div>
@@ -432,17 +419,17 @@ class TypeNotFound extends React.Component {
                         <div className="GreenCode">
                           <div className="Indent-0">
                             import FileB.
-                            <p className="VarName">
-                              {this.state.varName}
+                            <p className="InputValue">
+                              {this.props.className}
                             </p>;{" "}
                           </div>
                           <div className="Indent-0">
                             void setup() {LEFT_CURLY}{" "}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             myThing = new{" "}
-                            <p className="VarName">{this.state.varName}</p>();{" "}
+                            <p className="InputValue">{this.props.className}</p>();{" "}
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
@@ -450,11 +437,11 @@ class TypeNotFound extends React.Component {
                         <div className="GreenCode">
                           <div className="Indent-0">
                             class{" "}
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">{this.state.varName}</p>(){" "}
+                            <p className="InputValue">{this.props.className}</p>(){" "}
                             {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">{RIGHT_CURLY}</div>
@@ -473,11 +460,11 @@ class TypeNotFound extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   3: You may have forgotten to import class{" "}
-                  <div className="VarName">{this.state.varName}</div> from a
+                  <div className="InputValue">{this.props.className}</div> from a
                   built-in library
                 </h4>
                 <div>
-                  Hint: Is <p className="VarName">{this.state.varName}</p> a
+                  Hint: Is <p className="InputValue">{this.props.className}</p> a
                   built-in class?
                 </div>
               </div>
@@ -509,7 +496,10 @@ class TypeNotFound extends React.Component {
                 <p>
                   <i>Tick the box once you have tried the suggestion</i>
                 </p>
-                <div className="StrategyTile"  onClick={() => this.openCodeExample(31)}>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(31)}
+                >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
@@ -519,7 +509,7 @@ class TypeNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Import{" "}
-                        <p className="VarName">{this.state.varName}</p> to your
+                        <p className="InputValue">{this.props.className}</p> to your
                         file
                       </div>
                     </div>
@@ -551,9 +541,9 @@ class TypeNotFound extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             mything = new{" "}
-                            <p className="VarName">{this.state.varName}</p>
+                            <p className="InputValue">{this.props.className}</p>
                             ();
                           </div>
                         </div>
@@ -562,17 +552,17 @@ class TypeNotFound extends React.Component {
                         <div className="GreenCode">
                           <div className="Indent-0">
                             import path.to.library.
-                            <p className="VarName">
-                              {this.state.varName}
+                            <p className="InputValue">
+                              {this.props.className}
                             </p>;{" "}
                           </div>
                           <div className="Indent-0">
                             void setup() {LEFT_CURLY}{" "}
                           </div>
                           <div className="Indent-1">
-                            <p className="VarName">{this.state.varName}</p>{" "}
+                            <p className="InputValue">{this.props.className}</p>{" "}
                             myThing = new{" "}
-                            <p className="VarName">{this.state.varName}</p>
+                            <p className="InputValue">{this.props.className}</p>
                             ();{" "}
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
@@ -584,7 +574,7 @@ class TypeNotFound extends React.Component {
               </div>
             )}
           </div>
-          <ResourceFooter/>
+          <ResourceFooter />
         </div>
       </div>
     );
