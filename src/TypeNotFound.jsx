@@ -102,7 +102,7 @@ class TypeNotFound extends React.Component {
 
   render() {
     return (
-      <div inputName="App">
+      <div className="App">
         <div className="AppContent">
           <div className="Title">
             <h2>

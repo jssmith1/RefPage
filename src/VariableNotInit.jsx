@@ -21,7 +21,7 @@ const BlueCheckbox = withStyles({
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";
 
-class TypeMismatch extends React.Component {
+class VariableNotInit extends React.Component {
   constructor(props) {
     super(props);
     this.openStrategyTile = this.openStrategyTile.bind(this);
@@ -30,15 +30,12 @@ class TypeMismatch extends React.Component {
     this.state = {
       openStrategy1: false,
       openStrategy2: false,
-      openStrategy3: false,
       openCode11: false,
       openCode12: false,
       openCode21: false,
-      openCode31: false,
       checked11: false,
       checked12: false,
-      checked21: false,
-      checked31: false
+      checked21: false
     };
   }
 
@@ -52,10 +49,6 @@ class TypeMismatch extends React.Component {
       case 2:
         this.setState({ openStrategy2: !this.state.openStrategy2 });
         this.setState({ openCode21: false });
-        break;
-      case 3:
-        this.setState({ openStrategy3: !this.state.openStrategy3 });
-        this.setState({ openCode31: false });
         break;
       default:
         break;
@@ -73,9 +66,6 @@ class TypeMismatch extends React.Component {
       case 21:
         this.setState({ openCode21: !this.state.openCode21 });
         break;
-      case 31:
-        this.setState({ openCode31: !this.state.openCode31 });
-        break;
       default:
         break;
     }
@@ -92,9 +82,6 @@ class TypeMismatch extends React.Component {
       case 21:
         this.setState({ checked21: !this.state.checked21 });
         break;
-      case 31:
-        this.setState({ checked31: !this.state.checked31 });
-        break;
       default:
         break;
     }
@@ -106,14 +93,17 @@ class TypeMismatch extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              Cannot convert from float to int
+              The local variable{" "}
+              <p className="InputValue">{this.props.varName}</p> may not have
+              been initialized
             </h2>
           </div>
 
           <h4>
             <i>
               Translation: You are trying to use the variable{" "}
-              <div className="InputValue">{this.props.varName}</div> of type int but using it as a float-type variable.
+              <div className="InputValue">{this.props.varName}</div> before
+              properly giving it a value.
             </i>
           </h4>
 
@@ -121,11 +111,13 @@ class TypeMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have assigned a float value to variable{" "}
-                  <div className="InputValue">{this.props.varName}</div>{" "}of type int
+                  1: You may have declared variable{" "}
+                  <div className="InputValue">{this.props.varName}</div> and
+                  used it before giving it a value
                 </h4>
                 <div>
-                  Hint: Do you want <p className="InputValue">{this.props.varName}</p> to be a float type or int type?
+                  Hint: Did you assign a value to{" "}
+                  <p className="InputValue">{this.props.varName}</p> ?
                 </div>
               </div>
               {!this.state.openStrategy1 && (
@@ -170,8 +162,9 @@ class TypeMismatch extends React.Component {
                         onChange={() => this.changeChecked(11)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change variable declaration of{" "}
-                        <p className="InputValue">{this.props.varName}</p> to type float
+                        Suggestion 1: Assign a value to{" "}
+                        <p className="InputValue">{this.props.varName}</p> at
+                        declaration
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -201,24 +194,35 @@ class TypeMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> int{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = 3.14;
+                          <div className="Indent-0">
+                            {" "}
+                            int{" "}
+                            <p className="InputValue">{this.props.varName}</p>;
+                          </div>
+                          <div className="Indent-0">
+                            <p className="InputValue">{this.props.varName}</p>
+                            ++;
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0"> float{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = 3.14;
+                          <div className="Indent-0">
+                            {" "}
+                            int{" "}
+                            <p className="InputValue">{this.props.varName}</p> =
+                            3;
+                          </div>
+                          <div className="Indent-0">
+                            <p className="InputValue">{this.props.varName}</p>
+                            ++;
                           </div>
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
-                
+
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(12)}
@@ -231,8 +235,9 @@ class TypeMismatch extends React.Component {
                         onChange={() => this.changeChecked(12)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Change value of{" "}
-                        <p className="InputValue">{this.props.varName}</p> to an int value
+                        Suggestion 2: Assign value to{" "}
+                        <p className="InputValue">{this.props.varName}</p>{" "}
+                        before using it
                       </div>
                     </div>
                     {!this.state.openCode12 && (
@@ -262,24 +267,37 @@ class TypeMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> int{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = 3.14;
+                          <div className="Indent-0">
+                            {" "}
+                            int{" "}
+                            <p className="InputValue">{this.props.varName}</p>;
+                          </div>
+                          <div className="Indent-0">
+                            <p className="InputValue">{this.props.varName}</p>
+                            ++;
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0"> int{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = 3;
+                          <div className="Indent-0">
+                            {" "}
+                            int{" "}
+                            <p className="InputValue">{this.props.varName}</p>;
+                          </div>
+                          <div className="Indent-0">
+                            <p className="InputValue">{this.props.varName}</p> =
+                            3;
+                          </div>
+                          <div className="Indent-0">
+                            <p className="InputValue">{this.props.varName}</p>
+                            ++;
                           </div>
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
- 
               </div>
             )}
           </div>
@@ -288,12 +306,14 @@ class TypeMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
-                  2: You may have used int-type variable{" "}
-                  <div className="InputValue">{this.props.varName}</div>{" "} in an operation involving float type
+                  2: You may have initialized{" "}
+                  <div className="InputValue">{this.props.varName}</div> and
+                  used it in different scopes
                 </h4>
                 <div>
-                  Hint: Even if <div className="InputValue">{this.props.varName}</div>{" "}has a int value, you need to declare it of float type
-                  to use it in a float operation.
+                  Hint: You remembered to assign a value to{" "}
+                  <div className="InputValue">{this.props.varName}</div> but
+                  still got this error.
                 </div>
               </div>
               {!this.state.openStrategy2 && (
@@ -336,8 +356,10 @@ class TypeMismatch extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change variable declatation of{" "}
-                        <p className="InputValue">{this.props.varName}</p> to type float
+                        Suggestion 1: Have variable assignment and variable
+                        usage of{" "}
+                        <p className="InputValue">{this.props.varName}</p> in
+                        the same scope
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -366,27 +388,49 @@ class TypeMismatch extends React.Component {
                   {this.state.openCode21 && (
                     <div className="CodeExample">
                       <div className="CodeContainer">
-                      <div className="RedCode">
-                          <div className="Indent-0"> int{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = 3;
-                          </div>
+                        <div className="RedCode">
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = <p className="InputValue">{this.props.varName}</p>{" "}* 3.14;
+                            {" "}
+                            int{" "}
+                            <p className="InputValue">{this.props.varName}</p>;
+                          </div>
+                          <div className="Indent-0"> int cond = 0;</div>
+                          <div className="Indent-0">
+                            {" "}
+                            if (cond == 0) {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            <p className="InputValue">{this.props.varName}</p> =
+                            3;
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            <p className="InputValue">{this.props.varName}</p>
+                            ++;
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0"> float{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = 3;
-                          </div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = <p className="InputValue">{this.props.varName}</p>{" "}* 3.14;
+                            {" "}
+                            int{" "}
+                            <p className="InputValue">{this.props.varName}</p>;
                           </div>
+                          <div className="Indent-0"> int cond = 0;</div>
+                          <div className="Indent-0">
+                            {" "}
+                            if (cond == 0) {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            <p className="InputValue">{this.props.varName}</p> =
+                            3;
+                          </div>
+                          <div className="Indent-1">
+                            <p className="InputValue">{this.props.varName}</p>
+                            ++;
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
@@ -396,116 +440,6 @@ class TypeMismatch extends React.Component {
             )}
           </div>
 
-          <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
-              <div className="ErrorMessage">
-                <h4>
-                  3: You may have returned a float value in a method that expects to return an int value
-                </h4>
-                <div>
-                  Hint: Did the actual return value match the expected return type?
-                </div>
-              </div>
-              {!this.state.openStrategy3 && (
-                <div className="ButtonHolder">
-                  <img
-                    onClick={() => this.openStrategyTile(3)}
-                    src={PlusButton}
-                    alt="down-button"
-                    width="20"
-                    height="20"
-                  ></img>
-                </div>
-              )}
-              {this.state.openStrategy3 && (
-                <div className="ButtonHolder">
-                  <img
-                    onClick={() => this.openStrategyTile(3)}
-                    src={MinusButton}
-                    alt="up-button"
-                    width="20"
-                    height="20"
-                  ></img>
-                </div>
-              )}
-            </div>
-            {this.state.openStrategy3 && (
-              <div className="StrategyContainer">
-                <p>
-                  <i>Tick the box once you have tried the suggestion</i>
-                </p>
-                <div
-                  className="StrategyTile"
-                  onClick={() => this.openCodeExample(31)}
-                >
-                  <div className="StrategyInstruction">
-                    <div className="StrategyMessage">
-                      <BlueCheckbox
-                        value="box1"
-                        checked={this.state.checked31}
-                        onChange={() => this.changeChecked(31)}
-                      />
-                      <div className="Suggestion">
-                        Suggestion 1: Change method expected return type to float type
-                      </div>
-                    </div>
-                    {!this.state.openCode31 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openCodeExample(31)}
-                          src={PlusButton}
-                          alt="down-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                    {this.state.openCode31 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openCodeExample(31)}
-                          src={MinusButton}
-                          alt="up-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                  </div>
-                  {this.state.openCode31 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                            <div className="Indent-0">int pi() {LEFT_CURLY}</div>
-                          <div className="Indent-1">float{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = 3.14;
-                          </div>
-                          <div className="Indent-1">return{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                        </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                        <div className="Indent-0">float pi() {LEFT_CURLY}</div>
-                          <div className="Indent-1">float{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = 3.14;
-                          </div>
-                          <div className="Indent-1">return{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
           <ResourceFooter />
         </div>
       </div>
@@ -513,4 +447,4 @@ class TypeMismatch extends React.Component {
   }
 }
 
-export default TypeMismatch;
+export default VariableNotInit;
