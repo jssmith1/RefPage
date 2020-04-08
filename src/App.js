@@ -10,6 +10,7 @@ import TypeNotFound from "./TypeNotFound";
 import VariableNotFound from "./VariableNotFound";
 import TypeMismatch from "./TypeMismatch";
 import VariableNotInit from "./VariableNotInit";
+import ParameterMismatch from "./ParameterMismatch";
 import HomeButton from "./assets/home.svg";
 
 export default function App() {
@@ -37,6 +38,10 @@ function HomePageContent() {
 
       <Route exact path="/">
         <div className="AppContent">
+          <h4>Lists of compiler errors:</h4>
+          <div className="Indent-1">
+            <Link to="/parametermismatch?classname=charAt&classparam=(int)">Parameter Mismatch</Link>
+          </div>
           <div className="Indent-1">
             <Link to="/typenotfound?classname=Thing">Type Not Found</Link>
           </div>
@@ -54,6 +59,13 @@ function HomePageContent() {
             </Link>
           </div>
         </div>
+      </Route>
+
+      <Route exact path="/parametermismatch">
+        <ParameterMismatch 
+            className={query.get("classname") || "charAt"}
+            classParam={query.get("classparam") || "(int)"}
+         />
       </Route>
 
       <Route exact path="/typenotfound">

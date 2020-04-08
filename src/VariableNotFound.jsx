@@ -12,11 +12,11 @@ const BlueCheckbox = withStyles({
   root: {
     color: blue[400],
     "&$checked": {
-      color: blue[600]
-    }
+      color: blue[600],
+    },
   },
-  checked: {}
-})(props => <Checkbox color="default" {...props} />);
+  checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";
@@ -35,7 +35,7 @@ class VariableNotFound extends React.Component {
       checked11: false,
       checked21: false,
       checked22: false,
-      checked31: false
+      checked31: false,
     };
   }
 
@@ -189,10 +189,10 @@ class VariableNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Add variable declaration for{" "}
-                        <p className="InputValue">{this.props.varName}</p> before
-                        the first occurence of{" "}
-                        <p className="InputValue">{this.props.varName}</p> in the
-                        code
+                        <p className="InputValue">{this.props.varName}</p>{" "}
+                        before the first occurence of{" "}
+                        <p className="InputValue">{this.props.varName}</p> in
+                        the code
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -235,7 +235,10 @@ class VariableNotFound extends React.Component {
                             <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
                             <p className="InputValue">{this.props.className}</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
+                            <p className="InputValue">
+                              {this.props.classparam}
+                            </p>
+                            ;
                           </div>
                           <div className="Indent-0">
                             print(
@@ -260,8 +263,8 @@ class VariableNotFound extends React.Component {
                 </h4>
                 <div>
                   Hint: Have you already declared{" "}
-                  <p className="InputValue">{this.props.varName}</p> but made some
-                  mistakes when declaring it?
+                  <p className="InputValue">{this.props.varName}</p> but made
+                  some mistakes when declaring it?
                 </div>
               </div>
               {!this.state.openStrategy2 && (
@@ -342,7 +345,10 @@ class VariableNotFound extends React.Component {
                             <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
                             <p className="InputValue">{this.props.className}</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
+                            <p className="InputValue">
+                              {this.props.classparam}
+                            </p>
+                            ;
                           </div>
                         </div>
                       </div>
@@ -352,7 +358,10 @@ class VariableNotFound extends React.Component {
                             <p className="InputValue">CorrectName</p>{" "}
                             <p className="InputValue">{this.props.varName}</p> =
                             new <p className="InputValue">CorrectName</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
+                            <p className="InputValue">
+                              {this.props.classparam}
+                            </p>
+                            ;
                           </div>
                         </div>
                       </div>
@@ -407,7 +416,10 @@ class VariableNotFound extends React.Component {
                             <p className="InputValue">{this.props.className}</p>{" "}
                             <p className="InputValue">{this.props.varName}</p> ={" "}
                             <p className="InputValue">{this.props.className}</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
+                            <p className="InputValue">
+                              {this.props.classparam}
+                            </p>
+                            ;
                           </div>
                         </div>
                       </div>
@@ -418,7 +430,10 @@ class VariableNotFound extends React.Component {
                             <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
                             <p className="InputValue">{this.props.className}</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
+                            <p className="InputValue">
+                              {this.props.classparam}
+                            </p>
+                            ;
                           </div>
                         </div>
                       </div>
@@ -437,8 +452,8 @@ class VariableNotFound extends React.Component {
                   <div className="InputValue">{this.props.varName}</div>{" "}
                 </h4>
                 <div>
-                  Hint: Is <p className="InputValue">{this.props.varName}</p> the
-                  exact variable name that you have defined?
+                  Hint: Is <p className="InputValue">{this.props.varName}</p>{" "}
+                  the exact variable name that you have defined?
                 </div>
               </div>
               {!this.state.openStrategy3 && (
@@ -484,8 +499,8 @@ class VariableNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Change{" "}
-                        <p className="InputValue">{this.props.varName}</p> to the
-                        variable name that you have defined
+                        <p className="InputValue">{this.props.varName}</p> to
+                        the variable name that you have defined
                       </div>
                     </div>
                     {!this.state.openCode31 && (
@@ -517,26 +532,39 @@ class VariableNotFound extends React.Component {
                         <div className="CodeContainer">
                           <div className="RedCode">
                             <div className="Indent-0">
-                              <p className="InputValue">{this.props.className}</p>{" "}
+                              <p className="InputValue">
+                                {this.props.className}
+                              </p>{" "}
                               <p className="InputValue">correct_name</p> = new{" "}
-                              <p className="InputValue">{this.props.className}</p>
-                              <p className="InputValue">{this.props.classparam}</p>
+                              <p className="InputValue">
+                                {this.props.className}
+                              </p>
+                              <p className="InputValue">
+                                {this.props.classparam}
+                              </p>
                               ;
                             </div>
                             <div className="Indent-0">...</div>
                             <div className="Indent-0">
                               print(
-                              <p className="InputValue">{this.props.varName}</p>);
+                              <p className="InputValue">{this.props.varName}</p>
+                              );
                             </div>
                           </div>
                         </div>
                         <div className="CodeContainer">
                           <div className="GreenCode">
                             <div className="Indent-0">
-                              <p className="InputValue">{this.props.className}</p>{" "}
+                              <p className="InputValue">
+                                {this.props.className}
+                              </p>{" "}
                               <p className="InputValue">correct_name</p> = new{" "}
-                              <p className="InputValue">{this.props.className}</p>
-                              <p className="InputValue">{this.props.classparam}</p>
+                              <p className="InputValue">
+                                {this.props.className}
+                              </p>
+                              <p className="InputValue">
+                                {this.props.classparam}
+                              </p>
                               ;
                             </div>
                             <div className="Indent-0">...</div>
@@ -612,8 +640,8 @@ class VariableNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Move{" "}
-                        <p className="InputValue">{this.props.varName}</p> to the
-                        same function with its declaration
+                        <p className="InputValue">{this.props.varName}</p> to
+                        the same function with its declaration
                       </div>
                     </div>
                     {!this.state.openCode41 && (
@@ -644,19 +672,22 @@ class VariableNotFound extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            void funcA(){LEFT_CURLY}
+                            void setup(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
                             <p className="InputValue">{this.props.className}</p>{" "}
                             <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
                             <p className="InputValue">{this.props.className}</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
+                            <p className="InputValue">
+                              {this.props.classparam}
+                            </p>
+                            ;
                           </div>
                           <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void funcB(){LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
                             println(
@@ -668,14 +699,17 @@ class VariableNotFound extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            void funcA(){LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
                             <p className="InputValue">{this.props.className}</p>{" "}
                             <p className="InputValue">{this.props.varName}</p> =
                             new{" "}
                             <p className="InputValue">{this.props.className}</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
+                            <p className="InputValue">
+                              {this.props.classparam}
+                            </p>
+                            ;
                           </div>
                           <div className="Indent-1">...</div>
                           <div className="Indent-1">
@@ -701,8 +735,8 @@ class VariableNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 2: Move{" "}
-                        <p className="InputValue">{this.props.varName}</p> to the
-                        same or smaller scope than its declaration
+                        <p className="InputValue">{this.props.varName}</p> to
+                        the same or smaller scope than its declaration
                       </div>
                     </div>
                     {!this.state.openCode42 && (
@@ -729,45 +763,155 @@ class VariableNotFound extends React.Component {
                     )}
                   </div>
                   {this.state.openCode42 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                          <div className="Indent-0">
-                            (while i != count) {LEFT_CURLY}
+                    <div>
+                      <div>
+                        <div className="CodeExample">
+                          <div className="CodeContainer">
+                            <div className="RedCode">
+                              <div className="Indent-0">
+                                (while i != count) {LEFT_CURLY}
+                              </div>
+                              <div className="Indent-1">
+                                <p className="InputValue">
+                                  {this.props.className}
+                                </p>{" "}
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>{" "}
+                                = new{" "}
+                                <p className="InputValue">
+                                  {this.props.className}
+                                </p>
+                                <p className="InputValue">
+                                  {this.props.classparam}
+                                </p>
+                                ;
+                              </div>
+                              <div className="Indent-1">i++;</div>
+                              <div className="Indent-0">{RIGHT_CURLY}</div>
+                              <div className="Indent-0">
+                                println(
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>
+                                );
+                              </div>
+                            </div>
                           </div>
-                          <div className="Indent-1">
-                            <p className="InputValue">{this.props.className}</p>{" "}
-                            <p className="InputValue">{this.props.varName}</p> =
-                            new{" "}
-                            <p className="InputValue">{this.props.className}</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
-                          </div>
-                          <div className="Indent-1">i++;</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            println(
-                            <p className="InputValue">{this.props.varName}</p>);
+                          <div className="CodeContainer">
+                            <div className="GreenCode">
+                              <div className="Indent-0">
+                                (while i != count) {LEFT_CURLY}
+                              </div>
+                              <div className="Indent-1">
+                                <p className="InputValue">
+                                  {this.props.className}
+                                </p>{" "}
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>{" "}
+                                = new{" "}
+                                <p className="InputValue">
+                                  {this.props.className}
+                                </p>
+                                <p className="InputValue">
+                                  {this.props.classparam}
+                                </p>
+                                ;
+                              </div>
+                              <div className="Indent-1">
+                                println(
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>
+                                );
+                              </div>
+                              <div className="Indent-1">i++;</div>
+                              <div className="Indent-0">{RIGHT_CURLY}</div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                          <div className="Indent-0">
-                            (while i != count) {LEFT_CURLY}
+                      <div>
+                        <div className="CodeExample">
+                          <div className="CodeContainer">
+                            <div className="RedCode">
+                              <div className="Indent-0">
+                                void setup(){LEFT_CURLY}
+                              </div>
+                              <div className="Indent-1">
+                                <p className="InputValue">
+                                  {this.props.className}
+                                </p>{" "}
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>{" "}
+                                = new{" "}
+                                <p className="InputValue">
+                                  {this.props.className}
+                                </p>
+                                <p className="InputValue">
+                                  {this.props.classparam}
+                                </p>
+                                ;
+                              </div>
+                              <div className="Indent-1">...</div>
+                              <div className="Indent-0">{RIGHT_CURLY}</div>
+                              <div className="Indent-0">
+                                void draw(){LEFT_CURLY}
+                              </div>
+                              <div className="Indent-1">
+                                println(
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>
+                                );
+                              </div>
+                              <div className="Indent-0">{RIGHT_CURLY}</div>
+                            </div>
                           </div>
-                          <div className="Indent-1">
-                            <p className="InputValue">{this.props.className}</p>{" "}
-                            <p className="InputValue">{this.props.varName}</p> =
-                            new{" "}
-                            <p className="InputValue">{this.props.className}</p>
-                            <p className="InputValue">{this.props.classparam}</p>;
+                          <div className="CodeContainer">
+                            <div className="GreenCode">
+                              <div className="Indent-0">
+                                <p className="InputValue">
+                                  {this.props.className}
+                                </p>{" "}
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>
+                                ;
+                              </div>
+                              <div className="Indent-0">
+                                void setup(){LEFT_CURLY}
+                              </div>
+                              <div className="Indent-1">
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>{" "}
+                                = new{" "}
+                                <p className="InputValue">
+                                  {this.props.className}
+                                </p>
+                                <p className="InputValue">
+                                  {this.props.classparam}
+                                </p>
+                                ;
+                              </div>
+                              <div className="Indent-1">...</div>
+                              <div className="Indent-0">{RIGHT_CURLY}</div>
+                              <div className="Indent-0">
+                                void draw(){LEFT_CURLY}
+                              </div>
+                              <div className="Indent-1">
+                                println(
+                                <p className="InputValue">
+                                  {this.props.varName}
+                                </p>
+                                );
+                              </div>
+                              <div className="Indent-0">{RIGHT_CURLY}</div>
+                            </div>
                           </div>
-                          <div className="Indent-1">
-                            println(
-                            <p className="InputValue">{this.props.varName}</p>);
-                          </div>
-                          <div className="Indent-1">i++;</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>

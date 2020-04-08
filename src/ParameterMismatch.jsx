@@ -12,16 +12,13 @@ const BlueCheckbox = withStyles({
   root: {
     color: blue[400],
     "&$checked": {
-      color: blue[600],
-    },
+      color: blue[600]
+    }
   },
-  checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+  checked: {}
+})(props => <Checkbox color="default" {...props} />);
 
-const LEFT_CURLY = "{";
-const RIGHT_CURLY = "}";
-
-class VariableNotInit extends React.Component {
+class ParameterMismatch extends React.Component {
   constructor(props) {
     super(props);
     this.openStrategyTile = this.openStrategyTile.bind(this);
@@ -31,10 +28,8 @@ class VariableNotInit extends React.Component {
       openStrategy1: false,
       openStrategy2: false,
       openCode11: false,
-      openCode12: false,
       openCode21: false,
       checked11: false,
-      checked12: false,
       checked21: false,
     };
   }
@@ -44,7 +39,6 @@ class VariableNotInit extends React.Component {
       case 1:
         this.setState({ openStrategy1: !this.state.openStrategy1 });
         this.setState({ openCode11: false });
-        this.setState({ openCode12: false });
         break;
       case 2:
         this.setState({ openStrategy2: !this.state.openStrategy2 });
@@ -60,9 +54,6 @@ class VariableNotInit extends React.Component {
       case 11:
         this.setState({ openCode11: !this.state.openCode11 });
         break;
-      case 12:
-        this.setState({ openCode12: !this.state.openCode12 });
-        break;
       case 21:
         this.setState({ openCode21: !this.state.openCode21 });
         break;
@@ -75,9 +66,6 @@ class VariableNotInit extends React.Component {
     switch (i) {
       case 11:
         this.setState({ checked11: !this.state.checked11 });
-        break;
-      case 12:
-        this.setState({ checked12: !this.state.checked12 });
         break;
       case 21:
         this.setState({ checked21: !this.state.checked21 });
@@ -93,17 +81,14 @@ class VariableNotInit extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              The local variable{" "}
-              <p className="InputValue">{this.props.varName}</p> may not have
-              been initialized
+            The function “<div className="InputValue">{this.props.className}()</div>” expects parameters like: "<div className="InputValue">{this.props.className}{this.props.classParam}</div>”
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: You are trying to use the variable{" "}
-              <div className="InputValue">{this.props.varName}</div> before
-              properly giving it a value.
+              Translation: You are trying to use the function “<div className="InputValue">{this.props.className}</div>”{" "}
+              but using some incorrect forms of parameters.
             </i>
           </h4>
 
@@ -111,13 +96,10 @@ class VariableNotInit extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have declared variable{" "}
-                  <div className="InputValue">{this.props.varName}</div> and
-                  used it before giving it a value
+                  1: You may have used the wrong type of parameters instead of expected type <div className="InputValue">{this.props.classParam}</div>
                 </h4>
                 <div>
-                  Hint: Did you assign a value to{" "}
-                  <p className="InputValue">{this.props.varName}</p> ?
+                  Hint: Is the parameter of your function <p className="InputValue">{this.props.varName}</p> of type <div className="InputValue">{this.props.classParam}</div>?
                 </div>
               </div>
               {!this.state.openStrategy1 && (
@@ -162,9 +144,8 @@ class VariableNotInit extends React.Component {
                         onChange={() => this.changeChecked(11)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Assign a value to{" "}
-                        <p className="InputValue">{this.props.varName}</p> at
-                        declaration
+                        Suggestion 1: Change parameter of{" "}
+                        <p className="InputValue">{this.props.className}</p> to type <p className="InputValue">{this.props.classParam}</p>
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -194,110 +175,26 @@ class VariableNotInit extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0">
-                            {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
+                        <div className="Indent-0"> String s = "Hello";
                           </div>
-                          <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>
-                            ++;
+                          <div className="Indent-0"> Character c = s.
+                            <p className="InputValue">{this.props.className}</p>("2");
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p> =
-                            3;
+                        <div className="Indent-0"> String s = "Hello";
                           </div>
-                          <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>
-                            ++;
+                          <div className="Indent-0"> Character c = s.
+                            <p className="InputValue">{this.props.className}</p>(2);
                           </div>
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
-
-                <div
-                  className="StrategyTile"
-                  onClick={() => this.openCodeExample(12)}
-                >
-                  <div className="StrategyInstruction">
-                    <div className="StrategyMessage">
-                      <BlueCheckbox
-                        value="box1"
-                        checked={this.state.checked12}
-                        onChange={() => this.changeChecked(12)}
-                      />
-                      <div className="Suggestion">
-                        Suggestion 2: Assign value to{" "}
-                        <p className="InputValue">{this.props.varName}</p>{" "}
-                        before using it
-                      </div>
-                    </div>
-                    {!this.state.openCode12 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openCodeExample(12)}
-                          src={PlusButton}
-                          alt="down-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                    {this.state.openCode12 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openCodeExample(12)}
-                          src={MinusButton}
-                          alt="up-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                  </div>
-                  {this.state.openCode12 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                          <div className="Indent-0">
-                            {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
-                          </div>
-                          <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>
-                            ++;
-                          </div>
-                        </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                          <div className="Indent-0">
-                            {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
-                          </div>
-                          <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p> =
-                            3;
-                          </div>
-                          <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>
-                            ++;
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
+            
               </div>
             )}
           </div>
@@ -306,14 +203,10 @@ class VariableNotInit extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
-                  2: You may have initialized{" "}
-                  <div className="InputValue">{this.props.varName}</div> and
-                  used it in different scopes
+                  2: You may have used more or fewer numbers of parameters than expected
                 </h4>
                 <div>
-                  Hint: You remembered to assign a value to{" "}
-                  <div className="InputValue">{this.props.varName}</div> but
-                  still got this error.
+                  Hint: Do you use the matching number of parameters required for the function  <p className="InputValue">{this.props.className}</p>?
                 </div>
               </div>
               {!this.state.openStrategy2 && (
@@ -356,10 +249,8 @@ class VariableNotInit extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Have variable assignment and variable
-                        usage of{" "}
-                        <p className="InputValue">{this.props.varName}</p> in
-                        the same scope
+                        Suggestion 1: Change the number of parameters of{" "}
+                        <p className="InputValue">{this.props.className}</p> to match the requirement
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -387,55 +278,25 @@ class VariableNotInit extends React.Component {
                   </div>
                   {this.state.openCode21 && (
                     <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                          <div className="Indent-0">
-                            {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
-                          </div>
-                          <div className="Indent-0"> int cond = 0;</div>
-                          <div className="Indent-0">
-                            {" "}
-                            if (cond == 0) {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            <p className="InputValue">{this.props.varName}</p> =
-                            3;
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p> ={" "}
-                            <p className="InputValue">{this.props.varName}</p> +
-                            1;
-                          </div>
+                    <div className="CodeContainer">
+                      <div className="RedCode">
+                      <div className="Indent-0"> String s = "Hello";
                         </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                          <div className="Indent-0">
-                            {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
-                          </div>
-                          <div className="Indent-0"> int cond = 0;</div>
-                          <div className="Indent-0">
-                            {" "}
-                            if (cond == 0) {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            <p className="InputValue">{this.props.varName}</p> =
-                            3;
-                          </div>
-                          <div className="Indent-1">
-                            <p className="InputValue">{this.props.varName}</p> ={" "}
-                            <p className="InputValue">{this.props.varName}</p> +
-                            1;
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        <div className="Indent-0"> Character c = s.
+                          <p className="InputValue">{this.props.className}</p>(1,2,3);
                         </div>
                       </div>
                     </div>
+                    <div className="CodeContainer">
+                      <div className="GreenCode">
+                      <div className="Indent-0"> String s = "Hello";
+                        </div>
+                        <div className="Indent-0"> Character c = s.
+                          <p className="InputValue">{this.props.className}</p>(2);
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   )}
                 </div>
               </div>
@@ -449,4 +310,4 @@ class VariableNotInit extends React.Component {
   }
 }
 
-export default VariableNotInit;
+export default ParameterMismatch;
