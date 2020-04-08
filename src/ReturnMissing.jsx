@@ -8,10 +8,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
 
-import {
-  Link
-} from "react-router-dom";
-
 const BlueCheckbox = withStyles({
   root: {
     color: blue[400],
@@ -22,7 +18,10 @@ const BlueCheckbox = withStyles({
   checked: {}
 })(props => <Checkbox color="default" {...props} />);
 
-class ParameterMismatch extends React.Component {
+const LEFT_CURLY = "{";
+const RIGHT_CURLY = "}";
+
+class ReturnMissing extends React.Component {
   constructor(props) {
     super(props);
     this.openStrategyTile = this.openStrategyTile.bind(this);
@@ -79,31 +78,20 @@ class ParameterMismatch extends React.Component {
     }
   }
 
-  renderRecommender(){
-    return (
-      <div className="Recommender">
-            <h4><i>Relating errors</i></h4>
-            <div className="Indent-1">
-              <Link to="/typemismatch?varname=thing">Type Mismatch</Link>
-            </div>
-          </div>
-    )
-  }
-
   render() {
     return (
       <div className="App">
         <div className="AppContent">
           <div className="Title">
             <h2>
-            The function “<div className="InputValue">{this.props.className}()</div>” expects parameters like: "<div className="InputValue">{this.props.className}{this.props.classParam}</div>”
+            This method must return a result of type <div className="InputValue">{this.props.returnType}</div>
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: You are trying to use the function “<div className="InputValue">{this.props.className}</div>”{" "}
-              but using some incorrect forms of parameters.
+              Translation: You did not return a value of type <div className="InputValue">{this.props.returnType}</div>{" "}
+              like the definition of method <div className="InputValue">{this.props.className}</div>.
             </i>
           </h4>
 
@@ -111,11 +99,11 @@ class ParameterMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have used the wrong type of parameters instead of expected type <div className="InputValue">{this.props.classParam}</div>
+                  1: You may have forgotten the return statement for the method <p className="InputValue">{this.props.className}</p> 
                 </h4>
                 <div>
-                  Hint: Is the parameter of your function <p className="InputValue">{this.props.varName}</p> of type <div className="InputValue">{this.props.classParam}</div>?
-                </div>
+                  Hint: Do you have the return statement at the end of the method <p className="InputValue">{this.props.className}</p>?
+                  </div>
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -159,8 +147,8 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(11)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change parameter of{" "}
-                        <p className="InputValue">{this.props.className}</p> to type <p className="InputValue">{this.props.classParam}</p>
+                        Suggestion 1: Add a return statement of type{" "}
+                        <p className="InputValue">{this.props.returnType}</p> at the end of the method <p className="InputValue">{this.props.className}</p> 
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -190,19 +178,23 @@ class ParameterMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                        <div className="Indent-0"> String s = "Hello";
+                        <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0"> Character c = s.
-                            <p className="InputValue">{this.props.className}</p>("2");
+                          <div className="Indent-1"> int zero = 0;
+                          </div>
+                          <div className="Indent-0"> {RIGHT_CURLY}
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0"> String s = "Hello";
+                        <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0"> Character c = s.
-                            <p className="InputValue">{this.props.className}</p>(2);
+                          <div className="Indent-1"> int zero = 0;
+                          </div>
+                          <div className="Indent-1"> return x;
+                          </div>
+                          <div className="Indent-0"> {RIGHT_CURLY}
                           </div>
                         </div>
                       </div>
@@ -218,10 +210,10 @@ class ParameterMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
-                  2: You may have used more or fewer numbers of parameters than expected
+                  2: You may have missed the return statement in some branches of the method <p className="InputValue">{this.props.className}</p>
                 </h4>
                 <div>
-                  Hint: Do you use the matching number of parameters required for the function  <p className="InputValue">{this.props.className}</p>?
+                  Hint: Does your method <p className="InputValue">{this.props.className}</p> return a value of type <p className="InputValue">{this.props.returnType}</p> in all cases?
                 </div>
               </div>
               {!this.state.openStrategy2 && (
@@ -264,8 +256,8 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change the number of parameters of{" "}
-                        <p className="InputValue">{this.props.className}</p> to match the requirement
+                        Suggestion 1: Make sure all branches of conditionals in method{" "}
+                        <p className="InputValue">{this.props.className}</p> return value of type <p className="InputValue">{this.props.returnType}</p>
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -295,21 +287,55 @@ class ParameterMismatch extends React.Component {
                     <div className="CodeExample">
                     <div className="CodeContainer">
                       <div className="RedCode">
-                      <div className="Indent-0"> String s = "Hello";
-                        </div>
-                        <div className="Indent-0"> Character c = s.
-                          <p className="InputValue">{this.props.className}</p>(1,2,3);
-                        </div>
+                      <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> int a = 0;
+                          </div>
+                          <div className="Indent-1"> int b = 1;
+                          </div>
+                          <div className="Indent-1"> if (a > b) return a;
+                          </div>
+                          <div className="Indent-0"> {RIGHT_CURLY}
+                          </div>
                       </div>
                     </div>
                     <div className="CodeContainer">
                       <div className="GreenCode">
-                      <div className="Indent-0"> String s = "Hello";
-                        </div>
-                        <div className="Indent-0"> Character c = s.
-                          <p className="InputValue">{this.props.className}</p>(2);
-                        </div>
+                      <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> int a = 0;
+                          </div>
+                          <div className="Indent-1"> int b = 1;
+                          </div>
+                          <div className="Indent-1"> if (a > b) return a;
+                          </div>
+                          <div className="Indent-1"> return b;
+                          </div>
+                          <div className="Indent-0"> {RIGHT_CURLY}
+                          </div>
                       </div>
+                    
+                      <div className="GreenCode">
+                      <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> int a = 0;
+                          </div>
+                          <div className="Indent-1"> int b = 1;
+                          </div>
+                          <div className="Indent-1"> if (a > b) {LEFT_CURLY} 
+                          </div>
+                          <div className="Indent-2"> return a; 
+                          </div>
+                          <div className="Indent-1"> {RIGHT_CURLY} else {LEFT_CURLY} 
+                          </div>
+                          <div className="Indent-2"> return b;
+                          </div>
+                          <div className="Indent-1"> {RIGHT_CURLY} 
+                          </div>
+                          <div className="Indent-0"> {RIGHT_CURLY}
+                          </div>
+                      </div>
+                    
                     </div>
                   </div>
                   )}
@@ -317,12 +343,12 @@ class ParameterMismatch extends React.Component {
               </div>
             )}
           </div>
+
           <ResourceFooter />
-          <this.renderRecommender />
         </div>
       </div>
     );
   }
 }
 
-export default ParameterMismatch;
+export default ReturnMissing;
