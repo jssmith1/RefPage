@@ -12,11 +12,11 @@ const BlueCheckbox = withStyles({
   root: {
     color: blue[400],
     "&$checked": {
-      color: blue[600]
-    }
+      color: blue[600],
+    },
   },
-  checked: {}
-})(props => <Checkbox color="default" {...props} />);
+  checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";
@@ -84,14 +84,17 @@ class ReturnMissing extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-            This method must return a result of type <div className="InputValue">{this.props.returnType}</div>
+              This method must return a result of type{" "}
+              <div className="InputValue">{this.props.returnType}</div>
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: You did not return a value of type <div className="InputValue">{this.props.returnType}</div>{" "}
-              like the definition of method <div className="InputValue">{this.props.className}</div>.
+              Translation: You did not return a value of type{" "}
+              <div className="InputValue">{this.props.returnType}</div> like the
+              definition of method{" "}
+              <div className="InputValue">{this.props.className}</div>.
             </i>
           </h4>
 
@@ -99,11 +102,13 @@ class ReturnMissing extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have forgotten the return statement for the method <p className="InputValue">{this.props.className}</p> 
+                  1: You may have forgotten the return statement for the method{" "}
+                  <p className="InputValue">{this.props.className}</p>
                 </h4>
                 <div>
-                  Hint: Do you have the return statement at the end of the method <p className="InputValue">{this.props.className}</p>?
-                  </div>
+                  Hint: Do you have the return statement at the end of the
+                  method <p className="InputValue">{this.props.className}</p>?
+                </div>
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -148,7 +153,9 @@ class ReturnMissing extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Add a return statement of type{" "}
-                        <p className="InputValue">{this.props.returnType}</p> at the end of the method <p className="InputValue">{this.props.className}</p> 
+                        <p className="InputValue">{this.props.returnType}</p> at
+                        the end of the method{" "}
+                        <p className="InputValue">{this.props.className}</p>
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -178,30 +185,30 @@ class ReturnMissing extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                        <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
+                          <div className="Indent-0">
+                            public int{" "}
+                            <p className="InputValue">{this.props.className}</p>
+                            () {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int zero = 0;
-                          </div>
-                          <div className="Indent-0"> {RIGHT_CURLY}
-                          </div>
+                          <div className="Indent-1"> int zero = 0;</div>
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
+                          <div className="Indent-0">
+                            public int{" "}
+                            <p className="InputValue">{this.props.className}</p>
+                            () {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int zero = 0;
-                          </div>
-                          <div className="Indent-1"> return x;
-                          </div>
-                          <div className="Indent-0"> {RIGHT_CURLY}
-                          </div>
+                          <div className="Indent-1"> int zero = 0;</div>
+                          <div className="Indent-1"> return x;</div>
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
-            
               </div>
             )}
           </div>
@@ -210,10 +217,16 @@ class ReturnMissing extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
-                  2: You may have missed the return statement in some branches of the method <p className="InputValue">{this.props.className}</p>
+                  2: You may have missed the return statement in some branches
+                  of the method{" "}
+                  <p className="InputValue">{this.props.className}</p>
                 </h4>
                 <div>
-                  Hint: Does your method <p className="InputValue">{this.props.className}</p> return a value of type <p className="InputValue">{this.props.returnType}</p> in all cases?
+                  Hint: Does your method{" "}
+                  <p className="InputValue">{this.props.className}</p> return a
+                  value of type{" "}
+                  <p className="InputValue">{this.props.returnType}</p> in all
+                  cases?
                 </div>
               </div>
               {!this.state.openStrategy2 && (
@@ -256,8 +269,11 @@ class ReturnMissing extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Make sure all branches of conditionals in method{" "}
-                        <p className="InputValue">{this.props.className}</p> return value of type <p className="InputValue">{this.props.returnType}</p>
+                        Suggestion 1: Make sure all branches of conditionals in
+                        method{" "}
+                        <p className="InputValue">{this.props.className}</p>{" "}
+                        return value of type{" "}
+                        <p className="InputValue">{this.props.returnType}</p>
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -285,59 +301,56 @@ class ReturnMissing extends React.Component {
                   </div>
                   {this.state.openCode21 && (
                     <div className="CodeExample">
-                    <div className="CodeContainer">
-                      <div className="RedCode">
-                      <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
+                      <div className="CodeContainer">
+                        <div className="RedCode">
+                          <div className="Indent-0">
+                            public int{" "}
+                            <p className="InputValue">{this.props.className}</p>
+                            () {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int a = 0;
+                          <div className="Indent-1"> int a = 0;</div>
+                          <div className="Indent-1"> int b = 1;</div>
+                          <div className="Indent-1"> if (a > b) return a;</div>
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
+                        </div>
+                      </div>
+                      <div className="CodeContainer">
+                        <div className="GreenCode">
+                          <div className="Indent-0">
+                            public int{" "}
+                            <p className="InputValue">{this.props.className}</p>
+                            () {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int b = 1;
+                          <div className="Indent-1"> int a = 0;</div>
+                          <div className="Indent-1"> int b = 1;</div>
+                          <div className="Indent-1"> if (a > b) return a;</div>
+                          <div className="Indent-1"> return b;</div>
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
+                        </div>
+
+                        <div className="GreenCode">
+                          <div className="Indent-0">
+                            public int{" "}
+                            <p className="InputValue">{this.props.className}</p>
+                            () {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> if (a > b) return a;
+                          <div className="Indent-1"> int a = 0;</div>
+                          <div className="Indent-1"> int b = 1;</div>
+                          <div className="Indent-1">
+                            {" "}
+                            if (a > b) {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0"> {RIGHT_CURLY}
+                          <div className="Indent-2"> return a;</div>
+                          <div className="Indent-1">
+                            {" "}
+                            {RIGHT_CURLY} else {LEFT_CURLY}
                           </div>
+                          <div className="Indent-2"> return b;</div>
+                          <div className="Indent-1"> {RIGHT_CURLY}</div>
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
+                        </div>
                       </div>
                     </div>
-                    <div className="CodeContainer">
-                      <div className="GreenCode">
-                      <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> int a = 0;
-                          </div>
-                          <div className="Indent-1"> int b = 1;
-                          </div>
-                          <div className="Indent-1"> if (a > b) return a;
-                          </div>
-                          <div className="Indent-1"> return b;
-                          </div>
-                          <div className="Indent-0"> {RIGHT_CURLY}
-                          </div>
-                      </div>
-                    
-                      <div className="GreenCode">
-                      <div className="Indent-0">public int <p className="InputValue">{this.props.className}</p>() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> int a = 0;
-                          </div>
-                          <div className="Indent-1"> int b = 1;
-                          </div>
-                          <div className="Indent-1"> if (a > b) {LEFT_CURLY} 
-                          </div>
-                          <div className="Indent-2"> return a; 
-                          </div>
-                          <div className="Indent-1"> {RIGHT_CURLY} else {LEFT_CURLY} 
-                          </div>
-                          <div className="Indent-2"> return b;
-                          </div>
-                          <div className="Indent-1"> {RIGHT_CURLY} 
-                          </div>
-                          <div className="Indent-0"> {RIGHT_CURLY}
-                          </div>
-                      </div>
-                    
-                    </div>
-                  </div>
                   )}
                 </div>
               </div>
