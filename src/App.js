@@ -53,8 +53,13 @@ function HomePageContent() {
             <Link to="/typenotfound?classname=Thing">Type Not Found</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/variablenotfound?varname=thing&classname=Thing&classparam=()">
-              Variable Not Found
+            <Link to="/variablenotfound?varname=gravity&classname=PVector&classparam=(0,0.2)">
+              Variable Not Found 1
+            </Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/variablenotfound">
+              Variable Not Found 2
             </Link>
           </div>
           <div className="Indent-1">
@@ -91,7 +96,7 @@ function HomePageContent() {
         <VariableNotFound
           varName={query.get("varname") || "thing"}
           className={query.get("classname") || "Thing"}
-          classParam={query.get("classparam") || "()"}
+          classparam={query.get("classparam") || "()"}
         />
       </Route>
 
