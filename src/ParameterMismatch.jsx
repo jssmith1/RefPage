@@ -235,8 +235,7 @@ class ParameterMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
-                  2: You may have used more or fewer numbers of parameters than
-                  expected
+                  2: You may have used the wrong number of parameters
                 </h4>
                 <div>
                   Hint: Do you use the matching number of parameters required

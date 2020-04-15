@@ -304,41 +304,38 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            public int{" "}
+                           int{" "}
                             <p className="InputValue">{this.props.className}</p>
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
-                          <div className="Indent-1"> int b = 1;</div>
-                          <div className="Indent-1"> if (a > b) return a;</div>
+                          <div className="Indent-1"> if (a > 1) return a;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            public int{" "}
+                            int{" "}
                             <p className="InputValue">{this.props.className}</p>
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
-                          <div className="Indent-1"> int b = 1;</div>
-                          <div className="Indent-1"> if (a > b) return a;</div>
-                          <div className="Indent-1"> return b;</div>
+                          <div className="Indent-1"> if (a > 1) return a;</div>
+                          <div className="Indent-1"> return a;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
 
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            public int{" "}
+                           int{" "}
                             <p className="InputValue">{this.props.className}</p>
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
-                          <div className="Indent-1"> int b = 1;</div>
                           <div className="Indent-1">
                             {" "}
-                            if (a > b) {LEFT_CURLY}
+                            if (a > 1) {LEFT_CURLY}
                           </div>
                           <div className="Indent-2"> return a;</div>
                           <div className="Indent-1">
