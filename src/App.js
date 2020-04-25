@@ -32,9 +32,9 @@ function HomePageContent() {
   return (
     <div>
       <div className="Home">
-        {/* <Link to="/">
+        <Link to="/">
           <img src={HomeButton} alt="home-button" width="30" height="30"></img>
-        </Link> */}
+        </Link>
       </div>
 
       <Route exact path="/">
