@@ -20,6 +20,8 @@ const BlueCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
+const LEFT_CURLY = "{";
+const RIGHT_CURLY = "}";
 class ParameterMismatch extends React.Component {
   constructor(props) {
     super(props);
@@ -30,9 +32,13 @@ class ParameterMismatch extends React.Component {
       openStrategy1: false,
       openStrategy2: false,
       openCode11: false,
+      openCode12: false,
       openCode21: false,
+      openCode22: false,
       checked11: false,
+      checked12: false,
       checked21: false,
+      checked22: false,
     };
   }
 
@@ -41,10 +47,12 @@ class ParameterMismatch extends React.Component {
       case 1:
         this.setState({ openStrategy1: !this.state.openStrategy1 });
         this.setState({ openCode11: false });
+        this.setState({ openCode12: false });
         break;
       case 2:
         this.setState({ openStrategy2: !this.state.openStrategy2 });
         this.setState({ openCode21: false });
+        this.setState({ openCode22: false });
         break;
       default:
         break;
@@ -56,8 +64,14 @@ class ParameterMismatch extends React.Component {
       case 11:
         this.setState({ openCode11: !this.state.openCode11 });
         break;
+      case 12:
+        this.setState({ openCode12: !this.state.openCode12 });
+        break;
       case 21:
         this.setState({ openCode21: !this.state.openCode21 });
+        break;
+      case 22:
+        this.setState({ openCode22: !this.state.openCode22 });
         break;
       default:
         break;
@@ -69,8 +83,14 @@ class ParameterMismatch extends React.Component {
       case 11:
         this.setState({ checked11: !this.state.checked11 });
         break;
+      case 12:
+        this.setState({ checked12: !this.state.checked12 });
+        break;
       case 21:
         this.setState({ checked21: !this.state.checked21 });
+        break;
+      case 22:
+        this.setState({ checked22: !this.state.checked22 });
         break;
       default:
         break;
@@ -101,7 +121,7 @@ class ParameterMismatch extends React.Component {
               expects parameters like: "
               <div className="InputValue">
                 {this.props.className}
-                {this.props.classParam}
+                (int)
               </div>
               ”
             </h2>
@@ -120,13 +140,12 @@ class ParameterMismatch extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   1: You may have used the wrong type of parameters instead of
-                  expected type{" "}
-                  <div className="InputValue">{this.props.classParam}</div>
+                  expected type (int)
                 </h4>
                 <div>
                   Hint: Is the parameter of your function{" "}
                   <p className="InputValue">{this.props.varName}</p> of type{" "}
-                  <div className="InputValue">{this.props.classParam}</div>?
+                  (int)?
                 </div>
               </div>
               {!this.state.openStrategy1 && (
@@ -173,8 +192,7 @@ class ParameterMismatch extends React.Component {
                       <div className="Suggestion">
                         Suggestion 1: Change parameter of{" "}
                         <p className="InputValue">{this.props.className}</p> to
-                        type{" "}
-                        <p className="InputValue">{this.props.classParam}</p>
+                        type (int)
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -204,24 +222,115 @@ class ParameterMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> String s = "Hello";</div>
                           <div className="Indent-0">
-                            {" "}
-                            Character c = s.
-                            <p className="InputValue">{this.props.className}</p>
+                            void setup() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}
                             ("2");
                           </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void {this.props.className}(int s){LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0"> String s = "Hello";</div>
                           <div className="Indent-0">
-                            {" "}
-                            Character c = s.
-                            <p className="InputValue">{this.props.className}</p>
+                            void setup() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}
                             (2);
                           </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void {this.props.className}(int s){LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(12)}
+                >
+                  <div className="StrategyInstruction">
+                    <div className="StrategyMessage">
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked12}
+                        onChange={() => this.changeChecked(12)}
+                      />
+                      <div className="Suggestion">
+                        Suggestion 2: Change parameter of{" "}
+                        <p className="InputValue">{this.props.className} </p> in
+                        function definition to match its usage
+                      </div>
+                    </div>
+                    {!this.state.openCode12 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(12)}
+                          src={PlusButton}
+                          alt="down-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                    {this.state.openCode12 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(12)}
+                          src={MinusButton}
+                          alt="up-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                  </div>
+                  {this.state.openCode12 && (
+                    <div className="CodeExample">
+                      <div className="CodeContainer">
+                        <div className="RedCode">
+                          <div className="Indent-0">
+                            void setup() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}
+                            (2.5);
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void {this.props.className}(int s){LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        </div>
+                      </div>
+                      <div className="CodeContainer">
+                        <div className="GreenCode">
+                          <div className="Indent-0">
+                            void setup() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}
+                            (2.5);
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void {this.props.className}(float s){LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
@@ -234,9 +343,7 @@ class ParameterMismatch extends React.Component {
           <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
-                <h4>
-                  2: You may have used the wrong number of parameters
-                </h4>
+                <h4>2: You may have used the wrong number of parameters</h4>
                 <div>
                   Hint: Do you use the matching number of parameters required
                   for the function{" "}
@@ -315,24 +422,118 @@ class ParameterMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> String s = "Hello";</div>
                           <div className="Indent-0">
-                            {" "}
-                            Character c = s.
-                            <p className="InputValue">{this.props.className}</p>
+                            void setup() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}
                             (1,2,3);
                           </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void {this.props.className}(int s){LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0"> String s = "Hello";</div>
                           <div className="Indent-0">
-                            {" "}
-                            Character c = s.
-                            <p className="InputValue">{this.props.className}</p>
+                            void setup() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}
                             (2);
                           </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void {this.props.className}(int s){LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(22)}
+                >
+                  <div className="StrategyInstruction">
+                    <div className="StrategyMessage">
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked22}
+                        onChange={() => this.changeChecked(22)}
+                      />
+                      <div className="Suggestion">
+                        Suggestion 2: Change parameter of{" "}
+                        <p className="InputValue">{this.props.className} </p> in
+                        function definition to match its usage
+                      </div>
+                    </div>
+                    {!this.state.openCode22 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(22)}
+                          src={PlusButton}
+                          alt="down-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                    {this.state.openCode22 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(22)}
+                          src={MinusButton}
+                          alt="up-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                  </div>
+                  {this.state.openCode22 && (
+                    <div className="CodeExample">
+                      <div className="CodeContainer">
+                        <div className="RedCode">
+                          <div className="Indent-0">
+                            void setup() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}
+                            (1,2,3);
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void {this.props.className}(int s){LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        </div>
+                      </div>
+                      <div className="CodeContainer">
+                        <div className="GreenCode">
+                          <div className="Indent-0">
+                            void setup() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}
+                            (1,2,3);
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void {this.props.className}(int s1, int s2, int s3)
+                            {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> println(s1+1);</div>
+                          <div className="Indent-1"> println(s2+1);</div>
+                          <div className="Indent-1"> println(s3+1);</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
@@ -342,7 +543,7 @@ class ParameterMismatch extends React.Component {
             )}
           </div>
           <ResourceFooter />
-          <this.renderRecommender />
+          {/* <this.renderRecommender /> */}
         </div>
       </div>
     );

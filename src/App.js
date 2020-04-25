@@ -32,18 +32,22 @@ function HomePageContent() {
   return (
     <div>
       <div className="Home">
-        <Link to="/">
+        {/* <Link to="/">
           <img src={HomeButton} alt="home-button" width="30" height="30"></img>
-        </Link>
+        </Link> */}
       </div>
 
       <Route exact path="/">
         <div className="AppContent">
           <h4>Lists of compiler errors:</h4>
           <div className="Indent-1">
-            <Link to="/parametermismatch?classname=charAt&classparam=(int)">
-              Parameter Mismatch
-            </Link>
+            <Link to="/parametermismatch0">Parameter Mismatch 0</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/parametermismatch1">Parameter Mismatch 1</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/parametermismatch2">Parameter Mismatch 2</Link>
           </div>
           <div className="Indent-1">
             <Link to="/returnmissing?classname=func&returntype=int">
@@ -54,10 +58,10 @@ function HomePageContent() {
             <Link to="/typemismatch?varname=thing">Type Mismatch</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/typenotfound1">Type Not Found 1</Link>
+            <Link to="/typenotfound">Type Not Found</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/typenotfound2">Type Not Found 2</Link>
+            <Link to="/variablenotfound0">Variable Not Found </Link>
           </div>
           <div className="Indent-1">
             <Link to="/variablenotfound1">Variable Not Found 1</Link>
@@ -73,11 +77,18 @@ function HomePageContent() {
         </div>
       </Route>
 
-      <Route exact path="/parametermismatch">
+      <Route exact path="/parametermismatch0">
         <ParameterMismatch
-          className={query.get("classname") || "charAt"}
-          classParam={query.get("classparam") || "(int)"}
+          className={query.get("classname") || "doSomething"}
         />
+      </Route>
+
+      <Route exact path="/parametermismatch1">
+        <ParameterMismatch className={query.get("classname") || "segment"} />
+      </Route>
+
+      <Route exact path="/parametermismatch2">
+        <ParameterMismatch className={query.get("classname") || "overRect"} />
       </Route>
 
       <Route exact path="/returnmissing">
@@ -87,15 +98,7 @@ function HomePageContent() {
         />
       </Route>
 
-      <Route exact path="/typenotfound1">
-        <TypeNotFound
-          className={query.get("classname") || "ParticleSys"}
-          correctName={query.get("correctname") || "ParticleSystem"}
-          varName={query.get("varname") || "ps"}
-        />
-      </Route>
-
-      <Route exact path="/typenotfound2">
+      <Route exact path="/typenotfound">
         <TypeNotFound
           className={query.get("classname") || "Thing"}
           correctName={query.get("correctname") || "CorrectName"}
@@ -107,7 +110,7 @@ function HomePageContent() {
         <TypeMismatch varName={query.get("varname") || "thing"} />
       </Route>
 
-      <Route exact path="/variablenotfound2">
+      <Route exact path="/variablenotfound0">
         <VariableNotFound
           varName={query.get("varname") || "thing"}
           className={query.get("classname") || "Thing"}
@@ -120,6 +123,14 @@ function HomePageContent() {
           varName={query.get("varname") || "gravity"}
           className={query.get("classname") || "PVector"}
           classparam={query.get("classparam") || "(0,0.2)"}
+        />
+      </Route>
+
+      <Route exact path="/variablenotfound2">
+        <VariableNotFound
+          varName={query.get("varname") || "xCoordirnate"}
+          className={query.get("classname") || "float[num]"}
+          classparam={query.get("classparam") || ""}
         />
       </Route>
 
