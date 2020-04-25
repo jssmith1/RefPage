@@ -32,12 +32,12 @@ function HomePageContent() {
   return (
     <div>
       <div className="Home">
-        <Link to="/">
+        <Link to="/refpage">
           <img src={HomeButton} alt="home-button" width="30" height="30"></img>
         </Link>
       </div>
 
-      <Route exact path="/">
+      <Route exact path="/refpage">
         <div className="AppContent">
           <h4>Lists of compiler errors:</h4>
           <div className="Indent-1">
