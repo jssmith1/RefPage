@@ -202,7 +202,7 @@ class TypeMismatch extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0"> int{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
+                            {this.props.varName}{" "}
                             = 3.14;
                           </div>
                         </div>
@@ -210,7 +210,7 @@ class TypeMismatch extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                         <div className="Indent-0"> float{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
+                            {this.props.varName}{" "}
                             = 3.14;
                           </div>
                         </div>
@@ -263,7 +263,7 @@ class TypeMismatch extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0"> int{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
+                            {this.props.varName}{" "}
                             = 3.14;
                           </div>
                         </div>
@@ -271,7 +271,7 @@ class TypeMismatch extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                         <div className="Indent-0"> int{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
+                            {this.props.varName}{" "}
                             = 3;
                           </div>
                         </div>
@@ -368,24 +368,24 @@ class TypeMismatch extends React.Component {
                       <div className="CodeContainer">
                       <div className="RedCode">
                           <div className="Indent-0"> int{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
+                            {this.props.varName}{" "}
                             = 3;
                           </div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = <p className="InputValue">{this.props.varName}</p>{" "}* 3.14;
+                            {this.props.varName}{" "}
+                            = {this.props.varName}{" "}* 3.14;
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                         <div className="Indent-0"> float{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
+                            {this.props.varName}{" "}
                             = 3;
                           </div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>{" "}
-                            = <p className="InputValue">{this.props.varName}</p>{" "}* 3.14;
+                            {this.props.varName}{" "}
+                            = {this.props.varName}{" "}* 3.14;
                           </div>
                         </div>
                       </div>
@@ -478,11 +478,11 @@ class TypeMismatch extends React.Component {
                         <div className="RedCode">
                             <div className="Indent-0">int pi() {LEFT_CURLY}</div>
                           <div className="Indent-1">float{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
+                            {this.props.varName}{" "}
                             = 3.14;
                           </div>
                           <div className="Indent-1">return{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
+                            {this.props.varName};
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
@@ -491,11 +491,11 @@ class TypeMismatch extends React.Component {
                         <div className="GreenCode">
                         <div className="Indent-0">float pi() {LEFT_CURLY}</div>
                           <div className="Indent-1">float{" "}
-                            <p className="InputValue">{this.props.varName}</p>{" "}
+                            {this.props.varName}{" "}
                             = 3.14;
                           </div>
                           <div className="Indent-1">return{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
+                            {this.props.varName};
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>

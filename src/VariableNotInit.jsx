@@ -196,12 +196,10 @@ class VariableNotInit extends React.Component {
                         <div className="RedCode">
                           <div className="Indent-0">
                             {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
+                            int {this.props.varName};
                           </div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>
-                            ++;
+                            {this.props.varName} = {this.props.varName} + 1;
                           </div>
                         </div>
                       </div>
@@ -209,13 +207,10 @@ class VariableNotInit extends React.Component {
                         <div className="GreenCode">
                           <div className="Indent-0">
                             {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p> =
-                            3;
+                            int {this.props.varName} = 3;
                           </div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>
-                            ++;
+                            {this.props.varName} = {this.props.varName} + 1;
                           </div>
                         </div>
                       </div>
@@ -269,12 +264,10 @@ class VariableNotInit extends React.Component {
                         <div className="RedCode">
                           <div className="Indent-0">
                             {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
+                            int {this.props.varName};
                           </div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>
-                            ++;
+                            {this.props.varName} = {this.props.varName} + 1;
                           </div>
                         </div>
                       </div>
@@ -282,16 +275,13 @@ class VariableNotInit extends React.Component {
                         <div className="GreenCode">
                           <div className="Indent-0">
                             {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
+                            int {this.props.varName};
                           </div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p> =
-                            3;
+                            {this.props.varName} = 3;
                           </div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p>
-                            ++;
+                            {this.props.varName} = {this.props.varName} + 1;
                           </div>
                         </div>
                       </div>
@@ -391,8 +381,7 @@ class VariableNotInit extends React.Component {
                         <div className="RedCode">
                           <div className="Indent-0">
                             {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
+                            int {this.props.varName};
                           </div>
                           <div className="Indent-0"> int cond = 0;</div>
                           <div className="Indent-0">
@@ -400,14 +389,11 @@ class VariableNotInit extends React.Component {
                             if (cond == 0) {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            <p className="InputValue">{this.props.varName}</p> =
-                            3;
+                            {this.props.varName} = 3;
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            <p className="InputValue">{this.props.varName}</p> ={" "}
-                            <p className="InputValue">{this.props.varName}</p> +
-                            1;
+                            {this.props.varName} = {this.props.varName} + 1;
                           </div>
                         </div>
                       </div>
@@ -415,8 +401,7 @@ class VariableNotInit extends React.Component {
                         <div className="GreenCode">
                           <div className="Indent-0">
                             {" "}
-                            int{" "}
-                            <p className="InputValue">{this.props.varName}</p>;
+                            int {this.props.varName};
                           </div>
                           <div className="Indent-0"> int cond = 0;</div>
                           <div className="Indent-0">
@@ -424,13 +409,10 @@ class VariableNotInit extends React.Component {
                             if (cond == 0) {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            <p className="InputValue">{this.props.varName}</p> =
-                            3;
+                            {this.props.varName} = 3;
                           </div>
                           <div className="Indent-1">
-                            <p className="InputValue">{this.props.varName}</p> ={" "}
-                            <p className="InputValue">{this.props.varName}</p> +
-                            1;
+                            {this.props.varName} = {this.props.varName} + 1;
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>

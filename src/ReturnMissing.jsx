@@ -186,9 +186,7 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            public int{" "}
-                            <p className="InputValue">{this.props.className}</p>
-                            () {LEFT_CURLY}
+                            public int {this.props.className}() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int zero = 0;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
@@ -197,8 +195,7 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            public int{" "}
-                            <p className="InputValue">{this.props.className}</p>
+                            public int {this.props.className}
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int zero = 0;</div>
@@ -304,8 +301,7 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                           int{" "}
-                            <p className="InputValue">{this.props.className}</p>
+                            int {this.props.className}
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
@@ -316,8 +312,7 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            int{" "}
-                            <p className="InputValue">{this.props.className}</p>
+                            int {this.props.className}
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
@@ -328,8 +323,7 @@ class ReturnMissing extends React.Component {
 
                         <div className="GreenCode">
                           <div className="Indent-0">
-                           int{" "}
-                            <p className="InputValue">{this.props.className}</p>
+                            int {this.props.className}
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>

@@ -12,7 +12,6 @@ import VariableNotFound from "./VariableNotFound";
 import TypeMismatch from "./TypeMismatch";
 import VariableNotInit from "./VariableNotInit";
 import ParameterMismatch from "./ParameterMismatch";
-import Home from "./Home";
 import HomeButton from "./assets/home.svg";
 
 export default function App() {
@@ -38,20 +37,36 @@ function HomePageContent() {
         </Link>
       </div>
       <Route exact path="/">
-        <Home id={query.get("id") || "01"} />
+        <div className="AppContent">
+          <div className="Indent-1">
+            <Link to="/parametermismatch0">Parameter Mismatch</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/returnmissing?classname=func&returntype=int">
+              Return Statement Missing
+            </Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/typemismatch?varname=thing">Type Mismatch</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/typenotfound">Type Not Found</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/variablenotfound0">Variable Not Found </Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/variablenotinit?varname=thing">
+              Variable Not Initialized
+            </Link>
+          </div>
+        </div>
       </Route>
+
       <Route exact path="/parametermismatch0">
         <ParameterMismatch
           className={query.get("classname") || "doSomething"}
         />
-      </Route>
-
-      <Route exact path="/parametermismatch1">
-        <ParameterMismatch className={query.get("classname") || "segment"} />
-      </Route>
-
-      <Route exact path="/parametermismatch2">
-        <ParameterMismatch className={query.get("classname") || "overRect"} />
       </Route>
 
       <Route exact path="/returnmissing">
@@ -73,27 +88,11 @@ function HomePageContent() {
         <TypeMismatch varName={query.get("varname") || "thing"} />
       </Route>
 
-      <Route exact path="/variablenotfound0">
+      <Route exact path="/variablenotfound">
         <VariableNotFound
           varName={query.get("varname") || "thing"}
           className={query.get("classname") || "Thing"}
           classparam={query.get("classparam") || "()"}
-        />
-      </Route>
-
-      <Route exact path="/variablenotfound1">
-        <VariableNotFound
-          varName={query.get("varname") || "gravity"}
-          className={query.get("classname") || "PVector"}
-          classparam={query.get("classparam") || "(0,0.2)"}
-        />
-      </Route>
-
-      <Route exact path="/variablenotfound2">
-        <VariableNotFound
-          varName={query.get("varname") || "xCoordirnate"}
-          className={query.get("classname") || "float[num]"}
-          classparam={query.get("classparam") || ""}
         />
       </Route>
 
