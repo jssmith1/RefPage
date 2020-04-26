@@ -5,15 +5,15 @@ URL: http://refpage-processing-excel.surge.sh/
 
 1. Install surge using npm <br />
 ```npm install -g surge```  <br />
-2. Build out your react application
+2. Build out your react application <br />
 ```cd refpage ``` <br />
 ```npm run build``` <br />
-3. Navigate to build folder
+3. Navigate to build folder <br />
 ```cd build``` <br/>
-4. Run surge
+4. Run surge <br />
 ```surge``` <br/>
-5. Follow surge prompts, make sure to replace surge automatically generated domain with our domain: 
-```refpage-processing-excel.surge.sh```
+5. Follow surge prompts, make sure to replace surge automatically generated domain with our domain: <br />
+```refpage-processing-excel.surge.sh``` <br />
 
 ## Setup Dev Environment on Windows:
 1. Install [chocolatey](https://chocolatey.org/install) package manager (via nodejs download or install separately)
