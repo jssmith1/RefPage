@@ -24,6 +24,9 @@ const RIGHT_CURLY = "}";
 class VariableNotFound extends React.Component {
   constructor(props) {
     super(props);
+    this.openStrategyTile = this.openStrategyTile.bind(this);
+    this.openCodeExample = this.openCodeExample.bind(this);
+    this.changeChecked = this.changeChecked.bind(this);
     this.state = {
       openStrategy1: false,
       openStrategy2: false,

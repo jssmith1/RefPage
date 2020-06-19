@@ -12,6 +12,7 @@ import VariableNotFound from "./VariableNotFound";
 import TypeMismatch from "./TypeMismatch";
 import VariableNotInit from "./VariableNotInit";
 import ParameterMismatch from "./ParameterMismatch";
+import MethodNotFound from "./MethodNotFound";
 import HomeButton from "./assets/home.svg";
 
 export default function App() {
@@ -39,6 +40,9 @@ function HomePageContent() {
       <Route exact path="/">
         <div className="AppContent">
           <div className="Indent-1">
+            <Link to="/methodnotfound">Method Not Found</Link>
+          </div>
+          <div className="Indent-1">
             <Link to="/parametermismatch0">Parameter Mismatch</Link>
           </div>
           <div className="Indent-1">
@@ -53,7 +57,7 @@ function HomePageContent() {
             <Link to="/typenotfound">Type Not Found</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/variablenotfound0">Variable Not Found </Link>
+            <Link to="/variablenotfound">Variable Not Found </Link>
           </div>
           <div className="Indent-1">
             <Link to="/variablenotinit?varname=thing">
@@ -61,6 +65,14 @@ function HomePageContent() {
             </Link>
           </div>
         </div>
+      </Route>
+
+      <Route exact path="/methodnotfound">
+        <MethodNotFound
+          varName={query.get("varname") || "method"}
+          className={query.get("classname") || "thing"}
+          classparam={query.get("classparam") || "()"}
+        />
       </Route>
 
       <Route exact path="/parametermismatch0">
