@@ -46,7 +46,7 @@ function HomePageContent() {
             <Link to="/parametermismatch0">Parameter Mismatch</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/returnmissing?classname=func&returntype=int">
+            <Link to="/returnmissing?classname=doSomething&returntype=int">
               Return Statement Missing
             </Link>
           </div>
@@ -71,19 +71,19 @@ function HomePageContent() {
         <MethodNotFound
           varName={query.get("varname") || "method"}
           className={query.get("classname") || "thing"}
-          classparam={query.get("classparam") || "()"}
         />
       </Route>
 
       <Route exact path="/parametermismatch0">
         <ParameterMismatch
           className={query.get("classname") || "doSomething"}
+          varName={query.get("varname") || "String"}
         />
       </Route>
 
       <Route exact path="/returnmissing">
         <ReturnMissing
-          className={query.get("classname") || "func"}
+          className={query.get("classname") || "doSomething"}
           returnType={query.get("classparam") || "int"}
         />
       </Route>
@@ -97,7 +97,11 @@ function HomePageContent() {
       </Route>
 
       <Route exact path="/typemismatch">
-        <TypeMismatch varName={query.get("varname") || "thing"} />
+        <TypeMismatch 
+          varName={query.get("varname") || "thing"} 
+          fromName={query.get("fromname") || "float"}
+          toName={query.get("toname") || "int"}
+        />
       </Route>
 
       <Route exact path="/variablenotfound">
@@ -109,7 +113,9 @@ function HomePageContent() {
       </Route>
 
       <Route exact path="/variablenotinit">
-        <VariableNotInit varName={query.get("varname") || "thing"} />
+        <VariableNotInit 
+          varName={query.get("varname") || "thing"} 
+        />
       </Route>
     </div>
   );

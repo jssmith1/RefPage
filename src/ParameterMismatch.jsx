@@ -116,21 +116,17 @@ class ParameterMismatch extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              The function “
+              The method “
               <div className="InputValue">{this.props.className}()</div>”
-              expects parameters like: "
-              <div className="InputValue">
-                {this.props.className}
-                (int)
-              </div>
-              ”
+              in the type sketch_200621a is not applicable for the 
+              arguments <div className="InputValue">({this.props.varName}) </div>
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: You are trying to use the function “
-              <div className="InputValue">{this.props.className}</div>” but
+              Translation: You are trying to use the method “
+              <div className="InputValue">{this.props.className}()</div>” but
               using some incorrect forms of parameters.
             </i>
           </h4>
@@ -142,12 +138,8 @@ class ParameterMismatch extends React.Component {
                   1: You may have used the wrong type of parameters instead of
                   expected type (int)
                 </h4>
-                <div>
-                  Hint: Is the parameter of your function{" "}
-                  <p className="InputValue">{this.props.varName}</p> of type{" "}
-                  (int)?
-                </div>
               </div>
+
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
                   <img
@@ -159,6 +151,7 @@ class ParameterMismatch extends React.Component {
                   ></img>
                 </div>
               )}
+
               {this.state.openStrategy1 && (
                 <div className="ButtonHolder">
                   <img
@@ -170,14 +163,11 @@ class ParameterMismatch extends React.Component {
                   ></img>
                 </div>
               )}
-            </div>
 
+            </div>
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                <p>
-                  {" "}
-                  <i>Tick the box once you have tried the suggestion</i>
-                </p>
+                <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(11)}
@@ -343,12 +333,9 @@ class ParameterMismatch extends React.Component {
           <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
-                <h4>2: You may have used the wrong number of parameters</h4>
-                <div>
-                  Hint: Do you use the matching number of parameters required
-                  for the function{" "}
-                  <p className="InputValue">{this.props.className}</p>?
-                </div>
+                <h4>2: You may have used the wrong number of parameters for the function{" "}
+                <p className="InputValue">{this.props.className}()</p>
+                </h4>
               </div>
               {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
@@ -375,9 +362,7 @@ class ParameterMismatch extends React.Component {
             </div>
             {this.state.openStrategy2 && (
               <div className="StrategyContainer">
-                <p>
-                  <i>Tick the box once you have tried the suggestion</i>
-                </p>
+                <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(21)}

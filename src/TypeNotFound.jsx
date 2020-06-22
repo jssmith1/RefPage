@@ -127,10 +127,6 @@ class TypeNotFound extends React.Component {
                   1: You may have mistyped class name{" "}
                   <div className="InputValue">{this.props.className}</div>{" "}
                 </h4>
-                <div>
-                  Hint: Is <p className="InputValue">{this.props.className}</p>{" "}
-                  the exact class name that you have defined?
-                </div>
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -158,10 +154,7 @@ class TypeNotFound extends React.Component {
 
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                <p>
-                  {" "}
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(11)}
@@ -246,10 +239,6 @@ class TypeNotFound extends React.Component {
                   2: You may have forgotten to create class{" "}
                   <div className="InputValue">{this.props.className}</div>{" "}
                 </h4>
-                <div>
-                  Hint: Is <p className="InputValue">{this.props.className}</p>{" "}
-                  the name of the non-builtin class that you forgot to create?
-                </div>
               </div>
               {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
@@ -276,9 +265,7 @@ class TypeNotFound extends React.Component {
             </div>
             {this.state.openStrategy2 && (
               <div className="StrategyContainer">
-                <p>
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(21)}
@@ -345,6 +332,7 @@ class TypeNotFound extends React.Component {
                           <div className="Indent-1">
                             {this.props.className}() {LEFT_CURLY}
                           </div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-1">{RIGHT_CURLY}</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
@@ -429,6 +417,7 @@ class TypeNotFound extends React.Component {
                           <div className="Indent-1">
                             {this.props.className}() {LEFT_CURLY}
                           </div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-1">{RIGHT_CURLY}</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
@@ -448,10 +437,6 @@ class TypeNotFound extends React.Component {
                   <div className="InputValue">{this.props.className}</div> from
                   a built-in library
                 </h4>
-                <div>
-                  Hint: Is <p className="InputValue">{this.props.className}</p>{" "}
-                  a built-in class?
-                </div>
               </div>
               {!this.state.openStrategy3 && (
                 <div className="ButtonHolder">
@@ -478,9 +463,7 @@ class TypeNotFound extends React.Component {
             </div>
             {this.state.openStrategy3 && (
               <div className="StrategyContainer">
-                <p>
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(31)}

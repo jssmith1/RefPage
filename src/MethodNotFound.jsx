@@ -97,14 +97,8 @@ class MethodNotFound extends React.Component {
                 <h4>
                   1: You may have used a{" "}
                   <div className="InputValue">{this.props.varName}()</div>{" "}
-                  that doesn’t work with primitive types: boolean, byte, char, short, int, long, float and double
+                  that can't be applied to primitive types: boolean, byte, char, short, int, long, float and double
                 </h4>
-                <div>
-                  Hint: Did you use{" "}
-                  <p className="InputValue">{this.props.varName}()</p>, 
-                  which can’t be applied to primitive data types?
-                </div>
-
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -129,13 +123,9 @@ class MethodNotFound extends React.Component {
                 </div>
               )}
             </div>
-
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                <p>
-                  {" "}
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(11)}

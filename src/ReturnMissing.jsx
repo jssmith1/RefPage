@@ -105,10 +105,6 @@ class ReturnMissing extends React.Component {
                   1: You may have forgotten the return statement for the method{" "}
                   <p className="InputValue">{this.props.className}</p>
                 </h4>
-                <div>
-                  Hint: Do you have the return statement at the end of the
-                  method <p className="InputValue">{this.props.className}</p>?
-                </div>
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -136,10 +132,7 @@ class ReturnMissing extends React.Component {
 
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                <p>
-                  {" "}
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(11)}
@@ -218,13 +211,6 @@ class ReturnMissing extends React.Component {
                   of the method{" "}
                   <p className="InputValue">{this.props.className}</p>
                 </h4>
-                <div>
-                  Hint: Does your method{" "}
-                  <p className="InputValue">{this.props.className}</p> return a
-                  value of type{" "}
-                  <p className="InputValue">{this.props.returnType}</p> in all
-                  cases?
-                </div>
               </div>
               {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
@@ -251,9 +237,7 @@ class ReturnMissing extends React.Component {
             </div>
             {this.state.openStrategy2 && (
               <div className="StrategyContainer">
-                <p>
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(21)}

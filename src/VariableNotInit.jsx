@@ -103,7 +103,7 @@ class VariableNotInit extends React.Component {
             <i>
               Translation: You are trying to use the variable{" "}
               <div className="InputValue">{this.props.varName}</div> before
-              properly giving it a value.
+              giving it a value.
             </i>
           </h4>
 
@@ -115,10 +115,6 @@ class VariableNotInit extends React.Component {
                   <div className="InputValue">{this.props.varName}</div> and
                   used it before giving it a value
                 </h4>
-                <div>
-                  Hint: Did you assign a value to{" "}
-                  <p className="InputValue">{this.props.varName}</p> ?
-                </div>
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -146,10 +142,7 @@ class VariableNotInit extends React.Component {
 
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                <p>
-                  {" "}
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(11)}
@@ -300,11 +293,6 @@ class VariableNotInit extends React.Component {
                   <div className="InputValue">{this.props.varName}</div> and
                   used it in different scopes
                 </h4>
-                <div>
-                  Hint: You remembered to assign a value to{" "}
-                  <div className="InputValue">{this.props.varName}</div> but
-                  still got this error.
-                </div>
               </div>
               {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
@@ -331,9 +319,7 @@ class VariableNotInit extends React.Component {
             </div>
             {this.state.openStrategy2 && (
               <div className="StrategyContainer">
-                <p>
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(21)}

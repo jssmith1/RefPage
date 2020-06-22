@@ -106,14 +106,15 @@ class TypeMismatch extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              Cannot convert from float to int
+              Cannot convert from <div className="InputValue">{this.props.fromName}</div>{" "} 
+              to <div className="InputValue">{this.props.toName}</div>
             </h2>
           </div>
 
           <h4>
             <i>
               Translation: You are trying to use the variable{" "}
-              <div className="InputValue">{this.props.varName}</div> of type int but using it as a float-type variable.
+              <div className="InputValue">{this.props.varName}</div> of type <div className="InputValue">{this.props.toName}</div> but using it as a <div className="InputValue">{this.props.fromName}</div>-type variable.
             </i>
           </h4>
 
@@ -121,12 +122,10 @@ class TypeMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have assigned a float value to variable{" "}
-                  <div className="InputValue">{this.props.varName}</div>{" "}of type int
+                  1: You may have assigned a <div className="InputValue">{this.props.fromName}</div> value to variable{" "}
+                  <div className="InputValue">{this.props.varName}</div>{" "}of type <div className="InputValue">{this.props.toName}</div>. 
+                  Do you want <p className="InputValue">{this.props.varName}</p> to be a <div className="InputValue">{this.props.fromName}</div> type or <div className="InputValue">{this.props.toName}</div> type?
                 </h4>
-                <div>
-                  Hint: Do you want <p className="InputValue">{this.props.varName}</p> to be a float type or int type?
-                </div>
               </div>
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
@@ -154,10 +153,7 @@ class TypeMismatch extends React.Component {
 
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                <p>
-                  {" "}
-                  <i>Tick the box once you have tried the suggestion</i>
-                </p>
+                <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(11)}
@@ -171,7 +167,7 @@ class TypeMismatch extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Change variable declaration of{" "}
-                        <p className="InputValue">{this.props.varName}</p> to type float
+                        <p className="InputValue">{this.props.varName}</p> to type <div className="InputValue">{this.props.fromName}</div>
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -232,7 +228,7 @@ class TypeMismatch extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 2: Change value of{" "}
-                        <p className="InputValue">{this.props.varName}</p> to an int value
+                        <p className="InputValue">{this.props.varName}</p> to an <div className="InputValue">{this.props.toName}</div> value
                       </div>
                     </div>
                     {!this.state.openCode12 && (
@@ -279,7 +275,6 @@ class TypeMismatch extends React.Component {
                     </div>
                   )}
                 </div>
- 
               </div>
             )}
           </div>
@@ -288,13 +283,9 @@ class TypeMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
-                  2: You may have used int-type variable{" "}
-                  <div className="InputValue">{this.props.varName}</div>{" "} in an operation involving float type
+                  2: You may have used <div className="InputValue">{this.props.toName}</div>-type variable{" "}
+                  <div className="InputValue">{this.props.varName}</div>{" "} in an operation involving <div className="InputValue">{this.props.fromName}</div> type
                 </h4>
-                <div>
-                  Hint: Even if <div className="InputValue">{this.props.varName}</div>{" "}has a int value, you need to declare it of float type
-                  to use it in a float operation.
-                </div>
               </div>
               {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
@@ -321,9 +312,7 @@ class TypeMismatch extends React.Component {
             </div>
             {this.state.openStrategy2 && (
               <div className="StrategyContainer">
-                <p>
                   <i>Tick the box once you have tried the suggestion</i>
-                </p>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(21)}
@@ -336,8 +325,8 @@ class TypeMismatch extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change variable declatation of{" "}
-                        <p className="InputValue">{this.props.varName}</p> to type float
+                        Suggestion 1: Even though <div className="InputValue">{this.props.varName}</div>{" "}has a <div className="InputValue">{this.props.toName}</div> value, 
+                        you need to declare it as a <div className="InputValue">{this.props.fromName}</div> type to use it in a <div className="InputValue">{this.props.fromName}</div> operation.
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -400,11 +389,8 @@ class TypeMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
               <div className="ErrorMessage">
                 <h4>
-                  3: You may have returned a float value in a method that expects to return an int value
+                  3: You may have returned a <div className="InputValue">{this.props.fromName}</div> value in a method that expects to return an <div className="InputValue">{this.props.toName}</div> value
                 </h4>
-                <div>
-                  Hint: Did the actual return value match the expected return type?
-                </div>
               </div>
               {!this.state.openStrategy3 && (
                 <div className="ButtonHolder">
@@ -431,9 +417,7 @@ class TypeMismatch extends React.Component {
             </div>
             {this.state.openStrategy3 && (
               <div className="StrategyContainer">
-                <p>
-                  <i>Tick the box once you have tried the suggestion</i>
-                </p>
+                <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(31)}
@@ -446,7 +430,7 @@ class TypeMismatch extends React.Component {
                         onChange={() => this.changeChecked(31)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change method expected return type to float type
+                        Suggestion 1: Change the method's expected return type to <div className="InputValue">{this.props.fromName}</div> type
                       </div>
                     </div>
                     {!this.state.openCode31 && (
