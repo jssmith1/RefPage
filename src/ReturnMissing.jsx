@@ -92,7 +92,8 @@ class ReturnMissing extends React.Component {
           <h4>
             <i>
               Translation: You did not return a value of type{" "}
-              <div className="InputValue">{this.props.returnType}</div> like the
+              <div className="InputValue">{
+                this.props.returnType}</div> like the
               definition of method{" "}
               <div className="InputValue">{this.props.className}</div>.
             </i>
@@ -132,7 +133,7 @@ class ReturnMissing extends React.Component {
 
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                  <i>Tick the box once you have tried the suggestion</i>
+                <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(11)}
@@ -237,7 +238,7 @@ class ReturnMissing extends React.Component {
             </div>
             {this.state.openStrategy2 && (
               <div className="StrategyContainer">
-                  <i>Tick the box once you have tried the suggestion</i>
+                <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(21)}
@@ -289,7 +290,7 @@ class ReturnMissing extends React.Component {
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
-                          <div className="Indent-1"> if (a > 1) return a;</div>
+                          <div className="Indent-1"> if (a {">"} 1) return a;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -300,7 +301,7 @@ class ReturnMissing extends React.Component {
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
-                          <div className="Indent-1"> if (a > 1) return a;</div>
+                          <div className="Indent-1"> if (a {">"} 1) return a;</div>
                           <div className="Indent-1"> return a;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
@@ -313,7 +314,7 @@ class ReturnMissing extends React.Component {
                           <div className="Indent-1"> int a = 0;</div>
                           <div className="Indent-1">
                             {" "}
-                            if (a > 1) {LEFT_CURLY}
+                            if (a {">"} 1) {LEFT_CURLY}
                           </div>
                           <div className="Indent-2"> return a;</div>
                           <div className="Indent-1">
