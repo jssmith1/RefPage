@@ -106,15 +106,15 @@ class TypeMismatch extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              Cannot convert from <div className="InputValue">{this.props.fromName}</div>{" "} 
-              to <div className="InputValue">{this.props.toName}</div>
+              Cannot convert from <div className="InputValue">{this.props.typeOneName}</div>{" "} 
+              to <div className="InputValue">{this.props.c}</div>
             </h2>
           </div>
 
           <h4>
             <i>
               Translation: You are trying to use the variable{" "}
-              <div className="InputValue">{this.props.varName}</div> of type <div className="InputValue">{this.props.toName}</div> but using it as a <div className="InputValue">{this.props.fromName}</div>-type variable.
+              <div className="InputValue">{this.props.varName}</div> of type <div className="InputValue">{this.props.typeTwoName}</div> but using it as a <div className="InputValue">{this.props.typeOneName}</div>-type variable.
             </i>
           </h4>
 
@@ -122,9 +122,9 @@ class TypeMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have assigned a <div className="InputValue">{this.props.fromName}</div> value to variable{" "}
-                  <div className="InputValue">{this.props.varName}</div>{" "}of type <div className="InputValue">{this.props.toName}</div>. 
-                  Do you want <p className="InputValue">{this.props.varName}</p> to be a <div className="InputValue">{this.props.fromName}</div> type or <div className="InputValue">{this.props.toName}</div> type?
+                  1: You may have assigned a <div className="InputValue">{this.props.typeOneName}</div> value to variable{" "}
+                  <div className="InputValue">{this.props.varName}</div>{" "}of type <div className="InputValue">{this.props.typeTwoName}</div>. 
+                  Do you want <p className="InputValue">{this.props.varName}</p> to be a <div className="InputValue">{this.props.typeOneName}</div> type or <div className="InputValue">{this.props.typeTwoName}</div> type?
                 </h4>
               </div>
               {!this.state.openStrategy1 && (
@@ -167,7 +167,7 @@ class TypeMismatch extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Change variable declaration of{" "}
-                        <p className="InputValue">{this.props.varName}</p> to type <div className="InputValue">{this.props.fromName}</div>
+                        <p className="InputValue">{this.props.varName}</p> to type <div className="InputValue">{this.props.typeOneName}</div>
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -228,7 +228,7 @@ class TypeMismatch extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 2: Change value of{" "}
-                        <p className="InputValue">{this.props.varName}</p> to an <div className="InputValue">{this.props.toName}</div> value
+                        <p className="InputValue">{this.props.varName}</p> to an <div className="InputValue">{this.props.typeTwoName}</div> value
                       </div>
                     </div>
                     {!this.state.openCode12 && (
@@ -283,8 +283,8 @@ class TypeMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
-                  2: You may have used <div className="InputValue">{this.props.toName}</div>-type variable{" "}
-                  <div className="InputValue">{this.props.varName}</div>{" "} in an operation involving <div className="InputValue">{this.props.fromName}</div> type
+                  2: You may have used <div className="InputValue">{this.props.typeTwoName}</div>-type variable{" "}
+                  <div className="InputValue">{this.props.varName}</div>{" "} in an operation involving <div className="InputValue">{this.props.typeOneName}</div> type
                 </h4>
               </div>
               {!this.state.openStrategy2 && (
@@ -325,8 +325,8 @@ class TypeMismatch extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Even though <div className="InputValue">{this.props.varName}</div>{" "}has a <div className="InputValue">{this.props.toName}</div> value, 
-                        you need to declare it as a <div className="InputValue">{this.props.fromName}</div> type to use it in a <div className="InputValue">{this.props.fromName}</div> operation.
+                        Suggestion 1: Even though <div className="InputValue">{this.props.varName}</div>{" "}has a <div className="InputValue">{this.props.typeTwoName}</div> value, 
+                        you need to declare it as a <div className="InputValue">{this.props.typeOneName}</div> type to use it in a <div className="InputValue">{this.props.typeOneName}</div> operation.
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -389,7 +389,7 @@ class TypeMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
               <div className="ErrorMessage">
                 <h4>
-                  3: You may have returned a <div className="InputValue">{this.props.fromName}</div> value in a method that expects to return an <div className="InputValue">{this.props.toName}</div> value
+                  3: You may have returned a <div className="InputValue">{this.props.typeOneName}</div> value in a method that expects to return an <div className="InputValue">{this.props.typeTwoName}</div> value
                 </h4>
               </div>
               {!this.state.openStrategy3 && (
@@ -430,7 +430,7 @@ class TypeMismatch extends React.Component {
                         onChange={() => this.changeChecked(31)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change the method's expected return type to <div className="InputValue">{this.props.fromName}</div> type
+                        Suggestion 1: Change the method's expected return type to <div className="InputValue">{this.props.typeOneName}</div> type
                       </div>
                     </div>
                     {!this.state.openCode31 && (

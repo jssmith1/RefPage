@@ -207,22 +207,19 @@ class TypeNotFound extends React.Component {
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}{" "}
+                        <div className="Indent-0">
+                            class {this.props.correctClassName} {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            {this.props.correctName} {this.props.varName} = new{" "}
-                            {this.props.correctName}();{" "}
+                            {this.props.correctClassName}() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            class {this.props.correctName} {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.correctName}() {LEFT_CURLY}
-                          </div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-1">{RIGHT_CURLY}</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            {this.props.correctClassName} {this.props.varName} = new{" "}
+                            {this.props.correctClassName}();{" "}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -318,15 +315,7 @@ class TypeNotFound extends React.Component {
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}{" "}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.className} {this.props.varName} = new{" "}
-                            {this.props.className}();{" "}
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
+                        <div className="Indent-0">
                             class {this.props.className} {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
@@ -335,6 +324,10 @@ class TypeNotFound extends React.Component {
                           <div className="Indent-1">...</div>
                           <div className="Indent-1">{RIGHT_CURLY}</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            {this.props.className} {this.props.varName} = new{" "}
+                            {this.props.className}();{" "}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -401,13 +394,9 @@ class TypeNotFound extends React.Component {
                             {this.props.className};{" "}
                           </div>
                           <div className="Indent-0">
-                            void setup() {LEFT_CURLY}{" "}
-                          </div>
-                          <div className="Indent-1">
                             {this.props.className} {this.props.varName} = new{" "}
                             {this.props.className}();{" "}
                           </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                         <p>FileB.java</p>
                         <div className="GreenCode">
@@ -522,14 +511,10 @@ class TypeNotFound extends React.Component {
                             {this.props.className};{" "}
                           </div>
                           <div className="Indent-0">
-                            void setup() {LEFT_CURLY}{" "}
-                          </div>
-                          <div className="Indent-1">
                             {this.props.className} {this.props.varName} = new{" "}
                             {this.props.className}
                             ();{" "}
                           </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>

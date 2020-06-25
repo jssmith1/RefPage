@@ -40,56 +40,58 @@ function HomePageContent() {
       <Route exact path="/">
         <div className="AppContent">
           <div className="Indent-1">
-            <Link to="/methodnotfound">Method Not Found</Link>
+            <Link to="/methodnotfound?classname=Thing&methodname=doSomething&typeonename=primitive&typetwoname=int">Method Not Found</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/parametermismatch">Parameter Mismatch</Link>
+            <Link to="/parametermismatch?methodname=doSomething&typeonename=String&typetwoname=int">Parameter Mismatch</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/returnmissing">Return Statement Missing</Link>
+            <Link to="/returnmissing?methodname=doSomething&typename=int">Return Statement Missing</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/typemismatch">Type Mismatch</Link>
+            <Link to="/typemismatch?typeonename=float&typetwoname=int&varname=thing">Type Mismatch</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/typenotfound">Type Not Found</Link>
+            <Link to="/typenotfound?classname=Thing&correctclassname=CorrectName&varname=thing">Type Not Found</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/variablenotfound">Variable Not Found </Link>
+            <Link to="/variablenotfound?classname=Thing&varname=thing">Variable Not Found </Link>
           </div>
           <div className="Indent-1">
-            <Link to="/variablenotinit">Variable Not Initialized</Link>
+            <Link to="/variablenotinit?varname=thing">Variable Not Initialized</Link>
           </div>
         </div>
       </Route>
 
       <Route exact path="/methodnotfound">
         <MethodNotFound
-          varName={query.get("varname") || "method"}
+          methodName={query.get("methodname") || "doSomething"}
           className={query.get("classname") || "Thing"}
-          thingName={query.get("thingname") || "thing"}
-          typeName={query.get("typename") || "primitive"}
+          varName={query.get("varname") || "thing"}
+          typeOneName={query.get("typeonename") || "primitive"}
+          typeTwoName={query.get("typetwoname") || "int"}
         />
       </Route>
 
       <Route exact path="/parametermismatch">
         <ParameterMismatch
-          className={query.get("classname") || "doSomething"}
-          varName={query.get("varname") || "String"}
+          methodName={query.get("methodname") || "doSomething"}
+          typeOneName={query.get("typeonename") || "String"}
+          typeTwoName={query.get("typetwoname") || "int"}
         />
       </Route>
 
       <Route exact path="/returnmissing">
         <ReturnMissing
-          className={query.get("classname") || "doSomething"}
-          returnType={query.get("classparam") || "int"}
+          methodName={query.get("methodname") || "doSomething"}
+          typeName={query.get("typename") || "int"}
         />
       </Route>
 
       <Route exact path="/typenotfound">
         <TypeNotFound
           className={query.get("classname") || "Thing"}
-          correctName={query.get("correctname") || "CorrectName"}
+          correctClassName={query.get("correctclassname") || "CorrectName"}
           varName={query.get("varname") || "thing"}
         />
       </Route>
@@ -97,8 +99,8 @@ function HomePageContent() {
       <Route exact path="/typemismatch">
         <TypeMismatch
           varName={query.get("varname") || "thing"}
-          fromName={query.get("fromname") || "float"}
-          toName={query.get("toname") || "int"}
+          typeOneName={query.get("typeonename") || "float"}
+          typeTwoName={query.get("typetwoname") || "int"}
         />
       </Route>
 
@@ -106,7 +108,6 @@ function HomePageContent() {
         <VariableNotFound
           varName={query.get("varname") || "thing"}
           className={query.get("classname") || "Thing"}
-          classparam={query.get("classparam") || "()"}
         />
       </Route>
 

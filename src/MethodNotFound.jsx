@@ -97,15 +97,18 @@ class MethodNotFound extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              Cannot invoke <div className="InputValue">{this.props.varName}()</div>{" "} 
-              on <div className="InputValue">{this.props.typeName}</div> type <div className="InputValue">{this.props.thingName}</div>
+              Cannot invoke <div className="InputValue">{this.props.methodName}()</div>{" "} 
+              on <div className="InputValue">{this.props.typeOneName}</div> type <div className="InputValue">{this.props.typeTwoName}</div>
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: You are trying to use a non-<div className="InputValue">{this.props.typeName}</div>{" "}
-              <div className="InputValue">{this.props.varName}()</div> on <div className="InputValue">{this.props.typeName}</div> type of data <div className="InputValue">{this.props.thingName}</div>
+              Translation: You are trying to use a method{" "}
+              <div className="InputValue">{this.props.methodName}()</div> on <div className="InputValue">{this.props.typeOneName}</div> {" "}
+              type of data <div className="InputValue">{this.props.typeTwoName}</div>. Methods can't be applied to{" "}
+              <div className="InputValue">{this.props.typeOneName}</div> types, which include{" "}
+                  boolean, byte, char, short, int, long, float and double.
             </i>
           </h4>
 
@@ -113,9 +116,8 @@ class MethodNotFound extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have used a <div className="InputValue">{this.props.varName}()</div> {" "}
-                  that can't be applied to <div className="InputValue">{this.props.typeName}</div> types: 
-                  boolean, byte, char, short, int, long, float and double
+                  1: You may have used an existing method <div className="InputValue">{this.props.methodName}()</div> {" "}
+                  on a <div className="InputValue">{this.props.typeOneName}</div> type <div className="InputValue">{this.props.typeTwoName}</div>
                 </h4>
               </div>
               {!this.state.openStrategy1 && (
@@ -158,7 +160,7 @@ class MethodNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Change the variable you are using {" "}
-                        <p className="InputValue">{this.props.varName}()</p> on.
+                        <p className="InputValue">{this.props.methodName}()</p> on.
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -189,20 +191,20 @@ class MethodNotFound extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0"> String{" "}
-                            {this.props.thingName}{" "}
-                            = "{this.props.thingName}";{" "}
-                            <div className="Indent-0"> int s1 = 5; </div>
-                            <div className="Indent-0"> int s2 = s1.{this.props.varName}(); </div>
+                            {this.props.varName}{" "}
+                            = "{this.props.varName}";{" "}
+                            <div className="Indent-0"> {this.props.typeTwoName} s1 = 5; </div>
+                            <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}(); </div>
                           </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                         <div className="Indent-0"> String{" "}
-                            {this.props.thingName}{" "}
-                            = "{this.props.thingName}";{" "}
-                            <div className="Indent-0"> int s1 = 5; </div>
-                            <div className="Indent-0"> int s2 = thing.{this.props.varName}(); </div>
+                            {this.props.varName}{" "}
+                            = "{this.props.varName}";{" "}
+                            <div className="Indent-0"> {this.props.typeTwoName} s1 = 5; </div>
+                            <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.varName}.{this.props.methodName}(); </div>
                           </div>
                         </div>
                       </div>
@@ -217,10 +219,9 @@ class MethodNotFound extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
                 <h4>
-                  2: You may have used a <div className="InputValue">{this.props.varName}()</div> of class {" "}
+                  2: You may have used the method <div className="InputValue">{this.props.methodName}()</div> of class {" "}
                   <div className="InputValue">{this.props.className}</div> {" "}
-                  on <div className="InputValue">{this.props.typeName}</div> types: 
-                  boolean, byte, char, short, int, long, float and double
+                  that you created, on <div className="InputValue">{this.props.typeOneName}</div> type <div className="InputValue">{this.props.typeTwoName}</div>
                 </h4>
               </div>
               {!this.state.openStrategy2 && (
@@ -262,7 +263,7 @@ class MethodNotFound extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Create a <div className="InputValue">{this.props.className}</div> {" "}
-                        object and call <div className="InputValue">{this.props.varName}()</div> on it.
+                        object and call <div className="InputValue">{this.props.methodName}()</div> on it.
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -298,14 +299,14 @@ class MethodNotFound extends React.Component {
                               <div className="Indent-1"> {"}"} </div>
                               </div>
                             <div className="Indent-0"> </div>
-                            <div className="Indent-1"> int {this.props.varName}(){"{"} 
+                            <div className="Indent-1"> {this.props.typeTwoName} {this.props.methodName}(){"{"} 
                               <div className="Indent-2"> ... </div>
                               <div className="Indent-1"> {"}"} </div>
                               </div>
                             <div className="Indent-0"> {"}"} </div>
                           </div>
-                          <div className="Indent-0">int s1 = 5;</div>
-                          <div className="Indent-0">int s2 = s1.{this.props.varName}();</div>
+                          <div className="Indent-0">{this.props.typeTwoName} s1 = 5;</div>
+                          <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
@@ -316,18 +317,18 @@ class MethodNotFound extends React.Component {
                               <div className="Indent-1"> {"}"} </div>
                               </div>
                             <div className="Indent-0"> </div>
-                            <div className="Indent-1"> int {this.props.varName}(){"{"} 
+                            <div className="Indent-1"> {this.props.typeTwoName} {this.props.methodName}(){"{"} 
                               <div className="Indent-2"> ... </div>
                               <div className="Indent-1"> {"}"} </div>
                               </div>
                             <div className="Indent-0"> {"}"} </div>
                           </div>
                           <div className="Indent-0">
-                            {this.props.className} {this.props.thingName} = {" "} 
+                            {this.props.className} {this.props.varName} = {" "} 
                             new {this.props.className}();
                             </div>
-                          <div className="Indent-0">int s1 = 5;</div>
-                          <div className="Indent-0">int s2 = {this.props.thingName}.{this.props.varName}();</div>
+                          <div className="Indent-0">{this.props.typeTwoName} s1 = 5;</div>
+                          <div className="Indent-0">{this.props.typeTwoName} s2 = {this.props.varName}.{this.props.methodName}();</div>
                         </div>
                       </div>
                     </div>
@@ -341,8 +342,10 @@ class MethodNotFound extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
               <div className="ErrorMessage">
                 <h4>
-                  3: You may have tried to use a <div className="InputValue">{this.props.varName}()</div> {" "}
-                  ,that you created, on a variable.
+                  3: You may have tried to use the method <div className="InputValue">{this.props.methodName}()</div> {" "}
+                  that you created globally, on <div className="InputValue">{this.props.typeOneName}</div> type <div className="InputValue">{this.props.typeTwoName}</div>{" "}
+                  (Global methods are made outside setup() and draw(),{" "}
+                  and can be accessed anywhere in the code)
                 </h4>
               </div>
               {!this.state.openStrategy3 && (
@@ -383,7 +386,7 @@ class MethodNotFound extends React.Component {
                         onChange={() => this.changeChecked(31)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Use the <div className="InputValue">{this.props.varName}()</div> by itself, and assign it to a proper type variable.
+                        Suggestion 1: Use <div className="InputValue">{this.props.methodName}()</div> by itself, and assign it to a proper type variable.
                       </div>
                     </div>
                     {!this.state.openCode31 && (
@@ -413,20 +416,20 @@ class MethodNotFound extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> int s1 = 6; </div> 
-                          <div className="Indent-0"> int {this.props.varName}() {LEFT_CURLY}</div>  
+                          <div className="Indent-0"> {this.props.typeTwoName} s1 = 6; </div> 
+                          <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>  
                           <div className="Indent-1"> return s1*s1;</div>
                           <div className="Indent-0"> {RIGHT_CURLY} </div>
-                          <div className="Indent-0"> int s2 = s1.{this.props.varName}();</div>
+                          <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0"> int s1 = 6; </div> 
-                          <div className="Indent-0"> int {this.props.varName}() {LEFT_CURLY}</div>  
+                        <div className="Indent-0"> {this.props.typeTwoName} s1 = 6; </div> 
+                          <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>  
                           <div className="Indent-1"> return s1*s1;</div>
                           <div className="Indent-0"> {RIGHT_CURLY} </div>
-                          <div className="Indent-0"> int s2 = {this.props.varName}();</div>
+                          <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.methodName}();</div>
                         </div>
                       </div>
                     </div>

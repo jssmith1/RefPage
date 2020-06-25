@@ -85,7 +85,7 @@ class ReturnMissing extends React.Component {
           <div className="Title">
             <h2>
               This method must return a result of type{" "}
-              <div className="InputValue">{this.props.returnType}</div>
+              <div className="InputValue">{this.props.typeName}</div>
             </h2>
           </div>
 
@@ -93,9 +93,9 @@ class ReturnMissing extends React.Component {
             <i>
               Translation: You did not return a value of type{" "}
               <div className="InputValue">{
-                this.props.returnType}</div> like the
+                this.props.typeName}</div> like the
               definition of method{" "}
-              <div className="InputValue">{this.props.className}</div>.
+              <div className="InputValue">{this.props.methodName}()</div>.
             </i>
           </h4>
 
@@ -104,7 +104,7 @@ class ReturnMissing extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   1: You may have forgotten the return statement for the method{" "}
-                  <p className="InputValue">{this.props.className}</p>
+                  <p className="InputValue">{this.props.methodName}()</p>
                 </h4>
               </div>
               {!this.state.openStrategy1 && (
@@ -147,9 +147,9 @@ class ReturnMissing extends React.Component {
                       />
                       <div className="Suggestion">
                         Suggestion 1: Add a return statement of type{" "}
-                        <p className="InputValue">{this.props.returnType}</p> at
+                        <p className="InputValue">{this.props.typeName}</p> at
                         the end of the method{" "}
-                        <p className="InputValue">{this.props.className}</p>
+                        <p className="InputValue">{this.props.methodName}()</p>
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -180,7 +180,7 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            public int {this.props.className}() {LEFT_CURLY}
+                            public int {this.props.methodName}() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int zero = 0;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
@@ -189,7 +189,7 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            public int {this.props.className}
+                            public int {this.props.methodName}
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int zero = 0;</div>
@@ -210,7 +210,7 @@ class ReturnMissing extends React.Component {
                 <h4>
                   2: You may have missed the return statement in some branches
                   of the method{" "}
-                  <p className="InputValue">{this.props.className}</p>
+                  <p className="InputValue">{this.props.methodName}()</p>
                 </h4>
               </div>
               {!this.state.openStrategy2 && (
@@ -253,9 +253,9 @@ class ReturnMissing extends React.Component {
                       <div className="Suggestion">
                         Suggestion 1: Make sure all branches of conditionals in
                         method{" "}
-                        <p className="InputValue">{this.props.className}</p>{" "}
+                        <p className="InputValue">{this.props.methodName}()</p>{" "}
                         return value of type{" "}
-                        <p className="InputValue">{this.props.returnType}</p>
+                        <p className="InputValue">{this.props.typeName}</p>
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -286,7 +286,7 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            int {this.props.className}
+                            int {this.props.methodName}
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
@@ -297,7 +297,7 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            int {this.props.className}
+                            int {this.props.methodName}
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
@@ -308,7 +308,7 @@ class ReturnMissing extends React.Component {
 
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            int {this.props.className}
+                            int {this.props.methodName}
                             () {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> int a = 0;</div>
