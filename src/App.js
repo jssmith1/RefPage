@@ -12,6 +12,7 @@ import VariableNotFound from "./VariableNotFound";
 import TypeMismatch from "./TypeMismatch";
 import VariableNotInit from "./VariableNotInit";
 import ParameterMismatch from "./ParameterMismatch";
+import MethodCallOnWrongType from "./MethodCallOnWrongType";
 import MethodNotFound from "./MethodNotFound";
 import HomeButton from "./assets/home.svg";
 
@@ -40,7 +41,10 @@ function HomePageContent() {
       <Route exact path="/">
         <div className="AppContent">
           <div className="Indent-1">
-            <Link to="/methodnotfound?classname=Thing&methodname=doSomething&typeonename=primitive&typetwoname=int">Method Not Found</Link>
+            <Link to="/methodcallonwrongtype?classname=Thing&methodname=doSomething&typeonename=primitive&typetwoname=int">Method Call On Wrong Type</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/methodnotfound">Method Not Found</Link>
           </div>
           <div className="Indent-1">
             <Link to="/parametermismatch?methodname=doSomething&typeonename=String&typetwoname=int">Parameter Mismatch</Link>
@@ -63,13 +67,23 @@ function HomePageContent() {
         </div>
       </Route>
 
-      <Route exact path="/methodnotfound">
-        <MethodNotFound
+      <Route exact path="/methodcallonwrongtype">
+        <MethodCallOnWrongType
           methodName={query.get("methodname") || "doSomething"}
           className={query.get("classname") || "Thing"}
           varName={query.get("varname") || "thing"}
           typeOneName={query.get("typeonename") || "primitive"}
           typeTwoName={query.get("typetwoname") || "int"}
+        />
+      </Route>
+
+      <Route exact path="/methodnotfound">
+        <MethodNotFound
+          methodName={query.get("methodname") || "doSomething"}
+          correctMethodName={query.get("correctmethodname") || "correctName"}
+          className={query.get("classname") || "Thing"}
+          varName={query.get("varname") || "thing"}
+          typeName={query.get("typename") || "int"}
         />
       </Route>
 
