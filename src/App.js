@@ -44,7 +44,7 @@ function HomePageContent() {
             <Link to="/methodcallonwrongtype?classname=Thing&methodname=doSomething&typeonename=primitive&typetwoname=int">Method Call On Wrong Type</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/methodnotfound">Method Not Found</Link>
+            <Link to="/methodnotfound?classname=Thing&methodname=doSomething&correctmethodname=correctName&typename=int&varname=thing">Method Not Found</Link>
           </div>
           <div className="Indent-1">
             <Link to="/parametermismatch?methodname=doSomething&typeonename=String&typetwoname=int">Parameter Mismatch</Link>
