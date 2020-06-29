@@ -122,9 +122,9 @@ class MethodNotFound extends React.Component {
 
                     <h4>
                         <i>
-                            Translation: You are trying to use a method, {" "}
+                            Translation: You are trying to use a function, {" "}
                             <div className="InputValue">{this.props.methodName}()</div>, which Processing{" "}
-                             does not recognize.
+                             does not recognize. ("method" and "function" is used interchangeably here)
                         </i>
                     </h4>
 
@@ -132,7 +132,7 @@ class MethodNotFound extends React.Component {
                         <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
                             <div className="ErrorMessage">
                                 <h4>
-                                    1: You may have mistyped method name{" "}
+                                    1: You may have mistyped the name of function{" "}
                                     <div className="InputValue">{this.props.methodName}()</div>{" "}
                                 </h4>
                             </div>

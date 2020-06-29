@@ -22,7 +22,7 @@ const BlueCheckbox = withStyles({
 
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";
-class ParameterMismatch extends React.Component {
+class IncorrectMethodDeclaration extends React.Component {
   constructor(props) {
     super(props);
     this.openStrategyTile = this.openStrategyTile.bind(this);
@@ -103,18 +103,14 @@ class ParameterMismatch extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              The method “
-              <div className="InputValue">{this.props.methodName}()</div>”
-              in the type <div className="InputValue">{this.props.typeOneName}</div> is not applicable for the 
-              arguments <div className="InputValue">({this.props.typeTwoName}) </div>
+                It looks like you're mixing "active" and "static" modes.
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: You are trying to use the method “
-              <div className="InputValue">{this.props.methodName}()</div>” but
-              with the incorrect parameters.
+              Translation: In Processing, "active" mode uses the setup() and draw() calls and keeps running. The "static" mode includes calls
+              on both existing and user-made functions.
             </i>
           </h4>
 
@@ -122,8 +118,8 @@ class ParameterMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have used the wrong type of parameter for
-                  the method <div className="InputValue">{this.props.methodName}()</div>
+                  1: You may have forgotten to add the return type "void" before setup() {" "}
+                  or draw()
                 </h4>
               </div>
 
@@ -167,9 +163,7 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(11)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change the parameter of{" "}
-                        <p className="InputValue">{this.props.methodName}()</p> to
-                        the expected type
+                        Suggestion 1: Add the return type "void" before setup()
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -200,17 +194,18 @@ class ParameterMismatch extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
+                            setup() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            {this.props.methodName}
-                            ("2");
+                            {this.props.setupMethodName}(1000, 1000);
+                            <div className="Indent-1">...</div>
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -246,9 +241,7 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(12)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Change the parameter of{" "}
-                        <p className="InputValue">{this.props.methodName}()</p> in
-                        the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}()</p>
+                        Suggestion 2:  Add the return type "void" before draw()
                       </div>
                     </div>
                     {!this.state.openCode12 && (
@@ -279,17 +272,18 @@ class ParameterMismatch extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
+                           void setup() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            {this.props.methodName}
-                            ("2");
+                            {this.props.setupMethodName}(1000, 1000);
+                            <div className="Indent-1">...</div>
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
+                            draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -300,11 +294,11 @@ class ParameterMismatch extends React.Component {
                           </div>
                           <div className="Indent-1">
                             {this.props.methodName}
-                            ("2");
+                            (2);
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}({this.props.typeTwoName} s){LEFT_CURLY}
+                            void {this.props.methodName}(int s){LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> println(s+1);</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
@@ -320,8 +314,7 @@ class ParameterMismatch extends React.Component {
           <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
-                <h4>2: You may have used the wrong number of parameters for the method{" "}
-                <p className="InputValue">{this.props.methodName}()</p>
+                <h4>2: You may have called on a function outside the setup() or draw() scope
                 </h4>
               </div>
               {!this.state.openStrategy2 && (
@@ -362,9 +355,7 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change the number of parameters of{" "}
-                        <p className="InputValue">{this.props.methodName}()</p> to
-                        the expected amount
+                        Suggestion 1: Use the setup() function inside setup()
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -392,37 +383,35 @@ class ParameterMismatch extends React.Component {
                   </div>
                   {this.state.openCode21 && (
                     <div className="CodeExample">
-                      <div className="CodeContainer">
+                     <div className="CodeContainer">
                         <div className="RedCode">
+                        <div className="Indent-0"> {this.props.setupMethodName}(1000, 1000);  </div>
                           <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
+                            setup() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("1", "2" , "3");
-                          </div>
+                            <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
+                            setup() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            (2);
-                          </div>
+                          <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
+                            <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -441,9 +430,7 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(22)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Change the number of parameters in the {" "}
-                        <p className="InputValue">{this.props.methodName}()</p> method
-                        declaration
+                        Suggestion 2: Use the draw() function inside draw()
                       </div>
                     </div>
                     {!this.state.openCode22 && (
@@ -474,37 +461,32 @@ class ParameterMismatch extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
+                            setup() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("1", "2", "3");
-                          </div>
+                          <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
+                            <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
+                            setup() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("1", "2", "3");
-                          </div>
+                          <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
+                            <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}({this.props.typeTwoName} s1, {this.props.typeTwoName} s2, {this.props.typeTwoName} s3)
-                            {LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> println(s1+1);</div>
-                          <div className="Indent-1"> println(s2+1);</div>
-                          <div className="Indent-1"> println(s3+1);</div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -521,4 +503,4 @@ class ParameterMismatch extends React.Component {
   }
 }
 
-export default ParameterMismatch;
+export default IncorrectMethodDeclaration;

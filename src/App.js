@@ -14,6 +14,7 @@ import VariableNotInit from "./VariableNotInit";
 import ParameterMismatch from "./ParameterMismatch";
 import MethodCallOnWrongType from "./MethodCallOnWrongType";
 import MethodNotFound from "./MethodNotFound";
+import IncorrectMethodDeclaration from "./IncorrectMethodDeclaration";
 import HomeButton from "./assets/home.svg";
 
 export default function App() {
@@ -40,6 +41,9 @@ function HomePageContent() {
       </div>
       <Route exact path="/">
         <div className="AppContent">
+        <div className="Indent-1">
+            <Link to="/incorrectmethoddeclaration?setupmethodname=size&drawmethodname=rect">Incorrect Method Declaration</Link>
+          </div>
           <div className="Indent-1">
             <Link to="/methodcallonwrongtype?classname=Thing&methodname=doSomething&typeonename=primitive&typetwoname=int">Method Call On Wrong Type</Link>
           </div>
@@ -47,7 +51,7 @@ function HomePageContent() {
             <Link to="/methodnotfound?classname=Thing&methodname=doSomething&correctmethodname=correctName&typename=int&varname=thing">Method Not Found</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/parametermismatch?methodname=doSomething&typeonename=String&typetwoname=int">Parameter Mismatch</Link>
+            <Link to="/parametermismatch?methodname=doSomething&typeonename=sketch_200621a&typetwoname=String">Parameter Mismatch</Link>
           </div>
           <div className="Indent-1">
             <Link to="/returnmissing?methodname=doSomething&typename=int">Return Statement Missing</Link>
@@ -65,6 +69,13 @@ function HomePageContent() {
             <Link to="/variablenotinit?varname=thing">Variable Not Initialized</Link>
           </div>
         </div>
+      </Route>
+
+      <Route exact path="/incorrectmethoddeclaration">
+        <IncorrectMethodDeclaration
+          setupMethodName={query.get("setupmethodname") || "size"}
+          drawMethodName={query.get("drawmethodname") || "rect"}
+        />
       </Route>
 
       <Route exact path="/methodcallonwrongtype">
@@ -90,8 +101,8 @@ function HomePageContent() {
       <Route exact path="/parametermismatch">
         <ParameterMismatch
           methodName={query.get("methodname") || "doSomething"}
-          typeOneName={query.get("typeonename") || "String"}
-          typeTwoName={query.get("typetwoname") || "int"}
+          typeOneName={query.get("typeonename") || "sketch_200621a"}
+          typeTwoName={query.get("typetwoname") || "String"}
         />
       </Route>
 
