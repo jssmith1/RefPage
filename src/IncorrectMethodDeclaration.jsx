@@ -8,8 +8,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
 
-import { Link } from "react-router-dom";
-
 const BlueCheckbox = withStyles({
   root: {
     color: blue[400],
@@ -387,7 +385,7 @@ class IncorrectMethodDeclaration extends React.Component {
                         <div className="RedCode">
                         <div className="Indent-0"> {this.props.setupMethodName}(1000, 1000);  </div>
                           <div className="Indent-0">
-                            setup() {LEFT_CURLY}
+                           void setup() {LEFT_CURLY}
                           </div>
                             <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
@@ -402,7 +400,7 @@ class IncorrectMethodDeclaration extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            setup() {LEFT_CURLY}
+                           void setup() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
                             <div className="Indent-1">...</div>
@@ -461,7 +459,7 @@ class IncorrectMethodDeclaration extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            setup() {LEFT_CURLY}
+                           void setup() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
                             <div className="Indent-1">...</div>
@@ -477,7 +475,7 @@ class IncorrectMethodDeclaration extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            setup() {LEFT_CURLY}
+                           void setup() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
                             <div className="Indent-1">...</div>

@@ -8,8 +8,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
 
-import { Link } from "react-router-dom";
-
 const BlueCheckbox = withStyles({
   root: {
     color: blue[400],
