@@ -180,20 +180,20 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            public int {this.props.methodName}() {LEFT_CURLY}
+                            public {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int zero = 0;</div>
+                          <div className="Indent-1"> {this.props.typeName} s = 5;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            public int {this.props.methodName}
-                            () {LEFT_CURLY}
+                            public {this.props.typeName} {this.props.methodName}
+                            ({this.props.typeName} s) {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int zero = 0;</div>
-                          <div className="Indent-1"> return x;</div>
+                          <div className="Indent-1"> {this.props.typeName} s = 5;</div>
+                          <div className="Indent-1"> return s;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -286,42 +286,39 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            int {this.props.methodName}
-                            () {LEFT_CURLY}
+                            {this.props.typeName} {this.props.methodName}
+                            ({this.props.typeName} s) {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int a = 0;</div>
-                          <div className="Indent-1"> if (a {">"} 1) return a;</div>
+                          <div className="Indent-1"> if (s {">="} 0) return s;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            int {this.props.methodName}
-                            () {LEFT_CURLY}
+                            {this.props.typeName} {this.props.methodName}
+                            ({this.props.typeName} s) {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int a = 0;</div>
-                          <div className="Indent-1"> if (a {">"} 1) return a;</div>
-                          <div className="Indent-1"> return a;</div>
+                          <div className="Indent-1"> if (s {">="} 0) return s;</div>
+                          <div className="Indent-1"> return -s;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
 
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            int {this.props.methodName}
+                            {this.props.typeName} {this.props.methodName}
                             () {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> int a = 0;</div>
                           <div className="Indent-1">
                             {" "}
-                            if (a {">"} 1) {LEFT_CURLY}
+                            if (s {">="} 0) {LEFT_CURLY}
                           </div>
-                          <div className="Indent-2"> return a;</div>
+                          <div className="Indent-2"> return s;</div>
                           <div className="Indent-1">
                             {" "}
                             {RIGHT_CURLY} else {LEFT_CURLY}
                           </div>
-                          <div className="Indent-2"> return b;</div>
+                          <div className="Indent-2"> return -s;</div>
                           <div className="Indent-1"> {RIGHT_CURLY}</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>

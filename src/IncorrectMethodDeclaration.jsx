@@ -209,18 +209,19 @@ class IncorrectMethodDeclaration extends React.Component {
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
+                        <div className="Indent-0">
+                           void setup() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            {this.props.methodName}
-                            (2);
+                            {this.props.setupMethodName}(1000, 1000);
+                            <div className="Indent-1">...</div>
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -287,18 +288,19 @@ class IncorrectMethodDeclaration extends React.Component {
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
+                        <div className="Indent-0">
+                           void setup() {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            {this.props.methodName}
-                            (2);
+                            {this.props.setupMethodName}(1000, 1000);
+                            <div className="Indent-1">...</div>
                           </div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
+                           void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> println(s+1);</div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -353,7 +355,7 @@ class IncorrectMethodDeclaration extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Use the setup() function inside setup()
+                        Suggestion 1: Use the <div className="InputValue">{this.props.setupMethodName}()</div> function inside setup()
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -389,12 +391,6 @@ class IncorrectMethodDeclaration extends React.Component {
                           </div>
                             <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void draw(){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
-                          <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
@@ -404,12 +400,6 @@ class IncorrectMethodDeclaration extends React.Component {
                           </div>
                           <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
                             <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void draw(){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
-                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -428,7 +418,7 @@ class IncorrectMethodDeclaration extends React.Component {
                         onChange={() => this.changeChecked(22)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Use the draw() function inside draw()
+                        Suggestion 2: Use the <div className="InputValue">{this.props.drawMethodName}()</div> function inside draw()
                       </div>
                     </div>
                     {!this.state.openCode22 && (
@@ -459,12 +449,6 @@ class IncorrectMethodDeclaration extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                           void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
-                            <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
                             void draw(){LEFT_CURLY}
                           </div>
                           <div className="Indent-1">...</div>
@@ -474,12 +458,6 @@ class IncorrectMethodDeclaration extends React.Component {
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                           void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
-                            <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
                             void draw(){LEFT_CURLY}
                           </div>
