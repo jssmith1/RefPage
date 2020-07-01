@@ -15,6 +15,7 @@ import ParameterMismatch from "./ParameterMismatch";
 import MethodCallOnWrongType from "./MethodCallOnWrongType";
 import MethodNotFound from "./MethodNotFound";
 import IncorrectMethodDeclaration from "./IncorrectMethodDeclaration";
+import IncorrectVariableDeclaration from "./IncorrectVariableDeclaration";
 import HomeButton from "./assets/home.svg";
 
 export default function App() {
@@ -41,6 +42,9 @@ function HomePageContent() {
       </div>
       <Route exact path="/">
         <div className="AppContent">
+        <div className="Indent-1">
+            <Link to="/incorrectvariabledeclaration?typename=int&foundname=thing">Incorrect Variable Declaration</Link>
+          </div>
         <div className="Indent-1">
             <Link to="/incorrectmethoddeclaration?setupmethodname=size&drawmethodname=rect">Incorrect Method Declaration</Link>
           </div>
@@ -69,6 +73,13 @@ function HomePageContent() {
             <Link to="/variablenotinit?varname=thing">Variable Not Initialized</Link>
           </div>
         </div>
+      </Route>
+
+      <Route exact path="/incorrectvariabledeclaration">
+        <IncorrectVariableDeclaration
+          typeName={query.get("typename") || "int"}
+          foundName={query.get("foundname") || "thing"}
+        />
       </Route>
 
       <Route exact path="/incorrectmethoddeclaration">
