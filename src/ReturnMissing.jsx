@@ -192,7 +192,7 @@ class ReturnMissing extends React.Component {
                             public {this.props.typeName} {this.props.methodName}
                             ({this.props.typeName} s) {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> {this.props.typeName} s = 5;</div>
+                          <div className="Indent-1"> {this.props.typeName} s = s + 1;</div>
                           <div className="Indent-1"> return s;</div>
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
