@@ -16,6 +16,12 @@ import MethodCallOnWrongType from "./MethodCallOnWrongType";
 import MethodNotFound from "./MethodNotFound";
 import IncorrectMethodDeclaration from "./IncorrectMethodDeclaration";
 import IncorrectVariableDeclaration from "./IncorrectVariableDeclaration";
+import IncorrectDimensionExpression1 from "./IncorrectDimensionExpression1";
+import IncorrectDimensionExpression2 from "./IncorrectDimensionExpression2";
+import IncorrectDimensionExpression3 from "./IncorrectDimensionExpression3";
+import SyntaxErrorVariableDeclarators from "./SyntaxErrorVariableDeclarators";
+import UnexpectedToken from "./UnexpectedToken";
+import ExtraneousClosingCurlyBrace from "./ExtraneousClosingCurlyBrace";
 import HomeButton from "./assets/home.svg";
 
 export default function App() {
@@ -43,6 +49,18 @@ function HomePageContent() {
       <Route exact path="/">
         <div className="AppContent">
         <div className="Indent-1">
+            <Link to="/extraneousclosingcurlybrace?classname=Thing&methodname=doSomething">Extraneous Closing Curly Brace</Link>
+          </div>
+        <div className="Indent-1">
+            <Link to="/incorrectdimensionexpression1?typename=int">Incorrect Dimension Expression 1</Link>
+          </div>
+        <div className="Indent-1">
+            <Link to="/incorrectdimensionexpression2?typename=int">Incorrect Dimension Expression 2</Link>
+          </div>
+        <div className="Indent-1">
+            <Link to="/incorrectdimensionexpression3?typename=int">Incorrect Dimension Expression 3</Link>
+          </div>
+        <div className="Indent-1">
             <Link to="/incorrectvariabledeclaration?typename=int&foundname=thing">Incorrect Variable Declaration</Link>
           </div>
         <div className="Indent-1">
@@ -61,10 +79,16 @@ function HomePageContent() {
             <Link to="/returnmissing?methodname=doSomething&typename=int">Return Statement Missing</Link>
           </div>
           <div className="Indent-1">
+            <Link to="/syntaxerrorvariabledeclarators?methodonename=System.out.println">Syntax Error on "VariableDeclarators"</Link>
+          </div>
+          <div className="Indent-1">
             <Link to="/typemismatch?typeonename=float&typetwoname=int&varname=thing">Type Mismatch</Link>
           </div>
           <div className="Indent-1">
             <Link to="/typenotfound?classname=Thing&correctclassname=CorrectName&varname=thing">Type Not Found</Link>
+          </div>
+          <div className="Indent-1">
+            <Link to="/unexpectedtoken?typeonename=double&typetwoname=int">Unexpected Token</Link>
           </div>
           <div className="Indent-1">
             <Link to="/variablenotfound?classname=Thing&varname=thing">Variable Not Found </Link>
@@ -73,6 +97,31 @@ function HomePageContent() {
             <Link to="/variablenotinit?varname=thing">Variable Not Initialized</Link>
           </div>
         </div>
+      </Route>
+
+      <Route exact path="/extraneousclosingcurlybrace">
+        <ExtraneousClosingCurlyBrace
+          className={query.get("classname") || "Thing"}
+          methodName={query.get("methodname") || "doSomething"}
+        />
+      </Route>
+
+      <Route exact path="/incorrectdimensionexpression1">
+        <IncorrectDimensionExpression1
+          typeName={query.get("typename") || "int"}
+        />
+      </Route>
+
+      <Route exact path="/incorrectdimensionexpression2">
+        <IncorrectDimensionExpression2
+          typeName={query.get("typename") || "int"}
+        />
+      </Route>
+
+      <Route exact path="/incorrectdimensionexpression3">
+        <IncorrectDimensionExpression3
+          typeName={query.get("typename") || "int"}
+        />
       </Route>
 
       <Route exact path="/incorrectvariabledeclaration">
@@ -124,6 +173,12 @@ function HomePageContent() {
         />
       </Route>
 
+      <Route exact path="/syntaxerrorvariabledeclarators">
+        <SyntaxErrorVariableDeclarators
+          methodOneName={query.get("methodonename") || "System.out.println"}
+        />
+      </Route>
+
       <Route exact path="/typenotfound">
         <TypeNotFound
           className={query.get("classname") || "Thing"}
@@ -136,6 +191,13 @@ function HomePageContent() {
         <TypeMismatch
           varName={query.get("varname") || "thing"}
           typeOneName={query.get("typeonename") || "float"}
+          typeTwoName={query.get("typetwoname") || "int"}
+        />
+      </Route>
+
+      <Route exact path="/unexpectedtoken">
+        <UnexpectedToken
+          typeOneName={query.get("typeonename") || "double"}
           typeTwoName={query.get("typetwoname") || "int"}
         />
       </Route>

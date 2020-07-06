@@ -18,9 +18,6 @@ const BlueCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const LEFT_CURLY = "{";
-const RIGHT_CURLY = "}";
-
 class IncorrectVariableDeclaration extends React.Component {
   constructor(props) {
     super(props);
