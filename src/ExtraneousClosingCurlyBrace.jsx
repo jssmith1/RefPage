@@ -92,6 +92,9 @@ class ExtraneousClosingCurlyBrace extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   1: You may have added an extra closing curly brace at the end of your code
+                  <div className="Indent-0">
+                    (Tip: try using the Auto-Format feature first -{">"} Ctrl + T)
+                    </div>
                 </h4>
               </div>
               {!this.state.openStrategy1 && (
@@ -236,19 +239,17 @@ class ExtraneousClosingCurlyBrace extends React.Component {
                         <div className="RedCode">
                           <div className="Indent-0"> class {this.props.className}{"{"} </div>
                           <div className="Indent-1">  {this.props.className}(){"{"} </div>
-                          <div className="Indent-2">  ... </div>
+                          <div className="Indent-2">  ...; </div>
                           <div className="Indent-1">  {"}"} </div>
-                          <div className="Indent-1">
-                            void {this.props.methodName}() {"{"}
-                            <div className="Indent-2"> if(...) {"{"} </div>
-                            <div className="Indent-3"> for(...) {"{"} </div>
-                            <div className="Indent-4"> ... </div>
-                            <div className="Indent-3"> {"}"} </div>
-                            <div className="Indent-2"> {"}"} </div>
-                            <div className="Indent-1"> {"}"} </div>
-                            <div className="Indent-0"> {"}"} </div>
-                            <div className="Indent-0"> {"}"} </div>
-                          </div>
+                          <div className="Indent-1"> void {this.props.methodName}() {"{"} </div>
+                          <div className="Indent-2"> if(...) {"{"} </div>
+                          <div className="Indent-3"> for(...) {"{"} </div>
+                          <div className="Indent-4"> ...; </div>
+                          <div className="Indent-3"> {"}"} </div>
+                          <div className="Indent-2"> {"}"} </div>
+                          <div className="Indent-1"> {"}"} </div>
+                          <div className="Indent-0"> {"}"} </div>
+                          <div className="Indent-0"> {"}"} </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
@@ -257,17 +258,15 @@ class ExtraneousClosingCurlyBrace extends React.Component {
                           <div className="Indent-1">  {this.props.className}(){"{"} </div>
                           <div className="Indent-2">  ... </div>
                           <div className="Indent-1">  {"}"} </div>
-                          <div className="Indent-1">
-                            void {this.props.methodName}() {"{"}
-                            <div className="Indent-2"> if(...) {"{"} </div>
-                            <div className="Indent-3"> for(...) {"{"} </div>
-                            <div className="Indent-4"> ... </div>
-                            <div className="Indent-3"> {"}"} </div>
-                            <div className="Indent-2"> {"}"} </div>
-                            <div className="Indent-1"> {"}"} </div>
-                            <div className="Indent-0"> {"}"} </div>
-                          </div>
-                        </div>
+                          <div className="Indent-1"> void {this.props.methodName}() {"{"} </div>
+                          <div className="Indent-2"> if(...) {"{"} </div>
+                          <div className="Indent-3"> for(...) {"{"} </div>
+                          <div className="Indent-4"> ... </div>
+                          <div className="Indent-3"> {"}"} </div>
+                          <div className="Indent-2"> {"}"} </div>
+                          <div className="Indent-1"> {"}"} </div>
+                          <div className="Indent-0"> {"}"} </div>
+                       </div>
                       </div>
                     </div>
                   )}

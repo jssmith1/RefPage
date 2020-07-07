@@ -79,7 +79,7 @@ function HomePageContent() {
             <Link to="/returnmissing?methodname=doSomething&typename=int">Return Statement Missing</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/syntaxerrorvariabledeclarators?methodonename=System.out.println">Syntax Error on "VariableDeclarators"</Link>
+            <Link to="/syntaxerrorvariabledeclarators?methodonename=System.out.println&methodtwoname=doSomething&typename=int">Syntax Error on "VariableDeclarators"</Link>
           </div>
           <div className="Indent-1">
             <Link to="/typemismatch?typeonename=float&typetwoname=int&varname=thing">Type Mismatch</Link>
@@ -176,6 +176,8 @@ function HomePageContent() {
       <Route exact path="/syntaxerrorvariabledeclarators">
         <SyntaxErrorVariableDeclarators
           methodOneName={query.get("methodonename") || "System.out.println"}
+          methodTwoName={query.get("methodtwoname") || "doSomething"}
+          typeName={query.get("typename") || "int"}
         />
       </Route>
 
