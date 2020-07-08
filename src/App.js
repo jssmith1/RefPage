@@ -22,6 +22,7 @@ import IncorrectDimensionExpression3 from "./IncorrectDimensionExpression3";
 import SyntaxErrorVariableDeclarators from "./SyntaxErrorVariableDeclarators";
 import UnexpectedToken from "./UnexpectedToken";
 import ExtraneousClosingCurlyBrace from "./ExtraneousClosingCurlyBrace";
+import NonStaticFromStatic from "./NonStaticFromStatic";
 import HomeButton from "./assets/home.svg";
 
 export default function App() {
@@ -91,6 +92,9 @@ function HomePageContent() {
             <Link to="/unexpectedtoken?typeonename=double&typetwoname=int">Unexpected Token</Link>
           </div>
           <div className="Indent-1">
+            <Link to="/nonstaticfromstatic?methodname=doSomething&staticmethodname=mainMethod">Use Of Non-Static From Static Context</Link>
+          </div>
+          <div className="Indent-1">
             <Link to="/variablenotfound?classname=Thing&varname=thing">Variable Not Found </Link>
           </div>
           <div className="Indent-1">
@@ -155,6 +159,13 @@ function HomePageContent() {
           className={query.get("classname") || "Thing"}
           varName={query.get("varname") || "thing"}
           typeName={query.get("typename") || "int"}
+        />
+      </Route>
+
+      <Route exact path="/nonstaticfromstatic">
+        <NonStaticFromStatic
+          methodName={query.get("methodname") || "doSomething"}
+          staticMethodName={query.get("staticmethodname") || "mainMethod"}
         />
       </Route>
 
