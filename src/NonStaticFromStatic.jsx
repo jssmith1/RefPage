@@ -2,7 +2,7 @@ import React from "react";
 import MinusButton from "./assets/minus.svg";
 import PlusButton from "./assets/plus.svg";
 import "./App.css";
-import ResourceFooter from "./ResourceFooter.jsx";
+import NonStaticFromStaticResourceFooter from "./NonStaticFromStaticResourceFooter.jsx";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -257,7 +257,7 @@ class NonStaticFromStatic extends React.Component {
               </div>
             )}
           </div>
-          <ResourceFooter />
+          <NonStaticFromStaticResourceFooter />
         </div>
       </div>
     );

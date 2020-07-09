@@ -309,8 +309,7 @@ class UnexpectedToken extends React.Component {
                         <div className="Indent-0"> {this.props.typeTwoName} s = 5; </div>
                         </div>
                         <div className="GreenCode">
-                        <div className="Indent-0"> </div>
-                        <div className="Indent-0"> </div>
+                        <div className="Indent-0"> <strikethrough> s;</strikethrough> </div>
                         </div>
                       </div>
                     </div>
@@ -416,7 +415,7 @@ class UnexpectedToken extends React.Component {
           <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTile(4)}>
               <div className="ErrorMessage">
-                <h4>4: You may have incorrectly written the parameter of existing functions
+                <h4>4: You may have incorrectly written the parameter of control structures (if-else statement, for-loop, etc...)
                 </h4>
               </div>
               {!this.state.openStrategy4 && (
@@ -457,7 +456,7 @@ class UnexpectedToken extends React.Component {
                         onChange={() => this.changeChecked(41)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change the parameters of the function 
+                        Suggestion 1: Change the parameters of the control structure 
                       </div>
                     </div>
                     {!this.state.openCode41 && (
@@ -517,7 +516,7 @@ class UnexpectedToken extends React.Component {
                         onChange={() => this.changeChecked(42)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Change the function itself 
+                        Suggestion 2: Change the control structure itself 
                       </div>
                     </div>
                     {!this.state.openCode42 && (

@@ -3,6 +3,10 @@ a {
   color: #0d19a3;
 }
 
+strikethrough {
+  text-decoration-line: line-through;
+}
+
 h4 {
   margin: 20px 0px 20px 0px;
 }
