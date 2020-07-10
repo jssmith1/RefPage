@@ -2,7 +2,6 @@ import React from "react";
 import MinusButton from "./assets/minus.svg";
 import PlusButton from "./assets/plus.svg";
 import "./App.css";
-import ResourceFooter from "./ResourceFooter.jsx";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -33,11 +32,13 @@ class MethodNotFound extends React.Component {
             openCode21: false,
             openCode22: false,
             openCode31: false,
+            openCode32: false,
             checked11: false,
             checked12: false,
             checked21: false,
             checked22: false,
             checked31: false,
+            checked32: false,
         };
     }
 
@@ -56,6 +57,7 @@ class MethodNotFound extends React.Component {
             case 3:
                 this.setState({ openStrategy3: !this.state.openStrategy3 });
                 this.setState({ openCode31: false });
+                this.setState({ openCode32: false });
                 break;
             default:
                 break;
@@ -79,6 +81,9 @@ class MethodNotFound extends React.Component {
             case 31:
                 this.setState({ openCode31: !this.state.openCode31 });
                 break;
+            case 32:
+                this.setState({ openCode32: !this.state.openCode32 });
+                break;
             default:
                 break;
         }
@@ -100,6 +105,9 @@ class MethodNotFound extends React.Component {
                 break;
             case 31:
                 this.setState({ checked31: !this.state.checked31 });
+                break;
+            case 32:
+                this.setState({ checked32: !this.state.checked32 });
                 break;
             default:
                 break;
@@ -587,7 +595,6 @@ class MethodNotFound extends React.Component {
                             </div>
                         )}
                     </div>
-                    <ResourceFooter />
                 </div>
             </div>
         );

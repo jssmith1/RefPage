@@ -2,7 +2,6 @@ import React from "react";
 import MinusButton from "./assets/minus.svg";
 import PlusButton from "./assets/plus.svg";
 import "./App.css";
-import ResourceFooter from "./ResourceFooter.jsx";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -107,7 +106,7 @@ class TypeMismatch extends React.Component {
           <div className="Title">
             <h2>
               Cannot convert from <div className="InputValue">{this.props.typeOneName}</div>{" "} 
-              to <div className="InputValue">{this.props.c}</div>
+              to <div className="InputValue">{this.props.typeTwoName}</div>
             </h2>
           </div>
 
@@ -124,7 +123,6 @@ class TypeMismatch extends React.Component {
                 <h4>
                   1: You may have assigned a <div className="InputValue">{this.props.typeOneName}</div> value to variable{" "}
                   <div className="InputValue">{this.props.varName}</div>{" "}of type <div className="InputValue">{this.props.typeTwoName}</div>. 
-                  Do you want <p className="InputValue">{this.props.varName}</p> to be a <div className="InputValue">{this.props.typeOneName}</div> type or <div className="InputValue">{this.props.typeTwoName}</div> type?
                 </h4>
               </div>
               {!this.state.openStrategy1 && (
@@ -197,7 +195,7 @@ class TypeMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> int{" "}
+                          <div className="Indent-0"> {this.props.typeTwoName}{" "}
                             {this.props.varName}{" "}
                             = 3.14;
                           </div>
@@ -258,7 +256,7 @@ class TypeMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> int{" "}
+                          <div className="Indent-0"> {this.props.typeTwoName}{" "}
                             {this.props.varName}{" "}
                             = 3.14;
                           </div>
@@ -266,7 +264,7 @@ class TypeMismatch extends React.Component {
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                        <div className="Indent-0"> int{" "}
+                        <div className="Indent-0"> {this.props.typeTwoName}{" "}
                             {this.props.varName}{" "}
                             = 3;
                           </div>
@@ -356,7 +354,7 @@ class TypeMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                       <div className="RedCode">
-                          <div className="Indent-0"> int{" "}
+                          <div className="Indent-0"> {this.props.typeTwoName} {" "}
                             {this.props.varName}{" "}
                             = 3;
                           </div>
@@ -460,7 +458,7 @@ class TypeMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                            <div className="Indent-0">int pi() {LEFT_CURLY}</div>
+                            <div className="Indent-0">{this.props.typeTwoName} pi() {LEFT_CURLY}</div>
                           <div className="Indent-1">float{" "}
                             {this.props.varName}{" "}
                             = 3.14;
@@ -490,7 +488,6 @@ class TypeMismatch extends React.Component {
               </div>
             )}
           </div>
-          <ResourceFooter />
         </div>
       </div>
     );

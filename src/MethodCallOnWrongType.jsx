@@ -2,7 +2,7 @@ import React from "react";
 import MinusButton from "./assets/minus.svg";
 import PlusButton from "./assets/plus.svg";
 import "./App.css";
-import ResourceFooter from "./ResourceFooter.jsx";
+import MethodCallOnWrongTypeResourceFooter from "./MethodCallOnWrongTypeResourceFooter.jsx";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -438,7 +438,7 @@ class MethodCallOnWrongType extends React.Component {
               </div>
             )}
           </div>
-          <ResourceFooter />
+          <MethodCallOnWrongTypeResourceFooter />
         </div>
       </div>
     );

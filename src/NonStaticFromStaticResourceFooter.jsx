@@ -5,7 +5,7 @@ class NonStaticFromStaticResourceFooter extends React.Component {
   render() {
     return (
         <i>
-        <h4> More information on "static" references</h4>
+        <h4> More information on this</h4>
         <div className="Indent-1">
           <a href="https://processing.org/reference/static.html">
             Processing Reference
