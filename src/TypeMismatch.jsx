@@ -191,27 +191,28 @@ class TypeMismatch extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode11 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeTwoName}{" "}
-                            {this.props.varName}{" "}
-                            = 3.14;
+
+                    {this.state.openCode11 && (
+                      <div className="CodeExample">
+                        <div className="CodeContainer">
+                          <div className="RedCode">
+                            <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                              {this.props.varName}{" "}
+                              = 3.14;
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                        <div className="Indent-0"> float{" "}
-                            {this.props.varName}{" "}
-                            = 3.14;
+                        <div className="CodeContainer">
+                          <div className="GreenCode">
+                          <div className="Indent-0"> float{" "}
+                              {this.props.varName}{" "}
+                              = 3.14;
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                      </div> 
+                    )}        
+                 </div>
                 
                 <div
                   className="StrategyTile"
