@@ -200,12 +200,13 @@ class UnexpectedToken extends React.Component {
                       </div>
                     )}
                   </div>
+
                   {this.state.openCode11 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                          <div className="Indent-0">
-                          {this.props.typeTwoName} s = 5
+                      <div className="CodeExample">
+                       <div className="CodeContainer">
+                          <div className="RedCode">
+                            <div className="Indent-0">
+                            {this.props.typeTwoName} s = 5
                           </div>
                         </div>
                       </div>

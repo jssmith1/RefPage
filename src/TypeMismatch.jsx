@@ -192,26 +192,115 @@ class TypeMismatch extends React.Component {
                     )}
                   </div>
 
-                    {this.state.openCode11 && (
-                      <div className="CodeExample">
-                        <div className="CodeContainer">
-                          <div className="RedCode">
-                            <div className="Indent-0"> {this.props.typeTwoName}{" "}
-                              {this.props.varName}{" "}
-                              = 3.14;
+                    { this.props.typeOneName == 'char' && this.props.typeTwoName == 'String'
+                      ? this.state.openCode11 && (
+                        <div className="CodeExample">
+                          <div className="CodeContainer">
+                            <div className="RedCode">
+                              <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                {this.props.varName}{" "}
+                                = 'something';
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="CodeContainer">
-                          <div className="GreenCode">
-                          <div className="Indent-0"> float{" "}
-                              {this.props.varName}{" "}
-                              = 3.14;
+                          <div className="CodeContainer">
+                            <div className="GreenCode">
+                            <div className="Indent-0"> {this.props.typeOneName} {" "}
+                                {this.props.varName}{" "}
+                                = 'something';
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div> 
-                    )}        
+                        </div> 
+                      )
+                      
+                      : this.props.typeOneName == 'String' && this.props.typeTwoName == 'char'
+                        ? this.state.openCode11 && (
+                          <div className="CodeExample">
+                            <div className="CodeContainer">
+                              <div className="RedCode">
+                                <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                  {this.props.varName}{" "}
+                                  = "something";
+                                </div>
+                              </div>
+                            </div>
+                            <div className="CodeContainer">
+                              <div className="GreenCode">
+                              <div className="Indent-0"> {this.props.typeOneName} {" "}
+                                  {this.props.varName}{" "}
+                                  = "something";
+                                </div>
+                              </div>
+                            </div>
+                          </div> 
+                        )
+
+                        : this.props.typeOneName == 'String' && this.props.typeTwoName == 'float'
+                          ? this.state.openCode11 && (
+                            <div className="CodeExample">
+                              <div className="CodeContainer">
+                                <div className="RedCode">
+                                  <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                    {this.props.varName}{" "}
+                                    = "threepointfourteen";
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="CodeContainer">
+                                <div className="GreenCode">
+                                <div className="Indent-0"> {this.props.typeOneName} {" "}
+                                    {this.props.varName}{" "}
+                                    = "threepointfourteen";
+                                  </div>
+                                </div>
+                              </div>
+                            </div> 
+                          )
+
+                          : this.props.typeOneName == 'String' && this.props.typeTwoName == 'int'
+                            ? this.state.openCode11 && (
+                              <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                      {this.props.varName}{" "}
+                                      = "three";
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> {this.props.typeOneName} {" "}
+                                      {this.props.varName}{" "}
+                                      = "three";
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> 
+                            )
+
+                            : this.state.openCode11 && (
+                              <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                      {this.props.varName}{" "}
+                                      = 3.14;
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> float{" "}
+                                      {this.props.varName}{" "}
+                                      = 3.14;
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> 
+                            )
+                    }        
                  </div>
                 
                 <div
@@ -253,26 +342,116 @@ class TypeMismatch extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode12 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeTwoName}{" "}
-                            {this.props.varName}{" "}
-                            = 3.14;
+
+                  { this.props.typeOneName == 'char' && this.props.typeTwoName == 'String'
+                      ? this.state.openCode12 && (
+                        <div className="CodeExample">
+                          <div className="CodeContainer">
+                            <div className="RedCode">
+                              <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                {this.props.varName}{" "}
+                                = 'something';
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                        <div className="Indent-0"> {this.props.typeTwoName}{" "}
-                            {this.props.varName}{" "}
-                            = 3;
+                          <div className="CodeContainer">
+                            <div className="GreenCode">
+                            <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                {this.props.varName}{" "}
+                                = "something";
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                        </div> 
+                      )
+                      
+                      : this.props.typeOneName == 'String' && this.props.typeTwoName == 'char'
+                        ? this.state.openCode12 && (
+                          <div className="CodeExample">
+                            <div className="CodeContainer">
+                              <div className="RedCode">
+                                <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                  {this.props.varName}{" "}
+                                  = "something";
+                                </div>
+                              </div>
+                            </div>
+                            <div className="CodeContainer">
+                              <div className="GreenCode">
+                              <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                  {this.props.varName}{" "}
+                                  = 'something';
+                                </div>
+                              </div>
+                            </div>
+                          </div> 
+                        )
+
+                        : this.props.typeOneName == 'String' && this.props.typeTwoName == 'float'
+                          ? this.state.openCode12 && (
+                            <div className="CodeExample">
+                              <div className="CodeContainer">
+                                <div className="RedCode">
+                                  <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                    {this.props.varName}{" "}
+                                    = "threepointfourteen";
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="CodeContainer">
+                                <div className="GreenCode">
+                                <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                    {this.props.varName}{" "}
+                                    = 3.14;
+                                  </div>
+                                </div>
+                              </div>
+                            </div> 
+                          )
+
+                          : this.props.typeOneName == 'String' && this.props.typeTwoName == 'int'
+                            ? this.state.openCode12 && (
+                              <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                      {this.props.varName}{" "}
+                                      = "three";
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                      {this.props.varName}{" "}
+                                      = 3;
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> 
+                            )
+
+                            : this.state.openCode12 && (
+                              <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName}{" "}
+                                      {this.props.varName}{" "}
+                                      = 3.14;
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                      {this.props.varName}{" "}
+                                      = 3;
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> 
+                            )
+                    }
                 </div>
               </div>
             )}
@@ -324,8 +503,8 @@ class TypeMismatch extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Even though <div className="InputValue">{this.props.varName}</div>{" "}has a <div className="InputValue">{this.props.typeTwoName}</div> value, 
-                        you need to declare it as a <div className="InputValue">{this.props.typeOneName}</div> type to use it in a <div className="InputValue">{this.props.typeOneName}</div> operation.
+                        Suggestion 1: Change the type of <div className="InputValue">{this.props.varName}</div> {" "}
+                        from <div className="InputValue">{this.props.typeTwoName}</div> to <div className="InputValue">{this.props.typeOneName}</div>
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -351,34 +530,157 @@ class TypeMismatch extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode21 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                      <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeTwoName} {" "}
-                            {this.props.varName}{" "}
-                            = 3;
-                          </div>
-                          <div className="Indent-0">
-                            {this.props.varName}{" "}
-                            = {this.props.varName}{" "}* 3.14;
-                          </div>
-                        </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                        <div className="Indent-0"> float{" "}
-                            {this.props.varName}{" "}
-                            = 3;
-                          </div>
-                          <div className="Indent-0">
-                            {this.props.varName}{" "}
-                            = {this.props.varName}{" "}* 3.14;
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  
+                  { this.props.typeOneName == 'char' && this.props.typeTwoName == 'String'
+                      ? this.state.openCode21 && (
+                        <div className="CodeExample">
+                                <div className="CodeContainer">
+                                <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                      {this.props.varName}{" "}
+                                      = "something";
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "} + "added";
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> float{" "}
+                                      {this.props.varName}{" "}
+                                      = 3;
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "}* 3.14;
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> 
+                      )
+                      
+                      : this.props.typeOneName == 'String' && this.props.typeTwoName == 'char'
+                        ? this.state.openCode21 && (
+                          <div className="CodeExample">
+                                <div className="CodeContainer">
+                                <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                      {this.props.varName}{" "}
+                                      = 3;
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "}* 3.14;
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> float{" "}
+                                      {this.props.varName}{" "}
+                                      = 3;
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "}* 3.14;
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> 
+                        )
+
+                        : this.props.typeOneName == 'String' && this.props.typeTwoName == 'float'
+                          ? this.state.openCode21 && (
+                            <div className="CodeExample">
+                                <div className="CodeContainer">
+                                <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                      {this.props.varName}{" "}
+                                      = 3.14;
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "} + "s";
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> {this.props.typeOneName} {" "}
+                                      {this.props.varName}{" "}
+                                      = "threepointfourteen";
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "} + "s";
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>  
+                          )
+
+                          : this.props.typeOneName == 'String' && this.props.typeTwoName == 'int'
+                            ? this.state.openCode21 && (
+                              <div className="CodeExample">
+                                <div className="CodeContainer">
+                                <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                      {this.props.varName}{" "}
+                                      = 3;
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "} + "s";
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> {this.props.typeOneName} {" "}
+                                      {this.props.varName}{" "}
+                                      = "three";
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "} + "s";
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> 
+                            )
+
+                            : this.state.openCode21 && (
+                              <div className="CodeExample">
+                                <div className="CodeContainer">
+                                <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeTwoName} {" "}
+                                      {this.props.varName}{" "}
+                                      = 3;
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "}* 3.14;
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0"> float{" "}
+                                      {this.props.varName}{" "}
+                                      = 3;
+                                    </div>
+                                    <div className="Indent-0">
+                                      {this.props.varName}{" "}
+                                      = {this.props.varName}{" "}* 3.14;
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                    }
+
                 </div>
               </div>
             )}
@@ -455,36 +757,167 @@ class TypeMismatch extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode31 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                            <div className="Indent-0">{this.props.typeTwoName} pi() {LEFT_CURLY}</div>
-                          <div className="Indent-1">float{" "}
-                            {this.props.varName}{" "}
-                            = 3.14;
-                          </div>
-                          <div className="Indent-1">return{" "}
-                            {this.props.varName};
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                        </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                        <div className="Indent-0">float pi() {LEFT_CURLY}</div>
-                          <div className="Indent-1">float{" "}
-                            {this.props.varName}{" "}
-                            = 3.14;
-                          </div>
-                          <div className="Indent-1">return{" "}
-                            {this.props.varName};
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+
+                  { this.props.typeOneName == 'char' && this.props.typeTwoName == 'String'
+                      ? this.state.openCode31 && (
+                        <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                      <div className="Indent-0">{this.props.typeTwoName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">{this.props.typeOneName}{" "}
+                                      {this.props.varName}{" "}
+                                      = 'thing';
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0">{this.props.typeOneName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">{this.props.typeOneName}{" "}
+                                      {this.props.varName}{" "}
+                                      = 'thing';
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                              </div> 
+                      )
+                      
+                      : this.props.typeOneName == 'String' && this.props.typeTwoName == 'char'
+                        ? this.state.openCode31 && (
+                          <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                      <div className="Indent-0">{this.props.typeTwoName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">{this.props.typeOneName}{" "}
+                                      {this.props.varName}{" "}
+                                      = "thing";
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0">{this.props.typeOneName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">{this.props.typeOneName}{" "}
+                                      {this.props.varName}{" "}
+                                      = "thing";
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                              </div>  
+                        )
+
+                        : this.props.typeOneName == 'String' && this.props.typeTwoName == 'float'
+                          ? this.state.openCode31 && (
+                            <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                      <div className="Indent-0">{this.props.typeTwoName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">{this.props.typeOneName}{" "}
+                                      {this.props.varName}{" "}
+                                      = "threepointfourteen";
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0">{this.props.typeOneName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">{this.props.typeOneName}{" "}
+                                      {this.props.varName}{" "}
+                                      = "threepointfourteen";
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                              </div> 
+                          )
+
+                          : this.props.typeOneName == 'String' && this.props.typeTwoName == 'int'
+                            ? this.state.openCode31 && (
+                              <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                      <div className="Indent-0">{this.props.typeTwoName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">{this.props.typeOneName}{" "}
+                                      {this.props.varName}{" "}
+                                      = "three";
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0">{this.props.typeOneName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">{this.props.typeOneName}{" "}
+                                      {this.props.varName}{" "}
+                                      = "three";
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                              </div> 
+                            )
+
+                            : this.state.openCode31 && (
+                              <div className="CodeExample">
+                                <div className="CodeContainer">
+                                  <div className="RedCode">
+                                      <div className="Indent-0">{this.props.typeTwoName} doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">float{" "}
+                                      {this.props.varName}{" "}
+                                      = 3.14;
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                                <div className="CodeContainer">
+                                  <div className="GreenCode">
+                                  <div className="Indent-0">float doSomething() {LEFT_CURLY}</div>
+                                    <div className="Indent-1">float{" "}
+                                      {this.props.varName}{" "}
+                                      = 3.14;
+                                    </div>
+                                    <div className="Indent-1">return{" "}
+                                      {this.props.varName};
+                                    </div>
+                                    <div className="Indent-0">{RIGHT_CURLY}</div>
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                    }
+
                 </div>
               </div>
             )}
