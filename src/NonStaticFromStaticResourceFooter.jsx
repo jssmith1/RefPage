@@ -7,7 +7,7 @@ class NonStaticFromStaticResourceFooter extends React.Component {
         <i>
         <h4> More information on this</h4>
         <div className="Indent-1">
-          <a href="https://processing.org/reference/static.html"  target="_blank" Link Here>
+          <a href="https://processing.org/reference/static.html"  target="_blank" rel="noopener noreferrer" Link Here>
             Processing Reference
           </a>
         </div>

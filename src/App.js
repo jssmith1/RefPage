@@ -89,7 +89,7 @@ function HomePageContent() {
             <Link to="/typenotfound?classname=Thing&correctclassname=CorrectName&varname=thing">Type Not Found</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/unexpectedtoken?typeonename=double&typetwoname=int">Unexpected Token</Link>
+            <Link to="/unexpectedtoken?typename=int">Unexpected Token</Link>
           </div>
           <div className="Indent-1">
             <Link to="/nonstaticfromstatic?methodname=doSomething&staticmethodname=mainMethod">Use Of Non-Static From Static Context</Link>
@@ -210,8 +210,7 @@ function HomePageContent() {
 
       <Route exact path="/unexpectedtoken">
         <UnexpectedToken
-          typeOneName={query.get("typeonename") || "double"}
-          typeTwoName={query.get("typetwoname") || "int"}
+          typeName={query.get("typename") || "int"}
         />
       </Route>
 

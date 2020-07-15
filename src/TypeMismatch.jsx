@@ -192,7 +192,7 @@ class TypeMismatch extends React.Component {
                     )}
                   </div>
 
-                    { this.props.typeOneName == 'char' && this.props.typeTwoName == 'String'
+                    { this.props.typeOneName === 'char' && this.props.typeTwoName === 'String'
                       ? this.state.openCode11 && (
                         <div className="CodeExample">
                           <div className="CodeContainer">
@@ -214,7 +214,7 @@ class TypeMismatch extends React.Component {
                         </div> 
                       )
                       
-                      : this.props.typeOneName == 'String' && this.props.typeTwoName == 'char'
+                      : this.props.typeOneName === 'String' && this.props.typeTwoName === 'char'
                         ? this.state.openCode11 && (
                           <div className="CodeExample">
                             <div className="CodeContainer">
@@ -236,7 +236,7 @@ class TypeMismatch extends React.Component {
                           </div> 
                         )
 
-                        : this.props.typeOneName == 'String' && this.props.typeTwoName == 'float'
+                        : this.props.typeOneName === 'String' && this.props.typeTwoName === 'float'
                           ? this.state.openCode11 && (
                             <div className="CodeExample">
                               <div className="CodeContainer">
@@ -258,7 +258,7 @@ class TypeMismatch extends React.Component {
                             </div> 
                           )
 
-                          : this.props.typeOneName == 'String' && this.props.typeTwoName == 'int'
+                          : this.props.typeOneName === 'String' && this.props.typeTwoName === 'int'
                             ? this.state.openCode11 && (
                               <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -303,6 +303,7 @@ class TypeMismatch extends React.Component {
                     }        
                  </div>
                 
+                
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExample(12)}
@@ -343,7 +344,7 @@ class TypeMismatch extends React.Component {
                     )}
                   </div>
 
-                  { this.props.typeOneName == 'char' && this.props.typeTwoName == 'String'
+                  { this.props.typeOneName === 'char' && this.props.typeTwoName === 'String'
                       ? this.state.openCode12 && (
                         <div className="CodeExample">
                           <div className="CodeContainer">
@@ -365,7 +366,7 @@ class TypeMismatch extends React.Component {
                         </div> 
                       )
                       
-                      : this.props.typeOneName == 'String' && this.props.typeTwoName == 'char'
+                      : this.props.typeOneName === 'String' && this.props.typeTwoName === 'char'
                         ? this.state.openCode12 && (
                           <div className="CodeExample">
                             <div className="CodeContainer">
@@ -387,7 +388,7 @@ class TypeMismatch extends React.Component {
                           </div> 
                         )
 
-                        : this.props.typeOneName == 'String' && this.props.typeTwoName == 'float'
+                        : this.props.typeOneName === 'String' && this.props.typeTwoName === 'float'
                           ? this.state.openCode12 && (
                             <div className="CodeExample">
                               <div className="CodeContainer">
@@ -409,7 +410,7 @@ class TypeMismatch extends React.Component {
                             </div> 
                           )
 
-                          : this.props.typeOneName == 'String' && this.props.typeTwoName == 'int'
+                          : this.props.typeOneName === 'String' && this.props.typeTwoName === 'int'
                             ? this.state.openCode12 && (
                               <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -531,7 +532,7 @@ class TypeMismatch extends React.Component {
                     )}
                   </div>
                   
-                  { this.props.typeOneName == 'char' && this.props.typeTwoName == 'String'
+                  { this.props.typeOneName === 'char' && this.props.typeTwoName === 'String'
                       ? this.state.openCode21 && (
                         <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -561,7 +562,7 @@ class TypeMismatch extends React.Component {
                               </div> 
                       )
                       
-                      : this.props.typeOneName == 'String' && this.props.typeTwoName == 'char'
+                      : this.props.typeOneName === 'String' && this.props.typeTwoName === 'char'
                         ? this.state.openCode21 && (
                           <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -591,7 +592,7 @@ class TypeMismatch extends React.Component {
                               </div> 
                         )
 
-                        : this.props.typeOneName == 'String' && this.props.typeTwoName == 'float'
+                        : this.props.typeOneName === 'String' && this.props.typeTwoName === 'float'
                           ? this.state.openCode21 && (
                             <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -621,7 +622,7 @@ class TypeMismatch extends React.Component {
                               </div>  
                           )
 
-                          : this.props.typeOneName == 'String' && this.props.typeTwoName == 'int'
+                          : this.props.typeOneName === 'String' && this.props.typeTwoName === 'int'
                             ? this.state.openCode21 && (
                               <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -758,7 +759,7 @@ class TypeMismatch extends React.Component {
                     )}
                   </div>
 
-                  { this.props.typeOneName == 'char' && this.props.typeTwoName == 'String'
+                  { this.props.typeOneName === 'char' && this.props.typeTwoName === 'String'
                       ? this.state.openCode31 && (
                         <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -790,7 +791,7 @@ class TypeMismatch extends React.Component {
                               </div> 
                       )
                       
-                      : this.props.typeOneName == 'String' && this.props.typeTwoName == 'char'
+                      : this.props.typeOneName === 'String' && this.props.typeTwoName === 'char'
                         ? this.state.openCode31 && (
                           <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -822,7 +823,7 @@ class TypeMismatch extends React.Component {
                               </div>  
                         )
 
-                        : this.props.typeOneName == 'String' && this.props.typeTwoName == 'float'
+                        : this.props.typeOneName === 'String' && this.props.typeTwoName === 'float'
                           ? this.state.openCode31 && (
                             <div className="CodeExample">
                                 <div className="CodeContainer">
@@ -854,7 +855,7 @@ class TypeMismatch extends React.Component {
                               </div> 
                           )
 
-                          : this.props.typeOneName == 'String' && this.props.typeTwoName == 'int'
+                          : this.props.typeOneName === 'String' && this.props.typeTwoName === 'int'
                             ? this.state.openCode31 && (
                               <div className="CodeExample">
                                 <div className="CodeContainer">

@@ -62,7 +62,7 @@ class ExtraneousClosingCurlyBrace extends React.Component {
       case 11:
         this.setState({ checked11: !this.state.checked11 });
         break;
-      case 11:
+      case 12:
         this.setState({ checked12: !this.state.checked12 });
         break;
       default:
