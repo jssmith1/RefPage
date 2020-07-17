@@ -180,13 +180,14 @@ class IncorrectVariableDeclaration extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
-                          {this.props.typeName}[5]; </div>
+                          <div className="Indent-0"> 
+                          {this.props.typeName}[] {this.props.foundName} = {this.props.typeName}[5]; 
+                          </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
+                          <div className="Indent-0"> {this.props.typeName}[] {this.props.foundName} ={" "}
                           new {this.props.typeName}[5]; </div>
                         </div>
                       </div>
@@ -236,22 +237,82 @@ class IncorrectVariableDeclaration extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
-                          new {this.props.typeName}[5] </div>
+                          <div className="Indent-0"> 
+                          {this.props.typeName}[] {this.props.foundName} = new {this.props.typeName}[5] 
+                          </div>
                         </div>
                         <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
-                          {"{1,2,3,4,5}"} </div>
+                          <div className="Indent-0">
+                          { this.props.typeName === 'String'            //Box 1 Ex 2 for String
+                                  ? 
+                                  <React.Fragment>
+                                  {this.props.typeName}[] {this.props.foundName} = {"{"}"a", "b", "c", "d", "e"{"}"}
+                                  </React.Fragment>
+                                  
+                                  : this.props.typeName === 'char'            //Box 1 Ex 2 for char
+                                    ? 
+                                    <React.Fragment>
+                                    {this.props.typeName}[] {this.props.foundName} = {"{'a', 'b, 'c', 'd', 'e'}"}
+                                    </React.Fragment>
+
+                                    : this.props.typeName === 'boolean'            //Box 1 Ex 2 for boolean
+                                      ? 
+                                      <React.Fragment>
+                                      {this.props.typeName}[] {this.props.foundName} = {"{true, false, true, false, true}"} 
+                                      </React.Fragment>
+
+                                      : this.props.typeName === 'float' || this.props.typeName === 'double'            //Box 1 Ex 2 for float/double
+                                        ? 
+                                        <React.Fragment>
+                                        {this.props.typeName}[] {this.props.foundName} = {"{1.1, 2.2, 3.3, 4.4, 5.5}"} 
+                                        </React.Fragment>
+
+                                        :                                                               //Box 1 Ex 2 for int/short/byte/long
+                                        <React.Fragment>
+                                        {this.props.typeName}[] {this.props.foundName} = {"{1,2,3,4,5}"} 
+                                        </React.Fragment>
+                                } 
+                          </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
-                          new {this.props.typeName}[5]; </div>
+                          <div className="Indent-0"> 
+                          {this.props.typeName}[] {this.props.foundName} = new {this.props.typeName}[5]; 
+                          </div>
                         </div>
                         <div className="GreenCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
-                          {"{1,2,3,4,5}"}; </div>
+                          <div className="Indent-0"> 
+                          { this.props.typeName === 'String'            //Box 1 Ex 2 for String
+                                  ? 
+                                  <React.Fragment>
+                                  {this.props.typeName}[] {this.props.foundName} = {"{"}"a", "b", "c", "d", "e"{"}"};
+                                  </React.Fragment>
+                                  
+                                  : this.props.typeName === 'char'            //Box 1 Ex 2 for char
+                                    ? 
+                                    <React.Fragment>
+                                    {this.props.typeName}[] {this.props.foundName} = {"{'a', 'b, 'c', 'd', 'e'}"};
+                                    </React.Fragment>
+
+                                    : this.props.typeName === 'boolean'            //Box 1 Ex 2 for boolean
+                                      ? 
+                                      <React.Fragment>
+                                      {this.props.typeName}[] {this.props.foundName} = {"{true, false, true, false, true}"}; 
+                                      </React.Fragment>
+
+                                      : this.props.typeName === 'float' || this.props.typeName === 'double'            //Box 1 Ex 2 for float/double
+                                        ? 
+                                        <React.Fragment>
+                                        {this.props.typeName}[] {this.props.foundName} = {"{1.1, 2.2, 3.3, 4.4, 5.5}"};
+                                        </React.Fragment>
+
+                                        :                                                               //Box 1 Ex 2 for int/short/byte/long
+                                        <React.Fragment>
+                                        {this.props.typeName}[] {this.props.foundName} = {"{1,2,3,4,5}"};
+                                        </React.Fragment>
+                                } 
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -300,22 +361,80 @@ class IncorrectVariableDeclaration extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s {" "}
+                          <div className="Indent-0"> {this.props.typeName}[] {this.props.foundName} {" "}
                           new {this.props.typeName}[5]; </div>
                         </div>
                         <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s {" "}
-                          {"{1,2,3,4,5}"}; </div>
+                          <div className="Indent-0"> 
+                          { this.props.typeName === 'String'            //Box 1 Ex 3 for String
+                                  ? 
+                                  <React.Fragment>
+                                  {this.props.typeName}[] {this.props.foundName} {"{"}"a", "b", "c", "d", "e"{"}"};
+                                  </React.Fragment>
+                                  
+                                  : this.props.typeName === 'char'            //Box 1 Ex 3 for char
+                                    ? 
+                                    <React.Fragment>
+                                    {this.props.typeName}[] {this.props.foundName} {"{'a', 'b, 'c', 'd', 'e'}"};
+                                    </React.Fragment>
+
+                                    : this.props.typeName === 'boolean'            //Box 1 Ex 3 for boolean
+                                      ? 
+                                      <React.Fragment>
+                                      {this.props.typeName}[] {this.props.foundName} {"{true, false, true, false, true}"}; 
+                                      </React.Fragment>
+
+                                      : this.props.typeName === 'float' || this.props.typeName === 'double'            //Box 1 Ex 3 for float/double
+                                        ? 
+                                        <React.Fragment>
+                                        {this.props.typeName}[] {this.props.foundName} {"{1.1, 2.2, 3.3, 4.4, 5.5}"};
+                                        </React.Fragment>
+
+                                        :                                                               //Box 1 Ex 3 for int/short/byte/long
+                                        <React.Fragment>
+                                        {this.props.typeName}[] {this.props.foundName} {"{1,2,3,4,5}"};
+                                        </React.Fragment>
+                                } 
+                          </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
+                          <div className="Indent-0"> {this.props.typeName}[] {this.props.foundName} ={" "}
                           new {this.props.typeName}[5]; </div>
                         </div>
                         <div className="GreenCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
-                          {"{1,2,3,4,5}"}; </div>
+                          <div className="Indent-0"> 
+                          { this.props.typeName === 'String'            //Box 1 Ex 3 for String
+                                  ? 
+                                  <React.Fragment>
+                                  {this.props.typeName}[] {this.props.foundName} = {"{"}"a", "b", "c", "d", "e"{"}"};
+                                  </React.Fragment>
+                                  
+                                  : this.props.typeName === 'char'            //Box 1 Ex 3 for char
+                                    ? 
+                                    <React.Fragment>
+                                    {this.props.typeName}[] {this.props.foundName} = {"{'a', 'b, 'c', 'd', 'e'}"};
+                                    </React.Fragment>
+
+                                    : this.props.typeName === 'boolean'            //Box 1 Ex 3 for boolean
+                                      ? 
+                                      <React.Fragment>
+                                      {this.props.typeName}[] {this.props.foundName} = {"{true, false, true, false, true}"}; 
+                                      </React.Fragment>
+
+                                      : this.props.typeName === 'float' || this.props.typeName === 'double'            //Box 1 Ex 3 for float/double
+                                        ? 
+                                        <React.Fragment>
+                                        {this.props.typeName}[] {this.props.foundName} = {"{1.1, 2.2, 3.3, 4.4, 5.5}"};
+                                        </React.Fragment>
+
+                                        :                                                               //Box 1 Ex 3 for int/short/byte/long
+                                        <React.Fragment>
+                                        {this.props.typeName}[] {this.props.foundName} = {"{1,2,3,4,5}"};
+                                        </React.Fragment>
+                                } 
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -364,13 +483,13 @@ class IncorrectVariableDeclaration extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
+                          <div className="Indent-0"> {this.props.typeName}[] {this.props.foundName} ={" "}
                           new {this.props.typeName}; </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0"> {this.props.typeName}[] s ={" "}
+                          <div className="Indent-0"> {this.props.typeName}[] {this.props.foundName} ={" "}
                           new {this.props.typeName}[5]; </div>
                         </div>
                       </div>

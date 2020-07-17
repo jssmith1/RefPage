@@ -126,7 +126,7 @@ class UnexpectedToken extends React.Component {
             </i>
           </h4>
 
-          { this.props.typeName === 'String' || this.props.typeName === 'boolean' || this.props.typeName === 'float' //Condition for typeName = String/boolean/float
+          { this.props.typeName === 'String' || this.props.typeName === 'boolean' || this.props.typeName === 'float' || this.props.typeName === 'double'    //Condition for typeName = String/boolean/float
             ? 
             <React.Fragment>
               <div className="Tile">
@@ -244,24 +244,24 @@ class UnexpectedToken extends React.Component {
                             </div>
                             )
 
-                         : this.state.openCode11 && (          //Box 1 Ex 1 = float
-                            <div className="CodeExample">
-                            <div className="CodeContainer">
-                                <div className="RedCode">
-                                  <div className="Indent-0">
-                                  {this.props.typeName} s = 5.5
+                         : this.state.openCode11 && (          //Box 1 Ex 1 = float/double
+                              <div className="CodeExample">
+                              <div className="CodeContainer">
+                                  <div className="RedCode">
+                                    <div className="Indent-0">
+                                    {this.props.typeName} s = 5.5
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className="CodeContainer">
-                              <div className="GreenCode">
-                              <div className="Indent-0">
-                              {this.props.typeName} s = 5.5;
+                              <div className="CodeContainer">
+                                <div className="GreenCode">
+                                <div className="Indent-0">
+                                {this.props.typeName} s = 5.5;
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            </div>
-                         )
+                              </div>
+                          )
                        }
                     </div>
                   </div>
@@ -383,26 +383,26 @@ class UnexpectedToken extends React.Component {
                               </div>
                             )
 
-                          : this.state.openCode21 && (            //Box 2 Ex 1 = float
-                            <div className="CodeExample">
-                            <div className="CodeContainer">
-                                <div className="RedCode">
-                                <div className="Indent-0"> s; </div>
+                          : this.state.openCode21 && (          //Box 2 Ex 1 = float/double        
+                                <div className="CodeExample">
+                                <div className="CodeContainer">
+                                    <div className="RedCode">
+                                    <div className="Indent-0"> s; </div>
+                                    </div>
+                                  </div>
+                                  <div className="CodeContainer">
+                                    <div className="GreenCode">
+                                    <div className="Indent-0"> {this.props.typeName} s; </div>
+                                    </div>
+                                    <div className="GreenCode">
+                                    <div className="Indent-0"> {this.props.typeName} s = 5.5; </div>
+                                    </div>
+                                    <div className="GreenCode">
+                                    <div className="Indent-0"> <strikethrough> s;</strikethrough> </div>
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="CodeContainer">
-                                <div className="GreenCode">
-                                <div className="Indent-0"> {this.props.typeName} s; </div>
-                                </div>
-                                <div className="GreenCode">
-                                <div className="Indent-0"> {this.props.typeName} s = 5.5; </div>
-                                </div>
-                                <div className="GreenCode">
-                                <div className="Indent-0"> <strikethrough> s;</strikethrough> </div>
-                                </div>
-                              </div>
-                            </div>
-                          )
+                              )
                       }
                     </div>
                   </div>
@@ -686,13 +686,13 @@ class UnexpectedToken extends React.Component {
                             <div className="CodeContainer">
                                 <div className="RedCode">
                                 <div className="Indent-0"> float f = 5.5; </div>
-                                <div className="Indent-0"> {this.props.typeName} s = {this.props.typeName} d; </div>
+                                <div className="Indent-0"> {this.props.typeName} s = {this.props.typeName} f; </div>
                                 </div>
                               </div>
                               <div className="CodeContainer">
                                 <div className="GreenCode">
                                 <div className="Indent-0"> float f = 5.5; </div>
-                                <div className="Indent-0"> {this.props.typeName} s = ({this.props.typeName}) d; </div>
+                                <div className="Indent-0"> {this.props.typeName} s = ({this.props.typeName}) f; </div>
                                 </div>
                               </div>
                             </div>
@@ -703,448 +703,559 @@ class UnexpectedToken extends React.Component {
                 )}
                 </div>
               </React.Fragment> 
-              :                   //Condition for typeName = int
-              <React.Fragment>   
-                <div className="Tile">
-                  <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
-                    <div className="ErrorMessage">
-                      <h4>
-                        1: You may have forgotten to place a semicolon at the end of your current line
-                      </h4>
+              : this.props.typeName === 'int' || this.props.typeName === 'long' || this.props.typeName === 'byte' || this.props.typeName === 'short'            //Condition for typeName = int/long/short/byte
+               ? <React.Fragment>   
+                  <div className="Tile">
+                    <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
+                      <div className="ErrorMessage">
+                        <h4>
+                          1: You may have forgotten to place a semicolon at the end of your current line
+                        </h4>
+                      </div>
+
+                      {!this.state.openStrategy1 && (
+                        <div className="ButtonHolder">
+                          <img
+                            onClick={() => this.openStrategyTile(1)}
+                            src={PlusButton}
+                            alt="down-button"
+                            width="20"
+                            height="20"
+                          ></img>
+                        </div>
+                      )}
+
+                      {this.state.openStrategy1 && (
+                        <div className="ButtonHolder">
+                          <img
+                            onClick={() => this.openStrategyTile(1)}
+                            src={MinusButton}
+                            alt="up-button"
+                            width="20"
+                            height="20"
+                          ></img>
+                        </div>
+                      )}
+
                     </div>
-
-                    {!this.state.openStrategy1 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openStrategyTile(1)}
-                          src={PlusButton}
-                          alt="down-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-
                     {this.state.openStrategy1 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openStrategyTile(1)}
-                          src={MinusButton}
-                          alt="up-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-
-                  </div>
-                  {this.state.openStrategy1 && (
-                    <div className="StrategyContainer">
-                      <i>Tick the box once you have tried the suggestion</i>
-                      <div
-                        className="StrategyTile"
-                        onClick={() => this.openCodeExample(11)}
-                      >
-                        <div className="StrategyInstruction">
-                          <div className="StrategyMessage">
-                            <BlueCheckbox
-                              value="box1"
-                              checked={this.state.checked11}
-                              onChange={() => this.changeChecked(11)}
-                            />
-                            <div className="Suggestion">
-                              Suggestion 1: Add a ";" to the end of the line
+                      <div className="StrategyContainer">
+                        <i>Tick the box once you have tried the suggestion</i>
+                        <div
+                          className="StrategyTile"
+                          onClick={() => this.openCodeExample(11)}
+                        >
+                          <div className="StrategyInstruction">
+                            <div className="StrategyMessage">
+                              <BlueCheckbox
+                                value="box1"
+                                checked={this.state.checked11}
+                                onChange={() => this.changeChecked(11)}
+                              />
+                              <div className="Suggestion">
+                                Suggestion 1: Add a ";" to the end of the line
+                              </div>
                             </div>
+                            {!this.state.openCode11 && (
+                              <div className="ButtonHolder">
+                                <img
+                                  onClick={() => this.openCodeExample(11)}
+                                  src={PlusButton}
+                                  alt="down-button"
+                                  width="20"
+                                  height="20"
+                                ></img>
+                              </div>
+                            )}
+                            {this.state.openCode11 && (
+                              <div className="ButtonHolder">
+                                <img
+                                  onClick={() => this.openCodeExample(11)}
+                                  src={MinusButton}
+                                  alt="up-button"
+                                  width="20"
+                                  height="20"
+                                ></img>
+                              </div>
+                            )}
                           </div>
-                          {!this.state.openCode11 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(11)}
-                                src={PlusButton}
-                                alt="down-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                          {this.state.openCode11 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(11)}
-                                src={MinusButton}
-                                alt="up-button"
-                                width="20"
-                                height="20"
-                              ></img>
+
+                          {this.state.openCode11 && (                   //Box 1 Ex 1 = int/float/byte/short
+                              <div className="CodeExample">
+                              <div className="CodeContainer">
+                                  <div className="RedCode">
+                                    <div className="Indent-0">
+                                    {this.props.typeName} s = 5
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="CodeContainer">
+                                <div className="GreenCode">
+                                <div className="Indent-0">
+                                {this.props.typeName} s = 5;
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           )}
                         </div>
+                      </div>
+                    )}
+                  </div>
 
-                        {this.state.openCode11 && (                   //Box 1 Ex 1 = int
+                  <div className="Tile">
+                    <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
+                      <div className="ErrorMessage">
+                        <h4>2: You may have left a variable without declaring it.
+                        </h4>
+                      </div>
+                      {!this.state.openStrategy2 && (
+                        <div className="ButtonHolder">
+                          <img
+                            onClick={() => this.openStrategyTile(2)}
+                            src={PlusButton}
+                            alt="down-button"
+                            width="20"
+                            height="20"
+                          ></img>
+                        </div>
+                      )}
+                      {this.state.openStrategy2 && (
+                        <div className="ButtonHolder">
+                          <img
+                            onClick={() => this.openStrategyTile(2)}
+                            src={MinusButton}
+                            alt="up-button"
+                            width="20"
+                            height="20"
+                          ></img>
+                        </div>
+                      )}
+                    </div>
+                    {this.state.openStrategy2 && (
+                      <div className="StrategyContainer">
+                        <i>Tick the box once you have tried the suggestion</i>
+                        <div
+                          className="StrategyTile"
+                          onClick={() => this.openCodeExample(21)}
+                        >
+                          <div className="StrategyInstruction">
+                            <div className="StrategyMessage">
+                              <BlueCheckbox
+                                value="box1"
+                                checked={this.state.checked21}
+                                onChange={() => this.changeChecked(21)}
+                              />
+                              <div className="Suggestion">
+                                Suggestion 1: Either declare the variable, assign it or just remove it if not used 
+                              </div>
+                            </div>
+                            {!this.state.openCode21 && (
+                              <div className="ButtonHolder">
+                                <img
+                                  onClick={() => this.openCodeExample(21)}
+                                  src={PlusButton}
+                                  alt="down-button"
+                                  width="20"
+                                  height="20"
+                                ></img>
+                              </div>
+                            )}
+                            {this.state.openCode21 && (
+                              <div className="ButtonHolder">
+                                <img
+                                  onClick={() => this.openCodeExample(21)}
+                                  src={MinusButton}
+                                  alt="up-button"
+                                  width="20"
+                                  height="20"
+                                ></img>
+                              </div>
+                            )}
+                          </div>
+                          {this.state.openCode21 && (                     //Box 2 Ex 1 = int/float/byte/short
+                            <div className="CodeExample"> 
+                            <div className="CodeContainer">
+                                <div className="RedCode">
+                                <div className="Indent-0"> s; </div>
+                                </div>
+                              </div>
+                              <div className="CodeContainer">
+                                <div className="GreenCode">
+                                <div className="Indent-0"> {this.props.typeName} s; </div>
+                                </div>
+                                <div className="GreenCode">
+                                <div className="Indent-0"> {this.props.typeName} s = 5; </div>
+                                </div>
+                                <div className="GreenCode">
+                                <div className="Indent-0"> <strikethrough> s;</strikethrough> </div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="Tile">
+                    <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
+                      <div className="ErrorMessage">
+                        <h4>3: You may have incorrectly tried to cast a <div className="InputValue"> </div> float{" "}
+                        variable onto a <div className="InputValue">{this.props.typeName}</div> variable
+                        </h4>
+                      </div>
+                      {!this.state.openStrategy3 && (
+                        <div className="ButtonHolder">
+                          <img
+                            onClick={() => this.openStrategyTile(3)}
+                            src={PlusButton}
+                            alt="down-button"
+                            width="20"
+                            height="20"
+                          ></img>
+                        </div>
+                      )}
+                      {this.state.openStrategy3 && (
+                        <div className="ButtonHolder">
+                          <img
+                            onClick={() => this.openStrategyTile(3)}
+                            src={MinusButton}
+                            alt="up-button"
+                            width="20"
+                            height="20"
+                          ></img>
+                        </div>
+                      )}
+                    </div>
+                    {this.state.openStrategy3 && (
+                      <div className="StrategyContainer">
+                        <i>Tick the box once you have tried the suggestion</i>
+                        <div
+                          className="StrategyTile"
+                          onClick={() => this.openCodeExample(31)}
+                        >
+                          <div className="StrategyInstruction">
+                            <div className="StrategyMessage">
+                              <BlueCheckbox
+                                value="box1"
+                                checked={this.state.checked31}
+                                onChange={() => this.changeChecked(31)}
+                              />
+                              <div className="Suggestion">
+                                Suggestion 1: Add a parentheses around <div className="InputValue">{this.props.typeName}</div>, {" "}
+                                the type you are trying to convert the variable to 
+                              </div>
+                            </div>
+                            {!this.state.openCode31 && (
+                              <div className="ButtonHolder">
+                                <img
+                                  onClick={() => this.openCodeExample(31)}
+                                  src={PlusButton}
+                                  alt="down-button"
+                                  width="20"
+                                  height="20"
+                                ></img>
+                              </div>
+                            )}
+                            {this.state.openCode31 && (
+                              <div className="ButtonHolder">
+                                <img
+                                  onClick={() => this.openCodeExample(31)}
+                                  src={MinusButton}
+                                  alt="up-button"
+                                  width="20"
+                                  height="20"
+                                ></img>
+                              </div>
+                            )}
+                          </div>
+                          {this.state.openCode31 && (                 //Box 3 Ex 1 = int/float/byte/short
                             <div className="CodeExample">
                             <div className="CodeContainer">
                                 <div className="RedCode">
-                                  <div className="Indent-0">
-                                  {this.props.typeName} s = 5
+                                <div className="Indent-0"> float f = 5.5; </div>
+                                <div className="Indent-0"> {this.props.typeName} s = {this.props.typeName} f; </div>
+                                </div>
+                              </div>
+                              <div className="CodeContainer">
+                                <div className="GreenCode">
+                                <div className="Indent-0"> float f = 5.5; </div>
+                                <div className="Indent-0"> {this.props.typeName} s = ({this.props.typeName}) f; </div>
                                 </div>
                               </div>
                             </div>
-                            <div className="CodeContainer">
-                              <div className="GreenCode">
-                              <div className="Indent-0">
-                              {this.props.typeName} s = 5;
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  { this.props.typeName === 'int'
+                    ? <React.Fragment>
+                      <div className="Tile">
+                        <div className="ErrorTile" onClick={() => this.openStrategyTile(4)}>
+                          <div className="ErrorMessage">
+                            <h4>4: You may have incorrectly written the parameter of control structures (if-else statement, for-loop, etc...)
+                            </h4>
+                          </div>
+                          {!this.state.openStrategy4 && (
+                            <div className="ButtonHolder">
+                              <img
+                                onClick={() => this.openStrategyTile(4)}
+                                src={PlusButton}
+                                alt="down-button"
+                                width="20"
+                                height="20"
+                              ></img>
+                            </div>
+                          )}
+                          {this.state.openStrategy4 && (
+                            <div className="ButtonHolder">
+                              <img
+                                onClick={() => this.openStrategyTile(4)}
+                                src={MinusButton}
+                                alt="up-button"
+                                width="20"
+                                height="20"
+                              ></img>
+                            </div>
+                          )}
+                        </div>
+                        {this.state.openStrategy4 && (
+                          <div className="StrategyContainer">
+                            <i>Tick the box once you have tried the suggestion</i>
+                            <div
+                              className="StrategyTile"
+                              onClick={() => this.openCodeExample(41)}
+                            >
+                              <div className="StrategyInstruction">
+                                <div className="StrategyMessage">
+                                  <BlueCheckbox
+                                    value="box1"
+                                    checked={this.state.checked41}
+                                    onChange={() => this.changeChecked(41)}
+                                  />
+                                  <div className="Suggestion">
+                                    Suggestion 1: Change the parameters of the control structure 
+                                  </div>
                                 </div>
+                                {!this.state.openCode41 && (
+                                  <div className="ButtonHolder">
+                                    <img
+                                      onClick={() => this.openCodeExample(41)}
+                                      src={PlusButton}
+                                      alt="down-button"
+                                      width="20"
+                                      height="20"
+                                    ></img>
+                                  </div>
+                                )}
+                                {this.state.openCode41 && (
+                                  <div className="ButtonHolder">
+                                    <img
+                                      onClick={() => this.openCodeExample(41)}
+                                      src={MinusButton}
+                                      alt="up-button"
+                                      width="20"
+                                      height="20"
+                                    ></img>
+                                  </div>
+                                )}
                               </div>
+                              {this.state.openCode41 && (                 //Box 4 Ex 1 = int
+                                <div className="CodeExample">
+                                <div className="CodeContainer">
+                                    <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeName} s = 5; </div>
+                                    <div className="Indent-0"> if({this.props.typeName} i = 0; i {" < "} 10; i++){"{"} </div>
+                                    <div className="Indent-1"> s += s; </div>
+                                    <div className="Indent-0"> {"}"} </div>
+                                    </div>
+                                  </div>
+                                  <div className="CodeContainer">
+                                    <div className="GreenCode">
+                                    <div className="Indent-0"> {this.props.typeName} s = 5; </div>
+                                    <div className="Indent-0"> if(s {"<"} 10){"{"} </div>
+                                    <div className="Indent-1"> s += s; </div>
+                                    <div className="Indent-0"> {"}"} </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+
+                            <div
+                              className="StrategyTile"
+                              onClick={() => this.openCodeExample(42)}
+                            >
+                              <div className="StrategyInstruction">
+                                <div className="StrategyMessage">
+                                  <BlueCheckbox
+                                    value="box1"
+                                    checked={this.state.checked42}
+                                    onChange={() => this.changeChecked(42)}
+                                  />
+                                  <div className="Suggestion">
+                                    Suggestion 2: Change the control structure itself 
+                                  </div>
+                                </div>
+                                {!this.state.openCode42 && (
+                                  <div className="ButtonHolder">
+                                    <img
+                                      onClick={() => this.openCodeExample(42)}
+                                      src={PlusButton}
+                                      alt="down-button"
+                                      width="20"
+                                      height="20"
+                                    ></img>
+                                  </div>
+                                )}
+                                {this.state.openCode42 && (
+                                  <div className="ButtonHolder">
+                                    <img
+                                      onClick={() => this.openCodeExample(42)}
+                                      src={MinusButton}
+                                      alt="up-button"
+                                      width="20"
+                                      height="20"
+                                    ></img>
+                                  </div>
+                                )}
+                              </div>
+                              {this.state.openCode42 && (             //Box 4 Ex 2 = int
+                                <div className="CodeExample">
+                                <div className="CodeContainer">
+                                    <div className="RedCode">
+                                    <div className="Indent-0"> {this.props.typeName} s = 5; </div>
+                                    <div className="Indent-0"> if({this.props.typeName} i = 0; i {" < "} 10; i++){"{"} </div>
+                                    <div className="Indent-1"> s += s; </div>
+                                    <div className="Indent-0"> {"}"} </div>
+                                    </div>
+                                  </div>
+                                  <div className="CodeContainer">
+                                    <div className="GreenCode">
+                                    <div className="Indent-0"> {this.props.typeName} s = 5; </div>
+                                    <div className="Indent-0"> for({this.props.typeName} i = 0; i {" < "} 10; i++){"{"} </div>
+                                    <div className="Indent-1"> s += s; </div>
+                                    <div className="Indent-0"> {"}"} </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           </div>
                         )}
                       </div>
-                    </div>
-                  )}
-                </div>
+                    </React.Fragment>
+                    : null
+                  }
+                  
+                </React.Fragment>
 
-                <div className="Tile">
-                  <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
-                    <div className="ErrorMessage">
-                      <h4>2: You may have left a variable without declaring it.
-                      </h4>
-                    </div>
-                    {!this.state.openStrategy2 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openStrategyTile(2)}
-                          src={PlusButton}
-                          alt="down-button"
-                          width="20"
-                          height="20"
-                        ></img>
+              : <React.Fragment>                         
+                  <div className="Tile">
+                    <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
+                      <div className="ErrorMessage">
+                        <h4>1: You may have left an object without declaring it.
+                        </h4>
                       </div>
-                    )}
+                      {!this.state.openStrategy2 && (
+                        <div className="ButtonHolder">
+                          <img
+                            onClick={() => this.openStrategyTile(2)}
+                            src={PlusButton}
+                            alt="down-button"
+                            width="20"
+                            height="20"
+                          ></img>
+                        </div>
+                      )}
+                      {this.state.openStrategy2 && (
+                        <div className="ButtonHolder">
+                          <img
+                            onClick={() => this.openStrategyTile(2)}
+                            src={MinusButton}
+                            alt="up-button"
+                            width="20"
+                            height="20"
+                          ></img>
+                        </div>
+                      )}
+                    </div>
                     {this.state.openStrategy2 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openStrategyTile(2)}
-                          src={MinusButton}
-                          alt="up-button"
-                          width="20"
-                          height="20"
-                        ></img>
+                      <div className="StrategyContainer">
+                        <i>Tick the box once you have tried the suggestion</i>
+                        <div
+                          className="StrategyTile"
+                          onClick={() => this.openCodeExample(21)}
+                        >
+                          <div className="StrategyInstruction">
+                            <div className="StrategyMessage">
+                              <BlueCheckbox
+                                value="box1"
+                                checked={this.state.checked21}
+                                onChange={() => this.changeChecked(21)}
+                              />
+                              <div className="Suggestion">
+                                Suggestion 1: Either declare the object, assign it or just remove it if not used 
+                              </div>
+                            </div>
+                            {!this.state.openCode21 && (
+                              <div className="ButtonHolder">
+                                <img
+                                  onClick={() => this.openCodeExample(21)}
+                                  src={PlusButton}
+                                  alt="down-button"
+                                  width="20"
+                                  height="20"
+                                ></img>
+                              </div>
+                            )}
+                            {this.state.openCode21 && (
+                              <div className="ButtonHolder">
+                                <img
+                                  onClick={() => this.openCodeExample(21)}
+                                  src={MinusButton}
+                                  alt="up-button"
+                                  width="20"
+                                  height="20"
+                                ></img>
+                              </div>
+                            )}
+                          </div>
+
+                          {this.state.openCode21 && (            //Box 1 Ex 1 = User-Made   
+                                    <div className="CodeExample">
+                                    <div className="CodeContainer">
+                                        <div className="RedCode">
+                                        <div className="Indent-0"> class {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {"{"}  </div>
+                                        <div className="Indent-1"> {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}() {"{"} </div>
+                                        <div className="Indent-2"> ...; </div>
+                                        <div className="Indent-1"> {"}"} </div>
+                                        <div className="Indent-0"> {"}"} </div>
+                                        <div className="Indent-0"> {this.props.typeName} </div>
+                                        </div>
+                                      </div>
+                                      <div className="CodeContainer">
+                                        <div className="GreenCode">
+                                        <div className="Indent-0"> {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {this.props.typeName}; </div>
+                                        </div>
+                                        <div className="GreenCode">
+                                        <div className="Indent-0"> {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {this.props.typeName} = {" "}
+                                        new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(); </div>
+                                        </div>
+                                        <div className="GreenCode">
+                                        <div className="Indent-0"> <strikethrough> {this.props.typeName}; </strikethrough> </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ) 
+                          }
+                        </div>
                       </div>
                     )}
                   </div>
-                  {this.state.openStrategy2 && (
-                    <div className="StrategyContainer">
-                      <i>Tick the box once you have tried the suggestion</i>
-                      <div
-                        className="StrategyTile"
-                        onClick={() => this.openCodeExample(21)}
-                      >
-                        <div className="StrategyInstruction">
-                          <div className="StrategyMessage">
-                            <BlueCheckbox
-                              value="box1"
-                              checked={this.state.checked21}
-                              onChange={() => this.changeChecked(21)}
-                            />
-                            <div className="Suggestion">
-                              Suggestion 1: Either declare the variable, assign it or just remove it if not used 
-                            </div>
-                          </div>
-                          {!this.state.openCode21 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(21)}
-                                src={PlusButton}
-                                alt="down-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                          {this.state.openCode21 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(21)}
-                                src={MinusButton}
-                                alt="up-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                        </div>
-                        {this.state.openCode21 && (                     //Box 2 Ex 1 = int
-                          <div className="CodeExample"> 
-                          <div className="CodeContainer">
-                              <div className="RedCode">
-                              <div className="Indent-0"> s; </div>
-                              </div>
-                            </div>
-                            <div className="CodeContainer">
-                              <div className="GreenCode">
-                              <div className="Indent-0"> {this.props.typeName} s; </div>
-                              </div>
-                              <div className="GreenCode">
-                              <div className="Indent-0"> {this.props.typeName} s = 5; </div>
-                              </div>
-                              <div className="GreenCode">
-                              <div className="Indent-0"> <strikethrough> s;</strikethrough> </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="Tile">
-                  <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
-                    <div className="ErrorMessage">
-                      <h4>3: You may have incorrectly tried to cast a <div className="InputValue"> </div> float{" "}
-                      variable onto a <div className="InputValue">{this.props.typeName}</div> variable
-                      </h4>
-                    </div>
-                    {!this.state.openStrategy3 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openStrategyTile(3)}
-                          src={PlusButton}
-                          alt="down-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                    {this.state.openStrategy3 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openStrategyTile(3)}
-                          src={MinusButton}
-                          alt="up-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                  </div>
-                  {this.state.openStrategy3 && (
-                    <div className="StrategyContainer">
-                      <i>Tick the box once you have tried the suggestion</i>
-                      <div
-                        className="StrategyTile"
-                        onClick={() => this.openCodeExample(31)}
-                      >
-                        <div className="StrategyInstruction">
-                          <div className="StrategyMessage">
-                            <BlueCheckbox
-                              value="box1"
-                              checked={this.state.checked31}
-                              onChange={() => this.changeChecked(31)}
-                            />
-                            <div className="Suggestion">
-                              Suggestion 1: Add a parentheses around <div className="InputValue">{this.props.typeName}</div>, {" "}
-                              the type you are trying to convert the variable to 
-                            </div>
-                          </div>
-                          {!this.state.openCode31 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(31)}
-                                src={PlusButton}
-                                alt="down-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                          {this.state.openCode31 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(31)}
-                                src={MinusButton}
-                                alt="up-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                        </div>
-                        {this.state.openCode31 && (                 //Box 3 Ex 1 = int
-                          <div className="CodeExample">
-                          <div className="CodeContainer">
-                              <div className="RedCode">
-                              <div className="Indent-0"> float f = 5.5; </div>
-                              <div className="Indent-0"> {this.props.typeName} s = {this.props.typeName} d; </div>
-                              </div>
-                            </div>
-                            <div className="CodeContainer">
-                              <div className="GreenCode">
-                              <div className="Indent-0"> float f = 5.5; </div>
-                              <div className="Indent-0"> {this.props.typeName} s = ({this.props.typeName}) d; </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="Tile">
-                  <div className="ErrorTile" onClick={() => this.openStrategyTile(4)}>
-                    <div className="ErrorMessage">
-                      <h4>4: You may have incorrectly written the parameter of control structures (if-else statement, for-loop, etc...)
-                      </h4>
-                    </div>
-                    {!this.state.openStrategy4 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openStrategyTile(4)}
-                          src={PlusButton}
-                          alt="down-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                    {this.state.openStrategy4 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openStrategyTile(4)}
-                          src={MinusButton}
-                          alt="up-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                  </div>
-                  {this.state.openStrategy4 && (
-                    <div className="StrategyContainer">
-                      <i>Tick the box once you have tried the suggestion</i>
-                      <div
-                        className="StrategyTile"
-                        onClick={() => this.openCodeExample(41)}
-                      >
-                        <div className="StrategyInstruction">
-                          <div className="StrategyMessage">
-                            <BlueCheckbox
-                              value="box1"
-                              checked={this.state.checked41}
-                              onChange={() => this.changeChecked(41)}
-                            />
-                            <div className="Suggestion">
-                              Suggestion 1: Change the parameters of the control structure 
-                            </div>
-                          </div>
-                          {!this.state.openCode41 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(41)}
-                                src={PlusButton}
-                                alt="down-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                          {this.state.openCode41 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(41)}
-                                src={MinusButton}
-                                alt="up-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                        </div>
-                        {this.state.openCode41 && (                 //Box 4 Ex 1 = int
-                          <div className="CodeExample">
-                          <div className="CodeContainer">
-                              <div className="RedCode">
-                              <div className="Indent-0"> {this.props.typeName} s = 5; </div>
-                              <div className="Indent-0"> if({this.props.typeName} i = 0; i {" < "} 10; i++){"{"} </div>
-                              <div className="Indent-1"> s += s; </div>
-                              <div className="Indent-0"> {"}"} </div>
-                              </div>
-                            </div>
-                            <div className="CodeContainer">
-                              <div className="GreenCode">
-                              <div className="Indent-0"> {this.props.typeName} s = 5; </div>
-                              <div className="Indent-0"> if(s {"<"} 10){"{"} </div>
-                              <div className="Indent-1"> s += s; </div>
-                              <div className="Indent-0"> {"}"} </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      <div
-                        className="StrategyTile"
-                        onClick={() => this.openCodeExample(42)}
-                      >
-                        <div className="StrategyInstruction">
-                          <div className="StrategyMessage">
-                            <BlueCheckbox
-                              value="box1"
-                              checked={this.state.checked42}
-                              onChange={() => this.changeChecked(42)}
-                            />
-                            <div className="Suggestion">
-                              Suggestion 2: Change the control structure itself 
-                            </div>
-                          </div>
-                          {!this.state.openCode42 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(42)}
-                                src={PlusButton}
-                                alt="down-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                          {this.state.openCode42 && (
-                            <div className="ButtonHolder">
-                              <img
-                                onClick={() => this.openCodeExample(42)}
-                                src={MinusButton}
-                                alt="up-button"
-                                width="20"
-                                height="20"
-                              ></img>
-                            </div>
-                          )}
-                        </div>
-                        {this.state.openCode42 && (             //Box 4 Ex 2 = int
-                          <div className="CodeExample">
-                          <div className="CodeContainer">
-                              <div className="RedCode">
-                              <div className="Indent-0"> {this.props.typeName} s = 5; </div>
-                              <div className="Indent-0"> if({this.props.typeName} i = 0; i {" < "} 10; i++){"{"} </div>
-                              <div className="Indent-1"> s += s; </div>
-                              <div className="Indent-0"> {"}"} </div>
-                              </div>
-                            </div>
-                            <div className="CodeContainer">
-                              <div className="GreenCode">
-                              <div className="Indent-0"> {this.props.typeName} s = 5; </div>
-                              <div className="Indent-0"> for({this.props.typeName} i = 0; i {" < "} 10; i++){"{"} </div>
-                              <div className="Indent-1"> s += s; </div>
-                              <div className="Indent-0"> {"}"} </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
               </React.Fragment>
           }
         </div>

@@ -149,26 +149,57 @@ class IncorrectDimensionExpression2 extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode11 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                          <div className="Indent-0">
-                          {this.props.typeName}[][] s = new {this.props.typeName}[][5]; </div>
+                  { this.props.typeName === 'String' || this.props.typeName === 'char' || this.props.typeName === 'boolean' || this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                    this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'float' || this.props.typeName === 'double'      //Box 1 Ex 1 cases for all existing data types
+                      ? this.state.openCode11 && (
+                          <div className="CodeExample">
+                            <div className="CodeContainer">
+                              <div className="RedCode">
+                                <div className="Indent-0">
+                                {this.props.typeName}[][] s = new {this.props.typeName}[][5]; </div>
+                              </div>
+                            </div>
+                            <div className="CodeContainer">
+                              <div className="GreenCode">
+                              <div className="Indent-0">
+                                {this.props.typeName}[][] s = new {this.props.typeName}[5][5]; </div>
+                              </div>
+                              <div className="GreenCode">
+                              <div className="Indent-0">
+                                {this.props.typeName}[][] s = new {this.props.typeName}[5][]; </div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      : this.state.openCode11 && (       //Box 1 Ext 1 for user-made objects
+                        <div className="CodeExample">
+                          <div className="CodeContainer">
+                            <div className="RedCode">
+                              <div className="Indent-0"> class {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {"{"}  </div>
+                              <div className="Indent-1"> {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}() {"{"} </div>
+                              <div className="Indent-2"> ...; </div>
+                              <div className="Indent-1"> {"}"} </div>
+                              <div className="Indent-0"> {"}"} </div>
+                              <div className="Indent-0">
+                              {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[][] s = {" "}
+                              new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[][5]; </div>
+                            </div>
+                          </div>
+                          <div className="CodeContainer">
+                            <div className="GreenCode">
+                            <div className="Indent-0">
+                            {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[][] s = {" "}
+                            new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[5][5]; </div>
+                            </div>
+                            <div className="GreenCode">
+                            <div className="Indent-0">
+                            {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[][] s = {" "}
+                            new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[5][]; </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                        <div className="Indent-0">
-                          {this.props.typeName}[][] s = new {this.props.typeName}[5][5]; </div>
-                        </div>
-                        <div className="GreenCode">
-                        <div className="Indent-0">
-                          {this.props.typeName}[][] s = new {this.props.typeName}[5][]; </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                      )           
+                  }
                 </div>
               </div>
             )}
