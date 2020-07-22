@@ -30,14 +30,17 @@ class VariableNotFound extends React.Component {
       openStrategy1: false,
       openStrategy2: false,
       openStrategy3: false,
+      openStrategy4: false,
       openCode11: false,
       openCode21: false,
-      openCode22: false,
       openCode31: false,
+      openCode32: false,
+      openCode41: false,
       checked11: false,
       checked21: false,
-      checked22: false,
       checked31: false,
+      checked32: false,
+      checked41: false,
     };
   }
 
@@ -48,13 +51,17 @@ class VariableNotFound extends React.Component {
         this.setState({ openCode11: false });
         break;
       case 2:
-        this.setState({ openStrategy3: !this.state.openStrategy3 });
-        this.setState({ openCode31: false });
+        this.setState({ openStrategy2: !this.state.openStrategy2 });
+        this.setState({ openCode21: false });
         break;
       case 3:
+        this.setState({ openStrategy3: !this.state.openStrategy3 });
+        this.setState({ openCode31: false });
+        this.setState({ openCode32: false });
+        break;
+      case 4:
         this.setState({ openStrategy4: !this.state.openStrategy4 });
         this.setState({ openCode41: false });
-        this.setState({ openCode42: false });
         break;
       default:
         break;
@@ -66,14 +73,17 @@ class VariableNotFound extends React.Component {
       case 11:
         this.setState({ openCode11: !this.state.openCode11 });
         break;
+      case 21:
+        this.setState({ openCode21: !this.state.openCode21 });
+        break;
       case 31:
         this.setState({ openCode31: !this.state.openCode31 });
         break;
+      case 32:
+        this.setState({ openCode32: !this.state.openCode32 });
+        break;
       case 41:
         this.setState({ openCode41: !this.state.openCode41 });
-        break;
-      case 42:
-        this.setState({ openCode42: !this.state.openCode42 });
         break;
       default:
         break;
@@ -85,14 +95,17 @@ class VariableNotFound extends React.Component {
       case 11:
         this.setState({ checked11: !this.state.checked11 });
         break;
+      case 21:
+        this.setState({ checked21: !this.state.checked21 });
+        break;
       case 31:
         this.setState({ checked31: !this.state.checked31 });
         break;
+      case 32:
+        this.setState({ checked32: !this.state.checked32 });
+        break;
       case 41:
         this.setState({ checked41: !this.state.checked41 });
-        break;
-      case 42:
-        this.setState({ checked42: !this.state.checked42 });
         break;
       default:
         break;
@@ -231,10 +244,10 @@ class VariableNotFound extends React.Component {
                   <div className="InputValue">{this.props.varName}</div>{" "}
                 </h4>
               </div>
-              {!this.state.openStrategy3 && (
+              {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
                   <img
-                    onClick={() => this.openStrategyTile(3)}
+                    onClick={() => this.openStrategyTile(2)}
                     src={PlusButton}
                     alt="down-button"
                     width="20"
@@ -242,10 +255,10 @@ class VariableNotFound extends React.Component {
                   ></img>
                 </div>
               )}
-              {this.state.openStrategy3 && (
+              {this.state.openStrategy2 && (
                 <div className="ButtonHolder">
                   <img
-                    onClick={() => this.openStrategyTile(3)}
+                    onClick={() => this.openStrategyTile(2)}
                     src={MinusButton}
                     alt="up-button"
                     width="20"
@@ -255,19 +268,19 @@ class VariableNotFound extends React.Component {
               )}
             </div>
 
-            {this.state.openStrategy3 && (
+            {this.state.openStrategy2 && (
               <div className="StrategyContainer">
                   <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(31)}
+                  onClick={() => this.openCodeExample(21)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
                         value="box1"
-                        checked={this.state.checked31}
-                        onChange={() => this.changeChecked(31)}
+                        checked={this.state.checked21}
+                        onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
                         Suggestion 1: Change{" "}
@@ -275,10 +288,10 @@ class VariableNotFound extends React.Component {
                         the variable name that you have defined
                       </div>
                     </div>
-                    {!this.state.openCode31 && (
+                    {!this.state.openCode21 && (
                       <div className="ButtonHolder">
                         <img
-                          onClick={() => this.openCodeExample(31)}
+                          onClick={() => this.openCodeExample(21)}
                           src={PlusButton}
                           alt="down-button"
                           width="20"
@@ -286,10 +299,10 @@ class VariableNotFound extends React.Component {
                         ></img>
                       </div>
                     )}
-                    {this.state.openCode31 && (
+                    {this.state.openCode21 && (
                       <div className="ButtonHolder">
                         <img
-                          onClick={() => this.openCodeExample(31)}
+                          onClick={() => this.openCodeExample(21)}
                           src={MinusButton}
                           alt="up-button"
                           width="20"
@@ -298,7 +311,7 @@ class VariableNotFound extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode31 && (
+                  {this.state.openCode21 && (
                     <div>
                       <div className="CodeExample">
                         <div className="CodeContainer">
@@ -344,10 +357,10 @@ class VariableNotFound extends React.Component {
                   incorrect scope
                 </h4>
               </div>
-              {!this.state.openStrategy4 && (
+              {!this.state.openStrategy3 && (
                 <div className="ButtonHolder">
                   <img
-                    onClick={() => this.openStrategyTile(4)}
+                    onClick={() => this.openStrategyTile(3)}
                     src={PlusButton}
                     alt="down-button"
                     width="20"
@@ -355,10 +368,10 @@ class VariableNotFound extends React.Component {
                   ></img>
                 </div>
               )}
-              {this.state.openStrategy4 && (
+              {this.state.openStrategy3 && (
                 <div className="ButtonHolder">
                   <img
-                    onClick={() => this.openStrategyTile(4)}
+                    onClick={() => this.openStrategyTile(3)}
                     src={MinusButton}
                     alt="up-button"
                     width="20"
@@ -368,20 +381,20 @@ class VariableNotFound extends React.Component {
               )}
             </div>
 
-            {this.state.openStrategy4 && (
+            {this.state.openStrategy3 && (
               <div className="StrategyContainer">
                   <i>Tick the box once you have tried the suggestion</i>
 
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(41)}
+                  onClick={() => this.openCodeExample(31)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
                         value="box1"
-                        checked={this.state.checked41}
-                        onChange={() => this.changeChecked(41)}
+                        checked={this.state.checked31}
+                        onChange={() => this.changeChecked(31)}
                       />
                       <div className="Suggestion">
                         Suggestion 1: Move{" "}
@@ -389,10 +402,10 @@ class VariableNotFound extends React.Component {
                         the same function with its declaration
                       </div>
                     </div>
-                    {!this.state.openCode41 && (
+                    {!this.state.openCode31 && (
                       <div className="ButtonHolder">
                         <img
-                          onClick={() => this.openCodeExample(41)}
+                          onClick={() => this.openCodeExample(31)}
                           src={PlusButton}
                           alt="down-button"
                           width="20"
@@ -400,10 +413,10 @@ class VariableNotFound extends React.Component {
                         ></img>
                       </div>
                     )}
-                    {this.state.openCode41 && (
+                    {this.state.openCode31 && (
                       <div className="ButtonHolder">
                         <img
-                          onClick={() => this.openCodeExample(41)}
+                          onClick={() => this.openCodeExample(31)}
                           src={MinusButton}
                           alt="up-button"
                           width="20"
@@ -412,7 +425,7 @@ class VariableNotFound extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode41 && (
+                  {this.state.openCode31 && (
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
@@ -459,14 +472,14 @@ class VariableNotFound extends React.Component {
                 </div>
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(42)}
+                  onClick={() => this.openCodeExample(32)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
                       <BlueCheckbox
                         value="box1"
-                        checked={this.state.checked42}
-                        onChange={() => this.changeChecked(42)}
+                        checked={this.state.checked32}
+                        onChange={() => this.changeChecked(32)}
                       />
                       <div className="Suggestion">
                         Suggestion 2: Move{" "}
@@ -474,10 +487,10 @@ class VariableNotFound extends React.Component {
                         the same or smaller scope than its declaration
                       </div>
                     </div>
-                    {!this.state.openCode42 && (
+                    {!this.state.openCode32 && (
                       <div className="ButtonHolder">
                         <img
-                          onClick={() => this.openCodeExample(42)}
+                          onClick={() => this.openCodeExample(32)}
                           src={PlusButton}
                           alt="down-button"
                           width="20"
@@ -485,10 +498,10 @@ class VariableNotFound extends React.Component {
                         ></img>
                       </div>
                     )}
-                    {this.state.openCode42 && (
+                    {this.state.openCode32 && (
                       <div className="ButtonHolder">
                         <img
-                          onClick={() => this.openCodeExample(42)}
+                          onClick={() => this.openCodeExample(32)}
                           src={MinusButton}
                           alt="up-button"
                           width="20"
@@ -497,7 +510,7 @@ class VariableNotFound extends React.Component {
                       </div>
                     )}
                   </div>
-                  {this.state.openCode42 && (
+                  {this.state.openCode32 && (
                     <div>
                       <div>
                         <div className="CodeExample">
@@ -591,6 +604,114 @@ class VariableNotFound extends React.Component {
                               </div>
                               <div className="Indent-0">{RIGHT_CURLY}</div>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="Tile">
+            <div className="ErrorTile" onClick={() => this.openStrategyTile(4)}>
+              <div className="ErrorMessage">
+                <h4>
+                  4: You may have made a syntax error while declaring an array of {" "}
+                  <div className="InputValue">{this.props.className}</div> objects
+                </h4>
+              </div>
+              {!this.state.openStrategy4 && (
+                <div className="ButtonHolder">
+                  <img
+                    onClick={() => this.openStrategyTile(4)}
+                    src={PlusButton}
+                    alt="down-button"
+                    width="20"
+                    height="20"
+                  ></img>
+                </div>
+              )}
+              {this.state.openStrategy4 && (
+                <div className="ButtonHolder">
+                  <img
+                    onClick={() => this.openStrategyTile(4)}
+                    src={MinusButton}
+                    alt="up-button"
+                    width="20"
+                    height="20"
+                  ></img>
+                </div>
+              )}
+            </div>
+
+            {this.state.openStrategy4 && (
+              <div className="StrategyContainer">
+                  <i>Tick the box once you have tried the suggestion</i>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExample(41)}
+                >
+                  <div className="StrategyInstruction">
+                    <div className="StrategyMessage">
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked41}
+                        onChange={() => this.changeChecked(41)}
+                      />
+                      <div className="Suggestion">
+                        Suggestion 1: Add the word 'new' before the object name
+                      </div>
+                    </div>
+                    {!this.state.openCode41 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(41)}
+                          src={PlusButton}
+                          alt="down-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                    {this.state.openCode41 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(41)}
+                          src={MinusButton}
+                          alt="up-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                  </div>
+                  {this.state.openCode41 && (
+                    <div>
+                      <div className="CodeExample">
+                        <div className="CodeContainer">
+                          <div className="RedCode">
+                          <div className="Indent-0"> class {this.props.className} {"{"}  </div>
+                              <div className="Indent-1"> {this.props.className}() {"{"} </div>
+                              <div className="Indent-2"> ...; </div>
+                              <div className="Indent-1"> {"}"} </div>
+                              <div className="Indent-0"> {"}"} </div>
+                              <div className="Indent-0">
+                              {this.props.className}[] {this.props.varName} = {this.props.className}[5];
+                              </div>
+                          </div>
+                        </div>
+                        <div className="CodeContainer">
+                          <div className="GreenCode">
+                          <div className="Indent-0"> class {this.props.className} {"{"}  </div>
+                              <div className="Indent-1"> {this.props.className}() {"{"} </div>
+                              <div className="Indent-2"> ...; </div>
+                              <div className="Indent-1"> {"}"} </div>
+                              <div className="Indent-0"> {"}"} </div>
+                              <div className="Indent-0">
+                              {this.props.className}[] {this.props.varName} = new {this.props.className}[5];
+                              </div>
                           </div>
                         </div>
                       </div>

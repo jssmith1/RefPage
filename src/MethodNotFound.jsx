@@ -180,10 +180,10 @@ class MethodNotFound extends React.Component {
                                                 onChange={() => this.changeChecked(11)}
                                             />
                                             <div className="Suggestion">
-                                                Suggestion 1: Change{" "}
-                                                <p className="InputValue">{this.props.methodName}()</p> to
-                        the method name defined by Java
-                      </div>
+                                                Suggestion 1: Make sure the name of{" "}
+                                                <p className="InputValue">{this.props.methodName}()</p> {" "}
+                                                matches the name of an existing Java function
+                                            </div>
                                         </div>
                                         {!this.state.openCode11 && (
                                             <div className="ButtonHolder">
@@ -244,7 +244,7 @@ class MethodNotFound extends React.Component {
                                                 onChange={() => this.changeChecked(12)}
                                             />
                                             <div className="Suggestion">
-                                                Suggestion 2: Change{" "}
+                                                Suggestion 2: Change the name of {" "}
                                                 <p className="InputValue">{this.props.methodName}()</p> to the method you created.
                                     </div>
                                         </div>

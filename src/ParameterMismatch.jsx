@@ -101,18 +101,129 @@ class ParameterMismatch extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              The method “
-              <div className="InputValue">{this.props.methodName}()</div>”
-              in the type <div className="InputValue">{this.props.typeOneName}</div> is not applicable for the 
-              arguments <div className="InputValue">({this.props.typeTwoName}) </div>
+              { this.props.typeOneName === 'String'
+                ? this.props.typeTwoName === 'int' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                  this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                  this.props.typeTwoName === 'boolean'
+                  ?
+                  <React.Fragment>
+                  The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                  in the type sketch_200721a is not applicable for the 
+                  arguments <div className="InputValue">({this.props.typeTwoName}) </div>
+                  </React.Fragment>
+                  :
+                  <React.Fragment>
+                  The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                  in the type sketch_200721a is not applicable for the 
+                  arguments <div className="InputValue">(char) </div>
+                  </React.Fragment>
+
+                : this.props.typeOneName === 'boolean'
+                  ? this.props.typeTwoName === 'int' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                    this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                    this.props.typeTwoName === 'String'
+                    ?
+                    <React.Fragment>
+                    The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                    in the type sketch_200721a is not applicable for the 
+                    arguments <div className="InputValue">({this.props.typeTwoName}) </div>
+                    </React.Fragment>
+                    :
+                    <React.Fragment>
+                    The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                    in the type sketch_200721a is not applicable for the 
+                    arguments <div className="InputValue">(int) </div>
+                    </React.Fragment>
+
+                    : this.props.typeOneName === 'char'
+                      ? this.props.typeTwoName === 'int' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                        this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                        this.props.typeTwoName === 'boolean'
+                        ?
+                        <React.Fragment>
+                        The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                        in the type sketch_200721a is not applicable for the 
+                        arguments <div className="InputValue">({this.props.typeTwoName}) </div>
+                        </React.Fragment>
+                        :
+                        <React.Fragment>
+                        The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                        in the type sketch_200721a is not applicable for the 
+                        arguments <div className="InputValue">(String) </div>
+                        </React.Fragment>
+
+                        : this.props.typeOneName === 'double' || this.props.typeOneName === 'float'
+                          ? this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                            this.props.typeTwoName === 'long' || this.props.typeTwoName === 'String' || this.props.typeTwoName === 'boolean' ||
+                            this.props.typeTwoName === 'char'
+                            ?
+                            <React.Fragment>
+                            The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                            in the type sketch_200721a is not applicable for the 
+                            arguments <div className="InputValue">({this.props.typeTwoName}) </div>
+                            </React.Fragment>
+                            :
+                            <React.Fragment>
+                            The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                            in the type sketch_200721a is not applicable for the 
+                            arguments <div className="InputValue">(int) </div>
+                            </React.Fragment>
+
+                            : this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                              this.props.typeOneName === 'long'
+                              ? this.props.typeTwoName === 'String' || this.props.typeTwoName === 'boolean' ||
+                                this.props.typeTwoName === 'char' || this.props.typeTwoName === 'float'
+                                ?
+                                <React.Fragment>
+                                The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                                in the type sketch_200721a is not applicable for the 
+                                arguments <div className="InputValue">({this.props.typeTwoName}) </div>
+                                </React.Fragment>
+                                :
+                                <React.Fragment>
+                                The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
+                                in the type sketch_200721a is not applicable for the 
+                                arguments <div className="InputValue">(double) </div>
+                                </React.Fragment>
+
+                                : this.props.typeTwoName === 'String' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                                  this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                                  this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'char' 
+                                  ?
+                                  <React.Fragment>
+                                  The method “<div className="InputValue">{this.props.methodName}(int)</div>”
+                                  in the type sketch_200721a is not applicable for the 
+                                  arguments <div className="InputValue">({this.props.typeTwoName}) </div>
+                                  </React.Fragment>
+                                  :
+                                  <React.Fragment>
+                                  The method “<div className="InputValue">{this.props.methodName}(int)</div>”
+                                  in the type sketch_200721a is not applicable for the 
+                                  arguments <div className="InputValue">(float) </div>
+                                  </React.Fragment>
+              }
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: You are trying to use the method “
-              <div className="InputValue">{this.props.methodName}()</div>” but
-              with the incorrect parameters.
+              { this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
+                this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
+                this.props.typeOneName === 'boolean'
+                  ?
+                  <React.Fragment>
+                  Translation: You are trying to use the method “
+                  <div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>” but
+                  with the incorrect parameters.
+                  </React.Fragment>
+                  :
+                  <React.Fragment>
+                  Translation: You are trying to use the method “
+                  <div className="InputValue">{this.props.methodName}(int)</div>” but
+                  with the incorrect parameters.
+                  </React.Fragment>
+              }
             </i>
           </h4>
 
@@ -120,8 +231,21 @@ class ParameterMismatch extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have used the wrong type of parameter for
-                  the method <div className="InputValue">{this.props.methodName}()</div>
+                  {this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
+                    this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                    this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
+                    this.props.typeOneName === 'boolean'
+                    ?
+                    <React.Fragment>
+                    1: You may have used the wrong type of parameter for
+                    the method <div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>
+                    </React.Fragment>
+                    :
+                    <React.Fragment>
+                    1: You may have used the wrong type of parameter for
+                    the method <div className="InputValue">{this.props.methodName}(int)</div>
+                    </React.Fragment>
+                  }
                 </h4>
               </div>
 
@@ -165,9 +289,21 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(11)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change the parameter of{" "}
-                        <p className="InputValue">{this.props.methodName}()</p> to
-                        the expected type
+                        { this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
+                          this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                          this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
+                          this.props.typeOneName === 'boolean'
+                          ?
+                          <React.Fragment>
+                          Suggestion 1: Change the parameter of{" "}
+                          <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> to the expected type
+                          </React.Fragment>
+                          :
+                          <React.Fragment>
+                          Suggestion 1: Change the parameter of{" "}
+                          <p className="InputValue">{this.props.methodName}(int)</p> to the expected type
+                          </React.Fragment>
+                        }
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -197,36 +333,184 @@ class ParameterMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("2");
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> println(s+1);</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        { this.props.typeOneName === 'String'
+                            ?
+                            <React.Fragment>
+                            <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                            { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                              this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                            ?
+                            <div className="Indent-1"> {this.props.methodName}(2);</div>
+                            : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                              : this.props.typeTwoName === 'boolean'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                : 
+                                <div className="Indent-1"> {this.props.methodName}('s');</div>
+                            }
+                            <div className="Indent-0"> {RIGHT_CURLY}</div>
+                            <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                            <div className="Indent-1"> println(s + "two");</div>
+                            <div className="Indent-0"> {RIGHT_CURLY}</div>
+                            </React.Fragment>
+
+                            : this.props.typeOneName === 'char'
+                              ?
+                              <React.Fragment>
+                              <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                              { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                                this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}(2);</div>
+                              : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                : this.props.typeTwoName === 'boolean'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                  : 
+                                  <div className="Indent-1"> {this.props.methodName}("two");</div>
+                              }
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                              <div className="Indent-1"> println(s + 's');</div>
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              </React.Fragment> 
+
+                              : this.props.typeOneName === 'boolean'
+                                ?
+                                <React.Fragment>
+                                <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                                  this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(2);</div>
+                                : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                  : this.props.typeTwoName === 'char'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}('s');</div>
+                                    : 
+                                    <div className="Indent-1"> {this.props.methodName}("two");</div>
+                                }
+                                <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                                <div className="Indent-1"> println(!s);</div>
+                                <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                </React.Fragment> 
+                                
+                                : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                  { this.props.typeTwoName === 'boolean'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                    : this.props.typeTwoName === 'char'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}('s');</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                  }
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                                  <div className="Indent-1"> println(s + 1.0);</div>
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  </React.Fragment>
+
+                                  : this.props.typeOneName === 'long' || this.props.typeOneName === 'short' ||
+                                    this.props.typeOneName === 'byte'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                  { this.props.typeTwoName === 'String'                               
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}("two");</div>
+                                  : this.props.typeTwoName === 'char'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}('s');</div>
+                                    : this.props.typeTwoName === 'boolean'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                  }
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
+                                  <div className="Indent-1"> println(s + 1);</div>
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  </React.Fragment>
+
+                                  :
+                                  <React.Fragment>
+                                    <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                    { this.props.typeTwoName === 'String'                               
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}("two");</div>
+                                    : this.props.typeTwoName === 'char'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}('s');</div>
+                                      : this.props.typeTwoName === 'boolean'
+                                        ?
+                                        <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                        : 
+                                        <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                    }
+                                    <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                    <div className="Indent-0"> void {this.props.methodName}(int s){LEFT_CURLY}</div>
+                                    <div className="Indent-1"> println(s + 1);</div>
+                                    <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                    </React.Fragment>
+                          } 
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            (2);
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> println(s+1);</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0"> void setup() {LEFT_CURLY} </div>
+                          { this.props.typeOneName === 'String'
+                            ?
+                            <div className="Indent-1"> {this.props.methodName}("two");</div>
+                            : this.props.typeOneName === 'char'
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}('s');</div>
+                              : this.props.typeOneName === 'boolean'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                : this.props.typeOneName === 'double' || this.props.typeOneName === 'float'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                  : 
+                                  <div className="Indent-1"> {this.props.methodName}(2);</div>
+                          }
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
+                          { this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
+                            this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                            this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
+                            this.props.typeOneName === 'boolean'
+                            ?
+                            <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
+                            :
+                            <div className="Indent-0"> void {this.props.methodName}(int s){LEFT_CURLY}</div>
+                          }
+                          { this.props.typeOneName === 'String'
+                            ?
+                            <div className="Indent-1"> println(s + "two");</div>
+                            : this.props.typeOneName === 'char'
+                              ?
+                              <div className="Indent-1"> println(s + 's');</div>
+                              : this.props.typeOneName === 'boolean'
+                                ?
+                                <div className="Indent-1"> println(!s);</div>
+                                : this.props.typeOneName === 'double' || this.props.typeOneName === 'float'
+                                  ?
+                                  <div className="Indent-1"> println(s + 1.0);</div>
+                                  : 
+                                  <div className="Indent-1"> println(s + 1);</div>
+                          }
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
@@ -244,9 +528,107 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(12)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Change the parameter of{" "}
-                        <p className="InputValue">{this.props.methodName}()</p> in
-                        the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}()</p>
+                      { this.props.typeOneName === 'String'
+                        ? this.props.typeTwoName === 'int' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                          this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                          this.props.typeTwoName === 'boolean'
+                          ?
+                          <React.Fragment>
+                          Suggestion 2: Change the parameter of{" "}
+                          <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                          the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}</p>
+                          </React.Fragment>
+                          :
+                          <React.Fragment>
+                          Suggestion 2: Change the parameter of{" "}
+                          <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                          the method declaration to match with  <p className="InputValue">char</p>
+                          </React.Fragment>
+
+                        : this.props.typeOneName === 'boolean'
+                          ? this.props.typeTwoName === 'int' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                            this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                            this.props.typeTwoName === 'String'
+                            ?
+                            <React.Fragment>
+                            Suggestion 2: Change the parameter of{" "}
+                            <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                            the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}</p>
+                            </React.Fragment>
+                            :
+                            <React.Fragment>
+                            Suggestion 2: Change the parameter of{" "}
+                            <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                            the method declaration to match with  <p className="InputValue">int</p>
+                            </React.Fragment>
+
+                            : this.props.typeOneName === 'char'
+                              ? this.props.typeTwoName === 'int' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                                this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                                this.props.typeTwoName === 'boolean'
+                                ?
+                                <React.Fragment>
+                                Suggestion 2: Change the parameter of{" "}
+                                <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                                the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}</p>
+                                </React.Fragment>
+                                :
+                                <React.Fragment>
+                                Suggestion 2: Change the parameter of{" "}
+                                <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                                the method declaration to match with  <p className="InputValue">String</p>
+                                </React.Fragment>
+
+                                : this.props.typeOneName === 'double' || this.props.typeOneName === 'float'
+                                  ? this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                                    this.props.typeTwoName === 'long' || this.props.typeTwoName === 'String' || this.props.typeTwoName === 'boolean' ||
+                                    this.props.typeTwoName === 'char'
+                                    ?
+                                    <React.Fragment>
+                                    Suggestion 2: Change the parameter of{" "}
+                                    <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                                    the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}</p>
+                                    </React.Fragment>
+                                    :
+                                    <React.Fragment>
+                                    Suggestion 2: Change the parameter of{" "}
+                                    <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                                    the method declaration to match with  <p className="InputValue">int</p>
+                                    </React.Fragment>
+
+                                    : this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                                      this.props.typeOneName === 'long'
+                                      ? this.props.typeTwoName === 'String' || this.props.typeTwoName === 'boolean' ||
+                                        this.props.typeTwoName === 'char' || this.props.typeTwoName === 'float'
+                                        ?
+                                        <React.Fragment>
+                                        Suggestion 2: Change the parameter of{" "}
+                                        <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                                        the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}</p>
+                                        </React.Fragment>
+                                        :
+                                        <React.Fragment>
+                                        Suggestion 2: Change the parameter of{" "}
+                                        <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
+                                        the method declaration to match with  <p className="InputValue">double</p>
+                                        </React.Fragment>
+
+                                        : this.props.typeTwoName === 'String' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                                          this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                                          this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'char'
+                                          ?
+                                          <React.Fragment>
+                                          Suggestion 2: Change the parameter of{" "}
+                                          <p className="InputValue">{this.props.methodName}(int)</p> in
+                                          the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}</p>
+                                          </React.Fragment>
+                                          :
+                                          <React.Fragment>
+                                          Suggestion 2: Change the parameter of{" "}
+                                          <p className="InputValue">{this.props.methodName}(int)</p> in
+                                          the method declaration to match with  <p className="InputValue">float</p>
+                                          </React.Fragment>
+                      }
                       </div>
                     </div>
                     {!this.state.openCode12 && (
@@ -276,35 +658,185 @@ class ParameterMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("2");
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> println(s+1);</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        { this.props.typeOneName === 'String'
+                            ?
+                            <React.Fragment>
+                            <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                            { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                              this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                            ?
+                            <div className="Indent-1"> {this.props.methodName}(2);</div>
+                            : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                              : this.props.typeTwoName === 'boolean'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                : 
+                                <div className="Indent-1"> {this.props.methodName}('s');</div>
+                            }
+                            <div className="Indent-0"> {RIGHT_CURLY}</div>
+                            <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                            <div className="Indent-1"> println(s + "two");</div>
+                            <div className="Indent-0"> {RIGHT_CURLY}</div>
+                            </React.Fragment>
+
+                            : this.props.typeOneName === 'char'
+                              ?
+                              <React.Fragment>
+                              <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                              { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                                this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}(2);</div>
+                              : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                : this.props.typeTwoName === 'boolean'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                  : 
+                                  <div className="Indent-1"> {this.props.methodName}("two");</div>
+                              }
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                              <div className="Indent-1"> println(s + 's');</div>
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              </React.Fragment> 
+
+                              : this.props.typeOneName === 'boolean'
+                                ?
+                                <React.Fragment>
+                                <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                                  this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(2);</div>
+                                : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                  : this.props.typeTwoName === 'char'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}('s');</div>
+                                    : 
+                                    <div className="Indent-1"> {this.props.methodName}("two");</div>
+                                }
+                                <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                                <div className="Indent-1"> println(!s);</div>
+                                <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                </React.Fragment> 
+                                
+                                : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                  { this.props.typeTwoName === 'boolean'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                    : this.props.typeTwoName === 'char'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}('s');</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}("two");</div>
+                                  }
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                                  <div className="Indent-1"> println(s + 1.0);</div>
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  </React.Fragment>
+
+                                  : this.props.typeOneName === 'long' || this.props.typeOneName === 'short' ||
+                                    this.props.typeOneName === 'byte'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                  { this.props.typeTwoName === 'String'                               
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}("two");</div>
+                                  : this.props.typeTwoName === 'char'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}('s');</div>
+                                    : this.props.typeTwoName === 'boolean'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                  }
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
+                                  <div className="Indent-1"> println(s + 1);</div>
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  </React.Fragment>
+
+                                  :
+                                  <React.Fragment>
+                                    <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                    { this.props.typeTwoName === 'String'                               
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}("two");</div>
+                                    : this.props.typeTwoName === 'char'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}('s');</div>
+                                      : this.props.typeTwoName === 'boolean'
+                                        ?
+                                        <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                        : 
+                                        <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                    }
+                                    <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                    <div className="Indent-0"> void {this.props.methodName}(int s){LEFT_CURLY}</div>
+                                    <div className="Indent-1"> println(s + 1);</div>
+                                    <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                    </React.Fragment>
+                          } 
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("2");
-                          </div>
+                          <div className="Indent-0">void setup() {LEFT_CURLY}</div>
+                          { this.props.typeTwoName === 'String'
+                            ?
+                            <div className="Indent-1"> {this.props.methodName}("two");</div>
+                            : this.props.typeTwoName === 'char'
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}('s');</div>
+                              : this.props.typeTwoName === 'boolean'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                : this.props.typeTwoName === 'long' || this.props.typeOneName === 'int' ||
+                                  this.props.typeTwoName === 'byte' || this.props.typeOneName === 'short'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(2);</div>
+                                  : 
+                                  <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                          }
                           <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void {this.props.methodName}({this.props.typeTwoName} s){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> println(s+1);</div>
+                          { this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
+                            this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                            this.props.typeTwoName === 'long' || this.props.typeTwoName === 'int' || this.props.typeTwoName === 'double' ||
+                            this.props.typeTwoName === 'boolean'
+                            ?
+                            <div className="Indent-0"> void {this.props.methodName}({this.props.typeTwoName} s){LEFT_CURLY}</div>
+                            :
+                            <div className="Indent-0"> void {this.props.methodName}(float s){LEFT_CURLY}</div>
+                          }
+                          { this.props.typeTwoName === 'String'
+                            ?
+                            <div className="Indent-1"> println(s + "two");</div>
+                            : this.props.typeTwoName === 'char'
+                              ?
+                              <div className="Indent-1"> println(s + 's');</div>
+                              : this.props.typeTwoName === 'boolean'
+                                ?
+                                <div className="Indent-1"> println(!s);</div>
+                                : this.props.typeTwoName === 'long' || this.props.typeOneName === 'int' ||
+                                  this.props.typeTwoName === 'byte' || this.props.typeOneName === 'short'
+                                  ?
+                                  <div className="Indent-1"> println(s + 1);</div>
+                                  : 
+                                  <div className="Indent-1"> println(s + 1.0);</div>
+                          }
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -318,9 +850,21 @@ class ParameterMismatch extends React.Component {
           <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
               <div className="ErrorMessage">
-                <h4>2: You may have used the wrong number of parameters for the method{" "}
-                <p className="InputValue">{this.props.methodName}()</p>
-                </h4>
+                 {this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
+                    this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                    this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
+                    this.props.typeOneName === 'boolean'
+                    ?
+                    <React.Fragment>
+                    <h4>2: You may have used the wrong number of parameters for the method{" "}
+                    <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> </h4>
+                    </React.Fragment>
+                    :
+                    <React.Fragment>
+                    <h4>2: You may have used the wrong number of parameters for the method{" "}
+                    <p className="InputValue">{this.props.methodName}(int)</p> </h4>
+                    </React.Fragment>
+                  }
               </div>
               {!this.state.openStrategy2 && (
                 <div className="ButtonHolder">
@@ -360,9 +904,23 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Change the number of parameters of{" "}
-                        <p className="InputValue">{this.props.methodName}()</p> to
-                        the expected amount
+                        {this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
+                          this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                          this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
+                          this.props.typeOneName === 'boolean'
+                          ?
+                          <React.Fragment>
+                          Suggestion 1: Change the number of parameters of{" "}
+                          <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> to
+                          the expected amount
+                          </React.Fragment>
+                          :
+                          <React.Fragment>
+                          Suggestion 1: Change the number of parameters of{" "}
+                          <p className="InputValue">{this.props.methodName}(int)</p> to
+                          the expected amount
+                          </React.Fragment>
+                        }
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -392,36 +950,184 @@ class ParameterMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("1", "2" , "3");
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> println(s+1);</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        { this.props.typeOneName === 'String'
+                            ?
+                            <React.Fragment>
+                            <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                            { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                              this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                            ?
+                            <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                            : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                              : this.props.typeTwoName === 'boolean'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                : 
+                                <div className="Indent-1"> {this.props.methodName}('a', 'b, 'c');</div>
+                            }
+                            <div className="Indent-0"> {RIGHT_CURLY}</div>
+                            <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                            <div className="Indent-1"> println(s + "two");</div>
+                            <div className="Indent-0"> {RIGHT_CURLY}</div>
+                            </React.Fragment>
+
+                            : this.props.typeOneName === 'char'
+                              ?
+                              <React.Fragment>
+                              <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                              { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                                this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                              : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                : this.props.typeTwoName === 'boolean'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                  : 
+                                  <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                              }
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                              <div className="Indent-1"> println(s + 's');</div>
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              </React.Fragment> 
+
+                              : this.props.typeOneName === 'boolean'
+                                ?
+                                <React.Fragment>
+                                <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                                  this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                                : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                  : this.props.typeTwoName === 'char'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                                    : 
+                                    <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                                }
+                                <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                                <div className="Indent-1"> println(!s);</div>
+                                <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                </React.Fragment> 
+                                
+                                : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                  { this.props.typeTwoName === 'boolean'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                    : this.props.typeTwoName === 'char'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                                  }
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                                  <div className="Indent-1"> println(s + 1.0);</div>
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  </React.Fragment>
+
+                                  : this.props.typeOneName === 'long' || this.props.typeOneName === 'short' ||
+                                    this.props.typeOneName === 'byte'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                  { this.props.typeTwoName === 'String'                               
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                                  : this.props.typeTwoName === 'char'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                                    : this.props.typeTwoName === 'boolean'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                  }
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
+                                  <div className="Indent-1"> println(s + 1);</div>
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  </React.Fragment>
+
+                                  :
+                                  <React.Fragment>
+                                    <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                    { this.props.typeTwoName === 'String'                               
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                                      : this.props.typeTwoName === 'char'
+                                        ?
+                                        <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                                        : this.props.typeTwoName === 'boolean'
+                                          ?
+                                          <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                          : 
+                                          <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                    }
+                                    <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                    <div className="Indent-0"> void {this.props.methodName}(int s){LEFT_CURLY}</div>
+                                    <div className="Indent-1"> println(s + 1);</div>
+                                    <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                    </React.Fragment>
+                          } 
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            (2);
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> println(s+1);</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        <div className="Indent-0"> void setup() {LEFT_CURLY} </div>
+                          { this.props.typeOneName === 'String'
+                            ?
+                            <div className="Indent-1"> {this.props.methodName}("two");</div>
+                            : this.props.typeOneName === 'char'
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}('s');</div>
+                              : this.props.typeOneName === 'boolean'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(true);</div>
+                                : this.props.typeOneName === 'double' || this.props.typeOneName === 'float'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                  : 
+                                  <div className="Indent-1"> {this.props.methodName}(2);</div>
+                          }
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
+                          { this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
+                            this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                            this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
+                            this.props.typeOneName === 'boolean'
+                            ?
+                            <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
+                            :
+                            <div className="Indent-0"> void {this.props.methodName}(int s){LEFT_CURLY}</div>
+                          }
+                          { this.props.typeOneName === 'String'
+                            ?
+                            <div className="Indent-1"> println(s + "two");</div>
+                            : this.props.typeOneName === 'char'
+                              ?
+                              <div className="Indent-1"> println(s + 's');</div>
+                              : this.props.typeOneName === 'boolean'
+                                ?
+                                <div className="Indent-1"> println(!s);</div>
+                                : this.props.typeOneName === 'double' || this.props.typeOneName === 'float'
+                                  ?
+                                  <div className="Indent-1"> println(s + 1.0);</div>
+                                  : 
+                                  <div className="Indent-1"> println(s + 1);</div>
+                          }
+                          <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
@@ -439,9 +1145,23 @@ class ParameterMismatch extends React.Component {
                         onChange={() => this.changeChecked(22)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Change the number of parameters in the {" "}
-                        <p className="InputValue">{this.props.methodName}()</p> method
-                        declaration
+                        {this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
+                          this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
+                          this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
+                          this.props.typeOneName === 'boolean'
+                          ?
+                          <React.Fragment>
+                          Suggestion 2: Change the number of parameters in the {" "}
+                          <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> method
+                          declaration
+                          </React.Fragment>
+                          :
+                          <React.Fragment>
+                          Suggestion 2: Change the number of parameters in the {" "}
+                          <p className="InputValue">{this.props.methodName}(int)</p> method
+                          declaration
+                          </React.Fragment>
+                        }
                       </div>
                     </div>
                     {!this.state.openCode22 && (
@@ -471,38 +1191,206 @@ class ParameterMismatch extends React.Component {
                     <div className="CodeExample">
                       <div className="CodeContainer">
                         <div className="RedCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("1", "2", "3");
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void {this.props.methodName}(int s){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> println(s+1);</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        { this.props.typeOneName === 'String'
+                            ?
+                            <React.Fragment>
+                            <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                            { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                              this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                            ?
+                            <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                            : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                              : this.props.typeTwoName === 'boolean'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                : 
+                                <div className="Indent-1"> {this.props.methodName}('a', 'b, 'c');</div>
+                            }
+                            <div className="Indent-0"> {RIGHT_CURLY}</div>
+                            <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                            <div className="Indent-1"> println(s + "two");</div>
+                            <div className="Indent-0"> {RIGHT_CURLY}</div>
+                            </React.Fragment>
+
+                            : this.props.typeOneName === 'char'
+                              ?
+                              <React.Fragment>
+                              <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                              { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                                this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                              : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                : this.props.typeTwoName === 'boolean'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                  : 
+                                  <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                              }
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                              <div className="Indent-1"> println(s + 's');</div>
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              </React.Fragment> 
+
+                              : this.props.typeOneName === 'boolean'
+                                ?
+                                <React.Fragment>
+                                <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                { this.props.typeTwoName === 'int' || this.props.typeTwoName === 'long' ||     
+                                  this.props.typeTwoName === 'shor' || this.props.typeTwoName === 'byte'                         
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                                : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                  : this.props.typeTwoName === 'char'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                                    : 
+                                    <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                                }
+                                <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                                <div className="Indent-1"> println(!s);</div>
+                                <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                </React.Fragment> 
+                                
+                                : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                  { this.props.typeTwoName === 'boolean'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                    : this.props.typeTwoName === 'char'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                                  }
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName}){LEFT_CURLY}</div>
+                                  <div className="Indent-1"> println(s + 1.0);</div>
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  </React.Fragment>
+
+                                  : this.props.typeOneName === 'long' || this.props.typeOneName === 'short' ||
+                                    this.props.typeOneName === 'byte'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                  { this.props.typeTwoName === 'String'                               
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                                  : this.props.typeTwoName === 'char'
+                                    ?
+                                    <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                                    : this.props.typeTwoName === 'boolean'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                  }
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
+                                  <div className="Indent-1"> println(s + 1);</div>
+                                  <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                  </React.Fragment>
+
+                                  :
+                                  <React.Fragment>
+                                    <div className="Indent-0"> void setup() {LEFT_CURLY} </div>     
+                                    { this.props.typeTwoName === 'String'                               
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
+                                      : this.props.typeTwoName === 'char'
+                                        ?
+                                        <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                                        : this.props.typeTwoName === 'boolean'
+                                          ?
+                                          <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                          : 
+                                          <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                    }
+                                    <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                    <div className="Indent-0"> void {this.props.methodName}(int s){LEFT_CURLY}</div>
+                                    <div className="Indent-1"> println(s + 1);</div>
+                                    <div className="Indent-0"> {RIGHT_CURLY}</div>
+                                    </React.Fragment>
+                          }
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.methodName}
-                            ("1", "2", "3");
-                          </div>
+                          <div className="Indent-0"> void setup() {LEFT_CURLY}</div>
+                          { this.props.typeTwoName === 'String'
+                            ?
+                            <div className="Indent-1"> {this.props.methodName}("1", "2", "3"); </div>
+                            : this.props.typeTwoName === 'char'
+                              ?
+                              <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
+                              : this.props.typeTwoName === 'boolean'
+                                ?
+                                <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
+                                : this.props.typeTwoName === 'long' || this.props.typeOneName === 'int' ||
+                                  this.props.typeTwoName === 'byte' || this.props.typeOneName === 'short'
+                                  ?
+                                  <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                                  : 
+                                  <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                          }
                           <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void {this.props.methodName}({this.props.typeTwoName} s1, {this.props.typeTwoName} s2, {this.props.typeTwoName} s3)
-                            {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> println(s1+1);</div>
-                          <div className="Indent-1"> println(s2+1);</div>
-                          <div className="Indent-1"> println(s3+1);</div>
+
+                          { this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
+                            this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                            this.props.typeTwoName === 'long' || this.props.typeTwoName === 'int' || this.props.typeTwoName === 'double' ||
+                            this.props.typeTwoName === 'boolean'
+                            ?
+                            <div className="Indent-0">
+                              void {this.props.methodName}({this.props.typeTwoName} s1, {this.props.typeTwoName} s2, {this.props.typeTwoName} s3)
+                              {LEFT_CURLY}
+                            </div>
+                            :
+                            <div className="Indent-0"> void {this.props.methodName}(float s1, float s2, float s3){LEFT_CURLY}</div>
+                          }
+
+                          { this.props.typeTwoName === 'String'
+                            ?
+                            <React.Fragment>
+                            <div className="Indent-1"> println(s1 + "four");</div>
+                            <div className="Indent-1"> println(s2 + "five");</div>
+                            <div className="Indent-1"> println(s3 + "six");</div>
+                            </React.Fragment>
+                            : this.props.typeTwoName === 'char'
+                              ?
+                              <React.Fragment>
+                              <div className="Indent-1"> println(s1 + 'e');</div>
+                              <div className="Indent-1"> println(s2 + 'f');</div>
+                              <div className="Indent-1"> println(s3 + 'g');</div>
+                              </React.Fragment>
+                              : this.props.typeTwoName === 'boolean'
+                                ?
+                                <div className="Indent-1"> println(!s);</div>
+                                : this.props.typeTwoName === 'long' || this.props.typeOneName === 'int' ||
+                                  this.props.typeTwoName === 'byte' || this.props.typeOneName === 'short'
+                                  ?
+                                  <React.Fragment>
+                                  <div className="Indent-1"> println(s1 + 1);</div>
+                                  <div className="Indent-1"> println(s2 + 1);</div>
+                                  <div className="Indent-1"> println(s3 + 1);</div>
+                                  </React.Fragment>
+                                  : 
+                                  <React.Fragment>
+                                  <div className="Indent-1"> println(s1 + 1.0);</div>
+                                  <div className="Indent-1"> println(s2 + 1.0);</div>
+                                  <div className="Indent-1"> println(s3 + 1.0);</div>
+                                  </React.Fragment>
+                          }
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
