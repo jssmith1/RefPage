@@ -6,7 +6,7 @@ URL: http://139.147.9.247/
 1. Log in to the CS server <br />
 ```> ssh saidovs@139.147.9.247```  <br />
 2. Enter password to authenticate <br />
-```*enter password*``` <br />
+```> *enter password*``` <br />
 3. Navigate to the RefPage directory <br />
 ```> cd RefPage``` <br/>
 4. Pull recent updates from GitHub <br />
@@ -16,7 +16,7 @@ URL: http://139.147.9.247/
 6. Clean out the old version of the site <br />
 ```> sudo rm -r /var/www/html/*``` <br />
 7. Deploy the new version of the site <br />
-```> sudo cp -r build/* /var/www/htm``` <br/>
+```> sudo cp -r build/* /var/www/html``` <br/>
 
 ## Setup Dev Environment on Windows:
 1. Install [chocolatey](https://chocolatey.org/install) package manager (via nodejs download or install separately)
