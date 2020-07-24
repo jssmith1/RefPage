@@ -108,6 +108,8 @@ class IncorrectDimensionExpression1 extends React.Component {
               )}
             </div>
 
+            
+
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
                   <i>Tick the box once you have tried the suggestion</i>

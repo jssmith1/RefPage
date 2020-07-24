@@ -86,16 +86,16 @@ class ReturnMissing extends React.Component {
               {this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
                 this.props.typeName === 'char' || this.props.typeName === 'float' ||
                 this.props.typeName === 'double' || this.props.typeName === 'short' ||
-                this.props.typeName === 'byte'
-                ?                               //Box 1 Ex 1 - All types except int
+                this.props.typeName === 'byte' || this.props.typeName === 'int'
+                ?                               //Box 1 Ex 1 - All types
                 <React.Fragment>
                   This method must return a result of type{" "}
                   <div className="InputValue">{this.props.typeName}</div>
                 </React.Fragment>
-                :                           //Box 1 Ex 1 - int (default)
+                :                           //Box 1 Ex 1 - user-made (default)
                 <React.Fragment>
                   This method must return a result of type{" "}
-                  <div className="InputValue">int</div>
+                  <div className="InputValue">{this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}</div>
                 </React.Fragment>
               }
             </h2>
@@ -106,18 +106,18 @@ class ReturnMissing extends React.Component {
               {this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
                 this.props.typeName === 'char' || this.props.typeName === 'float' ||
                 this.props.typeName === 'double' || this.props.typeName === 'short' ||
-                this.props.typeName === 'byte'
-                ?                               //Box 1 Ex 1 - All types except int
+                this.props.typeName === 'byte' || this.props.typeName === 'int'
+                ?                               //Box 1 Ex 1 - All types
                 <React.Fragment>
                   Translation: You did not return a value of type{" "}
                   <div className="InputValue">{this.props.typeName}</div> like the definition of method{" "}
                   <div className="InputValue">{this.props.methodName}()</div>.
                 </React.Fragment>
-                :                           //Box 1 Ex 1 - int (default)
+                :                           //Box 1 Ex 1 - user-made (default)
                 <React.Fragment>
-                  Translation: You did not return a value of type{" "}
-                  <div className="InputValue">int</div> like the definition of method{" "}
-                  <div className="InputValue">{this.props.methodName}()</div>.
+                  Translation: You did not return a {" "}
+                  <div className="InputValue">{this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}</div> {" "}
+                  object that the method <div className="InputValue">{this.props.methodName}() requires</div>.
                 </React.Fragment>
               }
             </i>
@@ -173,18 +173,18 @@ class ReturnMissing extends React.Component {
                         {this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
                           this.props.typeName === 'char' || this.props.typeName === 'float' ||
                           this.props.typeName === 'double' || this.props.typeName === 'short' ||
-                          this.props.typeName === 'byte'
-                          ?                               //Box 1 Ex 1 - All types except int
+                          this.props.typeName === 'byte' || this.props.typeName === 'int'
+                          ?                               //Box 1 Ex 1 - All types
                           <React.Fragment>
                             Suggestion 1: Add a return statement of type{" "}
                             <p className="InputValue">{this.props.typeName}</p> at the end of the method{" "}
                             <p className="InputValue">{this.props.methodName}()</p>
                           </React.Fragment>
-                          :                           //Box 1 Ex 1 - int (default)
+                          :                           //Box 1 Ex 1 - user-made (default)
                           <React.Fragment>
                             Suggestion 1: Add a return statement of type{" "}
-                            <p className="InputValue">int</p> at the end of the method{" "}
-                            <p className="InputValue">{this.props.methodName}()</p>
+                            <p className="InputValue">{this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}</p> {" "}
+                            at the end of the method <p className="InputValue">{this.props.methodName}()</p>
                           </React.Fragment>
                         }
                       </div>
@@ -220,14 +220,22 @@ class ReturnMissing extends React.Component {
                             { this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
                               this.props.typeName === 'char' || this.props.typeName === 'float' ||
                               this.props.typeName === 'double' || this.props.typeName === 'short' ||
-                              this.props.typeName === 'byte'
-                              ?                               //Box 1 Ex 1 - All types except int
+                              this.props.typeName === 'byte' || this.props.typeName === 'int' 
+                              ?                               //Box 1 Ex 1 - All data types
                               <React.Fragment>
                               public {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}
                               </React.Fragment>
-                              :                           //Box 1 Ex 1 - int (default)
+                              :                           //Box 1 Ex 1 - user-made object
                               <React.Fragment>  
-                              public int {this.props.methodName}(int s) {LEFT_CURLY}
+                              <div className="Indent-0"> class {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}{LEFT_CURLY}</div>
+                              <div className="Indent-1"> int s;</div>
+                              <div className="Indent-1"> {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(int s){LEFT_CURLY}</div>
+                              <div className="Indent-2"> this.a = a;</div>
+                              <div className="Indent-1"> {RIGHT_CURLY}</div>
+                              <div className="Indent-0"> {RIGHT_CURLY}</div>
+                              <div className="Indent-0" >{this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {" "}
+                              {this.props.methodName}(int s){LEFT_CURLY}</div>
+                              <div className="Indent-1"> new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(s);</div>
                               </React.Fragment>
                             }
                           </div>
@@ -243,12 +251,12 @@ class ReturnMissing extends React.Component {
                                 : this.props.typeName === 'float' || this.props.typeName === 'double'     //Box 1 Ex 1 - float/double
                                   ?   
                                   <div className="Indent-1"> s = s + 5.5;</div>
-                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte
-                                    || this.props.typeName === 'long'
+                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte/long/int
+                                    || this.props.typeName === 'long' || this.props.typeName === 'int'
                                     ? 
                                     <div className="Indent-1"> s = s + 5;</div>
-                                    :                                     //Box 1 Ex 1 - int (default)
-                                    <div className="Indent-1"> s = s + 5;</div>
+                                    :                                     //Box 1 Ex 1 - user-made (default)
+                                    " "
                           }
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
@@ -256,7 +264,21 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                         <div className="Indent-0">
-                          public {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}
+                          { this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
+                            this.props.typeName === 'char' || this.props.typeName === 'float' ||
+                            this.props.typeName === 'double' || this.props.typeName === 'short' ||
+                            this.props.typeName === 'byte' || this.props.typeName === 'int' 
+                            ?
+                            <React.Fragment>
+                            public {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}
+                            </React.Fragment>
+                            :
+                            <React.Fragment> 
+                            <div className="Indent-0" >{this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {" "}
+                            {this.props.methodName}(int s){LEFT_CURLY}</div>
+                            <div className="Indent-1"> return new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(s);</div>
+                            </React.Fragment>
+                          }
                           </div>
                           { this.props.typeName === 'String'             //Box 1 Ex 1 - String
                             ?
@@ -282,18 +304,15 @@ class ReturnMissing extends React.Component {
                                   <div className="Indent-1"> s = s + 5.5;</div>
                                   <div className="Indent-1"> return s;</div>
                                   </React.Fragment> 
-                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte
-                                    || this.props.typeName === 'long'
+                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte/long/int
+                                    || this.props.typeName === 'long' || this.props.typeName === 'int'
                                     ? 
                                     <React.Fragment>
                                     <div className="Indent-1"> s = s + 5;</div>
                                     <div className="Indent-1"> return s;</div>
                                     </React.Fragment> 
-                                    :                                     //Box 1 Ex 1 - int (default)
-                                    <React.Fragment>
-                                    <div className="Indent-1"> s = s + 5;</div>
-                                    <div className="Indent-1"> return s;</div>
-                                    </React.Fragment> 
+                                    :                                     //Box 1 Ex 1 - user-made (default)
+                                    " "
                           }
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
@@ -355,18 +374,18 @@ class ReturnMissing extends React.Component {
                         {this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
                           this.props.typeName === 'char' || this.props.typeName === 'float' ||
                           this.props.typeName === 'double' || this.props.typeName === 'short' ||
-                          this.props.typeName === 'byte'
-                          ?                               //Box 1 Ex 1 - All types except int
+                          this.props.typeName === 'byte' || this.props.typeName === 'int'
+                          ?                               //Box 1 Ex 1 - All types 
                           <React.Fragment>
                             Suggestion 1: Make sure all branches of conditionals in method{" "}
                             <p className="InputValue">{this.props.methodName}()</p>{" "} return value of type{" "}
                             <p className="InputValue">{this.props.typeName}</p>
                           </React.Fragment>
-                          :                           //Box 1 Ex 1 - int (default)
+                          :                           //Box 1 Ex 1 - user-made (default)
                           <React.Fragment>
                             Suggestion 1: Make sure all branches of conditionals in method{" "}
-                            <p className="InputValue">{this.props.methodName}()</p>{" "} return value of type{" "}
-                            <p className="InputValue">int</p>
+                            <p className="InputValue">{this.props.methodName}()</p>{" "} return a {" "}
+                            <p className="InputValue">{this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}</p> object
                           </React.Fragment>
                         }
                       </div>
@@ -402,14 +421,14 @@ class ReturnMissing extends React.Component {
                             { this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
                               this.props.typeName === 'char' || this.props.typeName === 'float' ||
                               this.props.typeName === 'double' || this.props.typeName === 'short' ||
-                              this.props.typeName === 'byte'
-                              ?                               //Box 1 Ex 1 - All types except int
+                              this.props.typeName === 'byte' || this.props.typeName === 'int'
+                              ?                               //Box 1 Ex 1 - All types 
                               <React.Fragment>
                               public {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}
                               </React.Fragment>
-                              :                           //Box 1 Ex 1 - int (default)
+                              :                           //Box 1 Ex 1 - user-made (default)
                               <React.Fragment>  
-                              public int {this.props.methodName}(int s) {LEFT_CURLY}
+                              public {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {this.props.methodName}(int s) {LEFT_CURLY}
                               </React.Fragment>
                             }
                           </div>
@@ -425,12 +444,12 @@ class ReturnMissing extends React.Component {
                                 : this.props.typeName === 'float' || this.props.typeName === 'double'     //Box 1 Ex 1 - float/double
                                   ?   
                                   <div className="Indent-1"> if (s {">="} 5.5) return s;</div>
-                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte
-                                    || this.props.typeName === 'long'
+                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte/long/int
+                                    || this.props.typeName === 'long' || this.props.typeName === 'int'
                                     ? 
                                     <div className="Indent-1"> if (s {">="} 5) return s;</div>
-                                    :                                     //Box 1 Ex 1 - int (default)
-                                    <div className="Indent-1"> if (s {">="} 5) return s;</div>
+                                    :                                     //Box 1 Ex 1 - user-made (default)
+                                    <div className="Indent-1"> if (s {">="} 5) return new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(s);</div>
                           }
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
                         </div>
@@ -438,18 +457,18 @@ class ReturnMissing extends React.Component {
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            {this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
-                              this.props.typeName === 'char' || this.props.typeName === 'float' ||
-                              this.props.typeName === 'double' || this.props.typeName === 'short' ||
-                              this.props.typeName === 'byte'
-                              ?                               //Box 1 Ex 1 - All types except int
-                              <React.Fragment>
+                            { this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
+                                this.props.typeName === 'char' || this.props.typeName === 'float' ||
+                                this.props.typeName === 'double' || this.props.typeName === 'short' ||
+                                this.props.typeName === 'byte' || this.props.typeName === 'int'
+                                ?                               //Box 1 Ex 1 - All types 
+                                <React.Fragment>
                                 public {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}
-                              </React.Fragment>
-                              :                           //Box 1 Ex 1 - int (default)
-                              <React.Fragment>
-                                public int {this.props.methodName}(int s) {LEFT_CURLY}
-                              </React.Fragment>
+                                </React.Fragment>
+                                :                           //Box 1 Ex 1 - user-made (default)
+                                <React.Fragment>  
+                                public {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {this.props.methodName}(int s) {LEFT_CURLY}
+                                </React.Fragment>
                             }
                           </div>
                           { this.props.typeName === 'String'             //Box 1 Ex 1 - String
@@ -476,17 +495,17 @@ class ReturnMissing extends React.Component {
                                   <div className="Indent-1"> if (s {">="} 5.5) return s;</div>
                                   <div className="Indent-1"> return -s;</div>
                                   </React.Fragment>
-                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte
-                                    || this.props.typeName === 'long'
+                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte/long/int
+                                    || this.props.typeName === 'long' || this.props.typeName === 'int'
                                     ? 
                                     <React.Fragment>
                                     <div className="Indent-1"> if (s {">="} 5) return s;</div>
                                     <div className="Indent-1"> return -s;</div>
                                     </React.Fragment>
-                                    :                   //Box 1 Ex 1 - int (default)
+                                    :                   //Box 1 Ex 1 - user-made (default)
                                     <React.Fragment>                                     
-                                    <div className="Indent-1"> if (s {">="} 5) return s;</div>
-                                    <div className="Indent-1"> return -s;</div>
+                                    <div className="Indent-1"> if (s {">="} 5) return new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(s);</div>
+                                    <div className="Indent-1"> return new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(-s);</div>
                                     </React.Fragment>
                           }
                           <div className="Indent-0"> {RIGHT_CURLY}</div>
@@ -494,18 +513,18 @@ class ReturnMissing extends React.Component {
 
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            {this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
-                              this.props.typeName === 'char' || this.props.typeName === 'float' ||
-                              this.props.typeName === 'double' || this.props.typeName === 'short' ||
-                              this.props.typeName === 'byte'
-                              ?                               //Box 1 Ex 1 - All types except int
-                              <React.Fragment>
+                            { this.props.typeName === 'String' || this.props.typeName === 'boolean' ||
+                                this.props.typeName === 'char' || this.props.typeName === 'float' ||
+                                this.props.typeName === 'double' || this.props.typeName === 'short' ||
+                                this.props.typeName === 'byte' || this.props.typeName === 'int'
+                                ?                               //Box 1 Ex 1 - All types
+                                <React.Fragment>
                                 public {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}
-                              </React.Fragment>
-                              :                           //Box 1 Ex 1 - int (default)
-                              <React.Fragment>
-                                public int {this.props.methodName}(int s) {LEFT_CURLY}
-                              </React.Fragment>
+                                </React.Fragment>
+                                :                           //Box 1 Ex 1 - user-made (default)
+                                <React.Fragment>  
+                                public {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {this.props.methodName}(int s) {LEFT_CURLY}
+                                </React.Fragment>
                             }
                           </div>
                           { this.props.typeName === 'String'             //Box 1 Ex 1 - String
@@ -544,8 +563,8 @@ class ReturnMissing extends React.Component {
                                     <div className="Indent-2"> return -s;</div>
                                     <div className="Indent-1"> {RIGHT_CURLY}</div>
                                   </React.Fragment>
-                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte
-                                    || this.props.typeName === 'long'
+                                  : this.props.typeName === 'byte' || this.props.typeName === 'short'     //Box 1 Ex 1 - short/byte/long/int
+                                    || this.props.typeName === 'long' || this.props.typeName === 'int'
                                     ? 
                                     <React.Fragment>
                                       <div className="Indent-1"> if (s {">="} 5) {LEFT_CURLY}</div>
@@ -554,12 +573,12 @@ class ReturnMissing extends React.Component {
                                       <div className="Indent-2"> return -s;</div>
                                       <div className="Indent-1"> {RIGHT_CURLY}</div>
                                     </React.Fragment>
-                                    :                   //Box 1 Ex 1 - int (default)
+                                    :                   //Box 1 Ex 1 - user-made  (default)
                                     <React.Fragment>                                     
                                       <div className="Indent-1"> if (s {">="} 5) {LEFT_CURLY}</div>
-                                      <div className="Indent-2"> return s;</div>
+                                      <div className="Indent-2"> return new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(s);</div>
                                       <div className="Indent-1"> {RIGHT_CURLY} else {LEFT_CURLY}</div>
-                                      <div className="Indent-2"> return -s;</div>
+                                      <div className="Indent-2"> return new {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(-s);</div>
                                       <div className="Indent-1"> {RIGHT_CURLY}</div>
                                     </React.Fragment>
                           }

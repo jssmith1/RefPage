@@ -1229,8 +1229,8 @@ class UnexpectedToken extends React.Component {
                                     <div className="CodeExample">
                                     <div className="CodeContainer">
                                         <div className="RedCode">
-                                        <div className="Indent-0"> class {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {"{"}  </div>
-                                        <div className="Indent-1"> {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}() {"{"} </div>
+                                        <div className="Indent-0"> class {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}{"{"}  </div>
+                                        <div className="Indent-1"> {this.props.typeName.slice(0,1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}(){"{"} </div>
                                         <div className="Indent-2"> ...; </div>
                                         <div className="Indent-1"> {"}"} </div>
                                         <div className="Indent-0"> {"}"} </div>

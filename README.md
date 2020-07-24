@@ -1,19 +1,22 @@
-This is a reference page for processing errors. We provide explanation and examples to fix compiling errors.
+This is a reference page for processing errors. We provide explanations and examples to help fix compiling errors.
 
 ## Deployment page
-URL: http://refpage-processing-excel.surge.sh/
+URL: http://139.147.9.247/ 
 
-1. Install surge using npm <br />
-```npm install -g surge```  <br />
-2. Build out your react application <br />
-```cd refpage ``` <br />
-```npm run build``` <br />
-3. Navigate to build folder <br />
-```cd build``` <br/>
-4. Run surge <br />
-```surge``` <br/>
-5. Follow surge prompts, make sure to replace surge automatically generated domain with our domain: <br />
-```refpage-processing-excel.surge.sh``` <br />
+1. Log in to the CS server <br />
+```> ssh saidovs@139.147.9.247```  <br />
+2. Enter password to authenticate <br />
+```*enter password*``` <br />
+3. Navigate to the RefPage directory <br />
+```> cd RefPage``` <br/>
+4. Pull recent updates from GitHub <br />
+```> git pull``` <br/>
+5. Build out the react application<br />
+```> npm run build``` <br />
+6. Clean out the old version of the site <br />
+```> sudo rm -r /var/www/html/*``` <br />
+7. Deploy the new version of the site <br />
+```> sudo cp -r build/* /var/www/htm``` <br/>
 
 ## Setup Dev Environment on Windows:
 1. Install [chocolatey](https://chocolatey.org/install) package manager (via nodejs download or install separately)

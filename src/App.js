@@ -74,7 +74,7 @@ function HomePageContent() {
             <Link to="/methodnotfound?classname=Thing&methodname=doSomething&correctmethodname=correctName&typename=int&varname=thing">Method Not Found</Link>
           </div>
           <div className="Indent-1">
-            <Link to="/parametermismatch?methodname=doSomething&typeonename=int&typetwoname=String">Parameter Mismatch</Link>
+            <Link to="/parametermismatch?classname=sketch_200721a&methodname=doSomething&typeonename=int&typetwoname=String">Parameter Mismatch</Link>
           </div>
           <div className="Indent-1">
             <Link to="/returnmissing?methodname=doSomething&typename=int">Return Statement Missing</Link>
@@ -171,6 +171,7 @@ function HomePageContent() {
 
       <Route exact path="/parametermismatch">
         <ParameterMismatch
+          className={query.get("classname") || "sketch_200721a"}
           methodName={query.get("methodname") || "doSomething"}
           typeOneName={query.get("typeonename") || "int"}
           typeTwoName={query.get("typetwoname") || "String"}

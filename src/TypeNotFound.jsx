@@ -119,7 +119,7 @@ class TypeNotFound extends React.Component {
           </h4>
 
           <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
+            <div className="ErrorTile" f={() => this.openStrategyTile(1)}>
               <div className="ErrorMessage">
                 <h4>
                   1: You may have mistyped class name{" "}
