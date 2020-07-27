@@ -124,7 +124,8 @@ class ParameterMismatch extends React.Component {
 
                 : this.props.typeTwoName === 'String' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
                   this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
-                  this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'char' || this.props.typeTwoName === 'int'
+                  this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'char' || this.props.typeTwoName === 'int' ||
+                  this.props.typeTwoName === 'float'
                   ?
                   <React.Fragment>
                   The method “<div className="InputValue">{this.props.methodName}
@@ -137,7 +138,8 @@ class ParameterMismatch extends React.Component {
                   The method “<div className="InputValue">{this.props.methodName}
                   (<div className="InputValue">{this.props.className}</div>.{this.props.typeOneName.slice(0, 1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)})</div>”
                   in the type <div className="InputValue">{this.props.className}</div> is not applicable for the
-                  arguments <div className="InputValue">(float) </div>
+                  arguments <div className="InputValue">(<div className="InputValue">{this.props.className}</div>.{" "}
+                  {this.props.typeTwoName.slice(0, 1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}) </div>
                   </React.Fragment>
               }
             </h2>
@@ -295,7 +297,7 @@ class ParameterMismatch extends React.Component {
                                   <div className="Indent-1"> {this.props.methodName}('s');</div>
                                   : 
                                   <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                  {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div>
+                                  {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                             }
                             <div className="Indent-0"> {RIGHT_CURLY}</div>
                             <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -322,7 +324,7 @@ class ParameterMismatch extends React.Component {
                                     <div className="Indent-1"> {this.props.methodName}("two");</div>
                                     : 
                                     <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                    {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div>
+                                    {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                               }
                               <div className="Indent-0"> {RIGHT_CURLY}</div>
                               <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -349,7 +351,7 @@ class ParameterMismatch extends React.Component {
                                       <div className="Indent-1"> {this.props.methodName}("two");</div>
                                       : 
                                       <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                      {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div>
+                                      {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                                 }
                                 <div className="Indent-0"> {RIGHT_CURLY}</div>
                                 <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -373,7 +375,7 @@ class ParameterMismatch extends React.Component {
                                         <div className="Indent-1"> {this.props.methodName}(2);</div>
                                         : 
                                         <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div>
+                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                                   }
                                   <div className="Indent-0"> {RIGHT_CURLY}</div>
                                   <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -400,7 +402,7 @@ class ParameterMismatch extends React.Component {
                                         <div className="Indent-1"> {this.props.methodName}(2.0);</div>
                                         : 
                                         <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div> 
+                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div> 
                                   }
                                   <div className="Indent-0"> {RIGHT_CURLY}</div>
                                   <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -426,8 +428,16 @@ class ParameterMismatch extends React.Component {
                                       : this.props.typeTwoName === 'boolean'
                                         ?
                                         <div className="Indent-1"> {this.props.methodName}(true);</div>
-                                        : 
-                                        <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                        : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                          ? 
+                                          <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                          : this.props.typeTwoName === 'int' || this.props.typeTwoName === 'byte' ||
+                                            this.props.typeTwoName === 'short' || this.props.typeTwoName === 'long'
+                                            ? 
+                                            <div className="Indent-1"> {this.props.methodName}(2);</div>
+                                            :
+                                            <div className="Indent-1"> {this.props.methodName}(new {" "}
+                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>  
                                     }
                                     <div className="Indent-0"> {RIGHT_CURLY}</div>
                                     <div className="Indent-0"> void {this.props.methodName}
@@ -535,20 +545,23 @@ class ParameterMismatch extends React.Component {
 
                         : this.props.typeTwoName === 'int' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
                           this.props.typeTwoName === 'long' || this.props.typeTwoName === 'double' ||
-                          this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char'
+                          this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
+                          this.props.typeTwoName === 'float'
                           ?
                           <React.Fragment>
                           Suggestion 2: Change the parameter of{" "}
                           <p className="InputValue">{this.props.methodName}(
-                          {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}
-                          )</p> in
-                          the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}</p>
+                          {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)})</p> 
+                          in the method declaration to match with  <p className="InputValue">{this.props.typeTwoName}</p>
                           </React.Fragment>
                           :
                           <React.Fragment>
                           Suggestion 2: Change the parameter of{" "}
-                          <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> in
-                          the method declaration to match with  <p className="InputValue">float</p>
+                          <p className="InputValue">{this.props.methodName}(
+                          {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)})</p> 
+                          in the method declaration to match with  <p className="InputValue">
+                          {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}
+                          </p>
                           </React.Fragment>
                         
                       }
@@ -600,7 +613,7 @@ class ParameterMismatch extends React.Component {
                                   <div className="Indent-1"> {this.props.methodName}('s');</div>
                                   : 
                                   <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                  {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div>
+                                  {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                             }
                             <div className="Indent-0"> {RIGHT_CURLY}</div>
                             <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -627,7 +640,7 @@ class ParameterMismatch extends React.Component {
                                     <div className="Indent-1"> {this.props.methodName}("two");</div>
                                     : 
                                     <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                    {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div>
+                                    {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                               }
                               <div className="Indent-0"> {RIGHT_CURLY}</div>
                               <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -654,7 +667,7 @@ class ParameterMismatch extends React.Component {
                                       <div className="Indent-1"> {this.props.methodName}("two");</div>
                                       : 
                                       <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                      {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div>
+                                      {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                                 }
                                 <div className="Indent-0"> {RIGHT_CURLY}</div>
                                 <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -678,7 +691,7 @@ class ParameterMismatch extends React.Component {
                                         <div className="Indent-1"> {this.props.methodName}(2);</div>
                                         : 
                                         <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div>
+                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                                   }
                                   <div className="Indent-0"> {RIGHT_CURLY}</div>
                                   <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -705,7 +718,7 @@ class ParameterMismatch extends React.Component {
                                         <div className="Indent-1"> {this.props.methodName}(2.0);</div>
                                         : 
                                         <div className="Indent-1"> {this.props.methodName}(new {" "}
-                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (5));</div> 
+                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div> 
                                   }
                                   <div className="Indent-0"> {RIGHT_CURLY}</div>
                                   <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -731,8 +744,16 @@ class ParameterMismatch extends React.Component {
                                       : this.props.typeTwoName === 'boolean'
                                         ?
                                         <div className="Indent-1"> {this.props.methodName}(true);</div>
-                                        : 
-                                        <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                        : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                          ? 
+                                          <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                          : this.props.typeTwoName === 'int' || this.props.typeTwoName === 'byte' ||
+                                            this.props.typeTwoName === 'short' || this.props.typeTwoName === 'long'
+                                            ? 
+                                            <div className="Indent-1"> {this.props.methodName}(2);</div>
+                                            :
+                                            <div className="Indent-1"> {this.props.methodName}(new {" "}
+                                        {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>  
                                     }
                                     <div className="Indent-0"> {RIGHT_CURLY}</div>
                                     <div className="Indent-0"> void {this.props.methodName}
@@ -767,8 +788,21 @@ class ParameterMismatch extends React.Component {
                               <div className="Indent-0"> {"}"} </div>
                               </React.Fragment>
                             
-                            :
-                            " "
+                            : this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
+                              this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                              this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                              this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'int'
+                              ?
+                              " "
+                              :
+                              <React.Fragment> 
+                              <div className="Indent-0"> class {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}{"{"}  </div>
+                              <div className="Indent-1"> int b; </div>
+                              <div className="Indent-1"> {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(int b){"{"} </div>
+                              <div className="Indent-2"> this.b = b; </div>
+                              <div className="Indent-1"> {"}"} </div>
+                              <div className="Indent-0"> {"}"} </div>
+                              </React.Fragment>
                           }
                           <div className="Indent-0">void setup() {LEFT_CURLY}</div>
                           { this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
@@ -807,8 +841,11 @@ class ParameterMismatch extends React.Component {
                                     this.props.typeTwoName === 'byte' || this.props.typeTwoName === 'short'
                                     ?
                                     <div className="Indent-1"> {this.props.methodName}(2);</div>
-                                    : 
-                                    <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}(2.0);</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}(new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5));</div>
                           }
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           { this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
@@ -826,11 +863,13 @@ class ParameterMismatch extends React.Component {
                             
                             : this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
                               this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
-                              this.props.typeTwoName === 'long' || this.props.typeTwoName === 'int' || this.props.typeTwoName === 'boolean' 
+                              this.props.typeTwoName === 'long' || this.props.typeTwoName === 'int' || 
+                              this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'float' ||
+                              this.props.typeTwoName === 'double' 
                               ?
                               <div className="Indent-0"> void {this.props.methodName}({this.props.typeTwoName} s){LEFT_CURLY}</div>
                               :
-                              <div className="Indent-0"> void {this.props.methodName}(float s){LEFT_CURLY}</div>
+                              <div className="Indent-0"> void {this.props.methodName}({this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} s){LEFT_CURLY}</div>
                           }
 
                           { this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
@@ -869,8 +908,11 @@ class ParameterMismatch extends React.Component {
                                     this.props.typeTwoName === 'byte' || this.props.typeTwoName === 'short'
                                     ?
                                     <div className="Indent-1"> println(s + 1);</div>
-                                    : 
-                                    <div className="Indent-1"> println(s + 1.0);</div>
+                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float' 
+                                      ?
+                                      <div className="Indent-1"> println(s + 1.0);</div>
+                                      : 
+                                      <div className="Indent-1"> println(s.b);</div>
                           } 
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
@@ -948,16 +990,14 @@ class ParameterMismatch extends React.Component {
                           this.props.typeOneName === 'int'
                           ?
                           <React.Fragment>
-                          Suggestion 1: Change the number of parameters of{" "}
-                          <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> to
-                          the expected amount
+                          Suggestion 1: Change the number of parameters to the expected amount when calling{" "}
+                          <p className="InputValue">{this.props.methodName}({this.props.typeOneName})</p> 
                           </React.Fragment>
                           :
                           <React.Fragment>
-                          Suggestion 1: Change the number of parameters of{" "}
+                          Suggestion 1: Change the number of parameters to the expected amount when calling{" "}
                           <p className="InputValue">{this.props.methodName}
-                          ({this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)})</p> to
-                          the expected amount
+                          ({this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)})</p>
                           </React.Fragment>
                         }
                       </div>
@@ -1008,9 +1048,9 @@ class ParameterMismatch extends React.Component {
                                   <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
                                   : 
                                   <div className="Indent-1"> {this.props.methodName}
-                                  (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                   new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                   new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                  (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                   new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                   new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                             }
                             <div className="Indent-0"> {RIGHT_CURLY}</div>
                             <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1037,9 +1077,9 @@ class ParameterMismatch extends React.Component {
                                     <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
                                     : 
                                     <div className="Indent-1"> {this.props.methodName}
-                                    (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                     new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                     new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                    (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                     new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                     new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                               }
                               <div className="Indent-0"> {RIGHT_CURLY}</div>
                               <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1066,9 +1106,9 @@ class ParameterMismatch extends React.Component {
                                       <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
                                       : 
                                       <div className="Indent-1"> {this.props.methodName}
-                                      (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                      (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                                 }
                                 <div className="Indent-0"> {RIGHT_CURLY}</div>
                                 <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1091,9 +1131,9 @@ class ParameterMismatch extends React.Component {
                                         <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
                                         : 
                                         <div className="Indent-1"> {this.props.methodName}
-                                        (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                        (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                                   }
                                   <div className="Indent-0"> {RIGHT_CURLY}</div>
                                   <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1120,9 +1160,9 @@ class ParameterMismatch extends React.Component {
                                         <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
                                         : 
                                         <div className="Indent-1"> {this.props.methodName}
-                                        (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                        (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                                   }
                                   <div className="Indent-0"> {RIGHT_CURLY}</div>
                                   <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1148,8 +1188,18 @@ class ParameterMismatch extends React.Component {
                                       : this.props.typeTwoName === 'boolean'
                                         ?
                                         <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
-                                        : 
-                                        <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                        : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                          ?
+                                          <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                          : this.props.typeTwoName === 'int' || this.props.typeTwoName === 'byte' ||
+                                            this.props.typeTwoName === 'long' || this.props.typeTwoName === 'short'
+                                            ?
+                                            <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                                            : 
+                                            <div className="Indent-1"> {this.props.methodName}
+                                            (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "}
+                                             new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                             new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                                     }
                                     <div className="Indent-0"> {RIGHT_CURLY}</div>
                                     <div className="Indent-0"> void {this.props.methodName}
@@ -1236,7 +1286,7 @@ class ParameterMismatch extends React.Component {
                         {this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
                           this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
                           this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || this.props.typeOneName === 'double' ||
-                          this.props.typeOneName === 'boolean'
+                          this.props.typeOneName === 'boolean' || this.props.typeOneName === 'int'
                           ?
                           <React.Fragment>
                           Suggestion 2: Change the number of parameters in the {" "}
@@ -1246,8 +1296,8 @@ class ParameterMismatch extends React.Component {
                           :
                           <React.Fragment>
                           Suggestion 2: Change the number of parameters in the {" "}
-                          <p className="InputValue">{this.props.methodName}(int)</p> method
-                          declaration
+                          <p className="InputValue">{this.props.methodName}
+                          ({this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)})</p> method declaration
                           </React.Fragment>
                         }
                       </div>
@@ -1298,9 +1348,9 @@ class ParameterMismatch extends React.Component {
                                   <div className="Indent-1"> {this.props.methodName}('a', 'b', 'c');</div>
                                   : 
                                   <div className="Indent-1"> {this.props.methodName}
-                                  (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                   new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                   new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                  (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                   new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                   new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                             }
                             <div className="Indent-0"> {RIGHT_CURLY}</div>
                             <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1327,9 +1377,9 @@ class ParameterMismatch extends React.Component {
                                     <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
                                     : 
                                     <div className="Indent-1"> {this.props.methodName}
-                                    (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                     new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                     new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                    (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                     new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                     new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                               }
                               <div className="Indent-0"> {RIGHT_CURLY}</div>
                               <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1356,9 +1406,9 @@ class ParameterMismatch extends React.Component {
                                       <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
                                       : 
                                       <div className="Indent-1"> {this.props.methodName}
-                                      (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                      (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                                 }
                                 <div className="Indent-0"> {RIGHT_CURLY}</div>
                                 <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1381,9 +1431,9 @@ class ParameterMismatch extends React.Component {
                                         <div className="Indent-1"> {this.props.methodName}("one", "two", "three");</div>
                                         : 
                                         <div className="Indent-1"> {this.props.methodName}
-                                        (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                        (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                                   }
                                   <div className="Indent-0"> {RIGHT_CURLY}</div>
                                   <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1410,9 +1460,9 @@ class ParameterMismatch extends React.Component {
                                         <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
                                         : 
                                         <div className="Indent-1"> {this.props.methodName}
-                                        (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (1),{" "} 
-                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (2),{" "}
-                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} (3));</div>
+                                        (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "} 
+                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                         new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                                   }
                                   <div className="Indent-0"> {RIGHT_CURLY}</div>
                                   <div className="Indent-0"> void {this.props.methodName}({this.props.typeOneName} s){LEFT_CURLY}</div>
@@ -1421,7 +1471,7 @@ class ParameterMismatch extends React.Component {
                                   </React.Fragment>
 
                                   :
-                                    <React.Fragment>
+                                  <React.Fragment>
                                     <div className="Indent-0"> class {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}{"{"}  </div>
                                     <div className="Indent-1"> int a; </div>
                                     <div className="Indent-1"> {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}(int a){"{"} </div>
@@ -1438,8 +1488,18 @@ class ParameterMismatch extends React.Component {
                                       : this.props.typeTwoName === 'boolean'
                                         ?
                                         <div className="Indent-1"> {this.props.methodName}(true, false, true);</div>
-                                        : 
-                                        <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                        : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                          ?
+                                          <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                          : this.props.typeTwoName === 'int' || this.props.typeTwoName === 'byte' ||
+                                            this.props.typeTwoName === 'long' || this.props.typeTwoName === 'short'
+                                            ?
+                                            <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
+                                            : 
+                                            <div className="Indent-1"> {this.props.methodName}
+                                            (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "}
+                                             new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                             new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                                     }
                                     <div className="Indent-0"> {RIGHT_CURLY}</div>
                                     <div className="Indent-0"> void {this.props.methodName}
@@ -1474,8 +1534,21 @@ class ParameterMismatch extends React.Component {
                               <div className="Indent-0"> {"}"} </div>
                               </React.Fragment>
                             
-                            :
-                            " "
+                            : this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
+                              this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
+                              this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' ||
+                              this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'int'
+                              ?
+                              " "
+                              :
+                              <React.Fragment> 
+                              <div className="Indent-0"> class {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}{"{"}  </div>
+                              <div className="Indent-1"> int b; </div>
+                              <div className="Indent-1"> {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(int b){"{"} </div>
+                              <div className="Indent-2"> this.b = b; </div>
+                              <div className="Indent-1"> {"}"} </div>
+                              <div className="Indent-0"> {"}"} </div>
+                              </React.Fragment>
                           }
                           <div className="Indent-0"> void setup() {LEFT_CURLY}</div>
 
@@ -1519,8 +1592,14 @@ class ParameterMismatch extends React.Component {
                                     this.props.typeTwoName === 'byte' || this.props.typeTwoName === 'short'
                                     ?
                                     <div className="Indent-1"> {this.props.methodName}(1, 2, 3);</div>
-                                    : 
-                                    <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                    : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                      ?
+                                      <div className="Indent-1"> {this.props.methodName}(1.0, 2.0, 3.0);</div>
+                                      : 
+                                      <div className="Indent-1"> {this.props.methodName}
+                                      (new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(1),{" "}
+                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(2),{" "}
+                                       new {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(3));</div>
                           } 
                           <div className="Indent-0">{RIGHT_CURLY}</div>
 
@@ -1546,14 +1625,17 @@ class ParameterMismatch extends React.Component {
                             : this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
                               this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
                               this.props.typeTwoName === 'long' || this.props.typeTwoName === 'int' || this.props.typeTwoName === 'double' ||
-                              this.props.typeTwoName === 'boolean'
+                              this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'float'
                               ?
                               <div className="Indent-0">
                                 void {this.props.methodName}({this.props.typeTwoName} s1, {this.props.typeTwoName} s2, {this.props.typeTwoName} s3)
                                 {LEFT_CURLY}
                               </div>
                               :
-                              <div className="Indent-0"> void {this.props.methodName}(float s1, float s2, float s3){LEFT_CURLY}</div>
+                              <div className="Indent-0"> void {this.props.methodName}
+                              ({this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} s1,{" "}
+                               {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} s2,{" "}
+                               {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} s3){LEFT_CURLY}</div>
                           } 
 
                           { this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
@@ -1624,12 +1706,20 @@ class ParameterMismatch extends React.Component {
                                     <div className="Indent-1"> println(s2 + 1);</div>
                                     <div className="Indent-1"> println(s3 + 1);</div>
                                     </React.Fragment>
-                                    : 
+                                    : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
+                                    ? 
                                     <React.Fragment>
                                     <div className="Indent-1"> println(s1 + 1.0);</div>
                                     <div className="Indent-1"> println(s2 + 1.0);</div>
                                     <div className="Indent-1"> println(s3 + 1.0);</div>
                                     </React.Fragment>
+                                    :
+                                    <React.Fragment>
+                                    <div className="Indent-1"> println(s1.b);</div>
+                                    <div className="Indent-1"> println(s2.b);</div>
+                                    <div className="Indent-1"> println(s3.b);</div>
+                                    </React.Fragment>
+                                    
                           } 
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
