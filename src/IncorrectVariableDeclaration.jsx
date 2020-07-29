@@ -69,19 +69,110 @@ class IncorrectVariableDeclaration extends React.Component {
     }
   }
 
+  openStrategyTileBoxOnly(i) {
+    switch (i) {
+      case 1:
+        if(!this.state.openStrategy1){
+          this.setState({ openStrategy1: true });
+          this.setState({ openCode11: false });
+          this.setState({ openCode12: false });
+          this.setState({ openCode13: false });
+          this.setState({ openCode14: false });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  openCodeExampleBoxOnly(i) {
+    switch (i) {
+      case 11:
+        if(!this.state.openCode11){
+          this.setState({ openCode11: !this.state.openCode11 });
+        }
+        break;
+      case 12:
+        if(!this.state.openCode12){
+          this.setState({ openCode12: !this.state.openCode12 });
+        }
+        break;
+      case 13:
+        if(!this.state.openCode13){
+          this.setState({ openCode13: !this.state.openCode13 });
+        }
+        break;
+      case 14:
+        if(!this.state.openCode14){
+          this.setState({ openCode14: !this.state.openCode14 });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
   changeChecked(i) {
     switch (i) {
       case 11:
-        this.setState({ checked11: !this.state.checked11 });
+        if(this.state.openCode11){
+          if(!this.state.checked11){
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: false });
+          } else {
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: true });
+          }
+        }
+        if(!this.state.openCode11){
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: false });
+        }
         break;
       case 12:
-        this.setState({ checked12: !this.state.checked12 });
+        if(this.state.openCode12){
+          if(!this.state.checked12){
+          this.setState({ checked12: !this.state.checked12 });
+          this.setState({ openCode12: false });
+          } else {
+          this.setState({ checked12: !this.state.checked12 });
+          this.setState({ openCode12: true });
+          }
+        }
+        if(!this.state.openCode12){
+          this.setState({ checked12: !this.state.checked12 });
+          this.setState({ openCode12: false });
+        }
         break;
       case 13:
-        this.setState({ checked13: !this.state.checked13 });
+        if(this.state.openCode13){
+          if(!this.state.checked13){
+          this.setState({ checked13: !this.state.checked13 });
+          this.setState({ openCode13: false });
+          } else {
+          this.setState({ checked13: !this.state.checked13 });
+          this.setState({ openCode13: true });
+          }
+        }
+        if(!this.state.openCode13){
+          this.setState({ checked13: !this.state.checked13 });
+          this.setState({ openCode13: false });
+        }
         break;
       case 14:
-        this.setState({ checked14: !this.state.checked14 });
+        if(this.state.openCode14){
+          if(!this.state.checked14){
+          this.setState({ checked14: !this.state.checked14 });
+          this.setState({ openCode14: false });
+          } else {
+          this.setState({ checked14: !this.state.checked14 });
+          this.setState({ openCode14: true });
+          }
+        }
+        if(!this.state.openCode14){
+          this.setState({ checked14: !this.state.checked14 });
+          this.setState({ openCode14: false });
+        }
         break;
       default:
         break;
@@ -105,7 +196,7 @@ class IncorrectVariableDeclaration extends React.Component {
           </h4>
 
           <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
+            <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
               <div className="ErrorMessage">
                 <h4>
                   1: You may have made a syntax error while declaring the array
@@ -140,7 +231,7 @@ class IncorrectVariableDeclaration extends React.Component {
                   <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(11)}
+                  onClick={() => this.openCodeExampleBoxOnly(11)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
@@ -214,7 +305,7 @@ class IncorrectVariableDeclaration extends React.Component {
 
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(12)}
+                  onClick={() => this.openCodeExampleBoxOnly(12)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
@@ -364,7 +455,7 @@ class IncorrectVariableDeclaration extends React.Component {
 
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(13)}
+                  onClick={() => this.openCodeExampleBoxOnly(13)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
@@ -514,7 +605,7 @@ class IncorrectVariableDeclaration extends React.Component {
 
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(14)}
+                  onClick={() => this.openCodeExampleBoxOnly(14)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">

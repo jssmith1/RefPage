@@ -87,23 +87,147 @@ class UnexpectedToken extends React.Component {
     }
   }
 
+  openStrategyTileBoxOnly(i) {
+    switch (i) {
+      case 1:
+        if(!this.state.openStrategy1){
+          this.setState({ openStrategy1: true });
+          this.setState({ openCode11: false });
+        }
+        break;
+      case 2:
+        if(!this.state.openStrategy2){
+          this.setState({ openStrategy2: true });
+          this.setState({ openCode21: false });
+        }
+        break;
+      case 3:
+        if(!this.state.openStrategy3){
+          this.setState({ openStrategy3: true });
+          this.setState({ openCode31: false });
+        }
+        break;
+      case 4:
+        if(!this.state.openStrategy4){
+          this.setState({ openStrategy4: true });
+          this.setState({ openCode41: false });
+          this.setState({ openCode42: false });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  openCodeExampleBoxOnly(i) {
+    switch (i) {
+      case 11:
+        if (!this.state.openCode11) {
+          this.setState({ openCode11: !this.state.openCode11 });
+        }
+        break;
+      case 21:
+        if (!this.state.openCode21) {
+          this.setState({ openCode21: !this.state.openCode21 });
+        }
+        break;
+      case 31:
+        if (!this.state.openCode31) {
+          this.setState({ openCode31: !this.state.openCode31 });
+        }
+        break;
+      case 41:
+        if (!this.state.openCode41) {
+          this.setState({ openCode41: !this.state.openCode41 });
+        }
+        break;
+      case 42:
+        if (!this.state.openCode42) {
+          this.setState({ openCode42: !this.state.openCode42 });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
   changeChecked(i) {
     switch (i) {
       case 11:
-        this.setState({ checked11: !this.state.checked11 });
+        if(this.state.openCode11){
+          if(!this.state.checked11){
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: false });
+          } else {
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: true });
+          }
+        }
+        if(!this.state.openCode11){
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: false });
+        }
         break;
       case 21:
-        this.setState({ checked21: !this.state.checked21 });
+        if(this.state.openCode21){
+          if(!this.state.checked21){
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: false });
+          } else {
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: true });
+          }
+        }
+        if(!this.state.openCode21){
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: false });
+        }
         break;
       case 31:
-        this.setState({ checked41: !this.state.checked41 });
+        if(this.state.openCode31){
+          if(!this.state.checked31){
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: false });
+          } else {
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: true });
+          }
+        }
+        if(!this.state.openCode31){
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: false });
+        }
         break;
-      case 41:
-        this.setState({ checked41: !this.state.checked41 });
+    case 41:
+        if(this.state.openCode41){
+          if(!this.state.checked41){
+          this.setState({ checked41: !this.state.checked41 });
+          this.setState({ openCode41: false });
+          } else {
+          this.setState({ checked41: !this.state.checked41 });
+          this.setState({ openCode41: true });
+          }
+        }
+        if(!this.state.openCode41){
+          this.setState({ checked41: !this.state.checked41 });
+          this.setState({ openCode41: false });
+        }
         break;
-      case 42:
+    case 42:
+      if(this.state.openCode42){
+        if(!this.state.checked42){
         this.setState({ checked42: !this.state.checked42 });
-        break;
+        this.setState({ openCode42: false });
+        } else {
+        this.setState({ checked42: !this.state.checked42 });
+        this.setState({ openCode42: true });
+        }
+      }
+      if(!this.state.openCode42){
+        this.setState({ checked42: !this.state.checked42 });
+        this.setState({ openCode42: false });
+      }
+      break;
       default:
         break;
     }
@@ -130,7 +254,7 @@ class UnexpectedToken extends React.Component {
             ? 
             <React.Fragment>
               <div className="Tile">
-                <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
+                <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
                   <div className="ErrorMessage">
                     <h4>
                       1: You may have forgotten to place a semicolon at the end of your current line
@@ -167,7 +291,7 @@ class UnexpectedToken extends React.Component {
                     <i>Tick the box once you have tried the suggestion</i>
                     <div
                       className="StrategyTile"
-                      onClick={() => this.openCodeExample(11)}
+                      onClick={() => this.openCodeExampleBoxOnly(11)}
                     >
                       <div className="StrategyInstruction">
                         <div className="StrategyMessage">
@@ -269,7 +393,7 @@ class UnexpectedToken extends React.Component {
               </div>
 
               <div className="Tile">
-                <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
+                <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
                   <div className="ErrorMessage">
                     <h4>2: You may have left a variable without declaring it.
                     </h4>
@@ -302,7 +426,7 @@ class UnexpectedToken extends React.Component {
                     <i>Tick the box once you have tried the suggestion</i>
                     <div
                       className="StrategyTile"
-                      onClick={() => this.openCodeExample(21)}
+                      onClick={() => this.openCodeExampleBoxOnly(21)}
                     >
                       <div className="StrategyInstruction">
                         <div className="StrategyMessage">
@@ -413,7 +537,7 @@ class UnexpectedToken extends React.Component {
               ? 
               <React.Fragment> 
                 <div className="Tile">
-                  <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
+                  <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
                     <div className="ErrorMessage">
                       <h4>
                         1: You may have forgotten to place a semicolon at the end of your current line
@@ -450,7 +574,7 @@ class UnexpectedToken extends React.Component {
                       <i>Tick the box once you have tried the suggestion</i>
                       <div
                         className="StrategyTile"
-                        onClick={() => this.openCodeExample(11)}
+                        onClick={() => this.openCodeExampleBoxOnly(11)}
                       >
                         <div className="StrategyInstruction">
                           <div className="StrategyMessage">
@@ -512,7 +636,7 @@ class UnexpectedToken extends React.Component {
                 </div>
 
                 <div className="Tile">
-                  <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
+                  <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
                     <div className="ErrorMessage">
                       <h4>2: You may have left a variable without declaring it.
                       </h4>
@@ -545,7 +669,7 @@ class UnexpectedToken extends React.Component {
                       <i>Tick the box once you have tried the suggestion</i>
                       <div
                         className="StrategyTile"
-                        onClick={() => this.openCodeExample(21)}
+                        onClick={() => this.openCodeExampleBoxOnly(21)}
                       >
                         <div className="StrategyInstruction">
                           <div className="StrategyMessage">
@@ -609,7 +733,7 @@ class UnexpectedToken extends React.Component {
                 </div>
 
                 <div className="Tile">
-                <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
+                <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(3)}>
                   <div className="ErrorMessage">
                     <h4>3: You may have incorrectly tried to cast a <div className="InputValue"></div> float {" "}
                     variable onto a <div className="InputValue">{this.props.typeName}</div> variable
@@ -643,7 +767,7 @@ class UnexpectedToken extends React.Component {
                     <i>Tick the box once you have tried the suggestion</i>
                     <div
                       className="StrategyTile"
-                      onClick={() => this.openCodeExample(31)}
+                      onClick={() => this.openCodeExampleBoxOnly(31)}
                     >
                       <div className="StrategyInstruction">
                         <div className="StrategyMessage">
@@ -706,7 +830,7 @@ class UnexpectedToken extends React.Component {
               : this.props.typeName === 'int' || this.props.typeName === 'long' || this.props.typeName === 'byte' || this.props.typeName === 'short'            //Condition for typeName = int/long/short/byte
                ? <React.Fragment>   
                   <div className="Tile">
-                    <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
+                    <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
                       <div className="ErrorMessage">
                         <h4>
                           1: You may have forgotten to place a semicolon at the end of your current line
@@ -743,7 +867,7 @@ class UnexpectedToken extends React.Component {
                         <i>Tick the box once you have tried the suggestion</i>
                         <div
                           className="StrategyTile"
-                          onClick={() => this.openCodeExample(11)}
+                          onClick={() => this.openCodeExampleBoxOnly(11)}
                         >
                           <div className="StrategyInstruction">
                             <div className="StrategyMessage">
@@ -804,7 +928,7 @@ class UnexpectedToken extends React.Component {
                   </div>
 
                   <div className="Tile">
-                    <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
+                    <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
                       <div className="ErrorMessage">
                         <h4>2: You may have left a variable without declaring it.
                         </h4>
@@ -837,7 +961,7 @@ class UnexpectedToken extends React.Component {
                         <i>Tick the box once you have tried the suggestion</i>
                         <div
                           className="StrategyTile"
-                          onClick={() => this.openCodeExample(21)}
+                          onClick={() => this.openCodeExampleBoxOnly(21)}
                         >
                           <div className="StrategyInstruction">
                             <div className="StrategyMessage">
@@ -899,7 +1023,7 @@ class UnexpectedToken extends React.Component {
                   </div>
 
                   <div className="Tile">
-                    <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
+                    <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(3)}>
                       <div className="ErrorMessage">
                         <h4>3: You may have incorrectly tried to cast a <div className="InputValue"> </div> float{" "}
                         variable onto a <div className="InputValue">{this.props.typeName}</div> variable
@@ -933,7 +1057,7 @@ class UnexpectedToken extends React.Component {
                         <i>Tick the box once you have tried the suggestion</i>
                         <div
                           className="StrategyTile"
-                          onClick={() => this.openCodeExample(31)}
+                          onClick={() => this.openCodeExampleBoxOnly(31)}
                         >
                           <div className="StrategyInstruction">
                             <div className="StrategyMessage">
@@ -994,7 +1118,7 @@ class UnexpectedToken extends React.Component {
                   { this.props.typeName === 'int'
                     ? <React.Fragment>
                       <div className="Tile">
-                        <div className="ErrorTile" onClick={() => this.openStrategyTile(4)}>
+                        <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(4)}>
                           <div className="ErrorMessage">
                             <h4>4: You may have incorrectly written the parameter of control structures (if-else statement, for-loop, etc...)
                             </h4>
@@ -1027,7 +1151,7 @@ class UnexpectedToken extends React.Component {
                             <i>Tick the box once you have tried the suggestion</i>
                             <div
                               className="StrategyTile"
-                              onClick={() => this.openCodeExample(41)}
+                              onClick={() => this.openCodeExampleBoxOnly(41)}
                             >
                               <div className="StrategyInstruction">
                                 <div className="StrategyMessage">
@@ -1087,7 +1211,7 @@ class UnexpectedToken extends React.Component {
 
                             <div
                               className="StrategyTile"
-                              onClick={() => this.openCodeExample(42)}
+                              onClick={() => this.openCodeExampleBoxOnly(42)}
                             >
                               <div className="StrategyInstruction">
                                 <div className="StrategyMessage">
@@ -1155,7 +1279,7 @@ class UnexpectedToken extends React.Component {
 
               : <React.Fragment>                         
                   <div className="Tile">
-                    <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
+                    <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
                       <div className="ErrorMessage">
                         <h4>1: You may have left an object without declaring it.
                         </h4>
@@ -1188,7 +1312,7 @@ class UnexpectedToken extends React.Component {
                         <i>Tick the box once you have tried the suggestion</i>
                         <div
                           className="StrategyTile"
-                          onClick={() => this.openCodeExample(21)}
+                          onClick={() => this.openCodeExampleBoxOnly(21)}
                         >
                           <div className="StrategyInstruction">
                             <div className="StrategyMessage">

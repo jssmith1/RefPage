@@ -41,6 +41,16 @@ class IncorrectDimensionExpression1 extends React.Component {
     }
   }
 
+  openCodeExample(i) {
+    switch (i) {
+      case 11:
+        this.setState({ openCode11: !this.state.openCode11 });
+        break;
+      default:
+        break;
+    }
+  }
+
   openStrategyTileBoxOnly(i) {
     switch (i) {
       case 1:
@@ -48,16 +58,6 @@ class IncorrectDimensionExpression1 extends React.Component {
           this.setState({ openStrategy1: true });
           this.setState({ openCode11: false });
         }
-        break;
-      default:
-        break;
-    }
-  }
-
-  openCodeExample(i) {
-    switch (i) {
-      case 11:
-        this.setState({ openCode11: !this.state.openCode11 });
         break;
       default:
         break;

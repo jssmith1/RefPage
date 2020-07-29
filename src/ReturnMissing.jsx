@@ -64,13 +64,73 @@ class ReturnMissing extends React.Component {
     }
   }
 
+  openStrategyTileBoxOnly(i) {
+    switch (i) {
+      case 1:
+        if(!this.state.openStrategy1){
+          this.setState({ openStrategy1: true });
+          this.setState({ openCode11: false });
+        }
+        break;
+      case 2:
+        if(!this.state.openStrategy2){
+          this.setState({ openStrategy2: true });
+          this.setState({ openCode21: false });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  openCodeExampleBoxOnly(i) {
+    switch (i) {
+      case 11:
+        if(!this.state.openCode11){
+          this.setState({ openCode11: !this.state.openCode11 });
+        }
+        break;
+      case 21:
+        if(!this.state.openCode21){
+          this.setState({ openCode21: !this.state.openCode21 });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
   changeChecked(i) {
     switch (i) {
       case 11:
-        this.setState({ checked11: !this.state.checked11 });
+        if(this.state.openCode11){
+          if(!this.state.checked11){
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: false });
+          } else {
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: true });
+          }
+        }
+        if(!this.state.openCode11){
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: false });
+        }
         break;
       case 21:
-        this.setState({ checked21: !this.state.checked21 });
+        if(this.state.openCode21){
+          if(!this.state.checked21){
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: false });
+          } else {
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: true });
+          }
+        }
+        if(!this.state.openCode21){
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: false });
+        }
         break;
       default:
         break;
@@ -124,7 +184,7 @@ class ReturnMissing extends React.Component {
           </h4>
 
           <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
+            <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
               <div className="ErrorMessage">
                 <h4>
                   1: You may have forgotten the return statement for the method{" "}
@@ -160,7 +220,7 @@ class ReturnMissing extends React.Component {
                 <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(11)}
+                  onClick={() => this.openCodeExampleBoxOnly(11)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
@@ -325,7 +385,7 @@ class ReturnMissing extends React.Component {
           </div>
 
           <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
+            <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
               <div className="ErrorMessage">
                 <h4>
                   2: You may have missed the return statement in some branches
@@ -361,7 +421,7 @@ class ReturnMissing extends React.Component {
                 <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(21)}
+                  onClick={() => this.openCodeExampleBoxOnly(21)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">

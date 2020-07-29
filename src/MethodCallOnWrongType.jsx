@@ -75,16 +75,99 @@ class MethodCallOnWrongType extends React.Component {
     }
   }
 
+  openStrategyTileBoxOnly(i) {
+    switch (i) {
+      case 1:
+        if(!this.state.openStrategy1){
+          this.setState({ openStrategy1: true });
+          this.setState({ openCode11: false });
+        }
+        break;
+      case 2:
+        if(!this.state.openStrategy2){
+          this.setState({ openStrategy2: true });
+          this.setState({ openCode21: false });
+        }
+        break;
+      case 3:
+        if(!this.state.openStrategy3){
+          this.setState({ openStrategy3: true });
+          this.setState({ openCode31: false });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  openCodeExampleBoxOnly(i) {
+    switch (i) {
+      case 11:
+        if(!this.state.openCode11){
+          this.setState({ openCode11: !this.state.openCode11 });
+        }
+        break;
+      case 21:
+        if(!this.state.openCode21){
+          this.setState({ openCode21: !this.state.openCode21 });
+        }
+        break;
+      case 31:
+        if(!this.state.openCode31){
+          this.setState({ openCode31: !this.state.openCode31 });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
   changeChecked(i) {
     switch (i) {
       case 11:
-        this.setState({ checked11: !this.state.checked11 });
+        if(this.state.openCode11){
+          if(!this.state.checked11){
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: false });
+          } else {
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: true });
+          }
+        }
+        if(!this.state.openCode11){
+          this.setState({ checked11: !this.state.checked11 });
+          this.setState({ openCode11: false });
+        }
         break;
       case 21:
-        this.setState({ checked21: !this.state.checked21 });
+        if(this.state.openCode21){
+          if(!this.state.checked21){
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: false });
+          } else {
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: true });
+          }
+        }
+        if(!this.state.openCode21){
+          this.setState({ checked21: !this.state.checked21 });
+          this.setState({ openCode21: false });
+        }
         break;
       case 31:
-        this.setState({ checked31: !this.state.checked31 });
+        if(this.state.openCode31){
+          if(!this.state.checked31){
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: false });
+          } else {
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: true });
+          }
+        }
+        if(!this.state.openCode31){
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: false });
+        }
         break;
       default:
         break;
@@ -113,7 +196,7 @@ class MethodCallOnWrongType extends React.Component {
           </h4>
 
           <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTile(1)}>
+            <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
               <div className="ErrorMessage">
                 <h4>
                   1: You may have used an existing method <div className="InputValue">{this.props.methodName}()</div> {" "}
@@ -149,7 +232,7 @@ class MethodCallOnWrongType extends React.Component {
                 <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(11)}
+                  onClick={() => this.openCodeExampleBoxOnly(11)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
@@ -216,7 +299,7 @@ class MethodCallOnWrongType extends React.Component {
           </div>
 
           <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTile(2)}>
+            <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
               <div className="ErrorMessage">
                 <h4>
                   2: You may have used the method <div className="InputValue">{this.props.methodName}()</div> of class {" "}
@@ -252,7 +335,7 @@ class MethodCallOnWrongType extends React.Component {
                   <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(21)}
+                  onClick={() => this.openCodeExampleBoxOnly(21)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
@@ -339,7 +422,7 @@ class MethodCallOnWrongType extends React.Component {
           </div>
 
           <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTile(3)}>
+            <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(3)}>
               <div className="ErrorMessage">
                 <h4>
                   3: You may have tried to use the method <div className="InputValue">{this.props.methodName}()</div> {" "}
@@ -376,7 +459,7 @@ class MethodCallOnWrongType extends React.Component {
                 <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
-                  onClick={() => this.openCodeExample(31)}
+                  onClick={() => this.openCodeExampleBoxOnly(31)}
                 >
                   <div className="StrategyInstruction">
                     <div className="StrategyMessage">
