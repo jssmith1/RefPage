@@ -91,165 +91,165 @@ class MethodNotFound extends React.Component {
 
     openStrategyTileBoxOnly(i) {
         switch (i) {
-          case 1:
-            if(!this.state.openStrategy1){
-              this.setState({ openStrategy1: true });
-              this.setState({ openCode11: false });
-              this.setState({ openCode12: false });
-            }
-            break;
-          case 2:
-            if(!this.state.openStrategy2){
-              this.setState({ openStrategy2: true });
-              this.setState({ openCode21: false });
-              this.setState({ openCode22: false });
-            }
-            break;
-          case 3:
-            if(!this.state.openStrategy3){
-              this.setState({ openStrategy3: true });
-              this.setState({ openCode31: false });
-              this.setState({ openCode32: false });
-            }
-            break;
-          default:
-            break;
-        }
-      }
-    
-      openCodeExampleBoxOnly(i) {
-        switch (i) {
-          case 11:
-            if(!this.state.openCode11){
-              this.setState({ openCode11: !this.state.openCode11 });
-            }
-            break;
-          case 12:
-            if(!this.state.openCode12){
-              this.setState({ openCode12: !this.state.openCode12 });
-            }
-            break;
-          case 21:
-            if(!this.state.openCode21){
-              this.setState({ openCode21: !this.state.openCode21 });
-            }
-            break;
-          case 22:
-            if(!this.state.openCode22){
-              this.setState({ openCode22: !this.state.openCode22 });
-            }
-            break;
-          case 31:
-            if(!this.state.openCode31){
-              this.setState({ openCode31: !this.state.openCode31 });
-            }
-            break;
-          case 32:
-                if(!this.state.openCode32){
-                  this.setState({ openCode32: !this.state.openCode32 });
+            case 1:
+                if (!this.state.openStrategy1) {
+                    this.setState({ openStrategy1: true });
+                    this.setState({ openCode11: false });
+                    this.setState({ openCode12: false });
                 }
                 break;
-          default:
-            break;
+            case 2:
+                if (!this.state.openStrategy2) {
+                    this.setState({ openStrategy2: true });
+                    this.setState({ openCode21: false });
+                    this.setState({ openCode22: false });
+                }
+                break;
+            case 3:
+                if (!this.state.openStrategy3) {
+                    this.setState({ openStrategy3: true });
+                    this.setState({ openCode31: false });
+                    this.setState({ openCode32: false });
+                }
+                break;
+            default:
+                break;
         }
-      }
-    
-      changeChecked(i) {
+    }
+
+    openCodeExampleBoxOnly(i) {
         switch (i) {
-          case 11:
-            if(this.state.openCode11){
-              if(!this.state.checked11){
-              this.setState({ checked11: !this.state.checked11 });
-              this.setState({ openCode11: false });
-              } else {
-              this.setState({ checked11: !this.state.checked11 });
-              this.setState({ openCode11: true });
-              }
-            }
-            if(!this.state.openCode11){
-              this.setState({ checked11: !this.state.checked11 });
-              this.setState({ openCode11: false });
-            }
-            break;
-        case 12:
-            if(this.state.openCode12){
-              if(!this.state.checked12){
-              this.setState({ checked12: !this.state.checked12 });
-              this.setState({ openCode12: false });
-              } else {
-              this.setState({ checked12: !this.state.checked12 });
-              this.setState({ openCode12: true });
-              }
-            }
-            if(!this.state.openCode12){
-              this.setState({ checked12: !this.state.checked12 });
-              this.setState({ openCode12: false });
-            }
-            break;
-          case 21:
-            if(this.state.openCode21){
-              if(!this.state.checked21){
-              this.setState({ checked21: !this.state.checked21 });
-              this.setState({ openCode21: false });
-              } else {
-              this.setState({ checked21: !this.state.checked21 });
-              this.setState({ openCode21: true });
-              }
-            }
-            if(!this.state.openCode21){
-              this.setState({ checked21: !this.state.checked21 });
-              this.setState({ openCode21: false });
-            }
-            break;
-        case 22:
-            if(this.state.openCode22){
-              if(!this.state.checked22){
-              this.setState({ checked22: !this.state.checked22 });
-              this.setState({ openCode22: false });
-              } else {
-              this.setState({ checked22: !this.state.checked22 });
-              this.setState({ openCode22: true });
-              }
-            }
-            if(!this.state.openCode22){
-              this.setState({ checked22: !this.state.checked22 });
-              this.setState({ openCode22: false });
-            }
-            break;
-          case 31:
-            if(this.state.openCode31){
-              if(!this.state.checked31){
-              this.setState({ checked31: !this.state.checked31 });
-              this.setState({ openCode31: false });
-              } else {
-              this.setState({ checked31: !this.state.checked31 });
-              this.setState({ openCode31: true });
-              }
-            }
-            if(!this.state.openCode31){
-              this.setState({ checked31: !this.state.checked31 });
-              this.setState({ openCode31: false });
-            }
-            break;
-        case 32:
-            if(this.state.openCode32){
-              if(!this.state.checked32){
-              this.setState({ checked32: !this.state.checked32 });
-              this.setState({ openCode32: false });
-              } else {
-              this.setState({ checked32: !this.state.checked32 });
-              this.setState({ openCode32: true });
-              }
-            }
-            if(!this.state.openCode32){
-              this.setState({ checked32: !this.state.checked32 });
-              this.setState({ openCode32: false });
-            }
-            break;
-          default:
-            break;
+            case 11:
+                if (!this.state.openCode11) {
+                    this.setState({ openCode11: !this.state.openCode11 });
+                }
+                break;
+            case 12:
+                if (!this.state.openCode12) {
+                    this.setState({ openCode12: !this.state.openCode12 });
+                }
+                break;
+            case 21:
+                if (!this.state.openCode21) {
+                    this.setState({ openCode21: !this.state.openCode21 });
+                }
+                break;
+            case 22:
+                if (!this.state.openCode22) {
+                    this.setState({ openCode22: !this.state.openCode22 });
+                }
+                break;
+            case 31:
+                if (!this.state.openCode31) {
+                    this.setState({ openCode31: !this.state.openCode31 });
+                }
+                break;
+            case 32:
+                if (!this.state.openCode32) {
+                    this.setState({ openCode32: !this.state.openCode32 });
+                }
+                break;
+            default:
+                break;
         }
-      }
+    }
+
+    changeChecked(i) {
+        switch (i) {
+            case 11:
+                if (this.state.openCode11) {
+                    if (!this.state.checked11) {
+                        this.setState({ checked11: !this.state.checked11 });
+                        this.setState({ openCode11: false });
+                    } else {
+                        this.setState({ checked11: !this.state.checked11 });
+                        this.setState({ openCode11: true });
+                    }
+                }
+                if (!this.state.openCode11) {
+                    this.setState({ checked11: !this.state.checked11 });
+                    this.setState({ openCode11: false });
+                }
+                break;
+            case 12:
+                if (this.state.openCode12) {
+                    if (!this.state.checked12) {
+                        this.setState({ checked12: !this.state.checked12 });
+                        this.setState({ openCode12: false });
+                    } else {
+                        this.setState({ checked12: !this.state.checked12 });
+                        this.setState({ openCode12: true });
+                    }
+                }
+                if (!this.state.openCode12) {
+                    this.setState({ checked12: !this.state.checked12 });
+                    this.setState({ openCode12: false });
+                }
+                break;
+            case 21:
+                if (this.state.openCode21) {
+                    if (!this.state.checked21) {
+                        this.setState({ checked21: !this.state.checked21 });
+                        this.setState({ openCode21: false });
+                    } else {
+                        this.setState({ checked21: !this.state.checked21 });
+                        this.setState({ openCode21: true });
+                    }
+                }
+                if (!this.state.openCode21) {
+                    this.setState({ checked21: !this.state.checked21 });
+                    this.setState({ openCode21: false });
+                }
+                break;
+            case 22:
+                if (this.state.openCode22) {
+                    if (!this.state.checked22) {
+                        this.setState({ checked22: !this.state.checked22 });
+                        this.setState({ openCode22: false });
+                    } else {
+                        this.setState({ checked22: !this.state.checked22 });
+                        this.setState({ openCode22: true });
+                    }
+                }
+                if (!this.state.openCode22) {
+                    this.setState({ checked22: !this.state.checked22 });
+                    this.setState({ openCode22: false });
+                }
+                break;
+            case 31:
+                if (this.state.openCode31) {
+                    if (!this.state.checked31) {
+                        this.setState({ checked31: !this.state.checked31 });
+                        this.setState({ openCode31: false });
+                    } else {
+                        this.setState({ checked31: !this.state.checked31 });
+                        this.setState({ openCode31: true });
+                    }
+                }
+                if (!this.state.openCode31) {
+                    this.setState({ checked31: !this.state.checked31 });
+                    this.setState({ openCode31: false });
+                }
+                break;
+            case 32:
+                if (this.state.openCode32) {
+                    if (!this.state.checked32) {
+                        this.setState({ checked32: !this.state.checked32 });
+                        this.setState({ openCode32: false });
+                    } else {
+                        this.setState({ checked32: !this.state.checked32 });
+                        this.setState({ openCode32: true });
+                    }
+                }
+                if (!this.state.openCode32) {
+                    this.setState({ checked32: !this.state.checked32 });
+                    this.setState({ openCode32: false });
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
     render() {
         return (
@@ -412,20 +412,20 @@ class MethodNotFound extends React.Component {
                                         <div className="CodeExample">
                                             <div className="CodeContainer">
                                                 <div className="RedCode">
-                                                <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}
-                                                            <div className="Indent-1"> return s+1; </div>
-                                                            <div className="Indent-0"> {"}"} </div>
-                                                            <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5);</div>
-                                                        </div>
+                                                    <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}
+                                                        <div className="Indent-1"> return s+1; </div>
+                                                        <div className="Indent-0"> {"}"} </div>
+                                                        <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5);</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="CodeContainer">
                                                 <div className="GreenCode">
-                                                <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}
-                                                            <div className="Indent-1"> return s+1; </div>
-                                                            <div className="Indent-0"> {"}"} </div>
-                                                            <div className="Indent-0"> {this.props.typeName} a = {this.props.correctMethodName}(5);</div>
-                                                        </div>
+                                                    <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}
+                                                        <div className="Indent-1"> return s+1; </div>
+                                                        <div className="Indent-0"> {"}"} </div>
+                                                        <div className="Indent-0"> {this.props.typeName} a = {this.props.correctMethodName}(5);</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -435,18 +435,60 @@ class MethodNotFound extends React.Component {
                         )}
                     </div>
 
-                                <div className="Tile">
-                                    <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
-                                        <div className="ErrorMessage">
-                                            <h4>
-                                                2: You may have forgotten to create the method{" "}
-                                                <div className="InputValue">{this.props.methodName}()</div>
-                                            </h4>
+                    <div className="Tile">
+                        <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
+                            <div className="ErrorMessage">
+                                <h4>
+                                    2: You may have forgotten to create the method{" "}
+                                    <div className="InputValue">{this.props.methodName}()</div>
+                                </h4>
+                            </div>
+                            {!this.state.openStrategy2 && (
+                                <div className="ButtonHolder">
+                                    <img
+                                        onClick={() => this.openStrategyTile(2)}
+                                        src={PlusButton}
+                                        alt="down-button"
+                                        width="20"
+                                        height="20"
+                                    ></img>
+                                </div>
+                            )}
+                            {this.state.openStrategy2 && (
+                                <div className="ButtonHolder">
+                                    <img
+                                        onClick={() => this.openStrategyTile(2)}
+                                        src={MinusButton}
+                                        alt="up-button"
+                                        width="20"
+                                        height="20"
+                                    ></img>
+                                </div>
+                            )}
+                        </div>
+                        {this.state.openStrategy2 && (
+                            <div className="StrategyContainer">
+                                <i>Tick the box once you have tried the suggestion</i>
+                                <div
+                                    className="StrategyTile"
+                                    onClick={() => this.openCodeExampleBoxOnly(21)}
+                                >
+                                    <div className="StrategyInstruction">
+                                        <div className="StrategyMessage">
+                                            <BlueCheckbox
+                                                value="box1"
+                                                checked={this.state.checked21}
+                                                onChange={() => this.changeChecked(21)}
+                                            />
+                                            <div className="Suggestion">
+                                                Suggestion 1: Create the {" "}
+                                                <p className="InputValue">{this.props.methodName}()</p> method
+                                                    </div>
                                         </div>
-                                        {!this.state.openStrategy2 && (
+                                        {!this.state.openCode21 && (
                                             <div className="ButtonHolder">
                                                 <img
-                                                    onClick={() => this.openStrategyTile(2)}
+                                                    onClick={() => this.openCodeExample(21)}
                                                     src={PlusButton}
                                                     alt="down-button"
                                                     width="20"
@@ -454,10 +496,10 @@ class MethodNotFound extends React.Component {
                                                 ></img>
                                             </div>
                                         )}
-                                        {this.state.openStrategy2 && (
+                                        {this.state.openCode21 && (
                                             <div className="ButtonHolder">
                                                 <img
-                                                    onClick={() => this.openStrategyTile(2)}
+                                                    onClick={() => this.openCodeExample(21)}
                                                     src={MinusButton}
                                                     alt="up-button"
                                                     width="20"
@@ -466,79 +508,37 @@ class MethodNotFound extends React.Component {
                                             </div>
                                         )}
                                     </div>
-                                    {this.state.openStrategy2 && (
-                                        <div className="StrategyContainer">
-                                            <i>Tick the box once you have tried the suggestion</i>
-                                            <div
-                                                className="StrategyTile"
-                                                onClick={() => this.openCodeExampleBoxOnly(21)}
-                                            >
-                                                <div className="StrategyInstruction">
-                                                    <div className="StrategyMessage">
-                                                        <BlueCheckbox
-                                                            value="box1"
-                                                            checked={this.state.checked21}
-                                                            onChange={() => this.changeChecked(21)}
-                                                        />
-                                                        <div className="Suggestion">
-                                                            Suggestion 1: Create the {" "}
-                                                            <p className="InputValue">{this.props.methodName}()</p> method
-                                                    </div>
-                                                    </div>
-                                                    {!this.state.openCode21 && (
-                                                        <div className="ButtonHolder">
-                                                            <img
-                                                                onClick={() => this.openCodeExample(21)}
-                                                                src={PlusButton}
-                                                                alt="down-button"
-                                                                width="20"
-                                                                height="20"
-                                                            ></img>
-                                                        </div>
-                                                    )}
-                                                    {this.state.openCode21 && (
-                                                        <div className="ButtonHolder">
-                                                            <img
-                                                                onClick={() => this.openCodeExample(21)}
-                                                                src={MinusButton}
-                                                                alt="up-button"
-                                                                width="20"
-                                                                height="20"
-                                                            ></img>
-                                                        </div>
-                                                    )}
+                                    {this.state.openCode21 && (
+                                        <div className="CodeExample">
+                                            <div className="CodeContainer">
+                                                <div className="RedCode">
+                                                    <div className="Indent-0">
+                                                        {this.props.typeName} a = {this.props.methodName}(5);
+                                                            </div>
                                                 </div>
-                                                {this.state.openCode21 && (
-                                                    <div className="CodeExample">
-                                                        <div className="CodeContainer">
-                                                            <div className="RedCode">
-                                                                <div className="Indent-0">
-                                                                    {this.props.typeName} a = {this.props.methodName}(5);
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="CodeContainer">
-                                                            <div className="GreenCode">
-                                                                <div className="Indent-0">
-                                                                    {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {"{"}
-                                                                    <div className="Indent-1">
-                                                                        ...
+                                            </div>
+                                            <div className="CodeContainer">
+                                                <div className="GreenCode">
+                                                    <div className="Indent-0">
+                                                        {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {"{"}
+                                                        <div className="Indent-1">
+                                                            ...
                                                              </div>
-                                                                    <div className="Indent-0"> {"}"}</div>
-                                                                </div>
-                                                                <div className="Indent-0">
-                                                                    {this.props.typeName} a = {this.props.methodName}(5);
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <div className="Indent-0"> {"}"}</div>
                                                     </div>
-                                                )}
+                                                    <div className="Indent-0">
+                                                        {this.props.typeName} a = {this.props.methodName}(5);
+                                                                </div>
+                                                </div>
                                             </div>
                                         </div>
                                     )}
                                 </div>
+                            </div>
+                        )}
+                    </div>
 
-                                <div className="Tile">
+                    <div className="Tile">
                         <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(3)}>
                             <div className="ErrorMessage">
                                 <h4>
