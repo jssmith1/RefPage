@@ -302,137 +302,223 @@ class MethodNotFound extends React.Component {
                             )}
                         </div>
 
-                        {this.state.openStrategy1 && (
-                            <div className="StrategyContainer">
-                                <i>Tick the box once you have tried the suggestion</i>
-                                <div
-                                    className="StrategyTile"
-                                    onClick={() => this.openCodeExampleBoxOnly(11)}
-                                >
-                                    <div className="StrategyInstruction">
-                                        <div className="StrategyMessage">
-                                            <BlueCheckbox
-                                                value="box1"
-                                                checked={this.state.checked11}
-                                                onChange={() => this.changeChecked(11)}
-                                            />
-                                            <div className="Suggestion">
-                                                Suggestion 1: Make sure the name of{" "}
-                                                <p className="InputValue">{this.props.methodName}()</p> {" "}
-                                                matches the name of an existing Java function
+                        {/** If method not void */}
+                        {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                            this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                            this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                            this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                            ?
+                            <React.Fragment>
+                                {this.state.openStrategy1 && (
+                                    <div className="StrategyContainer">
+                                        <i>Tick the box once you have tried the suggestion</i>
+                                        <div
+                                            className="StrategyTile"
+                                            onClick={() => this.openCodeExampleBoxOnly(11)}
+                                        >
+                                            <div className="StrategyInstruction">
+                                                <div className="StrategyMessage">
+                                                    <BlueCheckbox
+                                                        value="box1"
+                                                        checked={this.state.checked11}
+                                                        onChange={() => this.changeChecked(11)}
+                                                    />
+                                                    <div className="Suggestion">
+                                                        Suggestion 1: If you are trying to use an existing Java function, make sure you match the name of{" "}
+                                                        <p className="InputValue">{this.props.methodName}()</p> with the function.
                                             </div>
+                                                </div>
+                                                {!this.state.openCode11 && (
+                                                    <div className="ButtonHolder">
+                                                        <img
+                                                            onClick={() => this.openCodeExample(11)}
+                                                            src={PlusButton}
+                                                            alt="down-button"
+                                                            width="20"
+                                                            height="20"
+                                                        ></img>
+                                                    </div>
+                                                )}
+                                                {this.state.openCode11 && (
+                                                    <div className="ButtonHolder">
+                                                        <img
+                                                            onClick={() => this.openCodeEkxample(11)}
+                                                            src={MinusButton}
+                                                            alt="up-button"
+                                                            width="20"
+                                                            height="20"
+                                                        ></img>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            {this.state.openCode11 && (
+                                                <div className="CodeExample">
+                                                    <div className="CodeContainer">
+                                                        <div className="RedCode">
+                                                            <div className="Indent-0"> String s = "s"; </div>
+                                                            <div className="Indent-0"> {this.props.typeName} a = s.{this.props.methodName}();</div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="CodeContainer">
+                                                        <div className="GreenCode">
+                                                            <div className="Indent-0"> String s = "s"; </div>
+                                                            <div className="Indent-0"> {this.props.typeName} a = s.{this.props.correctMethodName}();</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
-                                        {!this.state.openCode11 && (
-                                            <div className="ButtonHolder">
-                                                <img
-                                                    onClick={() => this.openCodeExample(11)}
-                                                    src={PlusButton}
-                                                    alt="down-button"
-                                                    width="20"
-                                                    height="20"
-                                                ></img>
-                                            </div>
-                                        )}
-                                        {this.state.openCode11 && (
-                                            <div className="ButtonHolder">
-                                                <img
-                                                    onClick={() => this.openCodeEkxample(11)}
-                                                    src={MinusButton}
-                                                    alt="up-button"
-                                                    width="20"
-                                                    height="20"
-                                                ></img>
-                                            </div>
-                                        )}
                                     </div>
-                                    {this.state.openCode11 && (
-                                        <div className="CodeExample">
-                                            <div className="CodeContainer">
-                                                <div className="RedCode">
-                                                    <div className="Indent-0"> String s = "s"; </div>
-                                                    <div className="Indent-0"> {this.props.typeName} a = s.
-                          {this.props.methodName}() </div>
+                                )}
+                            </React.Fragment>
+                            /** If method is void */
+                            :
+                            <React.Fragment>
+                                {this.state.openStrategy1 && (
+                                    <div className="StrategyContainer">
+                                        <i>Tick the box once you have tried the suggestion</i>
+                                        <div
+                                            className="StrategyTile"
+                                            onClick={() => this.openCodeExampleBoxOnly(11)}
+                                        >
+                                            <div className="StrategyInstruction">
+                                                <div className="StrategyMessage">
+                                                    <BlueCheckbox
+                                                        value="box1"
+                                                        checked={this.state.checked11}
+                                                        onChange={() => this.changeChecked(11)}
+                                                    />
+                                                    <div className="Suggestion">
+                                                        Suggestion 1: Change the name of {" "}
+                                                        <p className="InputValue">{this.props.methodName}()</p> to the method you created.
+                                    </div>
                                                 </div>
+                                                {!this.state.openCode11 && (
+                                                    <div className="ButtonHolder">
+                                                        <img
+                                                            onClick={() => this.openCodeExample(11)}
+                                                            src={PlusButton}
+                                                            alt="down-button"
+                                                            width="20"
+                                                            height="20"
+                                                        ></img>
+                                                    </div>
+                                                )}
+                                                {this.state.openCode11 && (
+                                                    <div className="ButtonHolder">
+                                                        <img
+                                                            onClick={() => this.openCodeEkxample(11)}
+                                                            src={MinusButton}
+                                                            alt="up-button"
+                                                            width="20"
+                                                            height="20"
+                                                        ></img>
+                                                    </div>
+                                                )}
                                             </div>
-                                            <div className="CodeContainer">
-                                                <div className="GreenCode">
-                                                    <div className="Indent-0"> String s = "s"; </div>
-                                                    <div className="Indent-0"> {this.props.typeName} a = s.
-                          {this.props.correctMethodName}() </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        )}
+                                            {this.state.openCode11 && (
+                                                <div className="CodeExample">
+                                                    <div className="CodeContainer">
+                                                        <div className="RedCode">
+                                                            <div className="Indent-0"> {this.props.methodName}();</div>
+                                                            <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}(){"{"}
+                                                                <div className="Indent-1"> ... </div>
+                                                                <div className="Indent-0"> {"}"} </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="CodeContainer">
+                                                        <div className="GreenCode">
+                                                            <div className="Indent-0"> {this.props.correctMethodName}();</div>
+                                                            <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}(){"{"}
+                                                                <div className="Indent-1"> ... </div>
+                                                                <div className="Indent-0"> {"}"} </div>
 
-                        {this.state.openStrategy1 && (
-                            <div className="StrategyContainer">
-                                <div
-                                    className="StrategyTile"
-                                    onClick={() => this.openCodeExampleBoxOnly(12)}
-                                >
-                                    <div className="StrategyInstruction">
-                                        <div className="StrategyMessage">
-                                            <BlueCheckbox
-                                                value="box1"
-                                                checked={this.state.checked12}
-                                                onChange={() => this.changeChecked(12)}
-                                            />
-                                            <div className="Suggestion">
-                                                Suggestion 2: Change the name of {" "}
-                                                <p className="InputValue">{this.props.methodName}()</p> to the method you created.
-                                    </div>
-                                        </div>
-                                        {!this.state.openCode12 && (
-                                            <div className="ButtonHolder">
-                                                <img
-                                                    onClick={() => this.openCodeExample(12)}
-                                                    src={PlusButton}
-                                                    alt="down-button"
-                                                    width="20"
-                                                    height="20"
-                                                ></img>
-                                            </div>
-                                        )}
-                                        {this.state.openCode12 && (
-                                            <div className="ButtonHolder">
-                                                <img
-                                                    onClick={() => this.openCodeEkxample(12)}
-                                                    src={MinusButton}
-                                                    alt="up-button"
-                                                    width="20"
-                                                    height="20"
-                                                ></img>
-                                            </div>
-                                        )}
-                                    </div>
-                                    {this.state.openCode12 && (
-                                        <div className="CodeExample">
-                                            <div className="CodeContainer">
-                                                <div className="RedCode">
-                                                    <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}
-                                                        <div className="Indent-1"> return s+1; </div>
-                                                        <div className="Indent-0"> {"}"} </div>
-                                                        <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5);</div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+                            </React.Fragment>
+                        }
+
+                        {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                            this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                            this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                            this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                            ?
+                            <React.Fragment>
+                                {this.state.openStrategy1 && (
+                                    <div className="StrategyContainer">
+                                        <div
+                                            className="StrategyTile"
+                                            onClick={() => this.openCodeExampleBoxOnly(12)}
+                                        >
+                                            <div className="StrategyInstruction">
+                                                <div className="StrategyMessage">
+                                                    <BlueCheckbox
+                                                        value="box1"
+                                                        checked={this.state.checked12}
+                                                        onChange={() => this.changeChecked(12)}
+                                                    />
+                                                    <div className="Suggestion">
+                                                        Suggestion 2: Change the name of {" "}
+                                                        <p className="InputValue">{this.props.methodName}()</p> to the method you created.
+                                    </div>
+                                                </div>
+                                                {!this.state.openCode12 && (
+                                                    <div className="ButtonHolder">
+                                                        <img
+                                                            onClick={() => this.openCodeExample(12)}
+                                                            src={PlusButton}
+                                                            alt="down-button"
+                                                            width="20"
+                                                            height="20"
+                                                        ></img>
+                                                    </div>
+                                                )}
+                                                {this.state.openCode12 && (
+                                                    <div className="ButtonHolder">
+                                                        <img
+                                                            onClick={() => this.openCodeEkxample(12)}
+                                                            src={MinusButton}
+                                                            alt="up-button"
+                                                            width="20"
+                                                            height="20"
+                                                        ></img>
+                                                    </div>
+                                                )}
                                             </div>
-                                            <div className="CodeContainer">
-                                                <div className="GreenCode">
-                                                    <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}
-                                                        <div className="Indent-1"> return s+1; </div>
-                                                        <div className="Indent-0"> {"}"} </div>
-                                                        <div className="Indent-0"> {this.props.typeName} a = {this.props.correctMethodName}(5);</div>
+                                            {this.state.openCode12 && (
+                                                <div className="CodeExample">
+                                                    <div className="CodeContainer">
+                                                        <div className="RedCode">
+                                                            <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5);</div>
+                                                            <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}</div>
+                                                            <div className="Indent-1"> return s+1; </div>
+                                                            <div className="Indent-0"> {"}"} </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="CodeContainer">
+                                                        <div className="GreenCode">
+                                                            <div className="Indent-0"> {this.props.typeName} a = {this.props.correctMethodName}(5);</div>
+                                                            <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"} </div>
+                                                            <div className="Indent-1"> return s+1; </div>
+                                                            <div className="Indent-0"> {"}"} </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            )}
                                         </div>
-                                    )}
-                                </div>
-                            </div>
-                        )}
+                                    </div>
+                                )}
+                            </React.Fragment>
+                            :
+                            " "
+                        }
                     </div>
 
                     <div className="Tile">
@@ -512,23 +598,38 @@ class MethodNotFound extends React.Component {
                                         <div className="CodeExample">
                                             <div className="CodeContainer">
                                                 <div className="RedCode">
-                                                    <div className="Indent-0">
-                                                        {this.props.typeName} a = {this.props.methodName}(5);
-                                                            </div>
+                                                    {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                        this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                        this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                        this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                        ?
+                                                        <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5); </div>
+                                                        :
+                                                        <div className="Indent-0"> {this.props.methodName}(); </div>
+                                                    }
                                                 </div>
                                             </div>
                                             <div className="CodeContainer">
                                                 <div className="GreenCode">
-                                                    <div className="Indent-0">
-                                                        {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {"{"}
-                                                        <div className="Indent-1">
-                                                            ...
-                                                             </div>
-                                                        <div className="Indent-0"> {"}"}</div>
-                                                    </div>
-                                                    <div className="Indent-0">
-                                                        {this.props.typeName} a = {this.props.methodName}(5);
-                                                                </div>
+                                                    {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                        this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                        this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                        this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                        ?
+                                                        <React.Fragment>
+                                                            <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5); </div>
+                                                            <div className="Indent-0"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {"{"} </div>
+                                                            <div className="Indent-1"> ... </div>
+                                                            <div className="Indent-0"> {"}"}</div>
+                                                        </React.Fragment>
+                                                        :
+                                                        <React.Fragment>
+                                                            <div className="Indent-0"> {this.props.methodName}(); </div>
+                                                            <div className="Indent-0"> {this.props.typeName} {this.props.methodName}() {"{"} </div>
+                                                            <div className="Indent-1"> ... </div>
+                                                            <div className="Indent-0"> {"}"}</div>
+                                                        </React.Fragment>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -618,36 +719,81 @@ class MethodNotFound extends React.Component {
                                             <div className="CodeContainer">
                                                 <div className="RedCode">
                                                     <div className="Indent-0"> class {this.props.className}{"{"}
-                                                        <div className="Indent-1"> {this.props.className}(){"{"}
-                                                            <div className="Indent-2"> ... </div>
-                                                            <div className="Indent-1"> {"}"} </div>
-                                                        </div>
-                                                        <div className="Indent-0"> </div>
-                                                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}
-                                                            <div className="Indent-2"> return s+1; </div>
-                                                            <div className="Indent-1"> {"}"} </div>
-                                                        </div>
+                                                        <div className="Indent-1"> {this.props.className}(){"{"}  </div>
+                                                        <div className="Indent-2"> ... </div>
+                                                        <div className="Indent-1"> {"}"} </div>
+                                                        {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                            this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                            this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                            this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                            ?
+                                                            <React.Fragment>
+                                                                <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}</div>
+                                                                <div className="Indent-2"> return s+1; </div>
+                                                            </React.Fragment>
+                                                            :
+                                                            <React.Fragment>
+                                                                <div className="Indent-1"> {this.props.typeName} {this.props.methodName}(){"{"}</div>
+                                                                <div className="Indent-2"> ... </div>
+                                                            </React.Fragment>
+                                                        }
+                                                        <div className="Indent-1"> {"}"} </div>
                                                         <div className="Indent-0"> {"}"} </div>
                                                     </div>
-                                                    <div className="Indent-0">{this.props.typeName} a = {this.props.methodName}(5);</div>
+                                                    {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                        this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                        this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                        this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                        ?
+                                                        <React.Fragment>
+                                                            <div className="Indent-0">{this.props.typeName} a = {this.props.methodName}(5);</div>
+                                                        </React.Fragment>
+                                                        :
+                                                        <React.Fragment>
+                                                            <div className="Indent-0"> {this.props.methodName}();</div>
+                                                        </React.Fragment>
+                                                    }
                                                 </div>
                                             </div>
                                             <div className="CodeContainer">
                                                 <div className="GreenCode">
                                                     <div className="Indent-0"> class {this.props.className}{"{"}
-                                                        <div className="Indent-1"> {this.props.className}(){"{"}
-                                                            <div className="Indent-2"> ... </div>
-                                                            <div className="Indent-1"> {"}"} </div>
-                                                        </div>
-                                                        <div className="Indent-0"> </div>
-                                                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}
-                                                            <div className="Indent-2"> return s+1; </div>
-                                                            <div className="Indent-1"> {"}"} </div>
-                                                        </div>
+                                                        <div className="Indent-1"> {this.props.className}(){"{"}  </div>
+                                                        <div className="Indent-2"> ... </div>
+                                                        <div className="Indent-1"> {"}"} </div>
+                                                        {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                            this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                            this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                            this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                            ?
+                                                            <React.Fragment>
+                                                                <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}</div>
+                                                                <div className="Indent-2"> return s+1; </div>
+                                                            </React.Fragment>
+                                                            :
+                                                            <React.Fragment>
+                                                                <div className="Indent-1"> {this.props.typeName} {this.props.methodName}(){"{"}</div>
+                                                                <div className="Indent-2"> ... </div>
+                                                            </React.Fragment>
+                                                        }
+                                                        <div className="Indent-1"> {"}"} </div>
                                                         <div className="Indent-0"> {"}"} </div>
                                                     </div>
-                                                    <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                                                    <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                                                    {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                        this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                        this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                        this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                        ?
+                                                        <React.Fragment>
+                                                            <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
+                                                            <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                                                        </React.Fragment>
+                                                        :
+                                                        <React.Fragment>
+                                                            <div className="Indent-0"> {this.props.className} {this.props.varName} = new {this.props.className}()</div>
+                                                            <div className="Indent-0"> {this.props.varName}.{this.props.methodName}();</div>
+                                                        </React.Fragment>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -698,32 +844,67 @@ class MethodNotFound extends React.Component {
                                             <div className="CodeContainer">
                                                 <div className="RedCode">
                                                     <div className="Indent-0"> class {this.props.className}{"{"}
-                                                        <div className="Indent-1"> {this.props.className}(){"{"}
-                                                            <div className="Indent-2"> ... </div>
-                                                            <div className="Indent-1"> {"}"} </div>
-                                                        </div>
+                                                        <div className="Indent-1"> {this.props.className}(){"{"}  </div>
+                                                        <div className="Indent-2"> ... </div>
+                                                        <div className="Indent-1"> {"}"} </div>
                                                         <div className="Indent-0"> {"}"} </div>
                                                     </div>
-                                                    <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                                                    <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                                                    {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                        this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                        this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                        this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                        ?
+                                                        <React.Fragment>
+                                                            <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
+                                                            <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                                                        </React.Fragment>
+                                                        :
+                                                        <React.Fragment>
+                                                            <div className="Indent-0"> {this.props.className} {this.props.varName} = new {this.props.className}()</div>
+                                                            <div className="Indent-0"> {this.props.varName}.{this.props.methodName}();</div>
+                                                        </React.Fragment>
+                                                    }
                                                 </div>
                                             </div>
                                             <div className="CodeContainer">
                                                 <div className="GreenCode">
-                                                    <div className="Indent-0"> class {this.props.className}{"{"}
-                                                        <div className="Indent-1"> {this.props.className}(){"{"}
-                                                            <div className="Indent-2"> ... </div>
-                                                            <div className="Indent-1"> {"}"} </div>
-                                                        </div>
-                                                        <div className="Indent-0"> </div>
-                                                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}
-                                                            <div className="Indent-2"> ... </div>
-                                                            <div className="Indent-1"> {"}"} </div>
-                                                        </div>
+                                                <div className="Indent-0"> class {this.props.className}{"{"}
+                                                        <div className="Indent-1"> {this.props.className}(){"{"}  </div>
+                                                        <div className="Indent-2"> ... </div>
+                                                        <div className="Indent-1"> {"}"} </div>
+                                                        {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                            this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                            this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                            this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                            ?
+                                                            <React.Fragment>
+                                                                <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}</div>
+                                                                <div className="Indent-2"> return s+1; </div>
+                                                            </React.Fragment>
+                                                            :
+                                                            <React.Fragment>
+                                                                <div className="Indent-1"> {this.props.typeName} {this.props.methodName}(){"{"}</div>
+                                                                <div className="Indent-2"> ... </div>
+                                                            </React.Fragment>
+                                                        }
+                                                        <div className="Indent-1"> {"}"} </div>
                                                         <div className="Indent-0"> {"}"} </div>
                                                     </div>
-                                                    <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                                                    <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                                                    {this.props.typeName === 'String' || this.props.typeName === 'char' ||
+                                                        this.props.typeName === 'short' || this.props.typeName === 'byte' ||
+                                                        this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'double' ||
+                                                        this.props.typeName === 'boolean' || this.props.typeName === 'float'
+                                                        ?
+                                                        <React.Fragment>
+                                                            <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
+                                                            <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                                                        </React.Fragment>
+                                                        :
+                                                        <React.Fragment>
+                                                            <div className="Indent-0"> {this.props.className} {this.props.varName} = new {this.props.className}()</div>
+                                                            <div className="Indent-0"> {this.props.varName}.{this.props.methodName}();</div>
+                                                        </React.Fragment>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
