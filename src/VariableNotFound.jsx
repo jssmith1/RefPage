@@ -706,7 +706,7 @@ class VariableNotFound extends React.Component {
                           <div className="CodeContainer">
                             <div className="GreenCode">
                               <div className="Indent-0">
-                                {this.props.varName};
+                              {this.props.className} {this.props.varName};
                               </div>
                               <div className="Indent-0">
                                 void setup(){LEFT_CURLY}
