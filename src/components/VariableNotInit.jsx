@@ -1,7 +1,7 @@
 import React from "react";
-import MinusButton from "./assets/minus.svg";
-import PlusButton from "./assets/plus.svg";
-import "./App.css";
+import MinusButton from "../assets/minus.svg";
+import PlusButton from "../assets/plus.svg";
+import "../App.css";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";

@@ -1,7 +1,7 @@
 import React from "react";
-import MinusButton from "./assets/minus.svg";
-import PlusButton from "./assets/plus.svg";
-import "./App.css";
+import MinusButton from "../assets/minus.svg";
+import PlusButton from "../assets/plus.svg";
+import "../App.css";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -160,7 +160,7 @@ class IncorrectDimensionExpression3 extends React.Component {
                         onChange={() => this.changeChecked(11)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Choose only one of the methods to make an array 
+                        Suggestion 1: Choose only one of the methods to make an array
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -194,32 +194,32 @@ class IncorrectDimensionExpression3 extends React.Component {
                               <div className="RedCode">
                                 <div className="Indent-0">
                                 { this.props.typeName === 'String'            //Box 1 Ex 1 for String
-                                  ? 
+                                  ?
                                   <React.Fragment>
                                   {this.props.typeName}[] s = new {this.props.typeName}[5] {"{"}"a", "b", "c", "d", "e"{"}"};
                                   </React.Fragment>
-                                  
+
                                   : this.props.typeName === 'char'            //Box 1 Ex 1 for char
-                                    ? 
+                                    ?
                                     <React.Fragment>
-                                    {this.props.typeName}[] s = new {this.props.typeName}[5] {"{'a', 'b, 'c', 'd', 'e'}"}; 
+                                    {this.props.typeName}[] s = new {this.props.typeName}[5] {"{'a', 'b, 'c', 'd', 'e'}"};
                                     </React.Fragment>
 
                                     : this.props.typeName === 'boolean'            //Box 1 Ex 1 for boolean
-                                      ? 
+                                      ?
                                       <React.Fragment>
-                                      {this.props.typeName}[] s = new {this.props.typeName}[5] {"{true, false, true, false, true}"}; 
+                                      {this.props.typeName}[] s = new {this.props.typeName}[5] {"{true, false, true, false, true}"};
                                       </React.Fragment>
 
                                       : this.props.typeName === 'float' || this.props.typeName === 'double'            //Box 1 Ex 1 for float/double
-                                        ? 
+                                        ?
                                         <React.Fragment>
-                                        {this.props.typeName}[] s = new {this.props.typeName}[5] {"{1.1, 2.2, 3.3, 4.4, 5.5}"}; 
+                                        {this.props.typeName}[] s = new {this.props.typeName}[5] {"{1.1, 2.2, 3.3, 4.4, 5.5}"};
                                         </React.Fragment>
 
                                         :                                                               //Box 1 Ex 1 for int/short/byte/long
                                         <React.Fragment>
-                                        {this.props.typeName}[] s = new {this.props.typeName}[5] {"{1, 2, 3, 4, 5}"}; 
+                                        {this.props.typeName}[] s = new {this.props.typeName}[5] {"{1, 2, 3, 4, 5}"};
                                         </React.Fragment>
                                 }
                                 </div>
@@ -233,32 +233,32 @@ class IncorrectDimensionExpression3 extends React.Component {
                               <div className="GreenCode">
                               <div className="Indent-0">
                               { this.props.typeName === 'String'            //Box 1 Ex 1 for String
-                                  ? 
+                                  ?
                                   <React.Fragment>
                                   {this.props.typeName}[] s = {"{"}"a", "b", "c", "d", "e"{"}"};
                                   </React.Fragment>
-                                  
+
                                   : this.props.typeName === 'char'            //Box 1 Ex 1 for char
-                                    ? 
+                                    ?
                                     <React.Fragment>
-                                    {this.props.typeName}[] s = {"{'a', 'b, 'c', 'd', 'e'}"}; 
+                                    {this.props.typeName}[] s = {"{'a', 'b, 'c', 'd', 'e'}"};
                                     </React.Fragment>
 
                                     : this.props.typeName === 'boolean'            //Box 1 Ex 1 for boolean
-                                      ? 
+                                      ?
                                       <React.Fragment>
-                                      {this.props.typeName}[] s = {"{true, false, true, false, true}"}; 
+                                      {this.props.typeName}[] s = {"{true, false, true, false, true}"};
                                       </React.Fragment>
 
                                       : this.props.typeName === 'float' || this.props.typeName === 'double'            //Box 1 Ex 1 for float/double
-                                        ? 
+                                        ?
                                         <React.Fragment>
-                                        {this.props.typeName}[] s = {"{1.1, 2.2, 3.3, 4.4, 5.5}"}; 
+                                        {this.props.typeName}[] s = {"{1.1, 2.2, 3.3, 4.4, 5.5}"};
                                         </React.Fragment>
 
                                         :                                                               //Box 1 Ex 1 for int/short/byte/long
                                         <React.Fragment>
-                                        {this.props.typeName}[] s = {"{1, 2, 3, 4, 5}"}; 
+                                        {this.props.typeName}[] s = {"{1, 2, 3, 4, 5}"};
                                         </React.Fragment>
                                 }
                               </div>

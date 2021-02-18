@@ -1,7 +1,7 @@
 import React from "react";
-import MinusButton from "./assets/minus.svg";
-import PlusButton from "./assets/plus.svg";
-import "./App.css";
+import MinusButton from "../assets/minus.svg";
+import PlusButton from "../assets/plus.svg";
+import "../App.css";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -137,7 +137,7 @@ class ExtraneousClosingCurlyBrace extends React.Component {
 
           <h4>
             <i>
-              Translation: There is an extra closing curly brace {"}"} 
+              Translation: There is an extra closing curly brace {"}"}
             </i>
           </h4>
 

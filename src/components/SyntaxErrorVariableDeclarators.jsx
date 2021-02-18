@@ -1,7 +1,7 @@
 import React from "react";
-import MinusButton from "./assets/minus.svg";
-import PlusButton from "./assets/plus.svg";
-import "./App.css";
+import MinusButton from "../assets/minus.svg";
+import PlusButton from "../assets/plus.svg";
+import "../App.css";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -155,7 +155,7 @@ class SyntaxErrorVariableDeclarators extends React.Component {
               <div className="ErrorMessage">
                 <h4>
                   1: It looks like Processing is reading the <div className="InputValue">{this.props.methodOneName} </div> method {" "}
-                  as a variable. You may have forgotten to add parentheses when writing {" "} 
+                  as a variable. You may have forgotten to add parentheses when writing {" "}
                   <div className="InputValue">{this.props.methodOneName} </div>
                 </h4>
               </div>

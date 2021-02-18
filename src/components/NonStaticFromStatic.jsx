@@ -1,8 +1,8 @@
 import React from "react";
-import MinusButton from "./assets/minus.svg";
-import PlusButton from "./assets/plus.svg";
-import "./App.css";
-import NonStaticFromStaticResourceFooter from "./NonStaticFromStaticResourceFooter.jsx";
+import MinusButton from "../assets/minus.svg";
+import PlusButton from "../assets/plus.svg";
+import "../App.css";
+import NonStaticFromStaticResourceFooter from "./resources/NonStaticFromStaticResourceFooter.jsx";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -132,7 +132,7 @@ class NonStaticFromStatic extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              Cannot make a static reference to the non-static method {" "} 
+              Cannot make a static reference to the non-static method {" "}
               <div className="InputValue">{this.props.methodName}() </div> from the type sketch_200201b
             </h2>
           </div>

@@ -1,7 +1,7 @@
 import React from "react";
-import MinusButton from "./assets/minus.svg";
-import PlusButton from "./assets/plus.svg";
-import "./App.css";
+import MinusButton from "../assets/minus.svg";
+import PlusButton from "../assets/plus.svg";
+import "../App.css";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -215,12 +215,12 @@ class TypeMismatch extends React.Component {
                 this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char'
                 ?
                 <h2>
-                  Cannot convert from <div className="InputValue">{this.props.typeOneName}</div>{" "} 
+                  Cannot convert from <div className="InputValue">{this.props.typeOneName}</div>{" "}
                   to <div className="InputValue">{this.props.typeTwoName}</div>
                 </h2>
                 :
                 <h2>
-                  Cannot convert from <div className="InputValue">{this.props.typeOneName}</div>{" "} 
+                  Cannot convert from <div className="InputValue">{this.props.typeOneName}</div>{" "}
                   to <div className="InputValue">{this.props.className}{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}</div>
                 </h2>
 
@@ -229,12 +229,12 @@ class TypeMismatch extends React.Component {
                 this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char'
                 ?
                 <h2>
-                  Cannot convert from <div className="InputValue">{this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}</div>{" "} 
+                  Cannot convert from <div className="InputValue">{this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}</div>{" "}
                   to <div className="InputValue">{this.props.typeTwoName}</div>
                 </h2>
                 :
                 <h2>
-                  Cannot convert from <div className="InputValue">{this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}</div>{" "} 
+                  Cannot convert from <div className="InputValue">{this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}</div>{" "}
                   to <div className="InputValue">{this.props.className}{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}</div>
                 </h2>
             }
@@ -303,7 +303,7 @@ class TypeMismatch extends React.Component {
                     :
                     <h4>
                       1: You may have assigned a <div className="InputValue">{this.props.typeOneName}</div> value to a{" "}
-                      <div className="InputValue">{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}</div> object <div className="InputValue">{this.props.varName}</div> 
+                      <div className="InputValue">{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}</div> object <div className="InputValue">{this.props.varName}</div>
                     </h4>
 
                   : this.props.typeTwoName === 'int' || this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
@@ -312,12 +312,12 @@ class TypeMismatch extends React.Component {
                     ?
                     <h4>
                       1: You may have assigned a <div className="InputValue">{this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}</div> object to variable{" "}
-                      <div className="InputValue">{this.props.varName}</div> of type <div className="InputValue">{this.props.typeTwoName}</div> 
+                      <div className="InputValue">{this.props.varName}</div> of type <div className="InputValue">{this.props.typeTwoName}</div>
                     </h4>
                     :
                     <h4>
                       1: You may have assigned a <div className="InputValue">{this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}</div> object to a{" "}
-                      <div className="InputValue">{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}</div> object <div className="InputValue">{this.props.varName}</div> 
+                      <div className="InputValue">{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}</div> object <div className="InputValue">{this.props.varName}</div>
                     </h4>
                 }
               </div>
@@ -362,7 +362,7 @@ class TypeMismatch extends React.Component {
                       <div className="Suggestion">
                       {this.props.typeOneName === 'String' || this.props.typeOneName === 'char' ||
                         this.props.typeOneName === 'short' || this.props.typeOneName === 'byte' ||
-                        this.props.typeOneName === 'long' || this.props.typeOneName === 'float' || 
+                        this.props.typeOneName === 'long' || this.props.typeOneName === 'float' ||
                         this.props.typeOneName === 'double' || this.props.typeOneName === 'boolean'
                         || this.props.typeOneName === 'int'
                         ?
@@ -400,7 +400,7 @@ class TypeMismatch extends React.Component {
                         ></img>
                       </div>
                     )}
-                  </div> 
+                  </div>
                     {this.state.openCode11 && (
                       <div className="CodeExample">
                         <div className="CodeContainer">
@@ -419,14 +419,14 @@ class TypeMismatch extends React.Component {
                                 : this.props.typeOneName === 'boolean'
                                   ?
                                   <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = true;</div>
-                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double' 
+                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
                                     ?
                                     <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = 5.0;</div>
-                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' || 
+                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' ||
                                       this.props.typeOneName === 'short' || this.props.typeOneName === 'long'
                                       ?
                                       <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = 5;</div>
-                                      : 
+                                      :
                                       <React.Fragment>
                                       <div className="Indent-0"> class {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}{"{"}  </div>
                                       <div className="Indent-1"> int a; </div>
@@ -470,7 +470,7 @@ class TypeMismatch extends React.Component {
                                   <div className="Indent-0"> {"}"} </div>
                                   <div className="Indent-0"> {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} {this.props.varName} = true;</div>
                                   </React.Fragment>
-                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double' 
+                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
                                     ?
                                     <React.Fragment>
                                     <div className="Indent-0"> class {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}{"{"}  </div>
@@ -481,7 +481,7 @@ class TypeMismatch extends React.Component {
                                     <div className="Indent-0"> {"}"} </div>
                                     <div className="Indent-0"> {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} {this.props.varName} = 5.0;</div>
                                     </React.Fragment>
-                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' || 
+                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' ||
                                       this.props.typeOneName === 'short' || this.props.typeOneName === 'long'
                                       ?
                                       <React.Fragment>
@@ -522,14 +522,14 @@ class TypeMismatch extends React.Component {
                                 : this.props.typeOneName === 'boolean'
                                   ?
                                   <div className="Indent-0"> {this.props.typeOneName} {this.props.varName} = true;</div>
-                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double' 
+                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
                                     ?
                                     <div className="Indent-0"> {this.props.typeOneName} {this.props.varName} = 5.0;</div>
-                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' || 
+                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' ||
                                       this.props.typeOneName === 'short' || this.props.typeOneName === 'long'
                                       ?
                                       <div className="Indent-0"> {this.props.typeOneName} {this.props.varName} = 5;</div>
-                                      : 
+                                      :
                                       <React.Fragment>
                                       <div className="Indent-0"> {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)} {this.props.varName} = new{" "}
                                       {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}(5);</div>
@@ -537,11 +537,11 @@ class TypeMismatch extends React.Component {
                           }
                           </div>
                         </div>
-                      </div> 
-                    )} 
+                      </div>
+                    )}
                  </div>
-                
-                
+
+
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExampleBoxOnly(12)}
@@ -556,7 +556,7 @@ class TypeMismatch extends React.Component {
                       <div className="Suggestion">
                       {this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
                         this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
-                        this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || 
+                        this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' ||
                         this.props.typeTwoName === 'double' || this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'int'
                         ?
                         <React.Fragment>
@@ -613,14 +613,14 @@ class TypeMismatch extends React.Component {
                                 : this.props.typeOneName === 'boolean'
                                   ?
                                   <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = true;</div>
-                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double' 
+                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
                                     ?
                                     <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = 5.0;</div>
-                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' || 
+                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' ||
                                       this.props.typeOneName === 'short' || this.props.typeOneName === 'long'
                                       ?
                                       <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = 5;</div>
-                                      : 
+                                      :
                                       <React.Fragment>
                                       <div className="Indent-0"> class {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}{"{"}  </div>
                                       <div className="Indent-1"> int a; </div>
@@ -664,7 +664,7 @@ class TypeMismatch extends React.Component {
                                   <div className="Indent-0"> {"}"} </div>
                                   <div className="Indent-0"> {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} {this.props.varName} = true;</div>
                                   </React.Fragment>
-                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double' 
+                                  : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
                                     ?
                                     <React.Fragment>
                                     <div className="Indent-0"> class {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}{"{"}  </div>
@@ -675,7 +675,7 @@ class TypeMismatch extends React.Component {
                                     <div className="Indent-0"> {"}"} </div>
                                     <div className="Indent-0"> {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} {this.props.varName} = 5.0;</div>
                                     </React.Fragment>
-                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' || 
+                                    : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' ||
                                       this.props.typeOneName === 'short' || this.props.typeOneName === 'long'
                                       ?
                                       <React.Fragment>
@@ -716,14 +716,14 @@ class TypeMismatch extends React.Component {
                                 : this.props.typeTwoName === 'boolean'
                                   ?
                                   <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = true;</div>
-                                  : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double' 
+                                  : this.props.typeTwoName === 'float' || this.props.typeTwoName === 'double'
                                     ?
                                     <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = 5.0;</div>
-                                    : this.props.typeTwoName === 'int' || this.props.typeTwoName === 'byte' || 
+                                    : this.props.typeTwoName === 'int' || this.props.typeTwoName === 'byte' ||
                                       this.props.typeTwoName === 'short' || this.props.typeTwoName === 'long'
                                       ?
                                       <div className="Indent-0"> {this.props.typeTwoName} {this.props.varName} = 5;</div>
-                                      : 
+                                      :
                                       <React.Fragment>
                                       <div className="Indent-0"> {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} {this.props.varName} = new{" "}
                                       {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}(5);</div>
@@ -731,7 +731,7 @@ class TypeMismatch extends React.Component {
                           }
                             </div>
                           </div>
-                        </div> 
+                        </div>
                       )
                     }
                 </div>
@@ -812,7 +812,7 @@ class TypeMismatch extends React.Component {
                       <div className="Suggestion">
                       { this.props.typeTwoName === 'String' || this.props.typeTwoName === 'char' ||
                         this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' ||
-                        this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' || 
+                        this.props.typeTwoName === 'long' || this.props.typeTwoName === 'float' ||
                         this.props.typeTwoName === 'double' || this.props.typeTwoName === 'boolean' || this.props.typeTwoName === 'int'
                         ?
                         <React.Fragment>
@@ -882,7 +882,7 @@ class TypeMismatch extends React.Component {
                                             <div className="Indent-1">return {this.props.varName};</div>
                                             <div className="Indent-0">{RIGHT_CURLY}</div>
                                             </React.Fragment>
-                                            : this.props.typeOneName === 'float' || this.props.typeOneName === 'double' 
+                                            : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
                                               ?
                                               <React.Fragment>
                                               <div className="Indent-0">{this.props.typeTwoName} doSomething() {LEFT_CURLY}</div>
@@ -890,7 +890,7 @@ class TypeMismatch extends React.Component {
                                               <div className="Indent-1">return {this.props.varName};</div>
                                               <div className="Indent-0">{RIGHT_CURLY}</div>
                                               </React.Fragment>
-                                              : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' || 
+                                              : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' ||
                                                 this.props.typeOneName === 'short' || this.props.typeOneName === 'long'
                                                 ?
                                                 <React.Fragment>
@@ -899,7 +899,7 @@ class TypeMismatch extends React.Component {
                                                 <div className="Indent-1">return {this.props.varName};</div>
                                                 <div className="Indent-0">{RIGHT_CURLY}</div>
                                                 </React.Fragment>
-                                                : 
+                                                :
                                                 <React.Fragment>
                                                 <div className="Indent-0"> class {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}{"{"}  </div>
                                                 <div className="Indent-1"> int a; </div>
@@ -940,7 +940,7 @@ class TypeMismatch extends React.Component {
                                           <div className="Indent-0">{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} doSomething() {LEFT_CURLY}</div>
                                           <div className="Indent-1">{this.props.typeOneName} {this.props.varName} = 's';</div>
                                           <div className="Indent-1">return {this.props.varName};</div>
-                                          <div className="Indent-0">{RIGHT_CURLY}</div>                                          
+                                          <div className="Indent-0">{RIGHT_CURLY}</div>
                                           </React.Fragment>
                                           : this.props.typeOneName === 'boolean'
                                             ?
@@ -954,9 +954,9 @@ class TypeMismatch extends React.Component {
                                             <div className="Indent-0">{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} doSomething() {LEFT_CURLY}</div>
                                             <div className="Indent-1">{this.props.typeOneName} {this.props.varName} = true;</div>
                                             <div className="Indent-1">return {this.props.varName};</div>
-                                            <div className="Indent-0">{RIGHT_CURLY}</div>                                              
+                                            <div className="Indent-0">{RIGHT_CURLY}</div>
                                             </React.Fragment>
-                                            : this.props.typeOneName === 'float' || this.props.typeOneName === 'double' 
+                                            : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
                                               ?
                                               <React.Fragment>
                                               <div className="Indent-0"> class {this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)}{"{"}  </div>
@@ -968,9 +968,9 @@ class TypeMismatch extends React.Component {
                                               <div className="Indent-0">{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} doSomething() {LEFT_CURLY}</div>
                                               <div className="Indent-1">{this.props.typeOneName} {this.props.varName} = 5.0;</div>
                                               <div className="Indent-1">return {this.props.varName};</div>
-                                              <div className="Indent-0">{RIGHT_CURLY}</div>                                                
+                                              <div className="Indent-0">{RIGHT_CURLY}</div>
                                               </React.Fragment>
-                                              : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' || 
+                                              : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' ||
                                                 this.props.typeOneName === 'short' || this.props.typeOneName === 'long'
                                                 ?
                                                 <React.Fragment>
@@ -983,7 +983,7 @@ class TypeMismatch extends React.Component {
                                                 <div className="Indent-0">{this.props.typeTwoName.slice(0,1).toUpperCase() + this.props.typeTwoName.slice(1, this.props.typeTwoName.length)} doSomething() {LEFT_CURLY}</div>
                                                 <div className="Indent-1">{this.props.typeOneName} {this.props.varName} = 5;</div>
                                                 <div className="Indent-1">return {this.props.varName};</div>
-                                                <div className="Indent-0">{RIGHT_CURLY}</div>                                                  
+                                                <div className="Indent-0">{RIGHT_CURLY}</div>
                                                 </React.Fragment>
                                                 :
                                                 <React.Fragment>
@@ -1001,7 +1001,7 @@ class TypeMismatch extends React.Component {
                                                 <div className="Indent-1">{this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)} {this.props.varName} = {" "}
                                                 new {this.props.typeOneName.slice(0,1).toUpperCase() + this.props.typeOneName.slice(1, this.props.typeOneName.length)}(5);</div>
                                                 <div className="Indent-1">return {this.props.varName};</div>
-                                                <div className="Indent-0">{RIGHT_CURLY}</div>  
+                                                <div className="Indent-0">{RIGHT_CURLY}</div>
                                                 </React.Fragment>
                                     }
                                   </div>
@@ -1032,7 +1032,7 @@ class TypeMismatch extends React.Component {
                                             <div className="Indent-1">return {this.props.varName}; </div>
                                             <div className="Indent-0">{RIGHT_CURLY}</div>
                                             </React.Fragment>
-                                            : this.props.typeOneName === 'float' || this.props.typeOneName === 'double' 
+                                            : this.props.typeOneName === 'float' || this.props.typeOneName === 'double'
                                               ?
                                               <React.Fragment>
                                               <div className="Indent-0">{this.props.typeOneName} doSomething() {LEFT_CURLY}</div>
@@ -1040,7 +1040,7 @@ class TypeMismatch extends React.Component {
                                               <div className="Indent-1">return {this.props.varName}; </div>
                                               <div className="Indent-0">{RIGHT_CURLY}</div>
                                               </React.Fragment>
-                                              : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' || 
+                                              : this.props.typeOneName === 'int' || this.props.typeOneName === 'byte' ||
                                                 this.props.typeOneName === 'short' || this.props.typeOneName === 'long'
                                                 ?
                                                 <React.Fragment>
@@ -1060,7 +1060,7 @@ class TypeMismatch extends React.Component {
                                     }
                                   </div>
                                 </div>
-                              </div> 
+                              </div>
                       )
                     }
                 </div>
@@ -1143,7 +1143,7 @@ class TypeMismatch extends React.Component {
                       </div>
                     )}
                   </div>
-                  
+
                   { this.state.openCode31 && (
                               <div className="CodeExample">
                                 <div className="CodeContainer">

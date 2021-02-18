@@ -1,8 +1,8 @@
 import React from "react";
-import MinusButton from "./assets/minus.svg";
-import PlusButton from "./assets/plus.svg";
-import "./App.css";
-import MethodCallOnWrongTypeResourceFooter from "./MethodCallOnWrongTypeResourceFooter.jsx";
+import MinusButton from "../assets/minus.svg";
+import PlusButton from "../assets/plus.svg";
+import "../App.css";
+import MethodCallOnWrongTypeResourceFooter from "./resources/MethodCallOnWrongTypeResourceFooter.jsx";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -184,16 +184,16 @@ class MethodCallOnWrongType extends React.Component {
               this.props.typeTwoName === 'short' || this.props.typeTwoName === 'byte' || this.props.typeTwoName === 'long'
               ?
               <h2>
-                Cannot invoke <div className="InputValue">{this.props.methodName}()</div>{" "} 
+                Cannot invoke <div className="InputValue">{this.props.methodName}()</div>{" "}
                 on <div className="InputValue">{this.props.typeOneName}</div> type <div className="InputValue">{this.props.typeTwoName}</div>
               </h2>
               :
               <h2>
-                Cannot invoke <div className="InputValue">{this.props.methodName}()</div>{" "} 
+                Cannot invoke <div className="InputValue">{this.props.methodName}()</div>{" "}
                 on <div className="InputValue">{this.props.typeOneName}</div> type <div className="InputValue">int</div>
               </h2>
             }
-            
+
           </div>
 
           <h4>
@@ -311,10 +311,10 @@ class MethodCallOnWrongType extends React.Component {
                         <div className="RedCode">
                             { this.props.typeOneName === 'primitive'
                               ? this.props.typeTwoName === 'String'
-                                ? 
+                                ?
                                 <React.Fragment>
                                 <div className="Indent-0"> {this.props.typeTwoName} s1 = "thing"; </div>
-                                <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                 <div className="Indent-1"> ...</div>
                                 <div className="Indent-0"> {RIGHT_CURLY} </div>
                                 <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
@@ -323,7 +323,7 @@ class MethodCallOnWrongType extends React.Component {
                                   ?
                                   <React.Fragment>
                                   <div className="Indent-0"> {this.props.typeTwoName} s1 = 's'; </div>
-                                  <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                  <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                   <div className="Indent-1"> ...</div>
                                   <div className="Indent-0"> {RIGHT_CURLY} </div>
                                   <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
@@ -332,31 +332,31 @@ class MethodCallOnWrongType extends React.Component {
                                     ?
                                     <React.Fragment>
                                     <div className="Indent-0"> {this.props.typeTwoName} s1 = true; </div>
-                                    <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                    <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                     <div className="Indent-1"> ...</div>
                                     <div className="Indent-0"> {RIGHT_CURLY} </div>
                                     <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                     </React.Fragment>
-                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float' 
+                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float'
                                       ?
                                       <React.Fragment>
                                       <div className="Indent-0"> {this.props.typeTwoName} s1 = 5.0; </div>
-                                      <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                      <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                       <div className="Indent-1"> ...</div>
                                       <div className="Indent-0"> {RIGHT_CURLY} </div>
                                       <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                       </React.Fragment>
-                                      : 
+                                      :
                                       <React.Fragment>
                                       <div className="Indent-0"> {this.props.typeTwoName} s1 = 5; </div>
-                                      <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                      <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                       <div className="Indent-1"> ...</div>
                                       <div className="Indent-0"> {RIGHT_CURLY} </div>
                                       <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                       </React.Fragment>
-                              : 
+                              :
                               <React.Fragment>
-                              <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                              <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                               <div className="Indent-1"> ...</div>
                               <div className="Indent-0"> {RIGHT_CURLY} </div>
                               <div className="Indent-0"> {this.props.typeTwoName}[] s1 = new {this.props.typeTwoName}[5]; </div>
@@ -369,10 +369,10 @@ class MethodCallOnWrongType extends React.Component {
                         <div className="GreenCode">
                             { this.props.typeOneName === 'primitive'
                               ? this.props.typeTwoName === 'String'
-                                ? 
+                                ?
                                 <React.Fragment>
                                 <div className="Indent-0"> {this.props.typeTwoName} s1 = "thing"; </div>
-                                <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                 <div className="Indent-1"> ...</div>
                                 <div className="Indent-0"> {RIGHT_CURLY} </div>
                                 <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.methodName}();</div>
@@ -381,7 +381,7 @@ class MethodCallOnWrongType extends React.Component {
                                   ?
                                   <React.Fragment>
                                   <div className="Indent-0"> {this.props.typeTwoName} s1 = 's'; </div>
-                                  <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                  <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                   <div className="Indent-1"> ...</div>
                                   <div className="Indent-0"> {RIGHT_CURLY} </div>
                                   <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.methodName}();</div>
@@ -390,31 +390,31 @@ class MethodCallOnWrongType extends React.Component {
                                     ?
                                     <React.Fragment>
                                     <div className="Indent-0"> {this.props.typeTwoName} s1 = true; </div>
-                                    <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                    <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                     <div className="Indent-1"> ...</div>
                                     <div className="Indent-0"> {RIGHT_CURLY} </div>
                                     <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.methodName}();</div>
                                     </React.Fragment>
-                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float' 
+                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float'
                                       ?
                                       <React.Fragment>
                                       <div className="Indent-0"> {this.props.typeTwoName} s1 = 5.0; </div>
-                                      <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                      <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                       <div className="Indent-1"> ...</div>
                                       <div className="Indent-0"> {RIGHT_CURLY} </div>
                                       <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.methodName}();</div>
                                       </React.Fragment>
-                                      : 
+                                      :
                                       <React.Fragment>
                                       <div className="Indent-0"> {this.props.typeTwoName} s1 = 5; </div>
-                                      <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                                      <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                                       <div className="Indent-1"> ...</div>
                                       <div className="Indent-0"> {RIGHT_CURLY} </div>
                                       <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.methodName}();</div>
                                       </React.Fragment>
-                              : 
+                              :
                               <React.Fragment>
-                              <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div> 
+                              <div className="Indent-0"> {this.props.typeTwoName} {this.props.methodName}() {LEFT_CURLY}</div>
                               <div className="Indent-1"> ...</div>
                               <div className="Indent-0"> {RIGHT_CURLY} </div>
                               <div className="Indent-0"> {this.props.typeTwoName}[] s1 = new {this.props.typeTwoName}[5]; </div>
@@ -524,13 +524,13 @@ class MethodCallOnWrongType extends React.Component {
                             <div className="Indent-2"> ... </div>
                             <div className="Indent-1"> {"}"} </div>
                             <div className="Indent-0"> </div>
-                            <div className="Indent-1"> {this.props.typeTwoName} {this.props.methodName}(){"{"}</div> 
+                            <div className="Indent-1"> {this.props.typeTwoName} {this.props.methodName}(){"{"}</div>
                             <div className="Indent-2"> ... </div>
                             <div className="Indent-1"> {"}"} </div>
                             <div className="Indent-0"> {"}"} </div>
                             { this.props.typeOneName === 'primitive'
                               ? this.props.typeTwoName === 'String'
-                                ? 
+                                ?
                                 <React.Fragment>
                                 <div className="Indent-0">{this.props.typeTwoName} s1 = "thing";</div>
                                 <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
@@ -547,18 +547,18 @@ class MethodCallOnWrongType extends React.Component {
                                     <div className="Indent-0">{this.props.typeTwoName} s1 = true;</div>
                                     <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                     </React.Fragment>
-                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float' 
+                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float'
                                       ?
                                       <React.Fragment>
                                       <div className="Indent-0">{this.props.typeTwoName} s1 = 5.0;</div>
                                       <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                       </React.Fragment>
-                                      : 
+                                      :
                                       <React.Fragment>
                                       <div className="Indent-0">{this.props.typeTwoName} s1 = 5;</div>
                                       <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                       </React.Fragment>
-                              : 
+                              :
                               <React.Fragment>
                               <div className="Indent-0"> {this.props.typeTwoName}[] s1 = new {this.props.typeTwoName}[5]; </div>
                               <div className="Indent-0"> s1[0] = s1.{this.props.methodName}(); </div>
@@ -573,14 +573,14 @@ class MethodCallOnWrongType extends React.Component {
                             <div className="Indent-2"> ... </div>
                             <div className="Indent-1"> {"}"} </div>
                             <div className="Indent-0"> </div>
-                            <div className="Indent-1"> {this.props.typeTwoName} {this.props.methodName}(){"{"}</div> 
+                            <div className="Indent-1"> {this.props.typeTwoName} {this.props.methodName}(){"{"}</div>
                             <div className="Indent-2"> ... </div>
                             <div className="Indent-1"> {"}"} </div>
                             <div className="Indent-0"> {"}"} </div>
                             <div className="Indent-0"> {this.props.className} {this.props.varName} = new {this.props.className}();</div>
                             { this.props.typeOneName === 'primitive'
                               ? this.props.typeTwoName === 'String'
-                                ? 
+                                ?
                                 <React.Fragment>
                                 <div className="Indent-0">{this.props.typeTwoName} s1 = "thing";</div>
                                 <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
@@ -597,18 +597,18 @@ class MethodCallOnWrongType extends React.Component {
                                     <div className="Indent-0">{this.props.typeTwoName} s1 = true;</div>
                                     <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                     </React.Fragment>
-                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float' 
+                                    : this.props.typeTwoName === 'double' || this.props.typeTwoName === 'float'
                                       ?
                                       <React.Fragment>
                                       <div className="Indent-0">{this.props.typeTwoName} s1 = 5.0;</div>
                                       <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                       </React.Fragment>
-                                      : 
+                                      :
                                       <React.Fragment>
                                       <div className="Indent-0">{this.props.typeTwoName} s1 = 5;</div>
                                       <div className="Indent-0">{this.props.typeTwoName} s2 = s1.{this.props.methodName}();</div>
                                       </React.Fragment>
-                              : 
+                              :
                               <React.Fragment>
                               <div className="Indent-0"> {this.props.typeTwoName}[] s1 = new {this.props.typeTwoName}[5]; </div>
                               <div className="Indent-0"> s1[0] = {this.props.varName}.{this.props.methodName}(); </div>
@@ -715,30 +715,30 @@ class MethodCallOnWrongType extends React.Component {
                           <div className="RedCode">
                             <div className="Indent-0"> String {this.props.varName}  = "{this.props.varName}";</div>
                             { this.props.typeOneName === 'array'
-                              ?  
+                              ?
                                 <React.Fragment>
                                 <div className="Indent-0"> {this.props.typeTwoName}[] s1 = new {this.props.typeTwoName}[5]; </div>
                                 <div className="Indent-0"> s1[0] = s1.{this.props.methodName}(); </div>
                                 </React.Fragment>
-                              
+
                               : this.props.typeTwoName === 'int'
-                                ? 
+                                ?
                                 <React.Fragment>
                                 <div className="Indent-0"> {this.props.typeTwoName} s1 = 5; </div>
                                 <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}(); </div>
-                                </React.Fragment> 
+                                </React.Fragment>
                                 : this.props.typeTwoName === 'boolean'
                                   ?
-                                  <React.Fragment> 
+                                  <React.Fragment>
                                   <div className="Indent-0"> {this.props.typeTwoName} s1 = false; </div>
                                   <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}(); </div>
-                                  </React.Fragment> 
-                                  : 
-                                  <React.Fragment> 
+                                  </React.Fragment>
+                                  :
+                                  <React.Fragment>
                                   <div className="Indent-0"> {this.props.typeTwoName} s1 = 's'; </div>
                                   <div className="Indent-0"> {this.props.typeTwoName} s2 = s1.{this.props.methodName}(); </div>
-                                  </React.Fragment> 
-                                  
+                                  </React.Fragment>
+
                             }
                           </div>
                         </div>
@@ -746,30 +746,30 @@ class MethodCallOnWrongType extends React.Component {
                           <div className="GreenCode">
                           <div className="Indent-0"> String {this.props.varName}  = "{this.props.varName}";</div>
                           { this.props.typeOneName === 'array'
-                              ?  
+                              ?
                                 <React.Fragment>
                                 <div className="Indent-0"> {this.props.typeTwoName}[] s1 = new {this.props.typeTwoName}[5]; </div>
                                 <div className="Indent-0"> s1[0] = {this.props.varName}.{this.props.methodName}(); </div>
                                 </React.Fragment>
-                              
+
                               : this.props.typeTwoName === 'int'
-                                ? 
+                                ?
                                 <React.Fragment>
                                 <div className="Indent-0"> {this.props.typeTwoName} s1 = 5; </div>
                                 <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.varName}.{this.props.methodName}(); </div>
-                                </React.Fragment> 
+                                </React.Fragment>
                                 : this.props.typeTwoName === 'boolean'
                                   ?
-                                  <React.Fragment> 
+                                  <React.Fragment>
                                   <div className="Indent-0"> {this.props.typeTwoName} s1 = false; </div>
                                   <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.varName}.{this.props.methodName}(); </div>
-                                  </React.Fragment> 
-                                  : 
-                                  <React.Fragment> 
+                                  </React.Fragment>
+                                  :
+                                  <React.Fragment>
                                   <div className="Indent-0"> {this.props.typeTwoName} s1 = 's'; </div>
                                   <div className="Indent-0"> {this.props.typeTwoName} s2 = {this.props.varName}.{this.props.methodName}(); </div>
-                                  </React.Fragment> 
-                                  
+                                  </React.Fragment>
+
                             }
                           </div>
                         </div>

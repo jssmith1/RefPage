@@ -1,7 +1,7 @@
 import React from "react";
-import MinusButton from "./assets/minus.svg";
-import PlusButton from "./assets/plus.svg";
-import "./App.css";
+import MinusButton from "../assets/minus.svg";
+import PlusButton from "../assets/plus.svg";
+import "../App.css";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
@@ -251,7 +251,7 @@ class UnexpectedToken extends React.Component {
           </h4>
 
           { this.props.typeName === 'String' || this.props.typeName === 'boolean' || this.props.typeName === 'float' || this.props.typeName === 'double'    //Condition for typeName = String/boolean/float
-            ? 
+            ?
             <React.Fragment>
               <div className="Tile">
                 <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
@@ -347,7 +347,7 @@ class UnexpectedToken extends React.Component {
                               </div>
                             </div>
                           )
-                        
+
                         : this.props.typeName === 'boolean'
                           ? this.state.openCode11 && (              //Box 1 Ex 1 - boolean
                               <div className="CodeExample">
@@ -436,7 +436,7 @@ class UnexpectedToken extends React.Component {
                             onChange={() => this.changeChecked(21)}
                           />
                           <div className="Suggestion">
-                            Suggestion 1: Either declare the variable, assign it or just remove it if not used 
+                            Suggestion 1: Either declare the variable, assign it or just remove it if not used
                           </div>
                         </div>
                         {!this.state.openCode21 && (
@@ -484,7 +484,7 @@ class UnexpectedToken extends React.Component {
                               </div>
                             </div>
                           )
-                        
+
                         : this.props.typeName === 'boolean'
                           ? this.state.openCode21 && (          //Box 2 Ex 1 - boolean
                             <div className="CodeExample">
@@ -507,7 +507,7 @@ class UnexpectedToken extends React.Component {
                               </div>
                             )
 
-                          : this.state.openCode21 && (          //Box 2 Ex 1 = float/double        
+                          : this.state.openCode21 && (          //Box 2 Ex 1 = float/double
                                 <div className="CodeExample">
                                 <div className="CodeContainer">
                                     <div className="RedCode">
@@ -534,8 +534,8 @@ class UnexpectedToken extends React.Component {
               </div>
             </React.Fragment>
             : this.props.typeName === 'char'        //Condition for typeName = char
-              ? 
-              <React.Fragment> 
+              ?
+              <React.Fragment>
                 <div className="Tile">
                   <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
                     <div className="ErrorMessage">
@@ -679,7 +679,7 @@ class UnexpectedToken extends React.Component {
                               onChange={() => this.changeChecked(21)}
                             />
                             <div className="Suggestion">
-                              Suggestion 1: Either declare the variable, assign it or just remove it if not used 
+                              Suggestion 1: Either declare the variable, assign it or just remove it if not used
                             </div>
                           </div>
                           {!this.state.openCode21 && (
@@ -705,7 +705,7 @@ class UnexpectedToken extends React.Component {
                             </div>
                           )}
                         </div>
-                        
+
                         { this.state.openCode21 && (            //Box 2 Ex 1 = char
                               <div className="CodeExample">
                               <div className="CodeContainer">
@@ -725,7 +725,7 @@ class UnexpectedToken extends React.Component {
                                   </div>
                                 </div>
                               </div>
-                            )  
+                            )
                         }
                       </div>
                     </div>
@@ -778,7 +778,7 @@ class UnexpectedToken extends React.Component {
                           />
                           <div className="Suggestion">
                             Suggestion 1: Add a parentheses around <div className="InputValue">{this.props.typeName}</div>, {" "}
-                            the type you are trying to convert the variable to 
+                            the type you are trying to convert the variable to
                           </div>
                         </div>
                         {!this.state.openCode31 && (
@@ -826,9 +826,9 @@ class UnexpectedToken extends React.Component {
                   </div>
                 )}
                 </div>
-              </React.Fragment> 
+              </React.Fragment>
               : this.props.typeName === 'int' || this.props.typeName === 'long' || this.props.typeName === 'byte' || this.props.typeName === 'short'            //Condition for typeName = int/long/short/byte
-               ? <React.Fragment>   
+               ? <React.Fragment>
                   <div className="Tile">
                     <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
                       <div className="ErrorMessage">
@@ -971,7 +971,7 @@ class UnexpectedToken extends React.Component {
                                 onChange={() => this.changeChecked(21)}
                               />
                               <div className="Suggestion">
-                                Suggestion 1: Either declare the variable, assign it or just remove it if not used 
+                                Suggestion 1: Either declare the variable, assign it or just remove it if not used
                               </div>
                             </div>
                             {!this.state.openCode21 && (
@@ -998,7 +998,7 @@ class UnexpectedToken extends React.Component {
                             )}
                           </div>
                           {this.state.openCode21 && (                     //Box 2 Ex 1 = int/float/byte/short
-                            <div className="CodeExample"> 
+                            <div className="CodeExample">
                             <div className="CodeContainer">
                                 <div className="RedCode">
                                 <div className="Indent-0"> s; </div>
@@ -1068,7 +1068,7 @@ class UnexpectedToken extends React.Component {
                               />
                               <div className="Suggestion">
                                 Suggestion 1: Add a parentheses around <div className="InputValue">{this.props.typeName}</div>, {" "}
-                                the type you are trying to convert the variable to 
+                                the type you are trying to convert the variable to
                               </div>
                             </div>
                             {!this.state.openCode31 && (
@@ -1161,7 +1161,7 @@ class UnexpectedToken extends React.Component {
                                     onChange={() => this.changeChecked(41)}
                                   />
                                   <div className="Suggestion">
-                                    Suggestion 1: Change the parameters of the control structure 
+                                    Suggestion 1: Change the parameters of the control structure
                                   </div>
                                 </div>
                                 {!this.state.openCode41 && (
@@ -1221,7 +1221,7 @@ class UnexpectedToken extends React.Component {
                                     onChange={() => this.changeChecked(42)}
                                   />
                                   <div className="Suggestion">
-                                    Suggestion 2: Change the control structure itself 
+                                    Suggestion 2: Change the control structure itself
                                   </div>
                                 </div>
                                 {!this.state.openCode42 && (
@@ -1274,10 +1274,10 @@ class UnexpectedToken extends React.Component {
                     </React.Fragment>
                     : null
                   }
-                  
+
                 </React.Fragment>
 
-              : <React.Fragment>                         
+              : <React.Fragment>
                   <div className="Tile">
                     <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
                       <div className="ErrorMessage">
@@ -1322,7 +1322,7 @@ class UnexpectedToken extends React.Component {
                                 onChange={() => this.changeChecked(21)}
                               />
                               <div className="Suggestion">
-                                Suggestion 1: Either declare the object, assign it or just remove it if not used 
+                                Suggestion 1: Either declare the object, assign it or just remove it if not used
                               </div>
                             </div>
                             {!this.state.openCode21 && (
@@ -1349,7 +1349,7 @@ class UnexpectedToken extends React.Component {
                             )}
                           </div>
 
-                          {this.state.openCode21 && (            //Box 1 Ex 1 = User-Made   
+                          {this.state.openCode21 && (            //Box 1 Ex 1 = User-Made
                                     <div className="CodeExample">
                                     <div className="CodeContainer">
                                         <div className="RedCode">
@@ -1374,7 +1374,7 @@ class UnexpectedToken extends React.Component {
                                         </div>
                                       </div>
                                     </div>
-                                  ) 
+                                  )
                           }
                         </div>
                       </div>
