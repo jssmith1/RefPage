@@ -13,7 +13,7 @@ import VariableNotFound from "./components/VariableNotFound";
 import TypeMismatch from "./components/TypeMismatch";
 import VariableNotInit from "./components/VariableNotInit";
 import ParameterMismatch from "./components/ParameterMismatch";
-import MethodCallOnWrongType from "./components/components/MethodCallOnWrongType";
+import MethodCallOnWrongType from "./components/MethodCallOnWrongType";
 import MethodNotFound from "./components/MethodNotFound";
 import IncorrectMethodDeclaration from "./components/IncorrectMethodDeclaration";
 import IncorrectVariableDeclaration from "./components/IncorrectVariableDeclaration";
