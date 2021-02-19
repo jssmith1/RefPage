@@ -5,25 +5,27 @@ import {
     Route,
     useLocation,
 } from "react-router-dom";
+import {
+    ReturnMissing,
+    TypeNotFound,
+    VariableNotFound,
+    TypeMismatch,
+    VariableNotInit,
+    ParameterMismatch,
+    MethodCallOnWrongType,
+    MethodNotFound,
+    IncorrectMethodDeclaration,
+    IncorrectVariableDeclaration,
+    IncorrectDimensionExpression1,
+    IncorrectDimensionExpression2,
+    IncorrectDimensionExpression3,
+    SyntaxErrorVariableDeclarators,
+    UnexpectedToken,
+    ExtraneousClosingCurlyBrace,
+    NonStaticFromStatic
+} from './components/-ProcessingErrors'
 import "./App.css";
-import HomeButton from "./assets/home.svg";
-import ReturnMissing from "./components/ReturnMissing";
-import TypeNotFound from "./components/TypeNotFound";
-import VariableNotFound from "./components/VariableNotFound";
-import TypeMismatch from "./components/TypeMismatch";
-import VariableNotInit from "./components/VariableNotInit";
-import ParameterMismatch from "./components/ParameterMismatch";
-import MethodCallOnWrongType from "./components/MethodCallOnWrongType";
-import MethodNotFound from "./components/MethodNotFound";
-import IncorrectMethodDeclaration from "./components/IncorrectMethodDeclaration";
-import IncorrectVariableDeclaration from "./components/IncorrectVariableDeclaration";
-import IncorrectDimensionExpression1 from "./components/IncorrectDimensionExpression1";
-import IncorrectDimensionExpression2 from "./components/IncorrectDimensionExpression2";
-import IncorrectDimensionExpression3 from "./components/IncorrectDimensionExpression3";
-import SyntaxErrorVariableDeclarators from "./components/SyntaxErrorVariableDeclarators";
-import UnexpectedToken from "./components/UnexpectedToken";
-import ExtraneousClosingCurlyBrace from "./components/ExtraneousClosingCurlyBrace";
-import NonStaticFromStatic from "./components/NonStaticFromStatic";
+import HomeButton from './assets/home.svg';
 
 export default function App() {
     return (
