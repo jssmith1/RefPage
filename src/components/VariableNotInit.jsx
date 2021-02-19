@@ -4,10 +4,6 @@ import PlusButton from "../assets/plus.svg";
 import "../App.css";
 import BlueCheckbox from './resources/blueCheckbox'
 
-import Checkbox from "@material-ui/core/Checkbox";
-
-((props) => <Checkbox color="default" {...props} />);
-
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";
 
