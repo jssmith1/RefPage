@@ -2,7 +2,7 @@ import React from "react";
 import MinusButton from "../assets/minus.svg";
 import PlusButton from "../assets/plus.svg";
 import "../App.css";
-import ParameterMismatchResourceFooter from "./resources/ParameterMismatchResourceFooter.jsx";
+import ParameterMismatchResourceFooter from "./resourceFooters/ParameterMismatchResourceFooter.jsx";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";

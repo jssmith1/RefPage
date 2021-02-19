@@ -2,7 +2,7 @@ import React from "react";
 import MinusButton from "../assets/minus.svg";
 import PlusButton from "../assets/plus.svg";
 import "../App.css";
-import IncorrectMethodDeclarationResourceFooter from "./resources/IncorrectMethodDeclarationResourceFooter.jsx";
+import IncorrectMethodDeclarationResourceFooter from "./resourceFooters/IncorrectMethodDeclarationResourceFooter.jsx";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
