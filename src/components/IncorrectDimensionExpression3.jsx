@@ -2,20 +2,7 @@ import React from "react";
 import MinusButton from "../assets/minus.svg";
 import PlusButton from "../assets/plus.svg";
 import "../App.css";
-
-import Checkbox from "@material-ui/core/Checkbox";
-import { withStyles } from "@material-ui/core/styles";
-import { blue } from "@material-ui/core/colors";
-
-const BlueCheckbox = withStyles({
-  root: {
-    color: blue[400],
-    "&$checked": {
-      color: blue[600],
-    },
-  },
-  checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+import BlueCheckbox from './resources/blueCheckbox'
 
 class IncorrectDimensionExpression3 extends React.Component {
   constructor(props) {
