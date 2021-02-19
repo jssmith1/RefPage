@@ -5,25 +5,7 @@ import {
     Route,
     useLocation,
 } from "react-router-dom";
-import {
-    ReturnMissing,
-    TypeNotFound,
-    VariableNotFound,
-    TypeMismatch,
-    VariableNotInit,
-    ParameterMismatch,
-    MethodCallOnWrongType,
-    MethodNotFound,
-    IncorrectMethodDeclaration,
-    IncorrectVariableDeclaration,
-    IncorrectDimensionExpression1,
-    IncorrectDimensionExpression2,
-    IncorrectDimensionExpression3,
-    SyntaxErrorVariableDeclarators,
-    UnexpectedToken,
-    ExtraneousClosingCurlyBrace,
-    NonStaticFromStatic
-} from './components/-ProcessingErrors'
+import ProcessingErrors from './components/-ProcessingErrors'
 import "./App.css";
 import HomeButton from './assets/home.svg';
 
@@ -106,46 +88,46 @@ function HomePageContent() {
             </Route>
 
             <Route exact path="/extraneousclosingcurlybrace">
-                <ExtraneousClosingCurlyBrace
+                <ProcessingErrors.ExtraneousClosingCurlyBrace
                     className={query.get("classname") || "Thing"}
                     methodName={query.get("methodname") || "doSomething"}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression1">
-                <IncorrectDimensionExpression1
+                <ProcessingErrors.IncorrectDimensionExpression1
                     typeName={query.get("typename") || "int"}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression2">
-                <IncorrectDimensionExpression2
+                <ProcessingErrors.IncorrectDimensionExpression2
                     typeName={query.get("typename") || "int"}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression3">
-                <IncorrectDimensionExpression3
+                <ProcessingErrors.IncorrectDimensionExpression3
                     typeName={query.get("typename") || "int"}
                 />
             </Route>
 
             <Route exact path="/incorrectvariabledeclaration">
-                <IncorrectVariableDeclaration
+                <ProcessingErrors.IncorrectVariableDeclaration
                     typeName={query.get("typename") || "int"}
                     foundName={query.get("foundname") || "thing"}
                 />
             </Route>
 
             <Route exact path="/incorrectmethoddeclaration">
-                <IncorrectMethodDeclaration
+                <ProcessingErrors.IncorrectMethodDeclaration
                     setupMethodName={query.get("setupmethodname") || "size"}
                     drawMethodName={query.get("drawmethodname") || "rect"}
                 />
             </Route>
 
             <Route exact path="/methodcallonwrongtype">
-                <MethodCallOnWrongType
+                <ProcessingErrors.MethodCallOnWrongType
                     methodName={query.get("methodname") || "doSomething"}
                     className={query.get("classname") || "Thing"}
                     varName={query.get("varname") || "thing"}
@@ -155,7 +137,7 @@ function HomePageContent() {
             </Route>
 
             <Route exact path="/methodnotfound">
-                <MethodNotFound
+                <ProcessingErrors.MethodNotFound
                     methodName={query.get("methodname") || "doSomething"}
                     correctMethodName={query.get("correctmethodname") || "correctName"}
                     className={query.get("classname") || "Thing"}
@@ -165,14 +147,14 @@ function HomePageContent() {
             </Route>
 
             <Route exact path="/nonstaticfromstatic">
-                <NonStaticFromStatic
+                <ProcessingErrors.NonStaticFromStatic
                     methodName={query.get("methodname") || "doSomething"}
                     staticMethodName={query.get("staticmethodname") || "mainMethod"}
                 />
             </Route>
 
             <Route exact path="/parametermismatch">
-                <ParameterMismatch
+                <ProcessingErrors.ParameterMismatch
                     className={query.get("classname") || "sketch_200721a"}
                     methodName={query.get("methodname") || "doSomething"}
                     methodTypeName={query.get("methodtypename") || "void"}
@@ -183,14 +165,14 @@ function HomePageContent() {
             </Route>
 
             <Route exact path="/returnmissing">
-                <ReturnMissing
+                <ProcessingErrors.ReturnMissing
                     methodName={query.get("methodname") || "doSomething"}
                     typeName={query.get("typename") || "int"}
                 />
             </Route>
 
             <Route exact path="/syntaxerrorvariabledeclarators">
-                <SyntaxErrorVariableDeclarators
+                <ProcessingErrors.SyntaxErrorVariableDeclarators
                     methodOneName={query.get("methodonename") || "System.out.println"}
                     methodTwoName={query.get("methodtwoname") || "doSomething"}
                     typeName={query.get("typename") || "int"}
@@ -198,7 +180,7 @@ function HomePageContent() {
             </Route>
 
             <Route exact path="/typenotfound">
-                <TypeNotFound
+                <ProcessingErrors.TypeNotFound
                     className={query.get("classname") || "Thing"}
                     correctClassName={query.get("correctclassname") || "CorrectName"}
                     varName={query.get("varname") || "thing"}
@@ -206,7 +188,7 @@ function HomePageContent() {
             </Route>
 
             <Route exact path="/typemismatch">
-                <TypeMismatch
+                <ProcessingErrors.TypeMismatch
                     varName={query.get("varname") || "thing"}
                     typeOneName={query.get("typeonename") || "float"}
                     typeTwoName={query.get("typetwoname") || "int"}
@@ -214,20 +196,20 @@ function HomePageContent() {
             </Route>
 
             <Route exact path="/unexpectedtoken">
-                <UnexpectedToken
+                <ProcessingErrors.UnexpectedToken
                     typeName={query.get("typename") || "int"}
                 />
             </Route>
 
             <Route exact path="/variablenotfound">
-                <VariableNotFound
+                <ProcessingErrors.VariableNotFound
                     varName={query.get("varname") || "thing"}
                     className={query.get("classname") || "Thing"}
                 />
             </Route>
 
             <Route exact path="/variablenotinit">
-                <VariableNotInit
+                <ProcessingErrors.VariableNotInit
                     varName={query.get("varname") || "thing"}
                 />
             </Route>
