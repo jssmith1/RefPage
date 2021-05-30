@@ -40,9 +40,9 @@ URL: http://139.147.9.247/
 ### Add Ivy to Ant
 1. Open build.xml in processing/app
 2. Add ivy by inserting these lines at the top:
-![Ivy](https://drive.google.com/file/d/12YsU7zKBbD4aEkR1PQmINcsoqLaSCV9L/view?usp=sharing)
+![Ivy](https://drive.google.com/uc?export=view&id=12YsU7zKBbD4aEkR1PQmINcsoqLaSCV9L)
 3. Libraries are added at the bottom of build.xml, and must follow this format:
-![Libraries](https://drive.google.com/file/d/19FjUmQZaX3lhmXs_w_9LTNKxR2yaHNcx/view?usp=sharing)
+![Libraries](https://drive.google.com/uc?export=view&id=19FjUmQZaX3lhmXs_w_9LTNKxR2yaHNcx)
 4. Don't forget to add the library path onto "classpath" of <javac> (around lines 30-45)
 
 ## Available Scripts
