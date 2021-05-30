@@ -27,6 +27,23 @@ URL: http://139.147.9.247/
 6. yarn start
 7. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Processing Build
+1. Clone/download repository https://github.com/jssmith1/processing
+2. Make sure you have set up Java and Apache Ant as shown here: https://github.com/processing/processing/wiki/Build-Instructions
+3. Open up local repository
+4. Go to the build folder
+```> cd build```
+5. Run Ant
+```> ant run```
+
+## Using Libraries in Processing
+### Add Ivy to Ant
+1. Open build.xml in processing/app
+2. Add ivy by inserting these lines at the top:
+![Ivy](https://drive.google.com/file/d/12YsU7zKBbD4aEkR1PQmINcsoqLaSCV9L/view?usp=sharing)
+3. Libraries are added at the bottom of build.xml, and must follow this format:
+![Libraries](https://drive.google.com/file/d/19FjUmQZaX3lhmXs_w_9LTNKxR2yaHNcx/view?usp=sharing)
+4. Don't forget to add the library path onto "classpath" of <javac> (around lines 30-45)
 
 ## Available Scripts
 
