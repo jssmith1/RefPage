@@ -3,22 +3,42 @@ import MinusButton from "../assets/minus.svg";
 import PlusButton from "../assets/plus.svg";
 import "../App.css";
 import BlueCheckbox from './resources/blueCheckbox';
+import BadExample from "../BadExample";
+import GoodExample from "./GoodExample";
 
 class Suggestion extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { checked: false, open: false };
+    constructor() {
+        super();
+        this.state = { open: false, checked: false };
     }
 
     render() {
-        return <div className="StrategyTile" onClick={() => this.state.open = true}>
+        const badExamples = [];
+        const goodExamples = [];
+        const otherChildren = [];
+
+        React.Children.forEach(this.props.children, (child) => {
+            if (child.type.name === BadExample.name) {
+                badExamples.push(child);
+            } else if (child.type.name === GoodExample.name) {
+                goodExamples.push(child);
+            } else {
+                otherChildren.push(child);
+            }
+        });
+
+        return <div className="StrategyTile" onClick={() => {
+            if (!this.state.open) {
+                this.setState({ open: true });
+            }
+        }}>
             <div className="StrategyInstruction">
                 <div className="StrategyMessage">
                     <BlueCheckbox
                         value="box1"
                         checked={this.state.checked}
-                        onChange={() => this.state.checked = !this.state.checked}
+                        onChange={() => this.setState({ checked: !this.state.checked, open: false })}
                     />
                     <div className="Suggestion">
                         {this.props.title}
@@ -27,7 +47,7 @@ class Suggestion extends React.Component {
                 {!this.state.open && (
                     <div className="ButtonHolder">
                         <img
-                            onClick={() => this.state.open = true}
+                            onClick={() => this.setState({ open: true })}
                             src={PlusButton}
                             alt="down-button"
                             width="20"
@@ -38,7 +58,7 @@ class Suggestion extends React.Component {
                 {this.state.open && (
                     <div className="ButtonHolder">
                         <img
-                            onClick={() => this.state.open = false}
+                            onClick={() => this.setState({ open: false })}
                             src={MinusButton}
                             alt="up-button"
                             width="20"
@@ -49,38 +69,16 @@ class Suggestion extends React.Component {
             </div>
             {this.state.open && (
                 <div className="CodeExample">
-                    {this.makeGoodCodeBoxes(props.badExamples)}
-                    {this.makeGoodCodeBoxes(props.goodExamples)}
+                    <div className="CodeContainer">
+                        {badExamples}
+                    </div>
+                    <div className="CodeContainer">
+                        {goodExamples}
+                    </div>
+
+                    {otherChildren}
                 </div>
             )}
-        </div>;
-    }
-
-    makeBadCodeBoxes(examples) {
-        return <div className="CodeContainer">
-            {examples.map(this.makeBadCodeBox)}
-        </div>;
-    }
-
-    makeBadCodeBox(example) {
-        return <div className="RedCode">
-            <div className="Indent-0">
-                {example}
-            </div>
-        </div>;
-    }
-
-    makeGoodCodeBoxes(examples) {
-        return <div className="CodeContainer">
-            {examples.map(this.makeGoodCodeBox)}
-        </div>;
-    }
-
-    makeGoodCodeBox(example) {
-        return <div className="GreenCode">
-            <div className="Indent-0">
-                {example}
-            </div>
         </div>;
     }
 }

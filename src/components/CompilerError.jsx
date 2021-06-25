@@ -2,10 +2,6 @@ import React from "react";
 import "../App.css";
 
 class CompilerError extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="App">
@@ -18,7 +14,7 @@ class CompilerError extends React.Component {
 
                     <h4>
                         <i>
-                            {this.props.translation}
+                            Translation: {this.props.translation}
                         </i>
                     </h4>
 
