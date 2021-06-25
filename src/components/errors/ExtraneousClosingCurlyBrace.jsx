@@ -1,10 +1,10 @@
 import React from "react";
-import "../App.css";
+import "../../App.css";
 import BadExample from "../BadExample";
-import CompilerError from "./CompilerError";
-import GoodExample from "./GoodExample";
-import Problem from "./Problem";
-import Suggestion from "./Suggestion";
+import CompilerError from "../CompilerError";
+import GoodExample from "../GoodExample";
+import Problem from "../Problem";
+import Suggestion from "../Suggestion";
 
 class ExtraneousClosingCurlyBrace extends React.Component {
   render() {

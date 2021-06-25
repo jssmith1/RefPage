@@ -5,7 +5,7 @@ import {
     Route,
     useLocation,
 } from "react-router-dom";
-import ProcessingErrors from './components/-ProcessingErrors'
+import ProcessingErrors from './components/errors/-ProcessingErrors'
 import "./App.css";
 import HomeButton from './assets/home.svg';
 

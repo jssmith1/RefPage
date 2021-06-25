@@ -1,13 +1,14 @@
 import React from "react";
-import MinusButton from "../assets/minus.svg";
-import PlusButton from "../assets/plus.svg";
-import "../App.css";
-import BlueCheckbox from './resources/blueCheckbox'
+import MinusButton from "../../assets/minus.svg";
+import PlusButton from "../../assets/plus.svg";
+import "../../App.css";
+import IncorrectMethodDeclarationResourceFooter from "../resourceFooters/IncorrectMethodDeclarationResourceFooter.jsx";
+import BlueCheckbox from '../resources/blueCheckbox'
 
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";
 
-class VariableNotInit extends React.Component {
+class IncorrectMethodDeclaration extends React.Component {
   constructor(props) {
     super(props);
     this.openStrategyTile = this.openStrategyTile.bind(this);
@@ -19,9 +20,11 @@ class VariableNotInit extends React.Component {
       openCode11: false,
       openCode12: false,
       openCode21: false,
+      openCode22: false,
       checked11: false,
       checked12: false,
       checked21: false,
+      checked22: false,
     };
   }
 
@@ -35,6 +38,7 @@ class VariableNotInit extends React.Component {
       case 2:
         this.setState({ openStrategy2: !this.state.openStrategy2 });
         this.setState({ openCode21: false });
+        this.setState({ openCode22: false });
         break;
       default:
         break;
@@ -51,6 +55,9 @@ class VariableNotInit extends React.Component {
         break;
       case 21:
         this.setState({ openCode21: !this.state.openCode21 });
+        break;
+      case 22:
+        this.setState({ openCode22: !this.state.openCode22 });
         break;
       default:
         break;
@@ -70,6 +77,7 @@ class VariableNotInit extends React.Component {
         if(!this.state.openStrategy2){
           this.setState({ openStrategy2: true });
           this.setState({ openCode21: false });
+          this.setState({ openCode22: false });
         }
         break;
       default:
@@ -92,6 +100,11 @@ class VariableNotInit extends React.Component {
       case 21:
         if(!this.state.openCode21){
           this.setState({ openCode21: !this.state.openCode21 });
+        }
+        break;
+      case 22:
+        if(!this.state.openCode22){
+          this.setState({ openCode22: !this.state.openCode22 });
         }
         break;
       default:
@@ -146,6 +159,21 @@ class VariableNotInit extends React.Component {
           this.setState({ openCode21: false });
         }
         break;
+      case 22:
+        if(this.state.openCode22){
+          if(!this.state.checked22){
+          this.setState({ checked22: !this.state.checked22 });
+          this.setState({ openCode22: false });
+          } else {
+          this.setState({ checked22: !this.state.checked22 });
+          this.setState({ openCode22: true });
+          }
+        }
+        if(!this.state.openCode22){
+          this.setState({ checked22: !this.state.checked22 });
+          this.setState({ openCode22: false });
+        }
+        break;
       default:
         break;
     }
@@ -157,17 +185,14 @@ class VariableNotInit extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-              The local variable{" "}
-              <p className="InputValue">{this.props.varName}</p> may not have
-              been initialized
+                It looks like you're mixing "active" and "static" modes.
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: You are trying to use the variable{" "}
-              <div className="InputValue">{this.props.varName}</div> before
-              giving it a value.
+              Translation: In Processing, "active" mode uses the setup() and draw() calls and keeps running. The "static" mode includes calls
+              on both existing and user-made functions.
             </i>
           </h4>
 
@@ -175,11 +200,11 @@ class VariableNotInit extends React.Component {
             <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have declared variable{" "}
-                  <div className="InputValue">{this.props.varName}</div> and
-                  used it before giving it a value
+                  1: You may have forgotten to add the return type "void" before setup() {" "}
+                  or draw()
                 </h4>
               </div>
+
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
                   <img
@@ -191,6 +216,7 @@ class VariableNotInit extends React.Component {
                   ></img>
                 </div>
               )}
+
               {this.state.openStrategy1 && (
                 <div className="ButtonHolder">
                   <img
@@ -202,11 +228,11 @@ class VariableNotInit extends React.Component {
                   ></img>
                 </div>
               )}
-            </div>
 
+            </div>
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                  <i>Tick the box once you have tried the suggestion</i>
+                <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExampleBoxOnly(11)}
@@ -219,9 +245,7 @@ class VariableNotInit extends React.Component {
                         onChange={() => this.changeChecked(11)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Assign a value to{" "}
-                        <p className="InputValue">{this.props.varName}</p> at
-                        declaration
+                        Suggestion 1: Add the return type "void" before setup()
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -252,29 +276,42 @@ class VariableNotInit extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            {" "}
-                            int {this.props.varName};
+                            setup() {LEFT_CURLY}
                           </div>
+                          <div className="Indent-1">
+                            {this.props.setupMethodName}(1000, 1000);
+                            <div className="Indent-1">...</div>
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            {this.props.varName} = {this.props.varName} + 1;
+                            void draw(){LEFT_CURLY}
                           </div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            {" "}
-                            int {this.props.varName} = 3;
+                        <div className="Indent-0">
+                           void setup() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0">
-                            {this.props.varName} = {this.props.varName} + 1;
+                          <div className="Indent-1">
+                            {this.props.setupMethodName}(1000, 1000);
+                            <div className="Indent-1">...</div>
                           </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            void draw(){LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
-
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExampleBoxOnly(12)}
@@ -287,9 +324,7 @@ class VariableNotInit extends React.Component {
                         onChange={() => this.changeChecked(12)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Assign value to{" "}
-                        <p className="InputValue">{this.props.varName}</p>{" "}
-                        before using it
+                        Suggestion 2:  Add the return type "void" before draw()
                       </div>
                     </div>
                     {!this.state.openCode12 && (
@@ -320,26 +355,37 @@ class VariableNotInit extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            {" "}
-                            int {this.props.varName};
+                           void setup() {LEFT_CURLY}
                           </div>
+                          <div className="Indent-1">
+                            {this.props.setupMethodName}(1000, 1000);
+                            <div className="Indent-1">...</div>
+                          </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            {this.props.varName} = {this.props.varName} + 1;
+                            draw(){LEFT_CURLY}
                           </div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                            {" "}
-                            int {this.props.varName};
+                        <div className="Indent-0">
+                           void setup() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0">
-                            {this.props.varName} = 3;
+                          <div className="Indent-1">
+                            {this.props.setupMethodName}(1000, 1000);
+                            <div className="Indent-1">...</div>
                           </div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            {this.props.varName} = {this.props.varName} + 1;
+                           void draw(){LEFT_CURLY}
                           </div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
@@ -352,10 +398,7 @@ class VariableNotInit extends React.Component {
           <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
               <div className="ErrorMessage">
-                <h4>
-                  2: You may have initialized{" "}
-                  <div className="InputValue">{this.props.varName}</div> and
-                  used it in different scopes
+                <h4>2: You may have called on a function outside the setup() or draw() scope
                 </h4>
               </div>
               {!this.state.openStrategy2 && (
@@ -383,7 +426,7 @@ class VariableNotInit extends React.Component {
             </div>
             {this.state.openStrategy2 && (
               <div className="StrategyContainer">
-                  <i>Tick the box once you have tried the suggestion</i>
+                <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExampleBoxOnly(21)}
@@ -396,10 +439,7 @@ class VariableNotInit extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Have variable assignment and variable
-                        usage of{" "}
-                        <p className="InputValue">{this.props.varName}</p> in
-                        the same scope
+                        Suggestion 1: Use the <div className="InputValue">{this.props.setupMethodName}()</div> function inside setup()
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -427,43 +467,86 @@ class VariableNotInit extends React.Component {
                   </div>
                   {this.state.openCode21 && (
                     <div className="CodeExample">
-                      <div className="CodeContainer">
+                     <div className="CodeContainer">
                         <div className="RedCode">
+                        <div className="Indent-0"> {this.props.setupMethodName}(1000, 1000);  </div>
                           <div className="Indent-0">
-                            {" "}
-                            int {this.props.varName};
+                           void setup() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0"> int cond = 0;</div>
-                          <div className="Indent-0">
-                            {" "}
-                            if (cond == 0) {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.varName} = 3;
-                          </div>
+                            <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            {this.props.varName} = {this.props.varName} + 1;
-                          </div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            {" "}
-                            int {this.props.varName};
+                           void setup() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0"> int cond = 0;</div>
+                          <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
+                            <div className="Indent-1">...</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExampleBoxOnly(22)}
+                >
+                  <div className="StrategyInstruction">
+                    <div className="StrategyMessage">
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked22}
+                        onChange={() => this.changeChecked(22)}
+                      />
+                      <div className="Suggestion">
+                        Suggestion 2: Use the <div className="InputValue">{this.props.drawMethodName}()</div> function inside draw()
+                      </div>
+                    </div>
+                    {!this.state.openCode22 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(22)}
+                          src={PlusButton}
+                          alt="down-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                    {this.state.openCode22 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(22)}
+                          src={MinusButton}
+                          alt="up-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                  </div>
+                  {this.state.openCode22 && (
+                    <div className="CodeExample">
+                      <div className="CodeContainer">
+                        <div className="RedCode">
                           <div className="Indent-0">
-                            {" "}
-                            if (cond == 0) {LEFT_CURLY}
+                            void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1">
-                            {this.props.varName} = 3;
+                          <div className="Indent-1">...</div>
+                          <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                        </div>
+                      </div>
+                      <div className="CodeContainer">
+                        <div className="GreenCode">
+                          <div className="Indent-0">
+                            void draw(){LEFT_CURLY}
                           </div>
-                          <div className="Indent-1">
-                            {this.props.varName} = {this.props.varName} + 1;
-                          </div>
+                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-1">...</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -473,10 +556,11 @@ class VariableNotInit extends React.Component {
               </div>
             )}
           </div>
+          <IncorrectMethodDeclarationResourceFooter />
         </div>
       </div>
     );
   }
 }
 
-export default VariableNotInit;
+export default IncorrectMethodDeclaration;

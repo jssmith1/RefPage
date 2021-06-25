@@ -1,9 +1,9 @@
 import React from "react";
-import MinusButton from "../assets/minus.svg";
-import PlusButton from "../assets/plus.svg";
-import "../App.css";
-import NonStaticFromStaticResourceFooter from "./resourceFooters/NonStaticFromStaticResourceFooter.jsx";
-import BlueCheckbox from './resources/blueCheckbox'
+import MinusButton from "../../assets/minus.svg";
+import PlusButton from "../../assets/plus.svg";
+import "../../App.css";
+import NonStaticFromStaticResourceFooter from "../resourceFooters/NonStaticFromStaticResourceFooter.jsx";
+import BlueCheckbox from '../resources/blueCheckbox'
 
 class NonStaticFromStatic extends React.Component {
   constructor(props) {

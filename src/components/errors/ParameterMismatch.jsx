@@ -1,9 +1,9 @@
 import React from "react";
-import MinusButton from "../assets/minus.svg";
-import PlusButton from "../assets/plus.svg";
-import "../App.css";
-import ParameterMismatchResourceFooter from "./resourceFooters/ParameterMismatchResourceFooter.jsx";
-import BlueCheckbox from './resources/blueCheckbox'
+import MinusButton from "../../assets/minus.svg";
+import PlusButton from "../../assets/plus.svg";
+import "../../App.css";
+import ParameterMismatchResourceFooter from "../resourceFooters/ParameterMismatchResourceFooter.jsx";
+import BlueCheckbox from '../resources/blueCheckbox'
 
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";

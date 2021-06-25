@@ -1,14 +1,13 @@
 import React from "react";
-import MinusButton from "../assets/minus.svg";
-import PlusButton from "../assets/plus.svg";
-import "../App.css";
-import IncorrectMethodDeclarationResourceFooter from "./resourceFooters/IncorrectMethodDeclarationResourceFooter.jsx";
-import BlueCheckbox from './resources/blueCheckbox'
+import MinusButton from "../../assets/minus.svg";
+import PlusButton from "../../assets/plus.svg";
+import "../../App.css";
+import BlueCheckbox from '../resources/blueCheckbox'
 
 const LEFT_CURLY = "{";
 const RIGHT_CURLY = "}";
 
-class IncorrectMethodDeclaration extends React.Component {
+class TypeNotFound extends React.Component {
   constructor(props) {
     super(props);
     this.openStrategyTile = this.openStrategyTile.bind(this);
@@ -17,14 +16,15 @@ class IncorrectMethodDeclaration extends React.Component {
     this.state = {
       openStrategy1: false,
       openStrategy2: false,
+      openStrategy3: false,
       openCode11: false,
-      openCode12: false,
       openCode21: false,
       openCode22: false,
+      openCode31: false,
       checked11: false,
-      checked12: false,
       checked21: false,
       checked22: false,
+      checked31: false,
     };
   }
 
@@ -33,12 +33,15 @@ class IncorrectMethodDeclaration extends React.Component {
       case 1:
         this.setState({ openStrategy1: !this.state.openStrategy1 });
         this.setState({ openCode11: false });
-        this.setState({ openCode12: false });
         break;
       case 2:
         this.setState({ openStrategy2: !this.state.openStrategy2 });
         this.setState({ openCode21: false });
         this.setState({ openCode22: false });
+        break;
+      case 3:
+        this.setState({ openStrategy3: !this.state.openStrategy3 });
+        this.setState({ openCode31: false });
         break;
       default:
         break;
@@ -50,14 +53,14 @@ class IncorrectMethodDeclaration extends React.Component {
       case 11:
         this.setState({ openCode11: !this.state.openCode11 });
         break;
-      case 12:
-        this.setState({ openCode12: !this.state.openCode12 });
-        break;
       case 21:
         this.setState({ openCode21: !this.state.openCode21 });
         break;
       case 22:
         this.setState({ openCode22: !this.state.openCode22 });
+        break;
+      case 31:
+        this.setState({ openCode31: !this.state.openCode31 });
         break;
       default:
         break;
@@ -70,7 +73,6 @@ class IncorrectMethodDeclaration extends React.Component {
         if(!this.state.openStrategy1){
           this.setState({ openStrategy1: true });
           this.setState({ openCode11: false });
-          this.setState({ openCode12: false });
         }
         break;
       case 2:
@@ -78,6 +80,12 @@ class IncorrectMethodDeclaration extends React.Component {
           this.setState({ openStrategy2: true });
           this.setState({ openCode21: false });
           this.setState({ openCode22: false });
+        }
+        break;
+      case 3:
+        if(!this.state.openStrategy3){
+          this.setState({ openStrategy3: true });
+          this.setState({ openCode31: false });
         }
         break;
       default:
@@ -92,11 +100,6 @@ class IncorrectMethodDeclaration extends React.Component {
           this.setState({ openCode11: !this.state.openCode11 });
         }
         break;
-      case 12:
-        if(!this.state.openCode12){
-          this.setState({ openCode12: !this.state.openCode12 });
-        }
-        break;
       case 21:
         if(!this.state.openCode21){
           this.setState({ openCode21: !this.state.openCode21 });
@@ -105,6 +108,11 @@ class IncorrectMethodDeclaration extends React.Component {
       case 22:
         if(!this.state.openCode22){
           this.setState({ openCode22: !this.state.openCode22 });
+        }
+        break;
+      case 31:
+        if(!this.state.openCode31){
+          this.setState({ openCode31: !this.state.openCode31 });
         }
         break;
       default:
@@ -129,21 +137,6 @@ class IncorrectMethodDeclaration extends React.Component {
           this.setState({ openCode11: false });
         }
         break;
-      case 12:
-        if(this.state.openCode12){
-          if(!this.state.checked12){
-          this.setState({ checked12: !this.state.checked12 });
-          this.setState({ openCode12: false });
-          } else {
-          this.setState({ checked12: !this.state.checked12 });
-          this.setState({ openCode12: true });
-          }
-        }
-        if(!this.state.openCode12){
-          this.setState({ checked12: !this.state.checked12 });
-          this.setState({ openCode12: false });
-        }
-        break;
       case 21:
         if(this.state.openCode21){
           if(!this.state.checked21){
@@ -159,7 +152,7 @@ class IncorrectMethodDeclaration extends React.Component {
           this.setState({ openCode21: false });
         }
         break;
-      case 22:
+    case 22:
         if(this.state.openCode22){
           if(!this.state.checked22){
           this.setState({ checked22: !this.state.checked22 });
@@ -174,6 +167,21 @@ class IncorrectMethodDeclaration extends React.Component {
           this.setState({ openCode22: false });
         }
         break;
+      case 31:
+        if(this.state.openCode31){
+          if(!this.state.checked31){
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: false });
+          } else {
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: true });
+          }
+        }
+        if(!this.state.openCode31){
+          this.setState({ checked31: !this.state.checked31 });
+          this.setState({ openCode31: false });
+        }
+        break;
       default:
         break;
     }
@@ -185,26 +193,27 @@ class IncorrectMethodDeclaration extends React.Component {
         <div className="AppContent">
           <div className="Title">
             <h2>
-                It looks like you're mixing "active" and "static" modes.
+              Cannot find a class or type name{" "}
+              <div className="InputValue">{this.props.className}</div>
             </h2>
           </div>
 
           <h4>
             <i>
-              Translation: In Processing, "active" mode uses the setup() and draw() calls and keeps running. The "static" mode includes calls
-              on both existing and user-made functions.
+              Translation: You are trying to declare a variable of type{" "}
+              <div className="InputValue">{this.props.className}</div>, which Processing{" "}
+              does not recognize.
             </i>
           </h4>
 
           <div className="Tile">
-            <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(1)}>
+            <div className="ErrorTile" f={() => this.openStrategyTileBoxOnly(1)}>
               <div className="ErrorMessage">
                 <h4>
-                  1: You may have forgotten to add the return type "void" before setup() {" "}
-                  or draw()
+                  1: You may have mistyped class name{" "}
+                  <div className="InputValue">{this.props.className}</div>{" "}
                 </h4>
               </div>
-
               {!this.state.openStrategy1 && (
                 <div className="ButtonHolder">
                   <img
@@ -216,7 +225,6 @@ class IncorrectMethodDeclaration extends React.Component {
                   ></img>
                 </div>
               )}
-
               {this.state.openStrategy1 && (
                 <div className="ButtonHolder">
                   <img
@@ -228,11 +236,11 @@ class IncorrectMethodDeclaration extends React.Component {
                   ></img>
                 </div>
               )}
-
             </div>
+
             {this.state.openStrategy1 && (
               <div className="StrategyContainer">
-                <i>Tick the box once you have tried the suggestion</i>
+                  <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExampleBoxOnly(11)}
@@ -245,7 +253,9 @@ class IncorrectMethodDeclaration extends React.Component {
                         onChange={() => this.changeChecked(11)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Add the return type "void" before setup()
+                        Suggestion 1: Change{" "}
+                        <p className="InputValue">{this.props.className}</p> to
+                        the class name that you have defined
                       </div>
                     </div>
                     {!this.state.openCode11 && (
@@ -276,116 +286,26 @@ class IncorrectMethodDeclaration extends React.Component {
                       <div className="CodeContainer">
                         <div className="RedCode">
                           <div className="Indent-0">
-                            setup() {LEFT_CURLY}
+                            {this.props.className} {this.props.varName} = new{" "}
+                            {this.props.className}();
                           </div>
-                          <div className="Indent-1">
-                            {this.props.setupMethodName}(1000, 1000);
-                            <div className="Indent-1">...</div>
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void draw(){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
-                          <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
                         <div className="Indent-0">
-                           void setup() {LEFT_CURLY}
+                            class {this.props.correctClassName} {LEFT_CURLY}
                           </div>
                           <div className="Indent-1">
-                            {this.props.setupMethodName}(1000, 1000);
-                            <div className="Indent-1">...</div>
+                            {this.props.correctClassName}() {LEFT_CURLY}
                           </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                            void draw(){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
                           <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div
-                  className="StrategyTile"
-                  onClick={() => this.openCodeExampleBoxOnly(12)}
-                >
-                  <div className="StrategyInstruction">
-                    <div className="StrategyMessage">
-                      <BlueCheckbox
-                        value="box1"
-                        checked={this.state.checked12}
-                        onChange={() => this.changeChecked(12)}
-                      />
-                      <div className="Suggestion">
-                        Suggestion 2:  Add the return type "void" before draw()
-                      </div>
-                    </div>
-                    {!this.state.openCode12 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openCodeExample(12)}
-                          src={PlusButton}
-                          alt="down-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                    {this.state.openCode12 && (
-                      <div className="ButtonHolder">
-                        <img
-                          onClick={() => this.openCodeExample(12)}
-                          src={MinusButton}
-                          alt="up-button"
-                          width="20"
-                          height="20"
-                        ></img>
-                      </div>
-                    )}
-                  </div>
-                  {this.state.openCode12 && (
-                    <div className="CodeExample">
-                      <div className="CodeContainer">
-                        <div className="RedCode">
-                          <div className="Indent-0">
-                           void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.setupMethodName}(1000, 1000);
-                            <div className="Indent-1">...</div>
-                          </div>
+                          <div className="Indent-1">{RIGHT_CURLY}</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                           <div className="Indent-0">
-                            draw(){LEFT_CURLY}
+                            {this.props.correctClassName} {this.props.varName} = new{" "}
+                            {this.props.correctClassName}();{" "}
                           </div>
-                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
-                          <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                        </div>
-                      </div>
-                      <div className="CodeContainer">
-                        <div className="GreenCode">
-                        <div className="Indent-0">
-                           void setup() {LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1">
-                            {this.props.setupMethodName}(1000, 1000);
-                            <div className="Indent-1">...</div>
-                          </div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0">
-                           void draw(){LEFT_CURLY}
-                          </div>
-                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
-                          <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                     </div>
@@ -398,7 +318,9 @@ class IncorrectMethodDeclaration extends React.Component {
           <div className="Tile">
             <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(2)}>
               <div className="ErrorMessage">
-                <h4>2: You may have called on a function outside the setup() or draw() scope
+                <h4>
+                  2: You may have forgotten to create class{" "}
+                  <div className="InputValue">{this.props.className}</div>{" "}
                 </h4>
               </div>
               {!this.state.openStrategy2 && (
@@ -426,7 +348,7 @@ class IncorrectMethodDeclaration extends React.Component {
             </div>
             {this.state.openStrategy2 && (
               <div className="StrategyContainer">
-                <i>Tick the box once you have tried the suggestion</i>
+                  <i>Tick the box once you have tried the suggestion</i>
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExampleBoxOnly(21)}
@@ -439,7 +361,9 @@ class IncorrectMethodDeclaration extends React.Component {
                         onChange={() => this.changeChecked(21)}
                       />
                       <div className="Suggestion">
-                        Suggestion 1: Use the <div className="InputValue">{this.props.setupMethodName}()</div> function inside setup()
+                        Suggestion 1: Add class{" "}
+                        <p className="InputValue">{this.props.className}</p> to
+                        your current file
                       </div>
                     </div>
                     {!this.state.openCode21 && (
@@ -467,29 +391,35 @@ class IncorrectMethodDeclaration extends React.Component {
                   </div>
                   {this.state.openCode21 && (
                     <div className="CodeExample">
-                     <div className="CodeContainer">
+                      <div className="CodeContainer">
                         <div className="RedCode">
-                        <div className="Indent-0"> {this.props.setupMethodName}(1000, 1000);  </div>
                           <div className="Indent-0">
-                           void setup() {LEFT_CURLY}
+                            {this.props.className} {this.props.varName} = new{" "}
+                            {this.props.className}();
                           </div>
-                            <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
                         <div className="GreenCode">
-                          <div className="Indent-0">
-                           void setup() {LEFT_CURLY}
+                        <div className="Indent-0">
+                            class {this.props.className} {LEFT_CURLY}
                           </div>
-                          <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
-                            <div className="Indent-1">...</div>
+                          <div className="Indent-1">
+                            {this.props.className}() {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">...</div>
+                          <div className="Indent-1">{RIGHT_CURLY}</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
+                          <div className="Indent-0">
+                            {this.props.className} {this.props.varName} = new{" "}
+                            {this.props.className}();{" "}
+                          </div>
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
+
                 <div
                   className="StrategyTile"
                   onClick={() => this.openCodeExampleBoxOnly(22)}
@@ -502,7 +432,10 @@ class IncorrectMethodDeclaration extends React.Component {
                         onChange={() => this.changeChecked(22)}
                       />
                       <div className="Suggestion">
-                        Suggestion 2: Use the <div className="InputValue">{this.props.drawMethodName}()</div> function inside draw()
+                        Suggestion 2: Add class{" "}
+                        <p className="InputValue">{this.props.className}</p> to
+                        another file in the same project and import it to the
+                        current file
                       </div>
                     </div>
                     {!this.state.openCode22 && (
@@ -531,22 +464,36 @@ class IncorrectMethodDeclaration extends React.Component {
                   {this.state.openCode22 && (
                     <div className="CodeExample">
                       <div className="CodeContainer">
+                        <p>FileA.java</p>
                         <div className="RedCode">
                           <div className="Indent-0">
-                            void draw(){LEFT_CURLY}
+                            {this.props.className} {this.props.varName} = new{" "}
+                            {this.props.className}();
                           </div>
-                          <div className="Indent-1">...</div>
-                          <div className="Indent-0">{RIGHT_CURLY}</div>
-                          <div className="Indent-0"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
                         </div>
                       </div>
                       <div className="CodeContainer">
+                        <p>FileA.java</p>
                         <div className="GreenCode">
                           <div className="Indent-0">
-                            void draw(){LEFT_CURLY}
+                            import FileB.
+                            {this.props.className};{" "}
                           </div>
-                          <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+                          <div className="Indent-0">
+                            {this.props.className} {this.props.varName} = new{" "}
+                            {this.props.className}();{" "}
+                          </div>
+                        </div>
+                        <p>FileB.java</p>
+                        <div className="GreenCode">
+                          <div className="Indent-0">
+                            class {this.props.className} {LEFT_CURLY}
+                          </div>
+                          <div className="Indent-1">
+                            {this.props.className}() {LEFT_CURLY}
+                          </div>
                           <div className="Indent-1">...</div>
+                          <div className="Indent-1">{RIGHT_CURLY}</div>
                           <div className="Indent-0">{RIGHT_CURLY}</div>
                         </div>
                       </div>
@@ -556,11 +503,116 @@ class IncorrectMethodDeclaration extends React.Component {
               </div>
             )}
           </div>
-          <IncorrectMethodDeclarationResourceFooter />
+
+          <div className="Tile">
+            <div className="ErrorTile" onClick={() => this.openStrategyTileBoxOnly(3)}>
+              <div className="ErrorMessage">
+                <h4>
+                  3: You may have forgotten to import class{" "}
+                  <div className="InputValue">{this.props.className}</div> from
+                  a built-in library
+                </h4>
+              </div>
+              {!this.state.openStrategy3 && (
+                <div className="ButtonHolder">
+                  <img
+                    onClick={() => this.openStrategyTile(3)}
+                    src={PlusButton}
+                    alt="down-button"
+                    width="20"
+                    height="20"
+                  ></img>
+                </div>
+              )}
+              {this.state.openStrategy3 && (
+                <div className="ButtonHolder">
+                  <img
+                    onClick={() => this.openStrategyTile(3)}
+                    src={MinusButton}
+                    alt="up-button"
+                    width="20"
+                    height="20"
+                  ></img>
+                </div>
+              )}
+            </div>
+            {this.state.openStrategy3 && (
+              <div className="StrategyContainer">
+                  <i>Tick the box once you have tried the suggestion</i>
+                <div
+                  className="StrategyTile"
+                  onClick={() => this.openCodeExampleBoxOnly(31)}
+                >
+                  <div className="StrategyInstruction">
+                    <div className="StrategyMessage">
+                      <BlueCheckbox
+                        value="box1"
+                        checked={this.state.checked31}
+                        onChange={() => this.changeChecked(31)}
+                      />
+                      <div className="Suggestion">
+                        Suggestion 1: Import{" "}
+                        <p className="InputValue">{this.props.className}</p> to
+                        your file
+                      </div>
+                    </div>
+                    {!this.state.openCode31 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(31)}
+                          src={PlusButton}
+                          alt="down-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                    {this.state.openCode31 && (
+                      <div className="ButtonHolder">
+                        <img
+                          onClick={() => this.openCodeExample(31)}
+                          src={MinusButton}
+                          alt="up-button"
+                          width="20"
+                          height="20"
+                        ></img>
+                      </div>
+                    )}
+                  </div>
+                  {this.state.openCode31 && (
+                    <div className="CodeExample">
+                      <div className="CodeContainer">
+                        <div className="RedCode">
+                          <div className="Indent-0">
+                            {this.props.className} {this.props.varName} = new{" "}
+                            {this.props.className}
+                            ();
+                          </div>
+                        </div>
+                      </div>
+                      <div className="CodeContainer">
+                        <div className="GreenCode">
+                          <div className="Indent-0">
+                            import path.to.library.
+                            {this.props.className};{" "}
+                          </div>
+                          <div className="Indent-0">
+                            {this.props.className} {this.props.varName} = new{" "}
+                            {this.props.className}
+                            ();{" "}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default IncorrectMethodDeclaration;
+export default TypeNotFound;

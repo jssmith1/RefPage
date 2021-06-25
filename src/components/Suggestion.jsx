@@ -3,7 +3,7 @@ import MinusButton from "../assets/minus.svg";
 import PlusButton from "../assets/plus.svg";
 import "../App.css";
 import BlueCheckbox from './resources/blueCheckbox';
-import BadExample from "../BadExample";
+import BadExample from "./BadExample";
 import GoodExample from "./GoodExample";
 
 class Suggestion extends React.Component {

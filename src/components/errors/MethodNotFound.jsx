@@ -1,8 +1,8 @@
 import React from "react";
-import MinusButton from "../assets/minus.svg";
-import PlusButton from "../assets/plus.svg";
-import "../App.css";
-import BlueCheckbox from './resources/blueCheckbox'
+import MinusButton from "../../assets/minus.svg";
+import PlusButton from "../../assets/plus.svg";
+import "../../App.css";
+import BlueCheckbox from '../resources/blueCheckbox'
 
 class MethodNotFound extends React.Component {
     constructor(props) {
