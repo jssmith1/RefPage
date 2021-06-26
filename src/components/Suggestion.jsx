@@ -38,7 +38,7 @@ class Suggestion extends React.Component {
                     <BlueCheckbox
                         value="box1"
                         checked={this.state.checked}
-                        onChange={() => this.setState({ checked: !this.state.checked, open: false })}
+                        onChange={() => this.setState({ checked: !this.state.checked, open: this.state.checked })}
                     />
                     <div className="Suggestion">
                         {this.props.title}
