@@ -66,7 +66,7 @@ class ExtraneousClosingCurlyBrace extends React.Component {
           </GoodExample>
         </Suggestion>
       </Problem>
-    </CompilerError>
+    </CompilerError>;
   }
 }
 
