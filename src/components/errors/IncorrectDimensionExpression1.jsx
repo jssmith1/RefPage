@@ -1,10 +1,10 @@
 import React from "react";
 import "../../App.css";
-import BadExample from "../BadExample";
 import CompilerError from "../CompilerError";
-import GoodExample from "../GoodExample";
 import Problem from "../Problem";
 import Suggestion from "../Suggestion";
+import BadExample from "../BadExample";
+import GoodExample from "../GoodExample";
 
 class IncorrectDimensionExpression1 extends React.Component {
 
@@ -13,7 +13,7 @@ class IncorrectDimensionExpression1 extends React.Component {
       this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'float' || this.props.typeName === 'double';
 
     return <CompilerError
-      title="Variable must provide either dimension expressions or an array initializer'"
+      title="Variable must provide either dimension expressions or an array initializer"
       translation="You have not given the array a certain size."
     >
       <Problem
