@@ -9,6 +9,8 @@ import GoodExample from "../GoodExample";
 class MethodNotFound extends React.Component {
 
     render() {
+        const methodUsePrefix = this.props.typeName === "void" ? "" : `${this.props.typeName} a = `;
+
         return <CompilerError
             title={<>The function <div className="InputValue">{this.props.methodName}()</div> does not exist</>}
             translation={<>You are trying to use a function, {" "}
@@ -25,11 +27,11 @@ class MethodNotFound extends React.Component {
                 >
                     <BadExample>
                         <div className="Indent-0"> String s = "s"; </div>
-                        <div className="Indent-0"> {this.props.typeName} a = s.{this.props.methodName}();</div>
+                        <div className="Indent-0"> {methodUsePrefix}s.{this.props.methodName}();</div>
                     </BadExample>
                     <GoodExample>
                         <div className="Indent-0"> String s = "s"; </div>
-                        <div className="Indent-0"> {this.props.typeName} a = s.{this.props.correctMethodName}();</div>
+                        <div className="Indent-0"> {methodUsePrefix}s.{this.props.correctMethodName}();</div>
                     </GoodExample>
                 </Suggestion>
                 <Suggestion
@@ -37,13 +39,13 @@ class MethodNotFound extends React.Component {
                         <p className="InputValue">{this.props.methodName}()</p> to the method you created.</>}
                 >
                     <BadExample>
-                        <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5);</div>
+                        <div className="Indent-0"> {methodUsePrefix}{this.props.methodName}(5);</div>
                         <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}</div>
                         <div className="Indent-1"> ... </div>
                         <div className="Indent-0"> {"}"} </div>
                     </BadExample>
                     <GoodExample>
-                        <div className="Indent-0"> {this.props.typeName} a = {this.props.correctMethodName}(5);</div>
+                        <div className="Indent-0"> {methodUsePrefix}{this.props.correctMethodName}(5);</div>
                         <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"} </div>
                         <div className="Indent-1"> ... </div>
                         <div className="Indent-0"> {"}"} </div>
@@ -59,10 +61,10 @@ class MethodNotFound extends React.Component {
                         <p className="InputValue">{this.props.methodName}()</p> method.</>}
                 >
                     <BadExample>
-                        <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5); </div>
+                        <div className="Indent-0"> {methodUsePrefix}{this.props.methodName}(5); </div>
                     </BadExample>
                     <GoodExample>
-                        <div className="Indent-0"> {this.props.typeName} a = {this.props.methodName}(5); </div>
+                        <div className="Indent-0"> {methodUsePrefix}{this.props.methodName}(5); </div>
                         <div className="Indent-0"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {"{"} </div>
                         <div className="Indent-1"> ... </div>
                         <div className="Indent-0"> {"}"}</div>
@@ -88,7 +90,7 @@ class MethodNotFound extends React.Component {
                         <div className="Indent-2"> ... </div>
                         <div className="Indent-1"> {"}"} </div>
                         <div className="Indent-0"> {"}"} </div>
-                        <div className="Indent-0">{this.props.typeName} a = {this.props.methodName}(5);</div>
+                        <div className="Indent-0">{methodUsePrefix}{this.props.methodName}(5);</div>
                     </BadExample>
                     <GoodExample>
                         <div className="Indent-0"> class {this.props.className}{"{"}</div>
@@ -100,7 +102,7 @@ class MethodNotFound extends React.Component {
                         <div className="Indent-1"> {"}"} </div>
                         <div className="Indent-0"> {"}"} </div>
                         <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                        <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                        <div className="Indent-0">{methodUsePrefix}{this.props.varName}.{this.props.methodName}(5);</div>
                     </GoodExample>
                 </Suggestion>
                 <Suggestion
@@ -115,7 +117,7 @@ class MethodNotFound extends React.Component {
                         <div className="Indent-1"> {"}"} </div>
                         <div className="Indent-0"> {"}"} </div>
                         <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                        <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                        <div className="Indent-0">{methodUsePrefix}{this.props.varName}.{this.props.methodName}(5);</div>
                     </BadExample>
                     <GoodExample>
                         <div className="Indent-0"> class {this.props.className}{"{"}</div>
@@ -127,7 +129,7 @@ class MethodNotFound extends React.Component {
                         <div className="Indent-1"> {"}"} </div>
                         <div className="Indent-0"> {"}"} </div>
                         <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                        <div className="Indent-0">{this.props.typeName} a = {this.props.varName}.{this.props.methodName}(5);</div>
+                        <div className="Indent-0">{methodUsePrefix}{this.props.varName}.{this.props.methodName}(5);</div>
                     </GoodExample>
                 </Suggestion>
             </Problem>
