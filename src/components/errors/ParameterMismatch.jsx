@@ -34,10 +34,10 @@ class ParameterMismatch extends React.Component {
     const RIGHT_CURLY = "}";
 
     return <CompilerError
-      title={<>The method “<div className="InputValue">{this.props.methodName}({trimmedTypeOne})</div>”
+      title={<>The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
         in the type <div className="InputValue">{this.props.className}</div> is not applicable for the
-        arguments <div className="InputValue">({trimmedTypeTwo}) </div></>}
-      translation={<>Translation: You are trying to use the method “
+        arguments <div className="InputValue">({this.props.typeTwoName}) </div></>}
+      translation={<>You are trying to use the method “
         <div className="InputValue">{this.props.methodName}({trimmedTypeOne})</div>” but
         with the incorrect parameters.</>}
     >
