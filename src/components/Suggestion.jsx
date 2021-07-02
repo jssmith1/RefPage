@@ -19,9 +19,9 @@ class Suggestion extends React.Component {
         const otherChildren = [];
 
         React.Children.forEach(this.props.children, (child) => {
-            if (child.type.name === BadExample.name) {
+            if (child.type === BadExample) {
                 badExamples.push(child);
-            } else if (child.type.name === GoodExample.name) {
+            } else if (child.type === GoodExample) {
                 goodExamples.push(child);
             } else {
                 otherChildren.push(child);
