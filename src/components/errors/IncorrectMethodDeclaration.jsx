@@ -16,6 +16,7 @@ class IncorrectMethodDeclaration extends React.Component {
     return <CompilerError title={"It looks like you're mixing \"active\" and \"static\" modes."}
       translation={`In Processing, "active" mode uses the setup() and draw() calls and keeps running. The "static" mode includes calls
     on both existing and user-made functions.`}>
+      embed={this.props.embed}
       <Problem
         title={"You may have forgotten to add the return type \"void\" before setup() or draw()."}
       >

@@ -40,6 +40,7 @@ class ParameterMismatch extends React.Component {
       translation={<>You are trying to use the method “
         <div className="InputValue">{this.props.methodName}({trimmedTypeOne})</div>” but
         with the incorrect parameters.</>}
+      embed={this.props.embed}
     >
       <Problem
         title={<>You may have used the wrong type of parameter for

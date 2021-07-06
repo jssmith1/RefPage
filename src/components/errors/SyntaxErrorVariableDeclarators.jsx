@@ -14,6 +14,7 @@ class SyntaxErrorVariableDeclarators extends React.Component {
     return <CompilerError
       title={"Syntax error, insert \"VariableDeclarators\" to complete LocalVariableDeclaration"}
       translation="A syntax error occured while declaring a variable."
+      embed={this.props.embed}
     >
       <Problem
         title={<>It looks like Processing is reading the <div className="InputValue">{this.props.methodOneName} </div> method {" "}

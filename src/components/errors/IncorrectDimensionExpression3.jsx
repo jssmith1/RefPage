@@ -15,6 +15,7 @@ class IncorrectDimensionExpression3 extends React.Component {
     return <CompilerError
       title="Cannot define dimension expressions when an array initializer is provided"
       translation="You have defined an array twice."
+      embed={this.props.embed}
     >
       <Problem
         title="You may have used both methods to construct an array together"

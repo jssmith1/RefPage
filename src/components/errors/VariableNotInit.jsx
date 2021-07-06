@@ -15,6 +15,7 @@ class VariableNotInit extends React.Component {
     return <CompilerError
       title={<>The local variable <p className="InputValue">{this.props.varName}</p> may not have been initialized</>}
       translation={<>You are trying to use the variable  <div className="InputValue">{this.props.varName}</div> before giving it a value.</>}
+      embed={this.props.embed}
     >
       <Problem
         title={<>You may have declared variable <div className="InputValue">{this.props.varName}</div> and used it before giving it a value.</>}

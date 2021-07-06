@@ -6,11 +6,11 @@ class CompilerError extends React.Component {
         return (
             <div className="App">
                 <div className="AppContent">
-                    <div className="Title">
+                    {!this.props.embed && <div className="Title">
                         <h2>
                             {this.props.title}
                         </h2>
-                    </div>
+                    </div>}
 
                     <h4>
                         <i>

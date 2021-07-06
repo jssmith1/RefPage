@@ -64,6 +64,7 @@ class ReturnMissing extends React.Component {
       translation={<>You did not return a value of type{" "}
         <div className="InputValue">{trimmedType}</div> like the definition of method{" "}
         <div className="InputValue">{this.props.methodName}()</div>.</>}
+      embed={this.props.embed}
     >
       <Problem
         title={<>You may have forgotten the return statement for the method{" "}

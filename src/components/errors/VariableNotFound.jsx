@@ -15,6 +15,7 @@ class VariableNotFound extends React.Component {
     return <CompilerError
       title={<><div className="InputValue">{this.props.varName}</div> cannot be resolved to a variable</>}
       translation={<>You are trying to use a variable named <div className="InputValue">{this.props.varName}</div> which does not exist yet.</>}
+      embed={this.props.embed}
     >
       <Problem
         title={<>You may have forgotten to declare variable <div className="InputValue">{this.props.varName}</div>.</>}

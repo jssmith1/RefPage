@@ -22,15 +22,16 @@ function useQuery() {
 }
 
 function HomePageContent() {
-    let query = useQuery();
+    const query = useQuery();
+    const embed = query.get("embed");
 
     return (
         <div>
-            <div className="Home">
+            {!embed && <div className="Home">
                 <Link to="/">
                     <img src={HomeButton} alt="home-button" width="30" height="30"></img>
                 </Link>
-            </div>
+            </div>}
             <Route exact path="/">
                 <div className="AppContent">
                     <div className="Indent-1">
@@ -91,24 +92,28 @@ function HomePageContent() {
                 <ProcessingErrors.ExtraneousClosingCurlyBrace
                     className={query.get("classname") || "Thing"}
                     methodName={query.get("methodname") || "doSomething"}
+                    embed={embed}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression1">
                 <ProcessingErrors.IncorrectDimensionExpression1
                     typeName={query.get("typename") || "int"}
+                    embed={embed}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression2">
                 <ProcessingErrors.IncorrectDimensionExpression2
                     typeName={query.get("typename") || "int"}
+                    embed={embed}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression3">
                 <ProcessingErrors.IncorrectDimensionExpression3
                     typeName={query.get("typename") || "int"}
+                    embed={embed}
                 />
             </Route>
 
@@ -116,6 +121,7 @@ function HomePageContent() {
                 <ProcessingErrors.IncorrectVariableDeclaration
                     typeName={query.get("typename") || "int"}
                     foundName={query.get("foundname") || "thing"}
+                    embed={embed}
                 />
             </Route>
 
@@ -123,6 +129,7 @@ function HomePageContent() {
                 <ProcessingErrors.IncorrectMethodDeclaration
                     setupMethodName={query.get("setupmethodname") || "size"}
                     drawMethodName={query.get("drawmethodname") || "rect"}
+                    embed={embed}
                 />
             </Route>
 
@@ -133,6 +140,7 @@ function HomePageContent() {
                     varName={query.get("varname") || "thing"}
                     typeOneName={query.get("typeonename") || "primitive"}
                     typeTwoName={query.get("typetwoname") || "int"}
+                    embed={embed}
                 />
             </Route>
 
@@ -143,6 +151,7 @@ function HomePageContent() {
                     className={query.get("classname") || "Thing"}
                     varName={query.get("varname") || "thing"}
                     typeName={query.get("typename") || "int"}
+                    embed={embed}
                 />
             </Route>
 
@@ -150,6 +159,7 @@ function HomePageContent() {
                 <ProcessingErrors.NonStaticFromStatic
                     methodName={query.get("methodname") || "doSomething"}
                     staticMethodName={query.get("staticmethodname") || "mainMethod"}
+                    embed={embed}
                 />
             </Route>
 
@@ -161,6 +171,7 @@ function HomePageContent() {
                     typeOneName={query.get("typeonename") || "int"}
                     typeTwoName={query.get("typetwoname") || "String"}
                     varName={query.get("varName") || "returnedValue"}
+                    embed={embed}
                 />
             </Route>
 
@@ -168,6 +179,7 @@ function HomePageContent() {
                 <ProcessingErrors.ReturnMissing
                     methodName={query.get("methodname") || "doSomething"}
                     typeName={query.get("typename") || "int"}
+                    embed={embed}
                 />
             </Route>
 
@@ -176,6 +188,7 @@ function HomePageContent() {
                     methodOneName={query.get("methodonename") || "System.out.println"}
                     methodTwoName={query.get("methodtwoname") || "doSomething"}
                     typeName={query.get("typename") || "int"}
+                    embed={embed}
                 />
             </Route>
 
@@ -184,6 +197,7 @@ function HomePageContent() {
                     className={query.get("classname") || "Thing"}
                     correctClassName={query.get("correctclassname") || "CorrectName"}
                     varName={query.get("varname") || "thing"}
+                    embed={embed}
                 />
             </Route>
 
@@ -192,12 +206,14 @@ function HomePageContent() {
                     varName={query.get("varname") || "thing"}
                     typeOneName={query.get("typeonename") || "float"}
                     typeTwoName={query.get("typetwoname") || "int"}
+                    embed={embed}
                 />
             </Route>
 
             <Route exact path="/unexpectedtoken">
                 <ProcessingErrors.UnexpectedToken
                     typeName={query.get("typename") || "int"}
+                    embed={embed}
                 />
             </Route>
 
@@ -205,12 +221,14 @@ function HomePageContent() {
                 <ProcessingErrors.VariableNotFound
                     varName={query.get("varname") || "thing"}
                     className={query.get("classname") || "Thing"}
+                    embed={embed}
                 />
             </Route>
 
             <Route exact path="/variablenotinit">
                 <ProcessingErrors.VariableNotInit
                     varName={query.get("varname") || "thing"}
+                    embed={embed}
                 />
             </Route>
         </div>

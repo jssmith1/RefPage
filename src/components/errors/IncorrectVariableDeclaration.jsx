@@ -15,6 +15,7 @@ class IncorrectVariableDeclaration extends React.Component {
     return <CompilerError
       title={<>Expecting DOT, found <div className="InputValue">'{this.props.foundName}'</div></>}
       translation="You are trying to use an array which has been declared incorrectly."
+      embed={this.props.embed}
     >
       <Problem
         title="You may have made a syntax error while declaring the array."

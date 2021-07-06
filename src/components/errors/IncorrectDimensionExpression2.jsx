@@ -15,6 +15,7 @@ class IncorrectDimensionExpression2 extends React.Component {
     return <CompilerError
       title="Cannot specify an array dimension after an empty dimension"
       translation="In a 2D array, you have not given the innermost array a certain size."
+      embed={this.props.embed}
     >
       <Problem
         title="You may not have given the innermost array a size."

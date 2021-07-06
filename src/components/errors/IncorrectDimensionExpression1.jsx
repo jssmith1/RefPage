@@ -14,7 +14,8 @@ class IncorrectDimensionExpression1 extends React.Component {
 
     return <CompilerError
       title="Variable must provide either dimension expressions or an array initializer"
-      translation="You have not given the array a certain size."
+      translation="You have not given the array a certain size." 
+      embed={this.props.embed}
     >
       <Problem
         title="You may have forgotten to type the size of the array inside the brackets."

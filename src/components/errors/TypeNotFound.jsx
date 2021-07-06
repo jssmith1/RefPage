@@ -18,6 +18,7 @@ class TypeNotFound extends React.Component {
       translation={<>You are trying to declare a variable of type{" "}
         <div className="InputValue">{this.props.className}</div>, which Processing{" "}
         does not recognize.</>}
+      embed={this.props.embed}
     >
       <Problem
         title={<>You may have mistyped class name{" "}

@@ -16,6 +16,7 @@ class MethodNotFound extends React.Component {
             translation={<>You are trying to use a function, {" "}
                 <div className="InputValue">{this.props.methodName}()</div>, which Processing{" "}
                 does not recognize. ("Method" and "function" are used interchangeably here.)</>}
+            embed={this.props.embed}
         >
             <Problem
                 title={<>You may have mistyped the name of function{" "}

@@ -42,6 +42,7 @@ class MethodCallOnWrongType extends React.Component {
           <div className="InputValue">{typeDescription}</div> types, which include{" "}
           boolean, byte, char, short, int, long, float and double.</>
       }
+      embed={this.props.embed}
     >
       <Problem
         title={

@@ -38,6 +38,7 @@ class TypeMismatch extends React.Component {
         <div className="InputValue">{this.props.varName}</div> of type{" "}
         <div className="InputValue">{trimmedTypeTwo}</div> as a{" "}
         <div className="InputValue">{trimmedTypeOne}</div>-type variable.</>}
+      embed={this.props.embed}
     >
       <Problem
         title={<>You may have assigned a <div className="InputValue">{trimmedTypeOne}</div> value to variable{" "}

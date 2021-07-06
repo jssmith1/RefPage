@@ -30,6 +30,7 @@ class UnexpectedToken extends React.Component {
       title={<>unexpected token: <div className="InputValue">{this.props.typeName}</div></>}
       translation={<>There is something incorrect concerning the <div className="InputValue">{this.props.typeName}</div>{" "}
         variable you are trying to use.</>}
+      embed={this.props.embed}
     >
       {knownTypes.includes(this.props.typeName)
         ? <><Problem
