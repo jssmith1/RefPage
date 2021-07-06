@@ -35,7 +35,7 @@ function HomePageContent() {
             <Route exact path="/">
                 <div className="AppContent">
                     <div className="Indent-1">
-                        <Link to="/extraneousclosingcurlybrace?classname=Thing&methodname=doSomething">Extraneous Closing Curly Brace</Link>
+                        <Link to={`/extraneousclosingcurlybrace?original=${encodeURI("void doSomething() { ... }}")}&fixed=${encodeURI("void doSomething() { ... }")}`}>Extraneous Closing Curly Brace</Link>
                     </div>
                     <div className="Indent-1">
                         <Link to="/incorrectdimensionexpression1?typename=int">Incorrect Dimension Expression 1</Link>
@@ -90,8 +90,8 @@ function HomePageContent() {
 
             <Route exact path="/extraneousclosingcurlybrace">
                 <ProcessingErrors.ExtraneousClosingCurlyBrace
-                    className={query.get("classname") || "Thing"}
-                    methodName={query.get("methodname") || "doSomething"}
+                    original={query.get("original") || encodeURI("void doSomething() { ... }")}
+                    fixed={query.get("fixed") || encodeURI("void doSomething() { ... }}")}
                     embed={embed}
                 />
             </Route>
