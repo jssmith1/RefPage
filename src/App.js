@@ -138,10 +138,8 @@ function HomePageContent() {
             <Route exact path="/methodcallonwrongtype">
                 <ProcessingErrors.MethodCallOnWrongType
                     methodName={query.get("methodname") || "doSomething"}
-                    className={query.get("classname") || "Thing"}
                     varName={query.get("varname") || "thing"}
-                    typeOneName={query.get("typeonename") || "primitive"}
-                    typeTwoName={query.get("typetwoname") || "int"}
+                    typeName={query.get("typename") || "int"}
                     embed={embed}
                 />
             </Route>
