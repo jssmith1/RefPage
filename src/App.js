@@ -50,7 +50,7 @@ function HomePageContent() {
                         <Link to="/incorrectvariabledeclaration?typename=int&foundname=thing">Incorrect Variable Declaration</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectmethoddeclaration?setupmethodname=size&drawmethodname=rect">Incorrect Method Declaration</Link>
+                        <Link to="/incorrectmethoddeclaration?methodName=size">Incorrect Method Declaration</Link>
                     </div>
                     <div className="Indent-1">
                         <Link to="/methodcallonwrongtype?classname=Thing&methodname=doSomething&typeonename=primitive&typetwoname=int">Method Call On Wrong Type</Link>
@@ -127,8 +127,7 @@ function HomePageContent() {
 
             <Route exact path="/incorrectmethoddeclaration">
                 <ProcessingErrors.IncorrectMethodDeclaration
-                    setupMethodName={query.get("setupmethodname") || "size"}
-                    drawMethodName={query.get("drawmethodname") || "rect"}
+                    methodName={query.get("methodName") || "size"}
                     embed={embed}
                 />
             </Route>

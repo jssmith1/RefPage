@@ -13,88 +13,39 @@ class IncorrectMethodDeclaration extends React.Component {
     const LEFT_CURLY = "{";
     const RIGHT_CURLY = "}";
 
+    const isSpecialMethod = ["setup", "draw"].includes(this.props.methodName);
+    const parameterPlaceholder = isSpecialMethod ? "" : "/* parameters if any */";
+
     return <CompilerError title={"It looks like you're mixing \"active\" and \"static\" modes."}
       translation={`In Processing, "active" mode uses the setup() and draw() calls and keeps running. The "static" mode includes calls
-    on both existing and user-made functions.`}>
-      embed={this.props.embed}
+    on both existing and user-made functions.`}
+      embed={this.props.embed}>
       <Problem
-        title={"You may have forgotten to add the return type \"void\" before setup() or draw()."}
+        title={<>You may have forgotten to add the return type in the declaration of {<div className="InputValue">{this.props.methodName}()</div>}.</>}
       >
-        <Suggestion title={"Add the return type \"void\" before setup()."}>
+        <Suggestion title={<>Add the return type before {<div className="InputValue">{this.props.methodName}()</div>}.</>}>
           <BadExample>
             <div className="Indent-0">
-              setup() {LEFT_CURLY}
+              {this.props.methodName}({parameterPlaceholder}) {LEFT_CURLY}
             </div>
-            <div className="Indent-1">
-              {this.props.setupMethodName}(1000, 1000);
-              <div className="Indent-1">...</div>
-            </div>
-            <div className="Indent-0">{RIGHT_CURLY}</div>
-            <div className="Indent-0">
-              void draw(){LEFT_CURLY}
-            </div>
-            <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
             <div className="Indent-1">...</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
             <div className="Indent-0">
-              void setup() {LEFT_CURLY}
+              void {this.props.methodName}({parameterPlaceholder}) {LEFT_CURLY}
             </div>
-            <div className="Indent-1">
-              {this.props.setupMethodName}(1000, 1000);
-              <div className="Indent-1">...</div>
-            </div>
-            <div className="Indent-0">{RIGHT_CURLY}</div>
-            <div className="Indent-0">
-              void draw(){LEFT_CURLY}
-            </div>
-            <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
-            <div className="Indent-1">...</div>
-            <div className="Indent-0">{RIGHT_CURLY}</div>
-          </GoodExample>
-        </Suggestion>
-        <Suggestion title={"Add the return type \"void\" before draw()"}>
-          <BadExample>
-            <div className="Indent-0">
-              void setup() {LEFT_CURLY}
-            </div>
-            <div className="Indent-1">
-              {this.props.setupMethodName}(1000, 1000);
-              <div className="Indent-1">...</div>
-            </div>
-            <div className="Indent-0">{RIGHT_CURLY}</div>
-            <div className="Indent-0">
-              draw(){LEFT_CURLY}
-            </div>
-            <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
-            <div className="Indent-1">...</div>
-            <div className="Indent-0">{RIGHT_CURLY}</div>
-          </BadExample>
-          <GoodExample>
-            <div className="Indent-0">
-              void setup() {LEFT_CURLY}
-            </div>
-            <div className="Indent-1">
-              {this.props.setupMethodName}(1000, 1000);
-              <div className="Indent-1">...</div>
-            </div>
-            <div className="Indent-0">{RIGHT_CURLY}</div>
-            <div className="Indent-0">
-              void draw(){LEFT_CURLY}
-            </div>
-            <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
             <div className="Indent-1">...</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
       </Problem>
-      <Problem
-        title="You may have called on a function outside the setup() or draw() scope."
+      {!isSpecialMethod && <Problem
+        title={<>You may have called on {<div className="InputValue">{this.props.methodName}()</div>} outside the setup() or draw() scope.</>}
       >
-        <Suggestion title={<>Use the <div className="InputValue">{this.props.setupMethodName}()</div> function inside setup().</>}>
+        <Suggestion title={<>Use the <div className="InputValue">{this.props.methodName}()</div> function inside setup().</>}>
           <BadExample>
-            <div className="Indent-0"> {this.props.setupMethodName}(1000, 1000);  </div>
+            <div className="Indent-0"> {this.props.methodName}({parameterPlaceholder});  </div>
             <div className="Indent-0">
               void setup() {LEFT_CURLY}
             </div>
@@ -105,30 +56,30 @@ class IncorrectMethodDeclaration extends React.Component {
             <div className="Indent-0">
               void setup() {LEFT_CURLY}
             </div>
-            <div className="Indent-1"> {this.props.setupMethodName}(1000, 1000);  </div>
+            <div className="Indent-1"> {this.props.methodName}({parameterPlaceholder});  </div>
             <div className="Indent-1">...</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
-        <Suggestion title={<>Use the <div className="InputValue">{this.props.drawMethodName}()</div> function inside draw().</>}>
+        <Suggestion title={<>Use the <div className="InputValue">{this.props.methodName}()</div> function inside draw().</>}>
           <BadExample>
             <div className="Indent-0">
               void draw(){LEFT_CURLY}
             </div>
             <div className="Indent-1">...</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
-            <div className="Indent-0"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+            <div className="Indent-0"> {this.props.methodName}({parameterPlaceholder});</div>
           </BadExample>
           <GoodExample>
             <div className="Indent-0">
               void draw(){LEFT_CURLY}
             </div>
-            <div className="Indent-1"> {this.props.drawMethodName}(500, 500, 200, 100);</div>
+            <div className="Indent-1"> {this.props.methodName}({parameterPlaceholder});</div>
             <div className="Indent-1">...</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
-      </Problem>
+      </Problem>}
       <IncorrectMethodDeclarationResourceFooter />
     </CompilerError>;
   }
