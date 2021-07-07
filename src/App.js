@@ -35,55 +35,55 @@ function HomePageContent() {
             <Route exact path="/">
                 <div className="AppContent">
                     <div className="Indent-1">
-                        <Link to={`/extraneousclosingcurlybrace?original=${encodeURI("void doSomething() { ... }}")}&fixed=${encodeURI("void doSomething() { ... }")}`}>Extraneous Closing Curly Brace</Link>
+                        <Link to={`/extraneousclosingcurlybrace`}>Extraneous Closing Curly Brace</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectdimensionexpression1?typename=int&arrname=arr">Incorrect Dimension Expression 1</Link>
+                        <Link to="/incorrectdimensionexpression1">Incorrect Dimension Expression 1</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectdimensionexpression2?typename=int&arrname=arr">Incorrect Dimension Expression 2</Link>
+                        <Link to="/incorrectdimensionexpression2">Incorrect Dimension Expression 2</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectdimensionexpression3?typename=int&arrname=arr">Incorrect Dimension Expression 3</Link>
+                        <Link to="/incorrectdimensionexpression3">Incorrect Dimension Expression 3</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectvariabledeclaration?typename=int&foundname=thing">Incorrect Variable Declaration</Link>
+                        <Link to="/incorrectvariabledeclaration">Incorrect Variable Declaration</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectmethoddeclaration?methodname=size">Incorrect Method Declaration</Link>
+                        <Link to="/incorrectmethoddeclaration">Incorrect Method Declaration</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/methodcallonwrongtype?classname=Thing&methodname=doSomething&typeonename=primitive&typetwoname=int">Method Call On Wrong Type</Link>
+                        <Link to="/methodcallonwrongtype">Method Call On Wrong Type</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/methodnotfound?classname=Thing&methodname=doSomething&correctmethodname=correctName&typename=int&varname=thing">Method Not Found</Link>
+                        <Link to="/methodnotfound">Method Not Found</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/parametermismatch?classname=sketch_200721a&methodname=doSomething&varname=returnedValue&methodtypename=int&typeonename=int&typetwoname=String">Parameter Mismatch</Link>
+                        <Link to="/parametermismatch">Parameter Mismatch</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/returnmissing?methodname=doSomething&typename=int">Return Statement Missing</Link>
+                        <Link to="/returnmissing">Return Statement Missing</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/syntaxerrorvariabledeclarators?methodonename=System.out.println&methodtwoname=doSomething&typename=int">Syntax Error on "VariableDeclarators"</Link>
+                        <Link to="/syntaxerrorvariabledeclarators">Syntax Error on "VariableDeclarators"</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/typemismatch?typeonename=float&typetwoname=int&varname=thing">Type Mismatch</Link>
+                        <Link to="/typemismatch">Type Mismatch</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/typenotfound?classname=Thing&correctclassname=CorrectName&varname=thing">Type Not Found</Link>
+                        <Link to="/typenotfound">Type Not Found</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/unexpectedtoken?typename=int">Unexpected Token</Link>
+                        <Link to="/unexpectedtoken">Unexpected Token</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/nonstaticfromstatic?methodname=doSomething&staticmethodname=mainMethod">Use Of Non-Static From Static Context</Link>
+                        <Link to="/nonstaticfromstatic">Use Of Non-Static From Static Context</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/variablenotfound?classname=Thing&varname=thing">Variable Not Found </Link>
+                        <Link to="/variablenotfound">Variable Not Found </Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/variablenotinit?varname=thing">Variable Not Initialized</Link>
+                        <Link to="/variablenotinit">Variable Not Initialized</Link>
                     </div>
                 </div>
             </Route>
