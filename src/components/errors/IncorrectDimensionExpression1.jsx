@@ -9,12 +9,15 @@ import GoodExample from "../GoodExample";
 class IncorrectDimensionExpression1 extends React.Component {
 
   render() {
-    const isPrimitive = this.props.typeName === 'String' || this.props.typeName === 'char' || this.props.typeName === 'boolean' || this.props.typeName === 'short' || this.props.typeName === 'byte' ||
-      this.props.typeName === 'long' || this.props.typeName === 'int' || this.props.typeName === 'float' || this.props.typeName === 'double';
+    const knownTypes = ["String", "char", "boolean", "short", "byte", "long", "int", "float", "double"];
+    const isKnownType = knownTypes.includes(this.props.typeName);
+
+    // eslint-disable-next-line
+    const classPlaceholder = isKnownType ? "" : <div className="Indent-0">class {this.props.typeName} {"{"}/* your code */{"}"} </div>;
 
     return <CompilerError
       title="Variable must provide either dimension expressions or an array initializer"
-      translation="You have not given the array a certain size." 
+      translation="You have not given the array a certain size."
       embed={this.props.embed}
     >
       <Problem
@@ -22,33 +25,13 @@ class IncorrectDimensionExpression1 extends React.Component {
       >
         <Suggestion title="Specify the size of the array.">
           <BadExample>
-            {isPrimitive ?
-              <div className="Indent-0">{this.props.typeName}[] s = new {this.props.typeName}[]; </div>
-              : <><div className="Indent-0"> class {this.props.typeName.slice(0, 1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {"{"}  </div>
-                <div className="Indent-1"> {this.props.typeName.slice(0, 1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}() {"{"} </div>
-                <div className="Indent-2"> ...; </div>
-                <div className="Indent-1"> {"}"} </div>
-                <div className="Indent-0"> {"}"} </div>
-                <div className="Indent-0">
-                  {this.props.typeName.slice(0, 1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[] s = new {" "}
-                  {this.props.typeName.slice(0, 1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[];
-                </div></>
-            }
+            {classPlaceholder}
+            <div className="Indent-0">{this.props.typeName}[] {this.props.arrName} = new {this.props.typeName}[];</div>
           </BadExample>
 
           <GoodExample>
-            {isPrimitive ?
-              <div className="Indent-0">{this.props.typeName}[] s = new {this.props.typeName}[5]; </div>
-              : <><div className="Indent-0"> class {this.props.typeName.slice(0, 1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)} {"{"}  </div>
-                <div className="Indent-1"> {this.props.typeName.slice(0, 1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}() {"{"} </div>
-                <div className="Indent-2"> ...; </div>
-                <div className="Indent-1"> {"}"} </div>
-                <div className="Indent-0"> {"}"} </div>
-                <div className="Indent-0">
-                  {this.props.typeName.slice(0, 1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[] s = new {" "}
-                  {this.props.typeName.slice(0, 1).toUpperCase() + this.props.typeName.slice(1, this.props.typeName.length)}[5];
-                </div></>
-            }
+            {classPlaceholder}
+            <div className="Indent-0">{this.props.typeName}[] {this.props.arrName} = new {this.props.typeName}[5];</div>
           </GoodExample>
         </Suggestion>
       </Problem>

@@ -38,13 +38,13 @@ function HomePageContent() {
                         <Link to={`/extraneousclosingcurlybrace?original=${encodeURI("void doSomething() { ... }}")}&fixed=${encodeURI("void doSomething() { ... }")}`}>Extraneous Closing Curly Brace</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectdimensionexpression1?typename=int">Incorrect Dimension Expression 1</Link>
+                        <Link to="/incorrectdimensionexpression1?typename=int&arrname=arr">Incorrect Dimension Expression 1</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectdimensionexpression2?typename=int">Incorrect Dimension Expression 2</Link>
+                        <Link to="/incorrectdimensionexpression2?typename=int&arrname=arr">Incorrect Dimension Expression 2</Link>
                     </div>
                     <div className="Indent-1">
-                        <Link to="/incorrectdimensionexpression3?typename=int">Incorrect Dimension Expression 3</Link>
+                        <Link to="/incorrectdimensionexpression3?typename=int&arrname=arr">Incorrect Dimension Expression 3</Link>
                     </div>
                     <div className="Indent-1">
                         <Link to="/incorrectvariabledeclaration?typename=int&foundname=thing">Incorrect Variable Declaration</Link>
@@ -99,6 +99,7 @@ function HomePageContent() {
             <Route exact path="/incorrectdimensionexpression1">
                 <ProcessingErrors.IncorrectDimensionExpression1
                     typeName={query.get("typename") || "int"}
+                    arrName={query.get("arrname") || "arr"}
                     embed={embed}
                 />
             </Route>
@@ -106,6 +107,7 @@ function HomePageContent() {
             <Route exact path="/incorrectdimensionexpression2">
                 <ProcessingErrors.IncorrectDimensionExpression2
                     typeName={query.get("typename") || "int"}
+                    arrName={query.get("arrname") || "arr"}
                     embed={embed}
                 />
             </Route>
@@ -113,6 +115,7 @@ function HomePageContent() {
             <Route exact path="/incorrectdimensionexpression3">
                 <ProcessingErrors.IncorrectDimensionExpression3
                     typeName={query.get("typename") || "int"}
+                    arrName={query.get("arrname") || "arr"}
                     embed={embed}
                 />
             </Route>
