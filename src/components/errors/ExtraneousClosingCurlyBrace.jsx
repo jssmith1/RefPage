@@ -11,7 +11,7 @@ class ExtraneousClosingCurlyBrace extends React.Component {
     return <CompilerError title="Expecting EOF, found '}'" translation="There is an extra closing curly brace }" embed={this.props.embed}>
       <Problem
         title="You may have added an extra closing curly brace at the end of your code."
-        tip="Try using the Auto-Format feature first -> Ctrl + T"
+        tip="Try using the Auto-Format feature first: Ctrl/Cmd + T or the Edit menu"
       >
         <Suggestion title="Remove the extra closing curly brace from the end of your code block.">
           <BadExample>
