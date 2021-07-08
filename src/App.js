@@ -169,8 +169,8 @@ function HomePageContent() {
                     className={query.get("classname") || "sketch_200721a"}
                     methodName={query.get("methodname") || "doSomething"}
                     methodTypeName={query.get("methodtypename") || "void"}
-                    typeOneName={query.get("typeonename") || "int"}
-                    typeTwoName={query.get("typetwoname") || "String"}
+                    providedTypes={query.get("providedtypes") || "double"}
+                    requiredTypes={query.get("requiredtypes") || "int"}
                     varName={query.get("varName") || "returnedValue"}
                     embed={embed}
                 />
