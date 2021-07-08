@@ -10,6 +10,9 @@ import NonStaticFromStaticResourceFooter from "../resourceFooters/NonStaticFromS
 class NonStaticFromStatic extends React.Component {
 
   render() {
+    // eslint-disable-next-line
+    const abbreviatedComment = "/* your code */";
+
     return <CompilerError
       title={<>Cannot make a static reference to the non-static method {" "}
         <div className="InputValue">{this.props.methodName}() </div> from the type {this.props.fileName}</>}
@@ -27,7 +30,7 @@ class NonStaticFromStatic extends React.Component {
             <div className="Indent-1"> {this.props.methodName}(); </div>
             <div className="Indent-0"> {"}"} </div>
             <div className="Indent-0"> void {this.props.methodName}() {"{"} </div>
-            <div className="Indent-1"> ... </div>
+            <div className="Indent-1"> {abbreviatedComment} </div>
             <div className="Indent-0"> {"}"} </div>
           </BadExample>
           <GoodExample>
@@ -35,7 +38,7 @@ class NonStaticFromStatic extends React.Component {
             <div className="Indent-1"> {this.props.methodName}(); </div>
             <div className="Indent-0"> {"}"} </div>
             <div className="Indent-0"> void {this.props.methodName}() {"{"} </div>
-            <div className="Indent-1"> ... </div>
+            <div className="Indent-1"> {abbreviatedComment} </div>
             <div className="Indent-0"> {"}"} </div>
           </GoodExample>
         </Suggestion>
@@ -45,7 +48,7 @@ class NonStaticFromStatic extends React.Component {
             <div className="Indent-1"> {this.props.methodName}(); </div>
             <div className="Indent-0"> {"}"} </div>
             <div className="Indent-0"> void {this.props.methodName}() {"{"} </div>
-            <div className="Indent-1"> ... </div>
+            <div className="Indent-1"> {abbreviatedComment} </div>
             <div className="Indent-0"> {"}"} </div>
           </BadExample>
           <GoodExample>
@@ -53,7 +56,7 @@ class NonStaticFromStatic extends React.Component {
             <div className="Indent-1"> {this.props.methodName}(); </div>
             <div className="Indent-0"> {"}"} </div>
             <div className="Indent-0"> static void {this.props.methodName}() {"{"} </div>
-            <div className="Indent-1"> ... </div>
+            <div className="Indent-1"> {abbreviatedComment} </div>
             <div className="Indent-0"> {"}"} </div>
           </GoodExample>
         </Suggestion>
