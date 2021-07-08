@@ -33,6 +33,9 @@ class ParameterMismatch extends React.Component {
     const LEFT_CURLY = "{";
     const RIGHT_CURLY = "}";
 
+    // eslint-disable-next-line
+    const abbreviatedComment = "/* your code */";
+
     return <CompilerError
       title={<>The method “<div className="InputValue">{this.props.methodName}({this.props.typeOneName})</div>”
         in the type <div className="InputValue">{this.props.className}</div> is not applicable for the
@@ -53,7 +56,7 @@ class ParameterMismatch extends React.Component {
             <div className="Indent-1"> {this.props.methodName}({providedValue});</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
             <div className="Indent-0"> {this.props.methodTypeName} {this.props.methodName}({trimmedTypeOne} s){LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
@@ -61,7 +64,7 @@ class ParameterMismatch extends React.Component {
             <div className="Indent-1"> {this.props.methodName}({matchingValue});</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
             <div className="Indent-0"> {this.props.methodTypeName} {this.props.methodName}({trimmedTypeOne} s){LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
@@ -73,7 +76,7 @@ class ParameterMismatch extends React.Component {
             <div className="Indent-1"> {this.props.methodName}({providedValue});</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
             <div className="Indent-0"> {this.props.methodTypeName} {this.props.methodName}({trimmedTypeOne} s){LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
@@ -81,7 +84,7 @@ class ParameterMismatch extends React.Component {
             <div className="Indent-1"> {this.props.methodName}({providedValue});</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
             <div className="Indent-0"> {this.props.methodTypeName} {this.props.methodName}({trimmedTypeTwo} s){LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
@@ -97,7 +100,7 @@ class ParameterMismatch extends React.Component {
             <div className="Indent-1"> {this.props.methodName}({matchingValue}, {providedValue});</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
             <div className="Indent-0"> void {this.props.methodName}({trimmedTypeOne} s){LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
@@ -105,7 +108,7 @@ class ParameterMismatch extends React.Component {
             <div className="Indent-1"> {this.props.methodName}({matchingValue});</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
             <div className="Indent-0"> void {this.props.methodName}({trimmedTypeOne} s){LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
@@ -116,7 +119,7 @@ class ParameterMismatch extends React.Component {
             <div className="Indent-1"> {this.props.methodName}({matchingValue}, {providedValue});</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
             <div className="Indent-0"> void {this.props.methodName}({trimmedTypeOne} s){LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
@@ -124,7 +127,7 @@ class ParameterMismatch extends React.Component {
             <div className="Indent-1"> {this.props.methodName}({matchingValue}, {providedValue});</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
             <div className="Indent-0"> void {this.props.methodName}({trimmedTypeOne} s, {trimmedTypeTwo} t){LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>

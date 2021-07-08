@@ -90,8 +90,8 @@ function HomePageContent() {
 
             <Route exact path="/extraneousclosingcurlybrace">
                 <ProcessingErrors.ExtraneousClosingCurlyBrace
-                    original={query.get("original") || encodeURI("void doSomething() { ... }")}
-                    fixed={query.get("fixed") || encodeURI("void doSomething() { ... }}")}
+                    original={query.get("original") || encodeURI("void doSomething() { /* your code */ }")}
+                    fixed={query.get("fixed") || encodeURI("void doSomething() { /* your code */ }}")}
                     embed={embed}
                 />
             </Route>

@@ -12,6 +12,9 @@ class VariableNotFound extends React.Component {
     const LEFT_CURLY = "{";
     const RIGHT_CURLY = "}";
 
+    // eslint-disable-next-line
+    const abbreviatedComment = "/* your code */";
+
     return <CompilerError
       title={<><div className="InputValue">{this.props.varName}</div> cannot be resolved to a variable</>}
       translation={<>You are trying to use a variable named <div className="InputValue">{this.props.varName}</div> which does not exist yet.</>}
@@ -39,12 +42,12 @@ class VariableNotFound extends React.Component {
         <Suggestion title={<>Change <p className="InputValue">{this.props.varName}</p> to the variable name that you have defined.</>}>
           <BadExample>
             <div className="Indent-0">{this.props.className} correctName = new {this.props.className}();</div>
-            <div className="Indent-0">...</div>
+            <div className="Indent-0">{abbreviatedComment}</div>
             <div className="Indent-0">print({this.props.varName});</div>
           </BadExample>
           <GoodExample>
             <div className="Indent-0">{this.props.className} correctName = new {this.props.className}();</div>
-            <div className="Indent-0">...</div>
+            <div className="Indent-0">{abbreviatedComment}</div>
             <div className="Indent-0">print(correctName);</div>
           </GoodExample>
         </Suggestion>
@@ -56,7 +59,7 @@ class VariableNotFound extends React.Component {
           <BadExample>
             <div className="Indent-0">void setup() {LEFT_CURLY}</div>
             <div className="Indent-1">{this.props.className} {this.props.varName}= new {this.props.className}();</div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
             <div className="Indent-0">void draw() {LEFT_CURLY}</div>
             <div className="Indent-1">println({this.props.varName});</div>
@@ -65,7 +68,7 @@ class VariableNotFound extends React.Component {
           <GoodExample>
             <div className="Indent-0">void draw() {LEFT_CURLY}</div>
             <div className="Indent-1">{this.props.className} {this.props.varName} = new {this.props.className}();</div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-1">println({this.props.varName});</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </GoodExample>
@@ -81,7 +84,7 @@ class VariableNotFound extends React.Component {
           <BadExample>
             <div className="Indent-0">void setup() {LEFT_CURLY}</div>
             <div className="Indent-1">{this.props.className} {this.props.varName} = new {this.props.className}();</div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
             <div className="Indent-0">void draw() {LEFT_CURLY}</div>
             <div className="Indent-1">println({this.props.varName});</div>
@@ -98,7 +101,7 @@ class VariableNotFound extends React.Component {
             <div className="Indent-0">{this.props.className} {this.props.varName};</div>
             <div className="Indent-0">void setup() {LEFT_CURLY}</div>
             <div className="Indent-1">{this.props.varName} = new {this.props.className}();</div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
             <div className="Indent-0">void draw() {LEFT_CURLY}</div>
             <div className="Indent-1">println({this.props.varName});</div>
@@ -113,7 +116,7 @@ class VariableNotFound extends React.Component {
           <BadExample>
             <div className="Indent-0"> class {this.props.className} {LEFT_CURLY}  </div>
             <div className="Indent-1"> {this.props.className}() {LEFT_CURLY} </div>
-            <div className="Indent-2"> ...; </div>
+            <div className="Indent-2"> {abbreviatedComment}; </div>
             <div className="Indent-1"> {RIGHT_CURLY} </div>
             <div className="Indent-0"> {RIGHT_CURLY} </div>
             <div className="Indent-0">{this.props.className}[] {this.props.varName} = {this.props.className}[5];</div>
@@ -121,7 +124,7 @@ class VariableNotFound extends React.Component {
           <GoodExample>
             <div className="Indent-0">class {this.props.className} {LEFT_CURLY} </div>
             <div className="Indent-1">{this.props.className}() {LEFT_CURLY} </div>
-            <div className="Indent-2">...; </div>
+            <div className="Indent-2">{abbreviatedComment}; </div>
             <div className="Indent-1">{RIGHT_CURLY} </div>
             <div className="Indent-0">{RIGHT_CURLY} </div>
             <div className="Indent-0">{this.props.className}[] {this.props.varName} = new {this.props.className}[5];</div>

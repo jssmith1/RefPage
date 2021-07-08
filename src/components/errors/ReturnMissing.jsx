@@ -58,6 +58,9 @@ class ReturnMissing extends React.Component {
     const LEFT_CURLY = "{";
     const RIGHT_CURLY = "}";
 
+    // eslint-disable-next-line
+    const abbreviatedComment = "/* your code */";
+
     return <CompilerError
       title={<>This method must return a result of type{" "}
         <div className="InputValue">{this.props.typeName}</div></>}
@@ -75,12 +78,12 @@ class ReturnMissing extends React.Component {
           <p className="InputValue">{this.props.methodName}()</p>.</>}>
           <BadExample>
             <div className="Indent-0">{trimmedType} {this.props.methodName}({paramType} {paramName}) {LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
             <div className="Indent-0">{trimmedType} {this.props.methodName}({paramType} {paramName}) {LEFT_CURLY}</div>
-            <div className="Indent-1"> ...</div>
+            <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-1"> return {demoValue};</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </GoodExample>

@@ -12,6 +12,9 @@ class TypeNotFound extends React.Component {
     const LEFT_CURLY = "{";
     const RIGHT_CURLY = "}";
 
+    // eslint-disable-next-line
+    const abbreviatedComment = "/* your code */";
+
     return <CompilerError
       title={<>Cannot find a class or type name{" "}
         <div className="InputValue">{this.props.className}</div></>}
@@ -30,7 +33,7 @@ class TypeNotFound extends React.Component {
           <BadExample>
             <div className="Indent-0">class {this.props.correctClassName} {LEFT_CURLY}</div>
             <div className="Indent-1">{this.props.correctClassName}() {LEFT_CURLY}</div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-1">{RIGHT_CURLY}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
             <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}();</div>
@@ -38,7 +41,7 @@ class TypeNotFound extends React.Component {
           <GoodExample>
             <div className="Indent-0">class {this.props.correctClassName} {LEFT_CURLY}</div>
             <div className="Indent-1">{this.props.correctClassName}() {LEFT_CURLY}</div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-1">{RIGHT_CURLY}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
             <div className="Indent-0">{this.props.correctClassName} {this.props.varName} = new {this.props.correctClassName}();</div>
@@ -57,7 +60,7 @@ class TypeNotFound extends React.Component {
           <GoodExample>
             <div className="Indent-0">class {this.props.className} {LEFT_CURLY}</div>
             <div className="Indent-1">{this.props.className}() {LEFT_CURLY}</div>
-            <div className="Indent-2">...</div>
+            <div className="Indent-2">{abbreviatedComment}</div>
             <div className="Indent-1">{RIGHT_CURLY}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
             <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}();</div>

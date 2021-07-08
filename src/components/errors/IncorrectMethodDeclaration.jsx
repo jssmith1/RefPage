@@ -16,6 +16,9 @@ class IncorrectMethodDeclaration extends React.Component {
     const isSpecialMethod = ["setup", "draw"].includes(this.props.methodName);
     const parameterPlaceholder = isSpecialMethod ? "" : "/* parameters if any */";
 
+    // eslint-disable-next-line
+    const abbreviatedComment = "/* your code */";
+
     return <CompilerError title={"It looks like you're mixing \"active\" and \"static\" modes."}
       translation={`In Processing, "active" mode uses the setup() and draw() calls and keeps running. The "static" mode includes calls
     on both existing and user-made functions.`}
@@ -28,14 +31,14 @@ class IncorrectMethodDeclaration extends React.Component {
             <div className="Indent-0">
               {this.props.methodName}({parameterPlaceholder}) {LEFT_CURLY}
             </div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
             <div className="Indent-0">
               void {this.props.methodName}({parameterPlaceholder}) {LEFT_CURLY}
             </div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
@@ -49,7 +52,7 @@ class IncorrectMethodDeclaration extends React.Component {
             <div className="Indent-0">
               void setup() {LEFT_CURLY}
             </div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
@@ -57,7 +60,7 @@ class IncorrectMethodDeclaration extends React.Component {
               void setup() {LEFT_CURLY}
             </div>
             <div className="Indent-1"> {this.props.methodName}({parameterPlaceholder});  </div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
@@ -66,7 +69,7 @@ class IncorrectMethodDeclaration extends React.Component {
             <div className="Indent-0">
               void draw(){LEFT_CURLY}
             </div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
             <div className="Indent-0"> {this.props.methodName}({parameterPlaceholder});</div>
           </BadExample>
@@ -75,7 +78,7 @@ class IncorrectMethodDeclaration extends React.Component {
               void draw(){LEFT_CURLY}
             </div>
             <div className="Indent-1"> {this.props.methodName}({parameterPlaceholder});</div>
-            <div className="Indent-1">...</div>
+            <div className="Indent-1">{abbreviatedComment}</div>
             <div className="Indent-0">{RIGHT_CURLY}</div>
           </GoodExample>
         </Suggestion>
