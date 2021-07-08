@@ -33,27 +33,21 @@ class ReturnMissing extends React.Component {
       long: "2"
     };
 
-    const paramName = "s";
-    const typeToConditional = {
-      String: `${paramName}.length() >= 5`,
-      char: `${paramName} == 's'`,
-      boolean: `${paramName}`,
-      double: `${paramName} >= 5.5`,
-      float: `${paramName} >= 5.5`,
-      byte: `${paramName} >= 5`,
-      short: `${paramName} >= 5`,
-      int: `${paramName} >= 5`,
-      long: `${paramName} >= 5`,
-    };
-
     const knownTypes = ["String", "boolean", "char", "float", "double", "int", "short", "byte", "long"];
 
     const trimmedType = this.props.typeName.substring(this.props.typeName.lastIndexOf('.') + 1);
     const demoValue = knownTypes.includes(trimmedType) ? typeToValue[trimmedType] : `new ${trimmedType}(1)`;
     const extraDemoValue = knownTypes.includes(trimmedType) ? typeToSecondValue[trimmedType] : `new ${trimmedType}(2)`;
 
-    const paramType = knownTypes.includes(trimmedType) ? trimmedType : "int";
-    const demoConditional = typeToConditional[paramType];
+    const demoConditional = "/* a condition */";
+
+    const requiredTypes = decodeURI(this.props.requiredTypes).split(",");
+    const numParams = requiredTypes.length;
+    let separatedDeclarationArgs = [];
+    if (requiredTypes[0].length > 0) {
+      separatedDeclarationArgs = [...Array(numParams).keys()].map((index) => `${requiredTypes[index]} param${index + 1}`);
+    }
+    const declarationArgs = separatedDeclarationArgs.join(", ");
 
     const LEFT_CURLY = "{";
     const RIGHT_CURLY = "}";
@@ -77,12 +71,12 @@ class ReturnMissing extends React.Component {
           <p className="InputValue">{trimmedType}</p> at the end of the method{" "}
           <p className="InputValue">{this.props.methodName}()</p>.</>}>
           <BadExample>
-            <div className="Indent-0">{trimmedType} {this.props.methodName}({paramType} {paramName}) {LEFT_CURLY}</div>
+            <div className="Indent-0">{trimmedType} {this.props.methodName}({declarationArgs}) {LEFT_CURLY}</div>
             <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
-            <div className="Indent-0">{trimmedType} {this.props.methodName}({paramType} {paramName}) {LEFT_CURLY}</div>
+            <div className="Indent-0">{trimmedType} {this.props.methodName}({declarationArgs}) {LEFT_CURLY}</div>
             <div className="Indent-1"> {abbreviatedComment}</div>
             <div className="Indent-1"> return {demoValue};</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
@@ -98,18 +92,18 @@ class ReturnMissing extends React.Component {
           <p className="InputValue">{this.props.methodName}()</p>{" "} return value of type{" "}
           <p className="InputValue">{trimmedType}</p>.</>}>
           <BadExample>
-            <div className="Indent-0">{trimmedType} {this.props.methodName}({paramType} {paramName}) {LEFT_CURLY}</div>
+            <div className="Indent-0">{trimmedType} {this.props.methodName}({declarationArgs}) {LEFT_CURLY}</div>
             <div className="Indent-1"> if ({demoConditional}) return {extraDemoValue};</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </BadExample>
           <GoodExample>
-            <div className="Indent-0">{trimmedType} {this.props.methodName}({paramType} {paramName}) {LEFT_CURLY}</div>
+            <div className="Indent-0">{trimmedType} {this.props.methodName}({declarationArgs}) {LEFT_CURLY}</div>
             <div className="Indent-1"> if ({demoConditional}) return {extraDemoValue};</div>
             <div className="Indent-1"> return {demoValue};</div>
             <div className="Indent-0"> {RIGHT_CURLY}</div>
           </GoodExample>
           <GoodExample>
-            <div className="Indent-0">{trimmedType} {this.props.methodName}({paramType} {paramName}) {LEFT_CURLY}</div>
+            <div className="Indent-0">{trimmedType} {this.props.methodName}({declarationArgs}) {LEFT_CURLY}</div>
             <div className="Indent-1"> if ({demoConditional}) {LEFT_CURLY}</div>
             <div className="Indent-2"> return {extraDemoValue};</div>
             <div className="Indent-1"> {RIGHT_CURLY} else {LEFT_CURLY}</div>

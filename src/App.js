@@ -180,6 +180,7 @@ function HomePageContent() {
                 <ProcessingErrors.ReturnMissing
                     methodName={query.get("methodname") || "doSomething"}
                     typeName={query.get("typename") || "int"}
+                    requiredTypes={query.get("requiredtypes") || ""}
                     embed={embed}
                 />
             </Route>
