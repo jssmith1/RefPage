@@ -159,6 +159,7 @@ function HomePageContent() {
                 <ProcessingErrors.NonStaticFromStatic
                     methodName={query.get("methodname") || "doSomething"}
                     staticMethodName={query.get("staticmethodname") || "mainMethod"}
+                    fileName={query.get("filename") || "sketch_200201b"}
                     embed={embed}
                 />
             </Route>

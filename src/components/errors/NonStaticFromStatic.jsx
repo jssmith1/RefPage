@@ -12,7 +12,7 @@ class NonStaticFromStatic extends React.Component {
   render() {
     return <CompilerError
       title={<>Cannot make a static reference to the non-static method {" "}
-        <div className="InputValue">{this.props.methodName}() </div> from the type sketch_200201b</>}
+        <div className="InputValue">{this.props.methodName}() </div> from the type {this.props.fileName}</>}
       translation="You are calling on a non-static method inside a static method."
       embed={this.props.embed}
     >
