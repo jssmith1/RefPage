@@ -148,8 +148,6 @@ function HomePageContent() {
                 <ProcessingErrors.MethodNotFound
                     methodName={query.get("methodname") || "doSomething"}
                     correctMethodName={query.get("correctmethodname") || "correctName"}
-                    className={query.get("classname") || "Thing"}
-                    varName={query.get("varname") || "thing"}
                     typeName={query.get("typename") || "int"}
                     embed={embed}
                 />

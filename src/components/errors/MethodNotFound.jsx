@@ -10,6 +10,14 @@ class MethodNotFound extends React.Component {
 
     render() {
         const methodUsePrefix = this.props.typeName === "void" ? "" : `${this.props.typeName} a = `;
+        const LEFT_CURLY = "{";
+        const RIGHT_CURLY = "}";
+
+        // eslint-disable-next-line
+        const abbreviatedComment = "/* your code */";
+
+        const exampleVarName = "example";
+        const exampleClassName = "YourClass";
 
         return <CompilerError
             title={<>The function <div className="InputValue">{this.props.methodName}()</div> does not exist</>}
@@ -19,8 +27,7 @@ class MethodNotFound extends React.Component {
             embed={this.props.embed}
         >
             <Problem
-                title={<>You may have mistyped the name of function{" "}
-                    <div className="InputValue">{this.props.methodName}()</div>.</>}
+                title={<>You may have mistyped the name of function <div className="InputValue">{this.props.methodName}()</div>.</>}
             >
                 <Suggestion
                     title={<>If you are trying to use an existing Java function, make sure you match the name of{" "}
@@ -36,20 +43,19 @@ class MethodNotFound extends React.Component {
                     </GoodExample>
                 </Suggestion>
                 <Suggestion
-                    title={<>Change the name of {" "}
-                        <p className="InputValue">{this.props.methodName}()</p> to the method you created.</>}
+                    title={<>Change the name of <p className="InputValue">{this.props.methodName}()</p> to the method you created.</>}
                 >
                     <BadExample>
                         <div className="Indent-0"> {methodUsePrefix}{this.props.methodName}(5);</div>
-                        <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"}</div>
-                        <div className="Indent-1"> ... </div>
-                        <div className="Indent-0"> {"}"} </div>
+                        <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s) {LEFT_CURLY}</div>
+                        <div className="Indent-1"> {abbreviatedComment} </div>
+                        <div className="Indent-0"> {RIGHT_CURLY} </div>
                     </BadExample>
                     <GoodExample>
                         <div className="Indent-0"> {methodUsePrefix}{this.props.correctMethodName}(5);</div>
-                        <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s){"{"} </div>
-                        <div className="Indent-1"> ... </div>
-                        <div className="Indent-0"> {"}"} </div>
+                        <div className="Indent-0"> {this.props.typeName} {this.props.correctMethodName}({this.props.typeName} s) {LEFT_CURLY} </div>
+                        <div className="Indent-1"> {abbreviatedComment} </div>
+                        <div className="Indent-0"> {RIGHT_CURLY} </div>
                     </GoodExample>
                 </Suggestion>
             </Problem>
@@ -66,71 +72,52 @@ class MethodNotFound extends React.Component {
                     </BadExample>
                     <GoodExample>
                         <div className="Indent-0"> {methodUsePrefix}{this.props.methodName}(5); </div>
-                        <div className="Indent-0"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {"{"} </div>
-                        <div className="Indent-1"> ... </div>
-                        <div className="Indent-0"> {"}"}</div>
+                        <div className="Indent-0"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY} </div>
+                        <div className="Indent-1"> {abbreviatedComment} </div>
+                        <div className="Indent-0"> {RIGHT_CURLY}</div>
                     </GoodExample>
                 </Suggestion>
             </Problem>
             <Problem
-                title={<>You may have used the method{" "}
-                    <div className="InputValue">{this.props.methodName}()</div>{" "}
-                    of class <div className="InputValue">{this.props.className}</div> incorrectly.</>}
+                title={<>You may have used the method <div className="InputValue">{this.props.methodName}()</div> of a class incorrectly.</>}
             >
                 <Suggestion
-                    title={<>Create an object of class {" "}
-                        <p className="InputValue">{this.props.className}</p> and then call the method {" "}
-                        <p className="InputValue">{this.props.methodName}()</p> on it.</>}
+                    title={<>Create an object of a class and then call the method <p className="InputValue">{this.props.methodName}()</p> on it.</>}
                 >
                     <BadExample>
-                        <div className="Indent-0"> class {this.props.className}{"{"}</div>
-                        <div className="Indent-1"> {this.props.className}(){"{"}  </div>
-                        <div className="Indent-2"> ... </div>
-                        <div className="Indent-1"> {"}"} </div>
-                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}</div>
-                        <div className="Indent-2"> ... </div>
-                        <div className="Indent-1"> {"}"} </div>
-                        <div className="Indent-0"> {"}"} </div>
-                        <div className="Indent-0">{methodUsePrefix}{this.props.methodName}(5);</div>
+                        <div className="Indent-0"> class {exampleClassName} {LEFT_CURLY}</div>
+                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}</div>
+                        <div className="Indent-2"> {abbreviatedComment} </div>
+                        <div className="Indent-1"> {RIGHT_CURLY} </div>
+                        <div className="Indent-0"> {RIGHT_CURLY} </div>
+                        <div className="Indent-0"> {methodUsePrefix}{this.props.methodName}(5);</div>
                     </BadExample>
                     <GoodExample>
-                        <div className="Indent-0"> class {this.props.className}{"{"}</div>
-                        <div className="Indent-1"> {this.props.className}(){"{"}  </div>
-                        <div className="Indent-2"> ... </div>
-                        <div className="Indent-1"> {"}"} </div>
-                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}</div>
-                        <div className="Indent-2"> ... </div>
-                        <div className="Indent-1"> {"}"} </div>
-                        <div className="Indent-0"> {"}"} </div>
-                        <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                        <div className="Indent-0">{methodUsePrefix}{this.props.varName}.{this.props.methodName}(5);</div>
+                        <div className="Indent-0"> class {exampleClassName} {LEFT_CURLY}</div>
+                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}</div>
+                        <div className="Indent-2"> {abbreviatedComment} </div>
+                        <div className="Indent-1"> {RIGHT_CURLY} </div>
+                        <div className="Indent-0"> {RIGHT_CURLY} </div>
+                        <div className="Indent-0"> {exampleClassName} {exampleVarName} = new {exampleClassName}()</div>
+                        <div className="Indent-0"> {methodUsePrefix}{exampleVarName}.{this.props.methodName}(5);</div>
                     </GoodExample>
                 </Suggestion>
                 <Suggestion
-                    title={<>Create the method {" "}
-                        <p className="InputValue">{this.props.methodName}()</p> in {" "}
-                        class <p className="InputValue">{this.props.className}</p>.</>}
+                    title={<>Create the method <p className="InputValue">{this.props.methodName}()</p> in a class.</>}
                 >
                     <BadExample>
-                        <div className="Indent-0"> class {this.props.className}{"{"}</div>
-                        <div className="Indent-1"> {this.props.className}(){"{"}  </div>
-                        <div className="Indent-2"> ... </div>
-                        <div className="Indent-1"> {"}"} </div>
-                        <div className="Indent-0"> {"}"} </div>
-                        <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                        <div className="Indent-0">{methodUsePrefix}{this.props.varName}.{this.props.methodName}(5);</div>
+                        <div className="Indent-0"> class {exampleClassName} {LEFT_CURLY} {RIGHT_CURLY}</div>
+                        <div className="Indent-0"> {exampleClassName} {exampleVarName} = new {exampleClassName}()</div>
+                        <div className="Indent-0"> {methodUsePrefix}{exampleVarName}.{this.props.methodName}(5);</div>
                     </BadExample>
                     <GoodExample>
-                        <div className="Indent-0"> class {this.props.className}{"{"}</div>
-                        <div className="Indent-1"> {this.props.className}(){"{"}  </div>
-                        <div className="Indent-2"> ... </div>
-                        <div className="Indent-1"> {"}"} </div>
-                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s){"{"}</div>
-                        <div className="Indent-2"> ... </div>
-                        <div className="Indent-1"> {"}"} </div>
-                        <div className="Indent-0"> {"}"} </div>
-                        <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}()</div>
-                        <div className="Indent-0">{methodUsePrefix}{this.props.varName}.{this.props.methodName}(5);</div>
+                        <div className="Indent-0"> class {exampleClassName} {LEFT_CURLY}</div>
+                        <div className="Indent-1"> {this.props.typeName} {this.props.methodName}({this.props.typeName} s) {LEFT_CURLY}</div>
+                        <div className="Indent-2"> {abbreviatedComment} </div>
+                        <div className="Indent-1"> {RIGHT_CURLY} </div>
+                        <div className="Indent-0"> {RIGHT_CURLY} </div>
+                        <div className="Indent-0"> {exampleClassName} {exampleVarName} = new {exampleClassName}()</div>
+                        <div className="Indent-0"> {methodUsePrefix}{exampleVarName}.{this.props.methodName}(5);</div>
                     </GoodExample>
                 </Suggestion>
             </Problem>
