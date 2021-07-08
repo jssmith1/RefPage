@@ -19,7 +19,7 @@ class MethodNotFound extends React.Component {
         const exampleVarName = "example";
         const exampleClassName = "YourClass";
 
-        const providedTypes = decodeURI(this.props.providedTypes).split(",");
+        const providedTypes = this.props.providedTypes.split(",");
         const numParams = providedTypes.length;
 
         let separatedDeclarationArgs = [];
@@ -28,7 +28,7 @@ class MethodNotFound extends React.Component {
         }
 
         const declarationArgs = separatedDeclarationArgs.join(", ");
-        const invocationArgs = decodeURI(this.props.providedParams).split(",").join(", ");
+        const invocationArgs = this.props.providedParams.split(",").join(", ");
 
         return <CompilerError
             title={<>The function <div className="InputValue">{this.props.methodName}()</div> does not exist</>}

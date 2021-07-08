@@ -15,10 +15,10 @@ class ExtraneousClosingCurlyBrace extends React.Component {
       >
         <Suggestion title="Remove the extra closing curly brace from the end of your code block.">
           <BadExample>
-            <div className="Indent-0">{decodeURI(this.props.original)}</div>
+            <div className="Indent-0">{this.props.original}</div>
           </BadExample>
           <GoodExample>
-            <div className="Indent-0">{decodeURI(this.props.fixed)}</div>
+            <div className="Indent-0">{this.props.fixed}</div>
           </GoodExample>
         </Suggestion>
       </Problem>

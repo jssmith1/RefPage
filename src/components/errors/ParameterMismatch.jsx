@@ -10,8 +10,8 @@ import ParameterMismatchResourceFooter from "../resourceFooters/ParameterMismatc
 class ParameterMismatch extends React.Component {
 
   render() {
-    const providedTypes = decodeURI(this.props.providedTypes).split(",");
-    const requiredTypes = decodeURI(this.props.requiredTypes).split(",")
+    const providedTypes = this.props.providedTypes.split(",");
+    const requiredTypes = this.props.requiredTypes.split(",")
     const hasRightParamCount = providedTypes.length === requiredTypes.length;
 
     let separatedDeclarationArgs = [];

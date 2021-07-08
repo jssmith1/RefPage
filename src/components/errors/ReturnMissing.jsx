@@ -41,7 +41,7 @@ class ReturnMissing extends React.Component {
 
     const demoConditional = "/* a condition */";
 
-    const requiredTypes = decodeURI(this.props.requiredTypes).split(",");
+    const requiredTypes = this.props.requiredTypes.split(",");
     const numParams = requiredTypes.length;
     let separatedDeclarationArgs = [];
     if (requiredTypes[0].length > 0) {

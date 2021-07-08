@@ -23,7 +23,15 @@ function useQuery() {
 
 function HomePageContent() {
     const query = useQuery();
-    const embed = query.get("embed");
+
+    function getParam(param, defaultVal) {
+        if (query.has("param")) {
+            return decodeURI(query.get("param"));
+        }
+        return defaultVal;
+    }
+
+    const embed = getParam("embed", false);
 
     return (
         <div>
@@ -90,146 +98,146 @@ function HomePageContent() {
 
             <Route exact path="/extraneousclosingcurlybrace">
                 <ProcessingErrors.ExtraneousClosingCurlyBrace
-                    original={query.get("original") || encodeURI("void doSomething() { /* your code */ }}")}
-                    fixed={query.get("fixed") || encodeURI("void doSomething() { /* your code */ }")}
+                    original={getParam("original", "void doSomething() { /* your code */ }}")}
+                    fixed={getParam("fixed", "void doSomething() { /* your code */ }")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression1">
                 <ProcessingErrors.IncorrectDimensionExpression1
-                    typeName={query.get("typename") || "int"}
-                    arrName={query.get("arrname") || "arr"}
+                    typeName={getParam("typename", "int")}
+                    arrName={getParam("arrname", "arr")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression2">
                 <ProcessingErrors.IncorrectDimensionExpression2
-                    typeName={query.get("typename") || "int"}
-                    arrName={query.get("arrname") || "arr"}
+                    typeName={getParam("typename", "int")}
+                    arrName={getParam("arrname", "arr")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/incorrectdimensionexpression3">
                 <ProcessingErrors.IncorrectDimensionExpression3
-                    typeName={query.get("typename") || "int"}
-                    arrName={query.get("arrname") || "arr"}
+                    typeName={getParam("typename", "int")}
+                    arrName={getParam("arrname", "arr")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/incorrectvariabledeclaration">
                 <ProcessingErrors.IncorrectVariableDeclaration
-                    typeName={query.get("typename") || "int"}
-                    foundName={query.get("foundname") || "thing"}
+                    typeName={getParam("typename", "int")}
+                    foundName={getParam("foundname", "thing")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/incorrectmethoddeclaration">
                 <ProcessingErrors.IncorrectMethodDeclaration
-                    methodName={query.get("methodname") || "size"}
+                    methodName={getParam("methodname", "size")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/methodcallonwrongtype">
                 <ProcessingErrors.MethodCallOnWrongType
-                    methodName={query.get("methodname") || "doSomething"}
-                    varName={query.get("varname") || "thing"}
-                    typeName={query.get("typename") || "int"}
+                    methodName={getParam("methodname", "doSomething")}
+                    varName={getParam("varname", "thing")}
+                    typeName={getParam("typename", "int")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/methodnotfound">
                 <ProcessingErrors.MethodNotFound
-                    methodName={query.get("methodname") || "doSomething"}
-                    correctMethodName={query.get("correctmethodname") || "correctName"}
-                    typeName={query.get("typename") || "int"}
-                    providedParams={query.get("providedparams") || ""}
-                    providedTypes={query.get("providedtypes") || ""}
+                    methodName={getParam("methodname", "doSomething")}
+                    correctMethodName={getParam("correctmethodname", "correctName")}
+                    typeName={getParam("typename", "int")}
+                    providedParams={getParam("providedparams", "")}
+                    providedTypes={getParam("providedtypes", "")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/nonstaticfromstatic">
                 <ProcessingErrors.NonStaticFromStatic
-                    methodName={query.get("methodname") || "doSomething"}
-                    staticMethodName={query.get("staticmethodname") || "mainMethod"}
-                    fileName={query.get("filename") || "sketch_200201b"}
+                    methodName={getParam("methodname", "doSomething")}
+                    staticMethodName={getParam("staticmethodname", "mainMethod")}
+                    fileName={getParam("filename", "sketch_200201b")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/parametermismatch">
                 <ProcessingErrors.ParameterMismatch
-                    className={query.get("classname") || "sketch_200721a"}
-                    methodName={query.get("methodname") || "doSomething"}
-                    methodTypeName={query.get("methodtypename") || "void"}
-                    providedTypes={query.get("providedtypes") || "double"}
-                    requiredTypes={query.get("requiredtypes") || "int"}
-                    varName={query.get("varName") || "returnedValue"}
+                    className={getParam("classname", "sketch_200721a")}
+                    methodName={getParam("methodname", "doSomething")}
+                    methodTypeName={getParam("methodtypename", "void")}
+                    providedTypes={getParam("providedtypes", "double")}
+                    requiredTypes={getParam("requiredtypes", "int")}
+                    varName={getParam("varName", "returnedValue")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/returnmissing">
                 <ProcessingErrors.ReturnMissing
-                    methodName={query.get("methodname") || "doSomething"}
-                    typeName={query.get("typename") || "int"}
-                    requiredTypes={query.get("requiredtypes") || ""}
+                    methodName={getParam("methodname", "doSomething")}
+                    typeName={getParam("typename", "int")}
+                    requiredTypes={getParam("requiredtypes", "")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/syntaxerrorvariabledeclarators">
                 <ProcessingErrors.SyntaxErrorVariableDeclarators
-                    methodOneName={query.get("methodonename") || "System.out.println"}
-                    methodTwoName={query.get("methodtwoname") || "doSomething"}
-                    typeName={query.get("typename") || "int"}
+                    methodOneName={getParam("methodonename", "System.out.println")}
+                    methodTwoName={getParam("methodtwoname", "doSomething")}
+                    typeName={getParam("typename", "int")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/typenotfound">
                 <ProcessingErrors.TypeNotFound
-                    className={query.get("classname") || "Thing"}
-                    correctClassName={query.get("correctclassname") || "CorrectName"}
-                    varName={query.get("varname") || "thing"}
+                    className={getParam("classname", "Thing")}
+                    correctClassName={getParam("correctclassname", "CorrectName")}
+                    varName={getParam("varname", "thing")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/typemismatch">
                 <ProcessingErrors.TypeMismatch
-                    varName={query.get("varname") || "thing"}
-                    typeOneName={query.get("typeonename") || "float"}
-                    typeTwoName={query.get("typetwoname") || "int"}
+                    varName={getParam("varname", "thing")}
+                    typeOneName={getParam("typeonename", "float")}
+                    typeTwoName={getParam("typetwoname", "int")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/unexpectedtoken">
                 <ProcessingErrors.UnexpectedToken
-                    typeName={query.get("typename") || "int"}
+                    typeName={getParam("typename", "int")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/variablenotfound">
                 <ProcessingErrors.VariableNotFound
-                    varName={query.get("varname") || "thing"}
-                    className={query.get("classname") || "Thing"}
+                    varName={getParam("varname", "thing")}
+                    className={getParam("classname", "Thing")}
                     embed={embed}
                 />
             </Route>
 
             <Route exact path="/variablenotinit">
                 <ProcessingErrors.VariableNotInit
-                    varName={query.get("varname") || "thing"}
+                    varName={getParam("varname", "thing")}
                     embed={embed}
                 />
             </Route>
