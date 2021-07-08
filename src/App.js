@@ -149,6 +149,8 @@ function HomePageContent() {
                     methodName={query.get("methodname") || "doSomething"}
                     correctMethodName={query.get("correctmethodname") || "correctName"}
                     typeName={query.get("typename") || "int"}
+                    providedParams={query.get("providedparams") || ""}
+                    providedTypes={query.get("providedtypes") || ""}
                     embed={embed}
                 />
             </Route>
