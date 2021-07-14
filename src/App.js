@@ -25,8 +25,8 @@ function HomePageContent() {
     const query = useQuery();
 
     function getParam(param, defaultVal) {
-        if (query.has("param")) {
-            return decodeURI(query.get("param"));
+        if (query.has(param)) {
+            return decodeURI(query.get(param));
         }
         return defaultVal;
     }
@@ -238,6 +238,7 @@ function HomePageContent() {
             <Route exact path="/variablenotinit">
                 <ProcessingErrors.VariableNotInit
                     varName={getParam("varname", "thing")}
+                    typeName={getParam("typename", "int")}
                     embed={embed}
                 />
             </Route>
