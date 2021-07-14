@@ -9,6 +9,20 @@ import GoodExample from "../GoodExample";
 class SyntaxErrorVariableDeclarators extends React.Component {
 
   render() {
+    const typeToValue = {
+      String: "\"example\"",
+      char: "'s'",
+      boolean: "true",
+      double: "5.0",
+      float: "5.0",
+      byte: "5",
+      short: "5",
+      int: "5",
+      long: "5"
+    };
+    const knownTypes = ["String", "boolean", "char", "float", "double", "int", "short", "byte", "long"];
+    const demoValue = knownTypes.includes(this.props.typeName) ? typeToValue[this.props.typeName] : `new ${this.props.typeName}()`;
+
     return <CompilerError
       title={"Syntax error, insert \"VariableDeclarators\" to complete LocalVariableDeclaration"}
       translation="A syntax error occured while declaring a variable."
@@ -19,8 +33,7 @@ class SyntaxErrorVariableDeclarators extends React.Component {
           as a variable. You may have forgotten to add parentheses when writing {" "}
           <div className="InputValue">{this.props.methodOneName}</div>.</>}
       >
-        <Suggestion title={<>Add "()" to the end of {" "}
-          <div className="InputValue">{this.props.methodOneName}</div>.</>}>
+        <Suggestion title={<>Add "()" to the end of <div className="InputValue">{this.props.methodOneName}</div>.</>}>
           <BadExample>
             <div className="Indent-0">{this.props.methodOneName};</div>
           </BadExample>
@@ -30,22 +43,22 @@ class SyntaxErrorVariableDeclarators extends React.Component {
         </Suggestion>
       </Problem>
       <Problem
-        title={<>You may have forgotten to fully write the body of the method {" "}
-          <div className="InputValue">{this.props.methodTwoName}()</div>.</>}
+        title={<>You may have written a statement with only the name of variable <div className="InputValue">{this.props.methodOneName}</div>.</>}
       >
-        <Suggestion title={<>Specify what {" "}
-          <div className="InputValue">{this.props.methodTwoName}() </div> should do.</>}>
+        <Suggestion title={<>Do something with the variable <div className="InputValue">{this.props.methodOneName}</div>.</>}>
           <BadExample>
-            <div className="Indent-0"> {this.props.typeName} s = 5; </div>
-            <div className="Indent-0"> void {this.props.methodTwoName}({this.props.typeName} x) {"{"}</div>
-            <div className="Indent-1"> s; </div>
-            <div className="Indent-0"> {"}"}</div>
+            <div className="Indent-0"> {this.props.methodOneName}; </div>
           </BadExample>
           <GoodExample>
-            <div className="Indent-0"> {this.props.typeName} s = 5; </div>
-            <div className="Indent-0"> void {this.props.methodTwoName}({this.props.typeName} x) {"{"}</div>
-            <div className="Indent-1"> s = s * x; </div>
-            <div className="Indent-0"> {"}"}</div>
+            <div className="Indent-0"> {this.props.methodOneName} = {demoValue}; </div>
+          </GoodExample>
+        </Suggestion>
+        <Suggestion title={<>Remove the statement with variable <div className="InputValue">{this.props.methodOneName}</div>.</>}>
+          <BadExample>
+            <div className="Indent-0"> {this.props.methodOneName}; </div>
+          </BadExample>
+          <GoodExample>
+            <div className="Indent-0"> <strikethrough>{this.props.methodOneName};</strikethrough> </div>
           </GoodExample>
         </Suggestion>
       </Problem>

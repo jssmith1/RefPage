@@ -196,7 +196,6 @@ function HomePageContent() {
             <Route exact path="/syntaxerrorvariabledeclarators">
                 <ProcessingErrors.SyntaxErrorVariableDeclarators
                     methodOneName={getParam("methodonename", "System.out.println")}
-                    methodTwoName={getParam("methodtwoname", "doSomething")}
                     typeName={getParam("typename", "int")}
                     embed={embed}
                 />
