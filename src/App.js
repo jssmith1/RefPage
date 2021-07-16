@@ -148,6 +148,7 @@ function HomePageContent() {
                     methodName={getParam("methodname", "doSomething")}
                     varName={getParam("varname", "thing")}
                     typeName={getParam("typename", "int")}
+                    returnType={getParam("returntype", "void")}
                     embed={embed}
                 />
             </Route>
