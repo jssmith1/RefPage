@@ -110,24 +110,16 @@ class VariableNotFound extends React.Component {
         </Suggestion>
       </Problem>
       <Problem
-        title={<>You may have made a syntax error while declaring an array of <div className="InputValue">{this.props.className}</div> objects.</>}
+        title={<>You may have made a syntax error while declaring an array of <div className="InputValue">{this.props.varName}</div> objects.</>}
       >
         <Suggestion title={<>Add the word 'new' before the object name.</>}>
           <BadExample>
-            <div className="Indent-0"> class {this.props.className} {LEFT_CURLY}  </div>
-            <div className="Indent-1"> {this.props.className}() {LEFT_CURLY} </div>
-            <div className="Indent-2"> {abbreviatedComment}; </div>
-            <div className="Indent-1"> {RIGHT_CURLY} </div>
-            <div className="Indent-0"> {RIGHT_CURLY} </div>
-            <div className="Indent-0">{this.props.className}[] {this.props.varName} = {this.props.className}[5];</div>
+            <div className="Indent-0"> class {this.props.varName} {LEFT_CURLY} {abbreviatedComment} {RIGHT_CURLY} </div>
+            <div className="Indent-0">{this.props.varName}[] example = {this.props.varName}[5];</div>
           </BadExample>
           <GoodExample>
-            <div className="Indent-0">class {this.props.className} {LEFT_CURLY} </div>
-            <div className="Indent-1">{this.props.className}() {LEFT_CURLY} </div>
-            <div className="Indent-2">{abbreviatedComment}; </div>
-            <div className="Indent-1">{RIGHT_CURLY} </div>
-            <div className="Indent-0">{RIGHT_CURLY} </div>
-            <div className="Indent-0">{this.props.className}[] {this.props.varName} = new {this.props.className}[5];</div>
+            <div className="Indent-0">class {this.props.varName} {LEFT_CURLY} {abbreviatedComment} {RIGHT_CURLY} </div>
+            <div className="Indent-0">{this.props.varName}[] example = new {this.props.varName}[5];</div>
           </GoodExample>
         </Suggestion>
       </Problem>
