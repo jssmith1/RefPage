@@ -85,8 +85,8 @@ class TypeNotFound extends React.Component {
       <Problem
         title={<>You may be trying to use a class from another file in static mode, which confuses Processing.</>}
       >
-        <Suggestion title={<>Declare the <div className="InputValue">draw</div>() or{" "}
-          <div className="InputValue">setup</div>() methods in one of your files.</>}>
+        <Suggestion title={<>Declare the <div className="InputValue">draw()</div> or{" "}
+          <div className="InputValue">setup()</div> methods in one of your files.</>}>
           <BadExample>
             <div className="Indent-0">{this.props.className} {this.props.varName} = new {this.props.className}();</div>
           </BadExample>
