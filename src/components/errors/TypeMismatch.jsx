@@ -8,7 +8,7 @@ import GoodExample from "../GoodExample";
 
 class TypeMismatch extends React.Component {
 
-  render() {
+  makeDemoValue(typeName) {
     const typeToValue = {
       String: "\"example\"",
       char: "'s'",
@@ -22,8 +22,20 @@ class TypeMismatch extends React.Component {
     };
 
     const knownTypes = ["String", "boolean", "char", "float", "double", "int", "short", "byte", "long"];
-    const providedValue = knownTypes.includes(this.props.typeOneName) ? typeToValue[this.props.typeOneName] : `new ${this.props.typeOneName}()`;
-    const matchingValue = knownTypes.includes(this.props.typeTwoName) ? typeToValue[this.props.typeTwoName] : `new ${this.props.typeTwoName}()`;
+
+    if (knownTypes.includes(typeName)) {
+      return typeToValue[typeName];
+    } else if (typeName.endsWith("[]")) {
+      return `new ${typeName.replace("[]", "[5]")}`;
+    } else {
+      return `new ${typeName}()`;
+    }
+
+  }
+
+  render() {
+    const providedValue = this.makeDemoValue(this.props.typeOneName);
+    const matchingValue = this.makeDemoValue(this.props.typeTwoName);
 
     const LEFT_CURLY = "{";
     const RIGHT_CURLY = "}";
